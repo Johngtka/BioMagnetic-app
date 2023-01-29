@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'tasklist'`, () => {
+  it(`should have as title 'Biomagnethic-App'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('tasklist');
+    expect(app.title).toEqual('Biomagnethic-App');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('tasklist app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Biomagnethic-App app is running!');
   });
 });
