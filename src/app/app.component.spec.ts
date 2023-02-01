@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 import { async, TestBed } from '@angular/core/testing';
 import { TranslateLoader, TranslateModule, TranslateService } from "@ngx-translate/core";
 import { AppComponent } from './app.component';
-import { HttpLoaderFactory } from "./app.module";;
+import { HttpLoaderFactory } from "./app.module";
 const TRANSLATIONS_EN = require('../assets/i18n/en.json');
 const TRANSLATIONS_PL = require('../assets/i18n/pl.json');
 const TRANSLATIONS_ES = require('../assets/i18n/es.json');
