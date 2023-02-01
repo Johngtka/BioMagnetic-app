@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MenuComponent } from './menu/menu.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -13,14 +12,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 }
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      // defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
@@ -32,5 +29,4 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }
