@@ -7,7 +7,7 @@
 
 <body>
   <app-menu></app-menu>
-  <label>{{'SELECT' | translate}}
+  <label>Change language
     <select #langSelect (change)="translate.use(langSelect.value)">
       <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{
         lang }}</option>
