@@ -2,13 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biomagnethic-App</title>
+  <title>{{'TITLE' | translate}}</title>
 </head>
 
 <body>
-
+  <app-menu></app-menu>
+  <label>{{'SELECT' | translate}}
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{
+        lang }}</option>
+    </select>
+  </label>
 </body>
 
 </html>
