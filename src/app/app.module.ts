@@ -5,7 +5,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
-import { AppComponent } from './app.component'
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -28,6 +29,7 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
         deps: [HttpClient],
       },
     }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
