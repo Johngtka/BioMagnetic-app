@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-
-import { AppComponent } from './app.component'
-
+import { AppComponent } from './app.component';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
 }
@@ -28,8 +27,9 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
         deps: [HttpClient],
       },
     }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
