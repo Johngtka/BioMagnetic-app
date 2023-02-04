@@ -4,13 +4,15 @@ import { OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+
 export interface User {
   name: string;
 }
 @Component({
   selector: 'app-patient-search',
   templateUrl: './patient-search.component.html',
-  styleUrls: ['./patient.styles.css']
+  styleUrls: ['./patient.styles.css'],
+
 })
 export class PatientSearchComponent implements OnInit {
   myControl = new FormControl<string | User>('');
