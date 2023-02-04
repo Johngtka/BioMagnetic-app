@@ -1,14 +1,3 @@
-<!-- <form class="patient-form">
-  <mat-form-field class="patient-full-width" appearance="fill">
-    <mat-label>Assignee</mat-label>
-    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.name}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form> -->
 <div class="wrapper">
   <h2>
     Patient Search
@@ -19,8 +8,7 @@
     <button *ngIf="selectedPatient" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
       <mat-icon>close</mat-icon>
     </button>
-    <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected()"
-      [displayWith]="displayWith">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
       <mat-option *ngIf="isLoading">Loading...</mat-option>
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let movie of filteredPatients" [value]="movie">

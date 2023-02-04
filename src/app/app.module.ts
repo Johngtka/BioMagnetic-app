@@ -25,7 +25,7 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
 
 @NgModule({
   declarations: [
-    AppComponent, AppComponent, PatientSearchComponent,],
+    AppComponent, AppComponent, PatientSearchComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
