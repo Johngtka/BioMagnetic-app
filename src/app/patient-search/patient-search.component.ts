@@ -10,6 +10,7 @@ export interface User {
 @Component({
   selector: 'app-patient-search',
   templateUrl: './patient-search.component.html',
+  styleUrls: ['./patient.styles.css']
 })
 export class PatientSearchComponent implements OnInit {
   myControl = new FormControl<string | User>('');
