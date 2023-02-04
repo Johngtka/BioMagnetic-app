@@ -1,5 +1,5 @@
-.patient-form {
-  width: 30%;
+.wrapper {
+  width: 40%;
   background-color: rgb(164, 164, 163);
   margin-left: auto;
   margin-right: auto;
@@ -7,6 +7,5 @@
 }
 
 .patient-full-width {
-  background-color: brown;
   text-align: center;
 }

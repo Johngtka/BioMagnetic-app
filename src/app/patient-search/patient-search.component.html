@@ -1,4 +1,4 @@
-<form class="patient-form">
+<!-- <form class="patient-form">
   <mat-form-field class="patient-full-width" appearance="fill">
     <mat-label>Assignee</mat-label>
     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
@@ -8,4 +8,45 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-</form>
+</form> -->
+<div class="wrapper">
+  <h2>
+    Patient Search
+  </h2>
+  <mat-form-field class="patient-full-width">
+    <input matInput placeholder="Search..." [(ngModel)]="selectedPatient" [matAutocomplete]="auto"
+      [formControl]="searchPatientsCtrl">
+    <button *ngIf="selectedPatient" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected()"
+      [displayWith]="displayWith">
+      <mat-option *ngIf="isLoading">Loading...</mat-option>
+      <ng-container *ngIf="!isLoading">
+        <mat-option *ngFor="let movie of filteredPatients" [value]="movie">
+          <span><b>{{movie.Title}}</b> ({{movie.Year}})</span>
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+  <ng-container *ngIf="errorMsg; else elseTemplate">
+    {{errorMsg}}
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div *ngIf="selectedPatient?.Title">
+      <div>
+        <img [src]="selectedPatient?.Poster" style="height: 250px;" />
+      </div>
+      <div>
+        <h3>Selected Value: {{selectedPatient?.Title}}</h3>
+        <ul>
+          <li>Year: {{selectedPatient?.Year}}</li>
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

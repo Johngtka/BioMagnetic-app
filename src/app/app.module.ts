@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
@@ -40,7 +42,9 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
