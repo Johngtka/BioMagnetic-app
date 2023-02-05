@@ -2,13 +2,10 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
 // import { Observable } from 'rxjs';
-// import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } from 'rxjs/operators';
-
-import { PatientService } from '../services/patient-service';
 
 const API_KEY = "e8067b53"
 export interface User {
@@ -18,7 +15,6 @@ export interface User {
   selector: 'app-patient-search',
   templateUrl: './patient-search.component.html',
   styleUrls: ['./patient.styles.css'],
-  providers: [PatientService]
 })
 export class PatientSearchComponent implements OnInit {
   searchPatientsCtrl = new FormControl();
@@ -29,8 +25,7 @@ export class PatientSearchComponent implements OnInit {
   selectedPatient: any = "";
 
   constructor(
-    private http: HttpClient,
-    private patientService: PatientService
+    private http: HttpClient
   ) { }
 
   onSelected() {

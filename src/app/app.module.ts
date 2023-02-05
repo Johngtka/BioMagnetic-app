@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
+import { PatientService } from './services/patient-service';
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -46,7 +48,7 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
     MatIconModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
