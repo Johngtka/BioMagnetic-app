@@ -4,13 +4,13 @@ import { OnInit } from '@angular/core';
 // import { Observable } from 'rxjs';
 // import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } from 'rxjs/operators';
 
-import { PatientService } from '../services/patient-service';
+// import { PatientService } from '../services/patient-service';
 
-// const API_KEY = "e8067b53"
+const API_KEY = "e8067b53"
 export interface User {
   name: string;
 }
@@ -29,8 +29,8 @@ export class PatientSearchComponent implements OnInit {
   selectedPatient: any = "";
 
   constructor(
-    // private http: HttpClient
-    private patientService: PatientService
+    private http: HttpClient
+    // private patientService: PatientService
   ) { }
 
   onSelected() {
@@ -60,13 +60,13 @@ export class PatientSearchComponent implements OnInit {
           this.filteredPatients = [];
           this.isLoading = true;
         }),
-        // switchMap(value => this.http.get('http://www.omdbapi.com/?apikey=' + API_KEY + '&s=' + value)
-        //   .pipe(
-        //     finalize(() => {
-        //       this.isLoading = false
-        //     }),
-        //   )
-        // )
+        switchMap(value => this.http.get('http://www.omdbapi.com/?apikey=' + API_KEY + '&s=' + value)
+          .pipe(
+            finalize(() => {
+              this.isLoading = false
+            }),
+          )
+        )
       )
       .subscribe((data: any) => {
         if (data['Search'] == undefined) {
