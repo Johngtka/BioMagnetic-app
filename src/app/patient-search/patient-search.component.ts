@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component } from '@angular/core'
+import { OnInit } from '@angular/core'
 
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
-import { tap } from 'rxjs/operators';
-import { distinctUntilChanged } from 'rxjs/operators';
-import { filter } from 'rxjs/operators';
+import { FormControl } from '@angular/forms'
+import { debounceTime } from 'rxjs/operators'
+import { tap } from 'rxjs/operators'
+import { distinctUntilChanged } from 'rxjs/operators'
+import { filter } from 'rxjs/operators'
 
-import { PatientService } from '../services/patient-service';
+import { PatientService } from '../services/patient-service'
 
 export interface User {
-  name: string;
+  name: string
 }
 @Component({
   selector: 'app-patient-search',
@@ -18,53 +18,51 @@ export interface User {
   styleUrls: ['./patient.styles.css'],
 })
 export class PatientSearchComponent implements OnInit {
-  searchPatientsCtrl = new FormControl();
-  filteredPatients: any;
-  isLoading = false;
-  errorMsg!: string;
-  minLengthTerm = 3;
-  selectedPatient: any = "";
+  searchPatientsCtrl = new FormControl()
+  filteredPatients: any
+  isLoading = false
+  errorMsg!: string
+  minLengthTerm = 3
+  selectedPatient: any = ''
 
-  constructor(
-    private patientService: PatientService
-  ) { }
+  constructor(private patientService: PatientService) {}
 
   onSelected() {
-    console.log(this.selectedPatient);
-    this.selectedPatient = this.selectedPatient;
+    console.log(this.selectedPatient)
+    this.selectedPatient = this.selectedPatient
   }
 
   displayWith(value: any) {
-    return value?.name;
+    return value?.name
   }
 
   clearSelection() {
-    this.selectedPatient = "";
-    this.filteredPatients = [];
+    this.selectedPatient = ''
+    this.filteredPatients = []
   }
 
   ngOnInit() {
     this.searchPatientsCtrl.valueChanges
       .pipe(
-        filter(res => {
+        filter((res) => {
           return res !== null && res.length >= this.minLengthTerm
         }),
         distinctUntilChanged(),
         debounceTime(1000),
         tap(() => {
-          this.errorMsg = "";
-          this.filteredPatients = [];
-          this.isLoading = true;
+          this.errorMsg = ''
+          this.filteredPatients = []
+          this.isLoading = true
         }),
       )
       .subscribe((query: string) => {
-        this.patientService.PatientSearch(query)
+        this.patientService
+          .patientSearch(query)
           .subscribe({
             next: (data: any[]) => (this.filteredPatients = data),
             error: (err) => console.log('error', err),
           })
           .add(() => (this.isLoading = false))
-      });
+      })
   }
 }
-

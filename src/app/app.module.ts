@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { TranslateModule } from '@ngx-translate/core'
-import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
 
-import { AppComponent } from './app.component';
-import { PatientSearchComponent } from './patient-search/patient-search.component';
-import { PatientService } from './services/patient-service';
-
+import { AppComponent } from './app.component'
+import { PatientSearchComponent } from './patient-search/patient-search.component'
+import { PatientService } from './services/patient-service'
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -27,10 +26,7 @@ const supportedLang = ['pl', 'es', 'en']
 const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PatientSearchComponent
-  ],
+  declarations: [AppComponent, PatientSearchComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -49,11 +45,9 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [PatientService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-
-}
+export class AppModule {}
