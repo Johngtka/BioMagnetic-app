@@ -6,7 +6,7 @@
     <button *ngIf="selectedPatient" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
       <mat-icon>X</mat-icon>
     </button>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let patient of filteredPatients" [value]="patient">
           <span>{{patient.name}}<br> ({{patient.surname}})</span>

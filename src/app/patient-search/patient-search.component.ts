@@ -34,6 +34,10 @@ export class PatientSearchComponent implements OnInit {
     this.selectedPatient = this.selectedPatient;
   }
 
+  displayWith(value: any) {
+    return value?.name;
+  }
+
   clearSelection() {
     this.selectedPatient = "";
     this.filteredPatients = [];
