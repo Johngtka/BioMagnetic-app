@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
@@ -5,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PatientService {
   constructor(private http: HttpClient) { }
-  PatientSearch() {
-    return this.http.get('http://localhost:3001/patient');
+  PatientSearch(query: string): Observable<any> {
+    return this.http.get('http://localhost:3001/patient?patientName=' + query);
   }
 
 }

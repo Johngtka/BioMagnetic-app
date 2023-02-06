@@ -4,13 +4,12 @@
     <input matInput placeholder="Search..." [(ngModel)]="selectedPatient" [matAutocomplete]="auto"
       [formControl]="searchPatientsCtrl">
     <button *ngIf="selectedPatient" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
-      <mat-icon>close</mat-icon>
+      <mat-icon>X</mat-icon>
     </button>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
-      <mat-option *ngIf="isLoading">Loading...</mat-option>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()">
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let patient of filteredPatients" [value]="patient">
-          <span>{{patient.Title}}<br> ({{patient.Year}})</span>
+          <span>{{patient.name}}<br> ({{patient.surname}})</span>
         </mat-option>
       </ng-container>
     </mat-autocomplete>
@@ -20,12 +19,9 @@
     {{errorMsg}}
   </ng-container>
   <ng-template #elseTemplate>
-    <div *ngIf="selectedPatient?.Title">
+    <div *ngIf="selectedPatient?.name">
       <div>
-        <img [src]="selectedPatient?.Poster" />
-      </div>
-      <div>
-        <h3>Selected Patient: {{selectedPatient?.Title}}<br> Year: {{selectedPatient?.Year}}</h3>
+        <h3>Selected Patient: {{selectedPatient?.name}}<br> Year: {{selectedPatient?.surname}}</h3>
       </div>
     </div>
   </ng-template>
