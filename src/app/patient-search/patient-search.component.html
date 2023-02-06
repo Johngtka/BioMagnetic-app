@@ -1,27 +1,48 @@
 <div class="wrapper">
   <h2>Patient Search</h2>
   <mat-form-field class="patient-full-width">
-    <input matInput placeholder="Search..." [(ngModel)]="selectedPatient" [matAutocomplete]="auto"
-      [formControl]="searchPatientsCtrl">
-    <button *ngIf="selectedPatient" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
+    <input
+      matInput
+      placeholder="Search..."
+      [(ngModel)]="selectedPatient"
+      [matAutocomplete]="auto"
+      [formControl]="searchPatientsCtrl"
+    />
+    <button
+      *ngIf="selectedPatient"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearSelection()"
+    >
       <mat-icon>X</mat-icon>
     </button>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onSelected()"
+      [displayWith]="displayWith"
+    >
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let patient of filteredPatients" [value]="patient">
-          <span>{{patient.name}}<br> ({{patient.surname}})</span>
+          <span
+            >{{ patient.name }}<br />
+            ({{ patient.surname }})</span
+          >
         </mat-option>
       </ng-container>
     </mat-autocomplete>
   </mat-form-field>
-  <br>
+  <br />
   <ng-container *ngIf="errorMsg; else elseTemplate">
-    {{errorMsg}}
+    {{ errorMsg }}
   </ng-container>
   <ng-template #elseTemplate>
     <div *ngIf="selectedPatient?.name">
       <div>
-        <h3>Selected Patient: {{selectedPatient?.name}}<br> Year: {{selectedPatient?.surname}}</h3>
+        <h3>
+          Selected Patient: {{ selectedPatient?.name }}<br />
+          Year: {{ selectedPatient?.surname }}
+        </h3>
       </div>
     </div>
   </ng-template>
