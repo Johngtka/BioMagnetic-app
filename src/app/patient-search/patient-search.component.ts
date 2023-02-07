@@ -8,6 +8,7 @@ import { distinctUntilChanged } from 'rxjs/operators'
 import { filter } from 'rxjs/operators'
 
 import { PatientService } from '../services/patient-service'
+import { Patient } from '../models/patient'
 
 export interface User {
   name: string
@@ -15,15 +16,15 @@ export interface User {
 @Component({
   selector: 'app-patient-search',
   templateUrl: './patient-search.component.html',
-  styleUrls: ['./patient.styles.css'],
+  styleUrls: ['./patient-search.component.css'],
 })
 export class PatientSearchComponent implements OnInit {
   searchPatientsCtrl = new FormControl()
-  filteredPatients: any
+  filteredPatients!: Array<Patient>
   isLoading = false
   errorMsg!: string
   minLengthTerm = 3
-  selectedPatient: any = ''
+  selectedPatient!: Patient
 
   constructor(private patientService: PatientService) {}
 
@@ -37,7 +38,7 @@ export class PatientSearchComponent implements OnInit {
   }
 
   clearSelection() {
-    this.selectedPatient = ''
+    this.selectedPatient = {} as Patient
     this.filteredPatients = []
   }
 
@@ -45,7 +46,7 @@ export class PatientSearchComponent implements OnInit {
     this.searchPatientsCtrl.valueChanges
       .pipe(
         filter((res) => {
-          return res !== null && res.length >= this.minLengthTerm
+          return !!res && res !== null && res.length >= this.minLengthTerm
         }),
         distinctUntilChanged(),
         debounceTime(1000),
@@ -59,8 +60,8 @@ export class PatientSearchComponent implements OnInit {
         this.patientService
           .patientSearch(query)
           .subscribe({
-            next: (data: any[]) => (this.filteredPatients = data),
-            error: (err) => console.log('error', err),
+            next: (data: Array<Patient>) => (this.filteredPatients = data),
+            error: (err) => (this.errorMsg = err.message),
           })
           .add(() => (this.isLoading = false))
       })
