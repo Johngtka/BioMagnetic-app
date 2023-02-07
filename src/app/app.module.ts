@@ -13,6 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatDividerModule } from '@angular/material/divider'
 
 import { AppComponent } from './app.component'
 import { PatientSearchComponent } from './patient-search/patient-search.component'
@@ -31,6 +34,9 @@ const materialModules = [
   MatInputModule,
   MatIconModule,
   MatButtonModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatDividerModule,
 ]
 
 @NgModule({
