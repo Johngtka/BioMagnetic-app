@@ -25,6 +25,14 @@ const navigatorLang = navigator.language.split('-')[0]
 const supportedLang = ['pl', 'es', 'en']
 const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
 
+const materialModules = [
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatButtonModule,
+]
+
 @NgModule({
   declarations: [AppComponent, PatientSearchComponent],
   imports: [
@@ -39,13 +47,9 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
         deps: [HttpClient],
       },
     }),
-    MatAutocompleteModule,
-    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
+    ...materialModules,
   ],
   providers: [PatientService],
   bootstrap: [AppComponent],
