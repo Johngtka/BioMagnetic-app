@@ -1,24 +1,44 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
+import { TranslateModule } from '@ngx-translate/core'
+import { TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+
+import { AppComponent } from './app.component'
+import { PatientSearchComponent } from './patient-search/patient-search.component'
+import { PatientService } from './services/patient-service'
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
 }
-
 const navigatorLang = navigator.language.split('-')[0]
 const supportedLang = ['pl', 'es', 'en']
 const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
 
+const materialModules = [
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatButtonModule,
+]
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PatientSearchComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       defaultLanguage: lang,
       loader: {
@@ -27,9 +47,11 @@ const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en'
         deps: [HttpClient],
       },
     }),
-    BrowserAnimationsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ...materialModules,
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
