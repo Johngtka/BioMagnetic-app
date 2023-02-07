@@ -32,17 +32,7 @@
     </mat-autocomplete>
   </mat-form-field>
   <br />
-  <ng-container *ngIf="errorMsg; else elseTemplate">
+  <ng-container *ngIf="errorMsg">
     {{ errorMsg }}
   </ng-container>
-  <ng-template #elseTemplate>
-    <div *ngIf="selectedPatient?.name">
-      <div>
-        <h3>
-          Selected Patient: {{ selectedPatient?.name }}<br />
-          Year: {{ selectedPatient?.surname }}
-        </h3>
-      </div>
-    </div>
-  </ng-template>
 </div>
