@@ -34,7 +34,7 @@ export class PatientSearchComponent implements OnInit {
   }
 
   displayWith(value: any) {
-    return value?.name
+    return value.name
   }
 
   clearSelection() {

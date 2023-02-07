@@ -9,6 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { RouterModule } from '@angular/router'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
@@ -16,10 +17,12 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatDividerModule } from '@angular/material/divider'
+import { LayoutModule } from '@angular/cdk/layout'
 
 import { AppComponent } from './app.component'
 import { PatientSearchComponent } from './patient-search/patient-search.component'
 import { PatientService } from './services/patient-service'
+import { MenuComponent } from './menu/menu.component'
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -40,11 +43,13 @@ const materialModules = [
 ]
 
 @NgModule({
-  declarations: [AppComponent, PatientSearchComponent],
+  declarations: [AppComponent, PatientSearchComponent, MenuComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule,
     BrowserAnimationsModule,
+    LayoutModule,
     TranslateModule.forRoot({
       defaultLanguage: lang,
       loader: {
