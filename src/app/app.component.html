@@ -7,28 +7,20 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  Sample Text
+  {{ 'APP.TITLE' | translate }}
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav">
+    <img class="avatar mat-elevation-z8" src="/src/assets/img/user.svg" />
+    <mat-divider></mat-divider>
     <button mat-button class="menu-button">
       <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-    <button mat-button class="menu-button">
-      <mat-icon>person</mat-icon>
-      <span>Profile</span>
+      <span routerLink="/home">{{ 'MENU.OPT1' | translate }}</span>
     </button>
     <button mat-button class="menu-button">
       <mat-icon>info</mat-icon>
-      <span>About</span>
-    </button>
-    <mat-divider></mat-divider>
-
-    <button mat-button class="menu-button">
-      <mat-icon>help</mat-icon>
-      <span>Help</span>
+      <span routerLink="/about">{{ 'MENU.OPT2' | translate }}</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>

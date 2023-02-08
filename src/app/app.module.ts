@@ -22,8 +22,9 @@ import { LayoutModule } from '@angular/cdk/layout'
 import { AppComponent } from './app.component'
 import { PatientSearchComponent } from './patient-search/patient-search.component'
 import { PatientService } from './services/patient-service'
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module'
 import { HomeComponent } from './home/home.component'
+import { AboutComponent } from './about/about.component'
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -44,7 +45,12 @@ const materialModules = [
 ]
 
 @NgModule({
-  declarations: [AppComponent, PatientSearchComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    PatientSearchComponent,
+    HomeComponent,
+    AboutComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
