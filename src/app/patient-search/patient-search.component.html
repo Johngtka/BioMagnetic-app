@@ -3,12 +3,11 @@
     <input
       matInput
       placeholder="Search..."
-      [(ngModel)]="selectedPatient"
       [matAutocomplete]="auto"
       [formControl]="searchPatientsCtrl"
     />
     <button
-      *ngIf="selectedPatient"
+      *ngIf="searchPatientsCtrl.value"
       matSuffix
       mat-icon-button
       aria-label="Clear"
@@ -35,13 +34,4 @@
   <ng-container *ngIf="errorMsg">
     {{ errorMsg }}
   </ng-container>
-  <!-- this comented code is not working because it is a display of data selected in autocomplete -->
-  <!-- <ng-template #elseTemplate>
-    <div *ngIf="selectedPatient.name">
-      <div>
-        Selected patient: {{selectedPatient.name}}
-        Year: {{selectedPatient.surname}}
-      </div>
-    </div>
-  </ng-template> -->
 </div>
