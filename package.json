@@ -6,6 +6,7 @@
     "start": "ng serve",
     "prebuild": "standard-version",
     "build": "ng build",
+    "postbuild": "git push --follow-tags",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write ./**/*.{ts,json,html,css}"
