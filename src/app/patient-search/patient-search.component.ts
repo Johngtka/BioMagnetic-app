@@ -24,21 +24,19 @@ export class PatientSearchComponent implements OnInit {
   isLoading = false
   errorMsg!: string
   minLengthTerm = 3
-  selectedPatient!: Patient
 
   constructor(private patientService: PatientService) {}
 
   onSelected() {
-    console.log(this.selectedPatient)
-    this.selectedPatient = this.selectedPatient
+    console.log(this.searchPatientsCtrl.value)
   }
 
   displayWith(value: any) {
-    return value?.name
+    return !!value ? value.name : ''
   }
 
   clearSelection() {
-    this.selectedPatient = {} as Patient
+    this.searchPatientsCtrl.setValue('')
     this.filteredPatients = []
   }
 

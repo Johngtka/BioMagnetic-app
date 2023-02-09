@@ -1,5 +1,9 @@
 {
   "APP": {
     "TITLE": "Bio Iman"
+  },
+  "MENU": {
+    "HOME": "Inicio",
+    "ABOUT": "Sobre"
   }
 }

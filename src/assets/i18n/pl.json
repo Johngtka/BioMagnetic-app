@@ -1,5 +1,9 @@
 {
   "APP": {
     "TITLE": "Bio Magnesik"
+  },
+  "MENU": {
+    "HOME": "Strona Główna",
+    "ABOUT": "O nas"
   }
 }

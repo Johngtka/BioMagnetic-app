@@ -1,1 +1,31 @@
-<app-patient-search></app-patient-search>
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  {{ 'APP.TITLE' | translate }}
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav">
+    <img class="avatar mat-elevation-z8" src="assets/img/user.svg" />
+    <mat-divider></mat-divider>
+    <button routerLink="/home" mat-button class="menu-button">
+      <mat-icon>home</mat-icon>
+      <span>{{ 'MENU.HOME' | translate }}</span>
+    </button>
+    <button routerLink="/about" mat-button class="menu-button">
+      <mat-icon>info</mat-icon>
+      <span>{{ 'MENU.ABOUT' | translate }}</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -3,18 +3,17 @@
     <input
       matInput
       placeholder="Search..."
-      [(ngModel)]="selectedPatient"
       [matAutocomplete]="auto"
       [formControl]="searchPatientsCtrl"
     />
     <button
-      *ngIf="selectedPatient"
+      *ngIf="searchPatientsCtrl.value"
       matSuffix
       mat-icon-button
       aria-label="Clear"
       (click)="clearSelection()"
     >
-      <mat-icon>X</mat-icon>
+      <mat-icon>close</mat-icon>
     </button>
     <mat-autocomplete
       #auto="matAutocomplete"

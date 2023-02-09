@@ -1,5 +1,9 @@
 {
   "APP": {
     "TITLE": "Bio Magnetic"
+  },
+  "MENU": {
+    "HOME": "Home",
+    "ABOUT": "About"
   }
 }
