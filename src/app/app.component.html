@@ -1,9 +1,5 @@
 <mat-toolbar class="mat-elevation-z8">
-  <button
-    mat-icon-button
-    *ngIf="sidenav.mode === 'over'"
-    (click)="sidenav.toggle()"
-  >
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
@@ -16,11 +12,11 @@
     <mat-divider></mat-divider>
     <button routerLink="/home" mat-button class="menu-button">
       <mat-icon>home</mat-icon>
-      <span>{{ 'MENU.OPT1' | translate }}</span>
+      <span>{{ 'MENU.HOME' | translate }}</span>
     </button>
     <button routerLink="/about" mat-button class="menu-button">
       <mat-icon>info</mat-icon>
-      <span>{{ 'MENU.OPT2' | translate }}</span>
+      <span>{{ 'MENU.ABOUT' | translate }}</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>

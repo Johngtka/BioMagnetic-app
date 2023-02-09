@@ -3,7 +3,7 @@
     "TITLE": "Bio Magnesik"
   },
   "MENU": {
-    "OPT1": "Strona Główna",
-    "OPT2": "O nas"
+    "HOME": "Strona Główna",
+    "ABOUT": "O nas"
   }
 }

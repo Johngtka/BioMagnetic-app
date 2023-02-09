@@ -3,7 +3,7 @@
     "TITLE": "Bio Iman"
   },
   "MENU": {
-    "OPT1": "Inicio",
-    "OPT2": "Sobre"
+    "HOME": "Inicio",
+    "ABOUT": "Sobre"
   }
 }

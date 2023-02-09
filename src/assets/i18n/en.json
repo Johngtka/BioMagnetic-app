@@ -3,7 +3,7 @@
     "TITLE": "Bio Magnetic"
   },
   "MENU": {
-    "OPT1": "Home",
-    "OPT2": "About"
+    "HOME": "Home",
+    "ABOUT": "About"
   }
 }
