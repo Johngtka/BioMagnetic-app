@@ -24,9 +24,8 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { PatientService } from './services/patient-service'
 import { AppRoutingModule } from './app-routing.module'
 import { HomeComponent } from './home/home.component'
-import { AboutComponent } from './about/about.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-
+import { AboutComponent } from './about/about.component'
+import { SnackbarComponent } from './snackbar/snackbar.component'
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -76,4 +75,4 @@ const materialModules = [
   providers: [PatientService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
