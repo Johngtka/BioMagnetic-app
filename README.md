@@ -12,7 +12,15 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `npm run build` to build the project. This process will trigger prebuild where the varsion number will be adjusted, new tag will be created, build process, and post build where changes will be push to the branch. The build artifacts will be stored in the `dist/sana` directory.
+To make a build checkout master branch and make git pull.
+
+Run `npm run build` to build the project. This process will trigger 3 processes:
+
+- prebuild where the varsion number will be adjusted, new tag will be created
+- build process -> ng build
+- post build where changes will be push to the branch.
+
+The build artifacts will be stored in the `dist/sana` directory.
 
 ## Running unit tests
 
