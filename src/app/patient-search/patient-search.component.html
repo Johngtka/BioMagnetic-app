@@ -1,31 +1,14 @@
 <div class="wrapper">
   <mat-form-field class="patient-full-width">
-    <input
-      matInput
-      placeholder="Search..."
-      [matAutocomplete]="auto"
-      [formControl]="searchPatientsCtrl"
-    />
-    <button
-      *ngIf="searchPatientsCtrl.value"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="clearSelection()"
-    >
+    <input matInput placeholder="Search..." [matAutocomplete]="auto" [formControl]="searchPatientsCtrl" />
+    <button *ngIf="searchPatientsCtrl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
       <mat-icon>close</mat-icon>
     </button>
-    <mat-autocomplete
-      #auto="matAutocomplete"
-      (optionSelected)="onSelected()"
-      [displayWith]="displayWith"
-    >
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let patient of filteredPatients" [value]="patient">
-          <span
-            >{{ patient.name }}<br />
-            ({{ patient.surname }})</span
-          >
+          <span>{{ patient.name }}<br />
+            ({{ patient.surname }})</span>
         </mat-option>
       </ng-container>
     </mat-autocomplete>
