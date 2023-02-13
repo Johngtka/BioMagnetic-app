@@ -9,6 +9,7 @@ import { filter } from 'rxjs/operators'
 
 import { PatientService } from '../services/patient-service'
 import { Patient } from '../models/patient'
+import { SnackService, SNACK_TYPE } from '../services/snack.service'
 
 export interface User {
   name: string
@@ -25,7 +26,10 @@ export class PatientSearchComponent implements OnInit {
   errorMsg!: string
   minLengthTerm = 3
 
-  constructor(private patientService: PatientService) {}
+  constructor(
+    private patientService: PatientService,
+    private snackService: SnackService,
+  ) {}
 
   onSelected() {
     console.log(this.searchPatientsCtrl.value)
@@ -59,7 +63,13 @@ export class PatientSearchComponent implements OnInit {
           .patientSearch(query)
           .subscribe({
             next: (data: Array<Patient>) => (this.filteredPatients = data),
-            error: (err) => (this.errorMsg = err.message),
+            error: (err) => {
+              this.snackService.showSnackBarMessage(
+                'ERROR.PATIENT_SEARCH',
+                SNACK_TYPE.error,
+              )
+              console.log(err.message)
+            },
           })
           .add(() => (this.isLoading = false))
       })

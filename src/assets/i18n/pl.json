@@ -5,5 +5,11 @@
   "MENU": {
     "HOME": "Strona Główna",
     "ABOUT": "O nas"
+  },
+  "GENERAL": {
+    "CLOSE": "Zamknij"
+  },
+  "ERROR": {
+    "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później"
   }
 }

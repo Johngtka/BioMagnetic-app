@@ -5,5 +5,11 @@
   "MENU": {
     "HOME": "Home",
     "ABOUT": "About"
+  },
+  "GENERAL": {
+    "CLOSE": "Close"
+  },
+  "ERROR": {
+    "PATIENT_SEARCH": "An error has occured while searching for patient, plese try again later"
   }
 }

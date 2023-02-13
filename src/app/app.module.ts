@@ -18,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatDividerModule } from '@angular/material/divider'
 import { LayoutModule } from '@angular/cdk/layout'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 import { AppComponent } from './app.component'
 import { PatientSearchComponent } from './patient-search/patient-search.component'
@@ -42,6 +43,7 @@ const materialModules = [
   MatToolbarModule,
   MatSidenavModule,
   MatDividerModule,
+  MatSnackBarModule,
 ]
 
 @NgModule({
