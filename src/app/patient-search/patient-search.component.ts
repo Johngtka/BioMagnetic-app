@@ -58,9 +58,9 @@ export class PatientSearchComponent implements OnInit {
           this.isLoading = true
         }),
       )
-      .subscribe((query: string) => {
+      .subscribe(() => {
         this.patientService
-          .patientSearch(query)
+          .patientSearch()
           .subscribe({
             next: (data: Array<Patient>) => (this.filteredPatients = data),
             error: (err) => {

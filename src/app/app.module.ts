@@ -19,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatDividerModule } from '@angular/material/divider'
 import { LayoutModule } from '@angular/cdk/layout'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatTableModule } from '@angular/material/table'
 
 import { AppComponent } from './app.component'
 import { PatientSearchComponent } from './patient-search/patient-search.component'
@@ -26,6 +27,7 @@ import { PatientService } from './services/patient-service'
 import { AppRoutingModule } from './app-routing.module'
 import { HomeComponent } from './home/home.component'
 import { AboutComponent } from './about/about.component'
+import { PatientTableComponent } from './patient-table/patient-table.component'
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient)
@@ -44,6 +46,7 @@ const materialModules = [
   MatSidenavModule,
   MatDividerModule,
   MatSnackBarModule,
+  MatTableModule,
 ]
 
 @NgModule({
@@ -52,6 +55,7 @@ const materialModules = [
     PatientSearchComponent,
     HomeComponent,
     AboutComponent,
+    PatientTableComponent,
   ],
   imports: [
     BrowserModule,
