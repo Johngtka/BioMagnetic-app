@@ -7,11 +7,9 @@ import { PatientService } from './../services/patient-service'
 })
 export class PatientTableComponent {
   dataSource!: any[]
-  constructor(
-    private patientService: PatientService
-  ) { }
+  constructor(private patientService: PatientService) {}
   ngOnInit(): void {
-    this.patientService.getPatients().subscribe(patients => {
+    this.patientService.getPatients().subscribe((patients) => {
       this.dataSource = patients
     })
   }
