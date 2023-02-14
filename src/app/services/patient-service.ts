@@ -9,12 +9,12 @@ import { Patient } from '../models/patient'
 })
 export class PatientService {
   constructor(private http: HttpClient) {}
-  // patientSearch(query: string): Observable<Array<Patient>> {
-  //   return this.http.get<Array<Patient>>(
-  //     'http://localhost:3001/patient?patientName=' + query,
-  //   )
-  // }
-  patientSearch(): Observable<Array<Patient>> {
+  patientSearch(query: string): Observable<Array<Patient>> {
+    return this.http.get<Array<Patient>>(
+      'http://localhost:3001/patient?patientName=' + query,
+    )
+  }
+  getPatients(): Observable<Array<Patient>> {
     return this.http.get<Array<Patient>>('http://localhost:3001/patient')
   }
 }
