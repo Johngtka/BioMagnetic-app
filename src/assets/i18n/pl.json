@@ -11,5 +11,13 @@
   },
   "ERROR": {
     "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później"
+  },
+  "PATIENT_TABLE": {
+    "FULL_NAME": "Imie i Nazwisko",
+    "GENDER": "Płeć",
+    "EMAIL": "Email",
+    "PHONE": "Telefon",
+    "LOCATION": "Miejscowość",
+    "DOB": "Wiek"
   }
 }

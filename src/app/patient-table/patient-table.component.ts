@@ -13,5 +13,12 @@ export class PatientTableComponent {
       this.dataSource = patients
     })
   }
-  displayedColumns: string[] = ['name']
+  displayedColumns: string[] = [
+    'fullname',
+    'gender',
+    'email',
+    'phone',
+    'location',
+    'dob',
+  ]
 }

@@ -11,5 +11,13 @@
   },
   "ERROR": {
     "PATIENT_SEARCH": "An error has occured while searching for patient, plese try again later"
+  },
+  "PATIENT_TABLE": {
+    "FULL_NAME": "Full Name",
+    "GENDER": "Gender",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "LOCATION": "City",
+    "DOB": "Age"
   }
 }
