@@ -1,114 +1,114 @@
 {
-  "uuid": "dae0a722-3bd1-493e-aab3-c4ee67c0b7e9",
-  "lastMigration": 25,
-  "name": "Biomag",
-  "endpointPrefix": "",
-  "latency": 0,
-  "port": 3001,
-  "hostname": "0.0.0.0",
-  "folders": [],
-  "routes": [
-    {
-      "uuid": "98ead167-0db4-427c-a408-449c76473abc",
-      "documentation": "",
-      "method": "get",
-      "endpoint": "patient",
-      "responses": [
+    "uuid": "dae0a722-3bd1-493e-aab3-c4ee67c0b7e9",
+    "lastMigration": 25,
+    "name": "Biomag",
+    "endpointPrefix": "",
+    "latency": 0,
+    "port": 3001,
+    "hostname": "0.0.0.0",
+    "folders": [],
+    "routes": [
         {
-          "uuid": "dd202189-b95b-4216-b27d-897a2db79d1e",
-          "body": "[\r\n  {\r\n    \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n    \"name\": \"Luann\",\r\n    \"surname\": \"Gillespie\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"luanngillespie@venoflex.com\",\r\n    \"phone\": \"+1 (917) 542-3444\",\r\n    \"location\": \"Westphalia\",\r\n    \"dob\": \"05-02-1962\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fddae78f492344fb\",\r\n    \"name\": \"Phoebe\",\r\n    \"surname\": \"Evans\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"phoebeevans@venoflex.com\",\r\n    \"phone\": \"+1 (972) 481-2375\",\r\n    \"location\": \"Leland\",\r\n    \"dob\": \"22-03-1958\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4674976d728d81c65\",\r\n    \"name\": \"Vazquez\",\r\n    \"surname\": \"Dunlap\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"vazquezdunlap@venoflex.com\",\r\n    \"phone\": \"+1 (836) 475-3135\",\r\n    \"location\": \"Topanga\",\r\n    \"dob\": \"22-06-2015\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fbf6c0e7cf6e5aa5\",\r\n    \"name\": \"Conrad\",\r\n    \"surname\": \"Hubbard\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"conradhubbard@venoflex.com\",\r\n    \"phone\": \"+1 (987) 400-3809\",\r\n    \"location\": \"Roeville\",\r\n    \"dob\": \"22-08-2001\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b43a3629bb7b6dfbec\",\r\n    \"name\": \"Berg\",\r\n    \"surname\": \"Franks\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"bergfranks@venoflex.com\",\r\n    \"phone\": \"+1 (990) 553-2832\",\r\n    \"location\": \"Garfield\",\r\n    \"dob\": \"17-01-2008\"\r\n  }\r\n]",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
+            "uuid": "98ead167-0db4-427c-a408-449c76473abc",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "patient",
+            "responses": [
+                {
+                    "uuid": "dd202189-b95b-4216-b27d-897a2db79d1e",
+                    "body": "[\r\n  {\r\n    \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n    \"name\": \"Luann\",\r\n    \"surname\": \"Gillespie\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"luanngillespie@venoflex.com\",\r\n    \"phone\": \"+1 (917) 542-3444\",\r\n    \"location\": \"Westphalia\",\r\n    \"dob\": \"05-02-1962\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fddae78f492344fb\",\r\n    \"name\": \"Phoebe\",\r\n    \"surname\": \"Evans\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"phoebeevans@venoflex.com\",\r\n    \"phone\": \"+1 (972) 481-2375\",\r\n    \"location\": \"Leland\",\r\n    \"dob\": \"22-03-1958\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4674976d728d81c65\",\r\n    \"name\": \"Vazquez\",\r\n    \"surname\": \"Dunlap\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"vazquezdunlap@venoflex.com\",\r\n    \"phone\": \"+1 (836) 475-3135\",\r\n    \"location\": \"Topanga\",\r\n    \"dob\": \"22-06-2015\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fbf6c0e7cf6e5aa5\",\r\n    \"name\": \"Conrad\",\r\n    \"surname\": \"Hubbard\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"conradhubbard@venoflex.com\",\r\n    \"phone\": \"+1 (987) 400-3809\",\r\n    \"location\": \"Roeville\",\r\n    \"dob\": \"22-08-2001\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b43a3629bb7b6dfbec\",\r\n    \"name\": \"Berg\",\r\n    \"surname\": \"Franks\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"bergfranks@venoflex.com\",\r\n    \"phone\": \"+1 (990) 553-2832\",\r\n    \"location\": \"Garfield\",\r\n    \"dob\": \"17-01-2008\"\r\n  }\r\n]",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                },
+                {
+                    "uuid": "07680c0b-1db5-457a-95aa-1bc58ff96317",
+                    "body": "[\r\n    {\r\n        \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n        \"name\": \"Autocomplte\",\r\n        \"surname\": \"test\",\r\n        \"gender\": \"female\",\r\n        \"email\": \"luanngillespie@venoflex.com\",\r\n        \"phone\": \"+1 (917) 542-3444\",\r\n        \"location\": \"Westphalia\",\r\n        \"dob\": \"05-02-1962\"\r\n    }\r\n]",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [
+                        {
+                            "target": "query",
+                            "modifier": "patientName",
+                            "value": ".*",
+                            "invert": false,
+                            "operator": "regex"
+                        }
+                    ],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": false
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        }
+    ],
+    "rootChildren": [
+        {
+            "type": "route",
+            "uuid": "98ead167-0db4-427c-a408-449c76473abc"
+        }
+    ],
+    "proxyMode": false,
+    "proxyHost": "",
+    "proxyRemovePrefix": false,
+    "tlsOptions": {
+        "enabled": false,
+        "type": "CERT",
+        "pfxPath": "",
+        "certPath": "",
+        "keyPath": "",
+        "caPath": "",
+        "passphrase": ""
+    },
+    "cors": true,
+    "headers": [
+        {
+            "key": "Content-Type",
+            "value": "application/json"
         },
         {
-          "uuid": "07680c0b-1db5-457a-95aa-1bc58ff96317",
-          "body": "[\r\n    {\r\n        \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n        \"name\": \"Autocomplte\",\r\n        \"surname\": \"test\",\r\n        \"gender\": \"female\",\r\n        \"email\": \"luanngillespie@venoflex.com\",\r\n        \"phone\": \"+1 (917) 542-3444\",\r\n        \"location\": \"Westphalia\",\r\n        \"dob\": \"05-02-1962\"\r\n    }\r\n]",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "query",
-              "modifier": "patientName",
-              "value": ".*",
-              "invert": false,
-              "operator": "regex"
-            }
-          ],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+        },
+        {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+        },
+        {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
         }
-      ],
-      "enabled": true,
-      "responseMode": null
-    }
-  ],
-  "rootChildren": [
-    {
-      "type": "route",
-      "uuid": "98ead167-0db4-427c-a408-449c76473abc"
-    }
-  ],
-  "proxyMode": false,
-  "proxyHost": "",
-  "proxyRemovePrefix": false,
-  "tlsOptions": {
-    "enabled": false,
-    "type": "CERT",
-    "pfxPath": "",
-    "certPath": "",
-    "keyPath": "",
-    "caPath": "",
-    "passphrase": ""
-  },
-  "cors": true,
-  "headers": [
-    {
-      "key": "Content-Type",
-      "value": "application/json"
-    },
-    {
-      "key": "Access-Control-Allow-Origin",
-      "value": "*"
-    },
-    {
-      "key": "Access-Control-Allow-Methods",
-      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
-    },
-    {
-      "key": "Access-Control-Allow-Headers",
-      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
-    }
-  ],
-  "proxyReqHeaders": [
-    {
-      "key": "",
-      "value": ""
-    }
-  ],
-  "proxyResHeaders": [
-    {
-      "key": "",
-      "value": ""
-    }
-  ],
-  "data": []
+    ],
+    "proxyReqHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "proxyResHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "data": []
 }
