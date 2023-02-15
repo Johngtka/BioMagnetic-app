@@ -1,4 +1,7 @@
 import { Component } from '@angular/core'
+
+import { SnackService, SNACK_TYPE } from './../services/snack.service';
+import { Patient } from '../models/patient'
 import { PatientService } from './../services/patient-service'
 @Component({
   selector: 'app-patient-table',
@@ -7,10 +10,17 @@ import { PatientService } from './../services/patient-service'
 })
 export class PatientTableComponent {
   dataSource!: any[]
-  constructor(private patientService: PatientService) {}
+  constructor(private patientService: PatientService, private snackService: SnackService) { }
   ngOnInit(): void {
-    this.patientService.getPatients().subscribe((patients) => {
-      this.dataSource = patients
+    this.patientService.getPatients().subscribe({
+      next: (data: Array<Patient>) => (this.dataSource = data),
+      error: (err) => {
+        this.snackService.showSnackBarMessage(
+          'ERROR.PATIENT_TABLE_GET_PATIENTS',
+          SNACK_TYPE.error,
+        )
+        console.log(err.message)
+      },
     })
   }
   displayedColumns: string[] = [
