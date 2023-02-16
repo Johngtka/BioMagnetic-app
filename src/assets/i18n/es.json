@@ -1,24 +1,24 @@
 {
-  "APP": {
-    "TITLE": "Bio Iman"
-  },
-  "MENU": {
-    "HOME": "Inicio",
-    "ABOUT": "Sobre"
-  },
-  "GENERAL": {
-    "CLOSE": "Cierra"
-  },
-  "ERROR": {
-    "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
-    "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde"
-  },
-  "PATIENT_TABLE": {
-    "FULL_NAME": "Nombre y Apellidos",
-    "GENDER": "Sexo",
-    "EMAIL": "Email",
-    "PHONE": "Teléfono",
-    "LOCATION": "Ciudad",
-    "DOB": "Años"
-  }
+    "APP": {
+        "TITLE": "Bio Iman"
+    },
+    "MENU": {
+        "HOME": "Inicio",
+        "ABOUT": "Sobre"
+    },
+    "GENERAL": {
+        "CLOSE": "Cierra"
+    },
+    "ERROR": {
+        "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
+        "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde"
+    },
+    "PATIENT_TABLE": {
+        "FULL_NAME": "Nombre y Apellidos",
+        "GENDER": "Sexo",
+        "EMAIL": "Email",
+        "PHONE": "Teléfono",
+        "LOCATION": "Ciudad",
+        "DOB": "Años"
+    }
 }
