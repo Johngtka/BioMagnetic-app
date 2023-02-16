@@ -1,0 +1,62 @@
+[
+    {
+        "id": "63ee90419fbd4cb32329fc75",
+        "name": "Rochelle",
+        "surname": "Mcguire",
+        "gender": "female",
+        "email": "rochellemcguire@jimbies.com",
+        "phone": "+1 (843) 594-3579",
+        "location": "Trona",
+        "dob": 36
+    },
+    {
+        "id": "63ee9041ec17ca4227a8f9a0",
+        "name": "Mcdonald",
+        "surname": "Juarez",
+        "gender": "male",
+        "email": "mcdonaldjuarez@jimbies.com",
+        "phone": "+1 (852) 453-2144",
+        "location": "Sussex",
+        "dob": 29
+    },
+    {
+        "id": "63ee904138aacfb799632029",
+        "name": "Katy",
+        "surname": "Barrett",
+        "gender": "female",
+        "email": "katybarrett@jimbies.com",
+        "phone": "+1 (973) 438-2479",
+        "location": "Sanford",
+        "dob": 33
+    },
+    {
+        "id": "63ee9041fcde36cec38b51d4",
+        "name": "Lindsey",
+        "surname": "Mcgowan",
+        "gender": "male",
+        "email": "lindseymcgowan@jimbies.com",
+        "phone": "+1 (897) 566-2536",
+        "location": "Balm",
+        "dob": 27
+    },
+    {
+        "id": "63ee90417411594024be140a",
+        "name": "Pena",
+        "surname": "Elliott",
+        "gender": "male",
+        "email": "penaelliott@jimbies.com",
+        "phone": "+1 (875) 508-2537",
+        "location": "Greenock",
+        "dob": 28
+    },
+    {
+        "id": "63ee9041e1804a40406583c6",
+        "name": "Dunlap",
+        "surname": "Flowers",
+        "gender": "male",
+        "email": "dunlapflowers@jimbies.com",
+        "phone": "+1 (859) 410-3449",
+        "location": "Bendon",
+        "dob": 31
+    }
+]

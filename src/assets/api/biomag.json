@@ -1,5 +1,5 @@
 {
-    "uuid": "dae0a722-3bd1-493e-aab3-c4ee67c0b7e9",
+    "uuid": "70618943-f308-44b1-a3d7-6b6836d7cc42",
     "lastMigration": 25,
     "name": "Biomag",
     "endpointPrefix": "",
@@ -9,21 +9,56 @@
     "folders": [],
     "routes": [
         {
-            "uuid": "dd202189-b95b-4216-b27d-897a2db79d1e",
-            "body": "[\r\n  {\r\n    \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n    \"name\": \"Luann\",\r\n    \"surname\": \"Gillespie\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"luanngillespie@venoflex.com\",\r\n    \"phone\": \"+1 (917) 542-3444\",\r\n    \"location\": \"Westphalia\",\r\n    \"dob\": \"05-02-1962\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fddae78f492344fb\",\r\n    \"name\": \"Phoebe\",\r\n    \"surname\": \"Evans\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"phoebeevans@venoflex.com\",\r\n    \"phone\": \"+1 (972) 481-2375\",\r\n    \"location\": \"Leland\",\r\n    \"dob\": \"22-03-1958\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4674976d728d81c65\",\r\n    \"name\": \"Vazquez\",\r\n    \"surname\": \"Dunlap\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"vazquezdunlap@venoflex.com\",\r\n    \"phone\": \"+1 (836) 475-3135\",\r\n    \"location\": \"Topanga\",\r\n    \"dob\": \"22-06-2015\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fbf6c0e7cf6e5aa5\",\r\n    \"name\": \"Conrad\",\r\n    \"surname\": \"Hubbard\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"conradhubbard@venoflex.com\",\r\n    \"phone\": \"+1 (987) 400-3809\",\r\n    \"location\": \"Roeville\",\r\n    \"dob\": \"22-08-2001\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b43a3629bb7b6dfbec\",\r\n    \"name\": \"Berg\",\r\n    \"surname\": \"Franks\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"bergfranks@venoflex.com\",\r\n    \"phone\": \"+1 (990) 553-2832\",\r\n    \"location\": \"Garfield\",\r\n    \"dob\": \"17-01-2008\"\r\n  }\r\n]",
-            "latency": 1500,
-            "statusCode": 200,
-            "label": "",
-            "headers": [],
-            "bodyType": "INLINE",
-            "filePath": "",
-            "databucketID": "",
-            "sendFileAsBody": false,
-            "rules": [],
-            "rulesOperator": "OR",
-            "disableTemplating": false,
-            "fallbackTo404": false,
-            "default": true
+            "uuid": "606360a2-220c-4673-b941-8f39541d9edd",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "patient",
+            "responses": [
+                {
+                    "uuid": "f8be8436-da69-4c32-a98c-7019d461fb98",
+                    "body": "[\r\n  {\r\n    \"id\": \"63ee90419fbd4cb32329fc75\",\r\n    \"name\": \"Rochelle\",\r\n    \"surname\": \"Mcguire\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"rochellemcguire@jimbies.com\",\r\n    \"phone\": \"+1 (843) 594-3579\",\r\n    \"location\": \"Trona\",\r\n    \"dob\": 36\r\n  },\r\n  {\r\n    \"id\": \"63ee9041ec17ca4227a8f9a0\",\r\n    \"name\": \"Mcdonald\",\r\n    \"surname\": \"Juarez\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"mcdonaldjuarez@jimbies.com\",\r\n    \"phone\": \"+1 (852) 453-2144\",\r\n    \"location\": \"Sussex\",\r\n    \"dob\": 29\r\n  },\r\n  {\r\n    \"id\": \"63ee904138aacfb799632029\",\r\n    \"name\": \"Katy\",\r\n    \"surname\": \"Barrett\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"katybarrett@jimbies.com\",\r\n    \"phone\": \"+1 (973) 438-2479\",\r\n    \"location\": \"Sanford\",\r\n    \"dob\": 33\r\n  },\r\n  {\r\n    \"id\": \"63ee9041fcde36cec38b51d4\",\r\n    \"name\": \"Lindsey\",\r\n    \"surname\": \"Mcgowan\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"lindseymcgowan@jimbies.com\",\r\n    \"phone\": \"+1 (897) 566-2536\",\r\n    \"location\": \"Balm\",\r\n    \"dob\": 27\r\n  },\r\n  {\r\n    \"id\": \"63ee90417411594024be140a\",\r\n    \"name\": \"Pena\",\r\n    \"surname\": \"Elliott\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"penaelliott@jimbies.com\",\r\n    \"phone\": \"+1 (875) 508-2537\",\r\n    \"location\": \"Greenock\",\r\n    \"dob\": 28\r\n  },\r\n  {\r\n    \"id\": \"63ee9041e1804a40406583c6\",\r\n    \"name\": \"Dunlap\",\r\n    \"surname\": \"Flowers\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"dunlapflowers@jimbies.com\",\r\n    \"phone\": \"+1 (859) 410-3449\",\r\n    \"location\": \"Bendon\",\r\n    \"dob\": 31\r\n  }\r\n]",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        }
+    ],
+    "rootChildren": [
+        {
+            "type": "route",
+            "uuid": "606360a2-220c-4673-b941-8f39541d9edd"
+        }
+    ],
+    "proxyMode": false,
+    "proxyHost": "",
+    "proxyRemovePrefix": false,
+    "tlsOptions": {
+        "enabled": false,
+        "type": "CERT",
+        "pfxPath": "",
+        "certPath": "",
+        "keyPath": "",
+        "caPath": "",
+        "passphrase": ""
+    },
+    "cors": true,
+    "headers": [
+        {
+            "key": "Content-Type",
+            "value": "application/json"
         },
         {
             "key": "Access-Control-Allow-Origin",
