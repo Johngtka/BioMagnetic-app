@@ -8,11 +8,13 @@ import { Patient } from '../models/patient';
     providedIn: 'root',
 })
 export class PatientService {
-    private someVar = [];
     constructor(private http: HttpClient) {}
     patientSearch(query: string): Observable<Array<Patient>> {
         return this.http.get<Array<Patient>>(
             'http://localhost:3001/patient?patientName=' + query,
         );
+    }
+    getPatients(): Observable<Array<Patient>> {
+        return this.http.get<Array<Patient>>('http://localhost:3001/patient');
     }
 }

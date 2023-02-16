@@ -31,6 +31,12 @@ mat-divider {
     margin: 16px;
 }
 
+@media screen and (max-width: 400px) {
+  .content {
+    margin: 0;
+  }
+}
+
 .menu-button {
     width: 100%;
     display: flex;
