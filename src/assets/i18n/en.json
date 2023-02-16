@@ -11,7 +11,7 @@
   },
   "ERROR": {
     "PATIENT_SEARCH": "An error has occured while searching for patient, plese try again later",
-    "PATIENT_TABLE_GET_PATIENTS": "Patient display error occurred, try again later"
+    "PATIENT_TABLE_GET_PATIENTS": "An error has occured while trying to load patients into a table, plese try again later"
   },
   "PATIENT_TABLE": {
     "FULL_NAME": "Full Name",

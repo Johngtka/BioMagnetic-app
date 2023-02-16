@@ -11,7 +11,7 @@
   },
   "ERROR": {
     "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później",
-    "PATIENT_TABLE_GET_PATIENTS": "Wystąpił błąd wyświetlania pacjętów, spróbuj ponownie później"
+    "PATIENT_TABLE_GET_PATIENTS": "Wystąpił błąd podczas próby załadowania pacjentów do tabeli, spróbuj ponownie później"
   },
   "PATIENT_TABLE": {
     "FULL_NAME": "Imie i Nazwisko",

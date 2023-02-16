@@ -11,7 +11,7 @@
   },
   "ERROR": {
     "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
-    "PATIENT_TABLE_GET_PATIENTS": "Error al mostrar los pacientes, por favor inténtelo más tarde"
+    "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde"
   },
   "PATIENT_TABLE": {
     "FULL_NAME": "Nombre y Apellidos",
