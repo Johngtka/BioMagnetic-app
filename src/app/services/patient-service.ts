@@ -14,4 +14,7 @@ export class PatientService {
       'http://localhost:3001/patient?patientName=' + query,
     )
   }
+  getPatients(): Observable<Array<Patient>> {
+    return this.http.get<Array<Patient>>('http://localhost:3001/patient')
+  }
 }
