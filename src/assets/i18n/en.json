@@ -20,5 +20,8 @@
         "PHONE": "Phone",
         "LOCATION": "City",
         "DOB": "Age"
+    },
+    "PATIENT_SEARCH": {
+        "LOADING": "Loading"
     }
 }

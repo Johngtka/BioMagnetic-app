@@ -20,6 +20,9 @@
             (optionSelected)="onSelected()"
             [displayWith]="displayWith"
         >
+            <mat-option *ngIf="isLoading" class="is-loading"
+                >{{ 'PATIENT_SEARCH.LOADING' | translate }}...</mat-option
+            >
             <ng-container *ngIf="!isLoading">
                 <mat-option
                     *ngFor="let patient of filteredPatients"
