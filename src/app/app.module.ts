@@ -30,53 +30,54 @@ import { AboutComponent } from './about/about.component';
 import { PatientTableComponent } from './patient-table/patient-table.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
-    return new TranslateHttpLoader(httpClient);
+  return new TranslateHttpLoader(httpClient);
 }
 const navigatorLang = navigator.language.split('-')[0];
 const supportedLang = ['pl', 'es', 'en'];
 const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en';
 
 const materialModules = [
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatSnackBarModule,
-    MatTableModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatDividerModule,
+  MatSnackBarModule,
+  MatTableModule,
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        PatientSearchComponent,
-        HomeComponent,
-        AboutComponent,
-        PatientTableComponent,
-    ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        RouterModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        TranslateModule.forRoot({
-            defaultLanguage: lang,
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient],
-            },
-        }),
-        FormsModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        ...materialModules,
-    ],
-    providers: [PatientService],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    PatientSearchComponent,
+    HomeComponent,
+    AboutComponent,
+    PatientTableComponent,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    TranslateModule.forRoot({
+      defaultLanguage: lang,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    ...materialModules,
+  ],
+  providers: [PatientService],
+  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
+
