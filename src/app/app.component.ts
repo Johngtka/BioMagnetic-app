@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, Pipe } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -15,7 +15,7 @@ export class AppComponent implements AfterViewInit {
     @ViewChild(MatSidenav)
     sidenav!: MatSidenav;
 
-    constructor(private observer: BreakpointObserver) {}
+    constructor(private observer: BreakpointObserver) { }
 
     ngAfterViewInit() {
         this.observer

@@ -1,10 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { differenceInYears } from 'date-fns';
 @Pipe({
     name: 'age',
 })
 export class AgePipe implements PipeTransform {
-    transform(value: unknown, ...args: unknown[]): unknown {
-        return null;
+    transform(age: number) {
+        if (!!age) {
+            return differenceInYears(new Date(age), new Date())
+        } else {
+            return ''
+        }
     }
 }

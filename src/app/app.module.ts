@@ -20,6 +20,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
@@ -48,6 +49,7 @@ const materialModules = [
     MatDividerModule,
     MatSnackBarModule,
     MatTableModule,
+    MatProgressSpinnerModule
 ];
 
 @NgModule({
@@ -81,4 +83,4 @@ const materialModules = [
     providers: [PatientService],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

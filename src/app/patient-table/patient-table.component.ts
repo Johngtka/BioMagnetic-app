@@ -10,13 +10,16 @@ import { PatientService } from './../services/patient-service';
 })
 export class PatientTableComponent {
     dataSource!: any[];
+    isLoadingResults = true;
+    isRateLimitReached = false;
     constructor(
         private patientService: PatientService,
-        private snackService: SnackService,
-    ) {}
+        private snackService: SnackService
+    ) { }
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
-            next: (data: Array<Patient>) => (this.dataSource = data),
+            next:
+                (data: Array<Patient>) => (this.dataSource = data),
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_TABLE_GET_PATIENTS',
@@ -24,7 +27,7 @@ export class PatientTableComponent {
                 );
                 console.log(err.message);
             },
-        });
+        })
     }
     displayedColumns: string[] = [
         'fullname',
