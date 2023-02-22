@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 import { SnackService, SNACK_TYPE } from './../services/snack.service';
 import { Patient } from '../models/patient';
 import { PatientService } from './../services/patient-service';
