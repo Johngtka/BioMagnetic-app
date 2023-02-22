@@ -49,7 +49,7 @@ const materialModules = [
     MatDividerModule,
     MatSnackBarModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
 ];
 
 @NgModule({
@@ -83,4 +83,4 @@ const materialModules = [
     providers: [PatientService],
     bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

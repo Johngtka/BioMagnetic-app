@@ -15,7 +15,7 @@ export class AppComponent implements AfterViewInit {
     @ViewChild(MatSidenav)
     sidenav!: MatSidenav;
 
-    constructor(private observer: BreakpointObserver) { }
+    constructor(private observer: BreakpointObserver) {}
 
     ngAfterViewInit() {
         this.observer

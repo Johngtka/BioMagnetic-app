@@ -1,4 +1,9 @@
-<table *ngIf="!!this.dataSource" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table
+    *ngIf="!!this.dataSource"
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+>
     <!-- <div *ngIf="isLoadingResults || isRateLimitReached">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
         <div *ngIf="isRateLimitReached">
