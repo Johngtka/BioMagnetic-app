@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 import { SnackService, SNACK_TYPE } from './../services/snack.service';
 import { Patient } from '../models/patient';
 import { PatientService } from './../services/patient-service';
@@ -10,13 +11,13 @@ import { PatientService } from './../services/patient-service';
 })
 export class PatientTableComponent {
     dataSource!: any[];
-    isLoadingResults = true;
-    isRateLimitReached = false;
+    isLoadingResults = false
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
-    ) {}
+    ) { }
     ngOnInit(): void {
+        this.isLoadingResults = true
         this.patientService.getPatients().subscribe({
             next: (data: Array<Patient>) => (this.dataSource = data),
             error: (err) => {
