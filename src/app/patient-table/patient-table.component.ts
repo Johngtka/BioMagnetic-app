@@ -10,20 +10,22 @@ import { PatientService } from './../services/patient-service';
 })
 export class PatientTableComponent {
     dataSource!: Patient[];
-    isLoadingResults = false;
+    isLoadingResults = true;
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
     ) {}
     ngOnInit(): void {
-        this.isLoadingResults = true;
         this.patientService.getPatients().subscribe({
-            next: (data: Array<Patient>) => (this.dataSource = data),
+            next: (data: Array<Patient>) => (
+                (this.dataSource = data), (this.isLoadingResults = false)
+            ),
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_TABLE_GET_PATIENTS',
                     SNACK_TYPE.error,
                 );
+                this.isLoadingResults = false;
                 console.log(err.message);
             },
         });
