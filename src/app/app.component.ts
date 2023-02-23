@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, Pipe } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -21,7 +21,7 @@ export class AppComponent implements AfterViewInit {
         this.observer
             .observe(['(max-width: 800px)'])
             .pipe(delay(1), untilDestroyed(this))
-            .subscribe((res: any) => {
+            .subscribe((res) => {
                 if (res.matches) {
                     this.sidenav.mode = 'over';
                     this.sidenav.close();
