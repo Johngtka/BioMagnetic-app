@@ -9,14 +9,14 @@ import { PatientService } from './../services/patient-service';
     styleUrls: ['./patient-table.component.css'],
 })
 export class PatientTableComponent {
-    dataSource!: any[];
-    isLoadingResults = false
+    dataSource!: Patient[];
+    isLoadingResults = false;
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
-    ) { }
+    ) {}
     ngOnInit(): void {
-        this.isLoadingResults = true
+        this.isLoadingResults = true;
         this.patientService.getPatients().subscribe({
             next: (data: Array<Patient>) => (this.dataSource = data),
             error: (err) => {

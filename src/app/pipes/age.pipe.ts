@@ -5,7 +5,7 @@ import { differenceInYears } from 'date-fns';
 })
 export class AgePipe implements PipeTransform {
     transform(age: number) {
-        if (!!age) {
+        if (age) {
             return differenceInYears(new Date(), new Date(age));
         } else {
             return '';
