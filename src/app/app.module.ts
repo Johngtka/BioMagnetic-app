@@ -20,6 +20,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
@@ -28,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PatientTableComponent } from './patient-table/patient-table.component';
+import { AgePipe } from './pipes/age.pipe';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -47,6 +49,7 @@ const materialModules = [
     MatDividerModule,
     MatSnackBarModule,
     MatTableModule,
+    MatProgressSpinnerModule,
 ];
 
 @NgModule({
@@ -56,6 +59,7 @@ const materialModules = [
         HomeComponent,
         AboutComponent,
         PatientTableComponent,
+        AgePipe,
     ],
     imports: [
         BrowserModule,

@@ -21,7 +21,7 @@ export class AppComponent implements AfterViewInit {
         this.observer
             .observe(['(max-width: 800px)'])
             .pipe(delay(1), untilDestroyed(this))
-            .subscribe((res: any) => {
+            .subscribe((res) => {
                 if (res.matches) {
                     this.sidenav.mode = 'over';
                     this.sidenav.close();

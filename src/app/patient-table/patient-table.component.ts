@@ -9,19 +9,23 @@ import { PatientService } from './../services/patient-service';
     styleUrls: ['./patient-table.component.css'],
 })
 export class PatientTableComponent {
-    dataSource!: any[];
+    dataSource!: Patient[];
+    isLoadingResults = true;
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
     ) {}
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
-            next: (data: Array<Patient>) => (this.dataSource = data),
+            next: (data: Array<Patient>) => (
+                (this.dataSource = data), (this.isLoadingResults = false)
+            ),
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_TABLE_GET_PATIENTS',
                     SNACK_TYPE.error,
                 );
+                this.isLoadingResults = false;
                 console.log(err.message);
             },
         });
