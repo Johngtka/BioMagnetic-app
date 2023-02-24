@@ -23,5 +23,10 @@
     },
     "PATIENT_SEARCH": {
         "LOADING": "Loading"
+    },
+    "DIALOG": {
+        "TITLE": "Parients Register",
+        "CANCEL": "Cancel",
+        "REGISTER": "Register"
     }
 }

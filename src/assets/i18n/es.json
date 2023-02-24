@@ -23,5 +23,10 @@
     },
     "PATIENT_SEARCH": {
         "LOADING": "Cargando"
+    },
+    "DIALOG": {
+        "TITLE": "Registro de pacientes",
+        "CANCEL": "Cancelar",
+        "REGISTER": "Registro"
     }
 }
