@@ -6,7 +6,7 @@
     <button mat-button mat-dialog-close>
         {{ 'DIALOG.CANCEL' | translate }}
     </button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    <button mat-button [disabled]="!complete" [mat-dialog-close]="true" cdkFocusInitial class="optbtn">
         {{ 'DIALOG.REGISTER' | translate }}
     </button>
 </mat-dialog-actions>

@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './user-input-dial.component.html',
     styleUrls: ['./user-input-dial.component.css'],
 })
-export class UserInputDialComponent {}
+export class UserInputDialComponent {
+    complete = false;
+}
