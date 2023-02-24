@@ -1,24 +1,11 @@
 .loader-container {
     position: relative;
-    position: relative;
     min-height: 200px;
     max-height: 400px;
     overflow: auto;
-}
-
-.shader-box {
-    top: 0;
-    left: 0;
-    bottom: 56px;
-    right: 0;
     background: rgba(0, 0, 0, 0.15);
-    z-index: 1;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.table-shadow {
-    box-shadow: 0px 0px 5px 5px gray;
-    border-radius: 10px;
 }
