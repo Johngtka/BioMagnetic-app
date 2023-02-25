@@ -2,25 +2,25 @@
 <mat-dialog-content class="mat-typography">
     <form>
         <mat-form-field>
-            <input mat-input placeholder="name" type="text">
+            <input mat-input placeholder="name" type="text" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="surname" type="text">
+            <input mat-input placeholder="surname" type="text" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="dob" type="date">
+            <input mat-input placeholder="dob" type="date" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="gender" type="text">
+            <input mat-input placeholder="gender" type="text" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="email" type="email">
+            <input mat-input placeholder="email" type="email" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="phone" type="tel">
+            <input mat-input placeholder="phone" type="tel" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="location" type="text">
+            <input mat-input placeholder="location" type="text" />
         </mat-form-field>
     </form>
 </mat-dialog-content>
@@ -28,7 +28,7 @@
     <button mat-button mat-dialog-close>
         {{ 'DIALOG.CANCEL' | translate }}
     </button>
-    <button mat-button [mat-dialog-close]=" true" cdkFocusInitial class="optbtn">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="optbtn">
         {{ 'DIALOG.REGISTER' | translate }}
     </button>
     <!-- [disabled]="complete"  -->
