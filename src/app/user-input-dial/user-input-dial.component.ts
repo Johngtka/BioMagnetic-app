@@ -13,5 +13,4 @@ export class UserInputDialComponent {
         private patientService: PatientService,
         private Snackbar: SnackService,
     ) {}
-    ddd = (this.complete = false);
 }

@@ -1,18 +1,35 @@
 <h2 mat-dialog-title>{{ 'DIALOG.TITLE' | translate }}</h2>
 <mat-dialog-content class="mat-typography">
-    <form></form>
+    <form>
+        <mat-form-field>
+            <input mat-input placeholder="name" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <input mat-input placeholder="surname" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <input mat-input placeholder="dob" type="date">
+        </mat-form-field>
+        <mat-form-field>
+            <input mat-input placeholder="gender" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <input mat-input placeholder="email" type="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input mat-input placeholder="phone" type="tel">
+        </mat-form-field>
+        <mat-form-field>
+            <input mat-input placeholder="location" type="text">
+        </mat-form-field>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button mat-dialog-close>
         {{ 'DIALOG.CANCEL' | translate }}
     </button>
-    <button
-        mat-button
-        [disabled]="complete"
-        [mat-dialog-close]="true"
-        cdkFocusInitial
-        class="optbtn"
-    >
+    <button mat-button [mat-dialog-close]=" true" cdkFocusInitial class="optbtn">
         {{ 'DIALOG.REGISTER' | translate }}
     </button>
+    <!-- [disabled]="complete"  -->
 </mat-dialog-actions>
