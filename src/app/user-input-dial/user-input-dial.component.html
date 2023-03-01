@@ -1,35 +1,71 @@
 <h2 mat-dialog-title>{{ 'DIALOG.TITLE' | translate }}</h2>
 <mat-dialog-content class="mat-typography">
     <form>
-        <mat-form-field>
-            <input mat-input placeholder="name" type="text" />
+        <mat-form-field
+            ><input type="text" placeholder="name" #name
+        /></mat-form-field>
+        <mat-form-field
+            ><input type="text" placeholder="surname" #surname
+        /></mat-form-field>
+        <mat-form-field
+            ><input type="text" placeholder="dd-mm-yyyy" #dob
+        /></mat-form-field>
+        <mat-form-field
+            ><input type="text" placeholder="gender" #gender
+        /></mat-form-field>
+        <mat-form-field
+            ><input type="email" placeholder="email" #email
+        /></mat-form-field>
+        <mat-form-field
+            ><input type="tel" placeholder="phone" #phone
+        /></mat-form-field>
+        <mat-form-field
+            ><input type="text" placeholder="location" #location
+        /></mat-form-field>
+        <button
+            type="submit"
+            (click)="
+                onSubmit(
+                    name.value,
+                    surname.value,
+                    dob.value,
+                    gender.value,
+                    email.value,
+                    phone.value,
+                    location.value
+                )
+            "
+        >
+            sss
+        </button>
+        <!-- <mat-form-field>
+            <input for="name" mat-input placeholder="name" type="text" required />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="surname" type="text" />
+            <input for="surname" mat-input placeholder="surname" type="text" required />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="dob" type="date" />
+            <input for="dob" mat-input placeholder="dob" type="date" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="gender" type="text" />
+            <input for="gender" mat-input placeholder="gender" type="text" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="email" type="email" />
+            <input for="email" mat-input placeholder="email" type="email" />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="phone" type="tel" />
+            <input for="phone" mat-input placeholder="phone" type="tel" required />
         </mat-form-field>
         <mat-form-field>
-            <input mat-input placeholder="location" type="text" />
-        </mat-form-field>
+            <input for="location" mat-input placeholder="location" type="text" />
+        </mat-form-field> -->
     </form>
 </mat-dialog-content>
-<mat-dialog-actions>
+<!-- <mat-dialog-actions>
     <button mat-button mat-dialog-close>
         {{ 'DIALOG.CANCEL' | translate }}
     </button>
     <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="optbtn">
         {{ 'DIALOG.REGISTER' | translate }}
     </button>
-    <!-- [disabled]="complete"  -->
-</mat-dialog-actions>
+</mat-dialog-actions> -->
