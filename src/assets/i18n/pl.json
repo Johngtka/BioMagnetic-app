@@ -28,5 +28,14 @@
         "TITLE": "Rejestracja Pacjenta",
         "CANCEL": "Anuluj",
         "REGISTER": "Zarejestruj"
+    },
+    "PATIENT_CREATE": {
+        "NAME": "Imie",
+        "SURNAME": "Nazwisko",
+        "DOB": "Data Urodzenia",
+        "GENDER": "Płeć",
+        "EMAIL": "Email",
+        "PHONE": "Telefon",
+        "LOCATION": "Miejscowość"
     }
 }

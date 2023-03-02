@@ -28,5 +28,14 @@
         "TITLE": "Registro de Paciente",
         "CANCEL": "Cancelar",
         "REGISTER": "Registro"
+    },
+    "PATIENT_CREATE": {
+        "NAME": "Nombre",
+        "SURNAME": "Apellidos",
+        "DOB": "Fecha Nacimiento",
+        "GENDER": "Sexo",
+        "EMAIL": "Email",
+        "PHONE": "Teléfono",
+        "LOCATION": "Ciudad"
     }
 }

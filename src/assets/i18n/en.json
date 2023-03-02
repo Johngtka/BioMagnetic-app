@@ -28,5 +28,14 @@
         "TITLE": "Parient Register",
         "CANCEL": "Cancel",
         "REGISTER": "Register"
+    },
+    "PATIENT_CREATE": {
+        "NAME": "Name",
+        "SURNAME": "Surname",
+        "DOB": "DATE OF BIRTH",
+        "GENDER": "Gender",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "LOCATION": "City"
     }
 }

@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-// import { Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { PatientService } from '../services/patient-service';
-import { Patient } from './../models/patient';
 import { SnackService } from '../services/snack.service';
 @Component({
     selector: 'app-user-input-dial',
@@ -18,15 +17,21 @@ export class UserInputDialComponent {
         private Snackbar: SnackService,
     ) {}
     registerForm = new FormGroup({
-        name: new FormControl(),
-        surname: new FormControl(),
+        name: new FormControl('', [Validators.required]),
+        surname: new FormControl('', [Validators.required]),
         dob: new FormControl(),
         gender: new FormControl(),
-        email: new FormControl(),
-        phone: new FormControl(),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        phone: new FormControl('', [Validators.required]),
         location: new FormControl(),
     });
-    patientData!: Patient[];
+    getErrorMessage() {
+        if (this.registerForm.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.registerForm.hasError('email') ? 'Not a valid email' : '';
+    }
     addPatient() {
         const patient = this.registerForm.value;
         console.log('patient form value:', patient);
