@@ -27,16 +27,8 @@ export class UserInputDialComponent {
         location: new FormControl(),
     });
     patientData!: Patient[];
-    onSubmit(
-        n: string,
-        s: string,
-        d: string,
-        g: string,
-        e: string,
-        p: string,
-        l: string,
-    ) {
-        const array = [n, s, d, g, e, p, l];
-        console.log(array);
+    addPatient() {
+        const patient = this.registerForm.value;
+        console.log('patient form value:', patient);
     }
 }

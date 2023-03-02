@@ -1,43 +1,61 @@
 <h2 mat-dialog-title>{{ 'DIALOG.TITLE' | translate }}</h2>
 <mat-dialog-content class="mat-typography">
-    <form>
-        <mat-form-field
-            ><input type="text" placeholder="name" #name
+    <form [formGroup]="registerForm">
+        <mat-form-field appearance="fill">
+            <mat-label
+                >Name - label musisz przetlumaczyc na nasze jezyki w kazdym z
+                ponizszych</mat-label
+            >
+            <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+
+        <!-- zobacz na to, sprawdz wszytskie przyklady i zastosuj te ktore bede nam
+        potrzebne, jak np email zrob gender jako select z 3 mozliwosciami:
+        female, male, unknown (oczywiscie tlumaczonymi na 3 jezyki)
+        https://material.angular.io/components/form-field/examples#form-field-error -->
+
+        <!-- <mat-form-field
+            ><input
+                matInput
+                type="text"
+                placeholder="surname"
+                formControlName="surname"
         /></mat-form-field>
         <mat-form-field
-            ><input type="text" placeholder="surname" #surname
+            ><input
+                matInput
+                type="text"
+                placeholder="dd-mm-yyyy"
+                formControlName="dob"
         /></mat-form-field>
         <mat-form-field
-            ><input type="text" placeholder="dd-mm-yyyy" #dob
+            ><input
+                matInput
+                type="text"
+                placeholder="gender"
+                formControlName="gender"
         /></mat-form-field>
         <mat-form-field
-            ><input type="text" placeholder="gender" #gender
+            ><input
+                matInput
+                type="email"
+                placeholder="email"
+                formControlName="email"
         /></mat-form-field>
         <mat-form-field
-            ><input type="email" placeholder="email" #email
+            ><input
+                matInput
+                type="tel"
+                placeholder="phone"
+                formControlName="phone"
         /></mat-form-field>
         <mat-form-field
-            ><input type="tel" placeholder="phone" #phone
-        /></mat-form-field>
-        <mat-form-field
-            ><input type="text" placeholder="location" #location
-        /></mat-form-field>
-        <button
-            type="submit"
-            (click)="
-                onSubmit(
-                    name.value,
-                    surname.value,
-                    dob.value,
-                    gender.value,
-                    email.value,
-                    phone.value,
-                    location.value
-                )
-            "
-        >
-            sss
-        </button>
+            ><input
+                type="text"
+                placeholder="location"
+                formControlName="location"
+        /></mat-form-field> -->
+        <button type="submit" (click)="addPatient()">Add</button>
         <!-- <mat-form-field>
             <input for="name" mat-input placeholder="name" type="text" required />
         </mat-form-field>
