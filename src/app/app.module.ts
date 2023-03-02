@@ -24,7 +24,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
@@ -58,7 +57,6 @@ const materialModules = [
     MatDialogModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatGridListModule,
 ];
 
 @NgModule({

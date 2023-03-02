@@ -1,26 +1,32 @@
 <h2 mat-dialog-title>{{ 'DIALOG.TITLE' | translate }}</h2>
 <mat-dialog-content class="mat-typography">
     <form [formGroup]="registerForm">
-        <mat-grid-list cols="1" rowHeight="2:1">
-            <mat-grid-tile
-                ><mat-form-field appearance="fill">
+        <div class="col-wrapper">
+            <div class="col">
+                <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.NAME' | translate
                     }}</mat-label>
                     <input matInput formControlName="name"
                 /></mat-form-field>
-            </mat-grid-tile>
-        </mat-grid-list>
-        <mat-grid-list cols="1" rowHeight="2:1">
-            <mat-grid-tile>
+
                 <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.DOB' | translate
                     }}</mat-label>
                     <input matInput type="date" formControlName="dob" />
                 </mat-form-field>
-            </mat-grid-tile>
-        </mat-grid-list>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.SURNAME' | translate
+                    }}</mat-label>
+                    <input matInput formControlName="surname" />
+                </mat-form-field>
+            </div>
+        </div>
+
         <!-- <button mat-button mat-dialog-close>
             {{ 'DIALOG.CANCEL' | translate }}
         </button>
