@@ -13,7 +13,6 @@ import { SnackService } from '../services/snack.service';
     styleUrls: ['./user-input-dial.component.css'],
 })
 export class UserInputDialComponent {
-    complete = false;
     constructor(
         private patientService: PatientService,
         private Snackbar: SnackService,
@@ -38,7 +37,6 @@ export class UserInputDialComponent {
         const patient = this.registerForm.value;
         const tab = [patient.name, patient.surname, patient.phone];
         if (tab) {
-            this.complete = true;
             // this.patientService.createPatient(patient);
         } else {
             console.log('sss');

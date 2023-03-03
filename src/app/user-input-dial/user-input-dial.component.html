@@ -64,6 +64,7 @@
             {{ 'DIALOG.CANCEL' | translate }}
         </button>
         <button
+            [disabled]="!registerForm.valid"
             mat-button
             (click)="addPatient()"
             cdkFocusInitial
