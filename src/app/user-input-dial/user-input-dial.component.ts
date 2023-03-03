@@ -1,7 +1,6 @@
-import { Patient } from './../models/patient';
 import { Component } from '@angular/core';
 
-// import { Patient } from '../models/patient';
+import { Patient } from '../models/patient';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
