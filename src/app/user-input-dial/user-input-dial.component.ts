@@ -35,12 +35,12 @@ export class UserInputDialComponent {
     }
     addPatient() {
         const patient = this.registerForm.value;
-        const tab = [patient.name, patient.surname, patient.phone];
-        if (tab) {
-            // this.patientService.createPatient(patient);
-        } else {
-            console.log('sss');
-        }
+        // const tab = [patient.name, patient.surname, patient.phone];
+        // if (tab) {
+        //     this.patientService.createPatient(patient);
+        // } else {
+        //     console.log('sss');
+        // }
         console.log('patient form value:', patient);
     }
 }
