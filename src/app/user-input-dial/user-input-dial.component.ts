@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Patient } from '../models/patient';
+import { SNACK_TYPE } from './../services/snack.service';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { SnackService } from '../services/snack.service';
 export class UserInputDialComponent {
     constructor(
         private patientService: PatientService,
-        private Snackbar: SnackService,
+        private snackService: SnackService,
     ) {}
     registerForm = new FormGroup({
         name: new FormControl('', [Validators.required]),
@@ -25,7 +25,6 @@ export class UserInputDialComponent {
         phone: new FormControl('', [Validators.required]),
         location: new FormControl(),
     });
-    patientData!: Patient[];
     getErrorMessage() {
         if (this.registerForm.hasError('required')) {
             return 'You must enter a value';
@@ -34,12 +33,18 @@ export class UserInputDialComponent {
     }
     addPatient() {
         const patient = this.registerForm.value;
-        // const tab = [patient.name, patient.surname, patient.phone];
-        // if (tab) {
-        //     this.patientService.createPatient(patient);
-        // } else {
-        //     console.log('sss');
-        // }
+        this.patientService.createPatient(patient).subscribe({
+            next: () =>
+                this.snackService.showSnackBarMessage(
+                    'SUCCESS.USER_INPUT_DIALOG_SUCCESS',
+                    SNACK_TYPE.success,
+                ),
+            error: () =>
+                this.snackService.showSnackBarMessage(
+                    'ERROR.USER_INPUT_DIALOG_CREATE_PATIENT',
+                    SNACK_TYPE.error,
+                ),
+        });
         console.log('patient form value:', patient);
     }
 }

@@ -11,7 +11,11 @@
     },
     "ERROR": {
         "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
-        "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde"
+        "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde",
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde."
+    },
+    "SUCCESS": {
+        "USER_INPUT_DIALOG_SUCCESS": "El registro se ha realizado correctamente"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Nombre y Apellidos",
