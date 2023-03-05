@@ -12,7 +12,7 @@
     "ERROR": {
         "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później",
         "PATIENT_TABLE_GET_PATIENTS": "Wystąpił błąd podczas próby załadowania pacjentów do tabeli, spróbuj ponownie później",
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, sprobój ponownie później"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, spróbuj ponownie później"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie"

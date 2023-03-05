@@ -44,7 +44,7 @@ export class UserInputDialogComponent {
         this.patientService.createPatient(patient).subscribe({
             next: () => (
                 this.snackService.showSnackBarMessage(
-                    'SUCCESS.USER_INPUT_DIALOG_SUCCESS',
+                    'SUCCESS.USER_INPUT_DIALOG_CREATE_PATIENT',
                     SNACK_TYPE.success,
                 ),
                 this.dialref.close()
