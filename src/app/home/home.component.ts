@@ -11,10 +11,6 @@ export class HomeComponent {
     constructor(public dialog: MatDialog) {}
 
     openDialog() {
-        // const dialogRef = this.dialog.open(UserInputDialogComponent);
-        // dialogRef.afterClosed().subscribe((result) => {
-        //     console.log(`Dialog result: ${result}`);
-        // });
-        this.dialog.open(UserInputDialogComponent);
+        this.dialog.open(UserInputDialogComponent, { disableClose: true });
     }
 }
