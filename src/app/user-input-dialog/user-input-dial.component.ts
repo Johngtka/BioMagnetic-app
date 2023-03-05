@@ -24,15 +24,21 @@ export class UserInputDialogComponent {
         dob: new FormControl(),
         gender: new FormControl(),
         email: new FormControl('', [Validators.required, Validators.email]),
-        phone: new FormControl('', [Validators.required]),
+        phone: new FormControl('', [
+            Validators.required,
+            Validators.pattern('^[0-9]*$'),
+        ]),
         location: new FormControl(),
     });
-    // getErrorMessage() {
-    //     if (this.registerForm.hasError('required')) {
-    //         return 'You must enter a value';
-    //     }
-    //     return this.registerForm.hasError('email') ? 'Not a valid email' : '';
-    // }
+
+    get email() {
+        return this.registerForm.get('email');
+    }
+
+    get phone() {
+        return this.registerForm.get('phone');
+    }
+
     addPatient() {
         const patient = this.registerForm.value;
         this.patientService.createPatient(patient).subscribe({
@@ -43,14 +49,11 @@ export class UserInputDialogComponent {
                 ),
                 this.dialref.close()
             ),
-            error: () => (
+            error: () =>
                 this.snackService.showSnackBarMessage(
                     'ERROR.USER_INPUT_DIALOG_CREATE_PATIENT',
                     SNACK_TYPE.error,
                 ),
-                this.dialref.close()
-            ),
         });
-        // console.log('patient form value:', patient);
     }
 }

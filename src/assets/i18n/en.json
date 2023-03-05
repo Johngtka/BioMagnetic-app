@@ -40,6 +40,10 @@
             "TITLE": "Parient Register",
             "CANCEL": "Cancel",
             "REGISTER": "Register"
+        },
+        "FORM_VALIDATION": {
+            "EMAIL": "Please provde a valid email",
+            "PHONE": "Only numbers allowed"
         }
     }
 }

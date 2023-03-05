@@ -40,6 +40,10 @@
             "TITLE": "Rejestracja Pacjenta",
             "CANCEL": "Anuluj",
             "REGISTER": "Zarejestruj"
+        },
+        "FORM_VALIDATION": {
+            "EMAIL": "Podaj prawidłowy adres e-mail",
+            "PHONE": "Dozwolone tylko numery"
         }
     }
 }
