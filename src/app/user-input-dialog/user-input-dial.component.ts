@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-
 import { DialogRef } from '@angular/cdk/dialog';
-import { SNACK_TYPE } from './../services/snack.service';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+
 import { PatientService } from '../services/patient-service';
 import { SnackService } from '../services/snack.service';
+import { SNACK_TYPE } from './../services/snack.service';
 @Component({
     selector: 'app-user-input-dial',
     templateUrl: './user-input-dial.component.html',
