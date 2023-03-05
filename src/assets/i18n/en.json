@@ -4,7 +4,8 @@
     },
     "MENU": {
         "HOME": "Home",
-        "ABOUT": "About"
+        "ABOUT": "About",
+        "VISIT": "Visit"
     },
     "GENERAL": {
         "CLOSE": "Close"

@@ -34,6 +34,7 @@ import { AboutComponent } from './about/about.component';
 import { PatientTableComponent } from './patient-table/patient-table.component';
 import { AgePipe } from './pipes/age.pipe';
 import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
+import { VisitComponent } from './visit/visit.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -68,6 +69,7 @@ const materialModules = [
         PatientTableComponent,
         AgePipe,
         UserInputDialogComponent,
+        VisitComponent,
     ],
     imports: [
         BrowserModule,

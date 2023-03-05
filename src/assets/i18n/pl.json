@@ -4,7 +4,8 @@
     },
     "MENU": {
         "HOME": "Strona Główna",
-        "ABOUT": "O nas"
+        "ABOUT": "O nas",
+        "VISIT": "Wizyta"
     },
     "GENERAL": {
         "CLOSE": "Zamknij"
