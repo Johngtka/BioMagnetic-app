@@ -17,4 +17,10 @@ export class PatientService {
     getPatients(): Observable<Array<Patient>> {
         return this.http.get<Array<Patient>>('http://localhost:3001/patient');
     }
+    createPatient(patient: object) {
+        return this.http.post<Patient>(
+            'http://localhost:3001/patient',
+            patient,
+        );
+    }
 }

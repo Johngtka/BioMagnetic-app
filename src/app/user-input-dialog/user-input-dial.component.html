@@ -1,0 +1,92 @@
+<h2 mat-dialog-title>{{ 'DIALOG.TITLE' | translate }}</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="registerForm">
+        <div class="col-wrapper">
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.NAME' | translate
+                    }}</mat-label>
+                    <input matInput formControlName="name"
+                /></mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.EMAIL' | translate
+                    }}</mat-label>
+                    <input
+                        matInput
+                        placeholder="pat@example.com"
+                        formControlName="email"
+                    />
+                    <mat-error
+                        *ngIf="
+                            email!.invalid && (email!.dirty || email!.touched)
+                        "
+                        class="alert alert-danger"
+                        >{{
+                            'PATIENT_CREATE.FORM_VALIDATION.EMAIL' | translate
+                        }}</mat-error
+                    >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.DOB' | translate
+                    }}</mat-label>
+                    <input matInput type="date" formControlName="dob" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.LOCATION' | translate
+                    }}</mat-label>
+                    <input matInput formControlName="location" />
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.SURNAME' | translate
+                    }}</mat-label>
+                    <input matInput formControlName="surname" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.PHONE' | translate
+                    }}</mat-label>
+                    <input matInput type="tel" formControlName="phone" />
+                    <mat-error
+                        *ngIf="
+                            phone!.invalid && (phone!.dirty || phone!.touched)
+                        "
+                        class="alert alert-danger"
+                        >{{
+                            'PATIENT_CREATE.FORM_VALIDATION.PHONE' | translate
+                        }}</mat-error
+                    >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.GENDER' | translate
+                    }}</mat-label>
+                    <mat-select>
+                        <mat-option value="1">male</mat-option>
+                        <mat-option value="2">female</mat-option>
+                        <mat-option value="3">other</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-button mat-dialog-close mat-raised-button>
+            {{ 'PATIENT_CREATE.DIALOG.CANCEL' | translate }}
+        </button>
+        <button
+            mat-raised-button
+            color="primary"
+            [disabled]="!registerForm.valid"
+            mat-button
+            (click)="addPatient()"
+            cdkFocusInitial
+        >
+            {{ 'PATIENT_CREATE.DIALOG.REGISTER' | translate }}
+        </button>
+    </form>
+</mat-dialog-content>

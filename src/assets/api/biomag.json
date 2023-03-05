@@ -1,11 +1,11 @@
 {
     "uuid": "dae0a722-3bd1-493e-aab3-c4ee67c0b7e9",
-    "lastMigration": 25,
+    "lastMigration": 27,
     "name": "Biomag",
     "endpointPrefix": "",
     "latency": 0,
     "port": 3001,
-    "hostname": "0.0.0.0",
+    "hostname": "",
     "folders": [],
     "routes": [
         {
@@ -19,7 +19,7 @@
                     "body": "[\r\n  {\r\n    \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n    \"name\": \"Luann\",\r\n    \"surname\": \"Gillespie\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"luanngillespie@venoflex.com\",\r\n    \"phone\": \"+1 (917) 542-3444\",\r\n    \"location\": \"Westphalia\",\r\n    \"dob\": \"1962-11-09\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fddae78f492344fb\",\r\n    \"name\": \"Phoebe\",\r\n    \"surname\": \"Evans\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"phoebeevans@venoflex.com\",\r\n    \"phone\": \"+1 (972) 481-2375\",\r\n    \"location\": \"Leland\",\r\n    \"dob\": \"1958-05-18\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4674976d728d81c65\",\r\n    \"name\": \"Vazquez\",\r\n    \"surname\": \"Dunlap\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"vazquezdunlap@venoflex.com\",\r\n    \"phone\": \"+1 (836) 475-3135\",\r\n    \"location\": \"Topanga\",\r\n    \"dob\": \"2000-01-01\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b4fbf6c0e7cf6e5aa5\",\r\n    \"name\": \"Conrad\",\r\n    \"surname\": \"Hubbard\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"conradhubbard@venoflex.com\",\r\n    \"phone\": \"+1 (987) 400-3809\",\r\n    \"location\": \"Roeville\",\r\n    \"dob\": \"2001-08-22\"\r\n  },\r\n  {\r\n    \"id\": \"63d7b2b43a3629bb7b6dfbec\",\r\n    \"name\": \"Berg\",\r\n    \"surname\": \"Franks\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"bergfranks@venoflex.com\",\r\n    \"phone\": \"+1 (990) 553-2832\",\r\n    \"location\": \"Garfield\",\r\n    \"dob\": \"2008-07-28\"\r\n  }\r\n]",
                     "latency": 1500,
                     "statusCode": 200,
-                    "label": "",
+                    "label": "Get all patients",
                     "headers": [],
                     "bodyType": "INLINE",
                     "filePath": "",
@@ -36,7 +36,7 @@
                     "body": "[\r\n    {\r\n        \"id\": \"63d7b2b46f0e3fdab33e667d\",\r\n        \"name\": \"Autocomplte\",\r\n        \"surname\": \"test\",\r\n        \"gender\": \"female\",\r\n        \"email\": \"luanngillespie@venoflex.com\",\r\n        \"phone\": \"+1 (917) 542-3444\",\r\n        \"location\": \"Westphalia\",\r\n        \"dob\": \"05-02-1962\"\r\n    }\r\n]",
                     "latency": 2500,
                     "statusCode": 200,
-                    "label": "",
+                    "label": "Dummy response for autocomplete",
                     "headers": [],
                     "bodyType": "INLINE",
                     "filePath": "",
@@ -58,6 +58,35 @@
                 }
             ],
             "enabled": true,
+            "responseMode": null,
+            "type": "http"
+        },
+        {
+            "uuid": "ecd64da2-ec03-4be2-b3d8-011827e53a74",
+            "type": "http",
+            "documentation": "",
+            "method": "post",
+            "endpoint": "patient",
+            "responses": [
+                {
+                    "uuid": "321df88f-2c97-4d08-b75f-2e2601379d21",
+                    "body": "{\n  \"message\": \"Mockoon says patient created\"\n}",
+                    "latency": 1500,
+                    "statusCode": 201,
+                    "label": "Creating a patient",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
             "responseMode": null
         }
     ],
@@ -65,6 +94,10 @@
         {
             "type": "route",
             "uuid": "98ead167-0db4-427c-a408-449c76473abc"
+        },
+        {
+            "type": "route",
+            "uuid": "ecd64da2-ec03-4be2-b3d8-011827e53a74"
         }
     ],
     "proxyMode": false,
