@@ -15,7 +15,7 @@
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, sprobój ponownie później"
     },
     "SUCCESS": {
-        "USER_INPUT_DIALOG_SUCCESS": "Rejestracja przebiegła pomyślnie"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Imie i Nazwisko",
@@ -28,11 +28,6 @@
     "PATIENT_SEARCH": {
         "LOADING": "Ładowanie"
     },
-    "DIALOG": {
-        "TITLE": "Rejestracja Pacjenta",
-        "CANCEL": "Anuluj",
-        "REGISTER": "Zarejestruj"
-    },
     "PATIENT_CREATE": {
         "NAME": "Imie",
         "SURNAME": "Nazwisko",
@@ -40,6 +35,11 @@
         "GENDER": "Płeć",
         "EMAIL": "Email",
         "PHONE": "Telefon",
-        "LOCATION": "Miejscowość"
+        "LOCATION": "Miejscowość",
+        "DIALOG": {
+            "TITLE": "Rejestracja Pacjenta",
+            "CANCEL": "Anuluj",
+            "REGISTER": "Zarejestruj"
+        }
     }
 }

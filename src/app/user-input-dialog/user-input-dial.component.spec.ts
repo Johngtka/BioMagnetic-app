@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserInputDialComponent } from './user-input-dial.component';
+import { UserInputDialogComponent } from './user-input-dial.component';
 
 describe('UserInputDialComponent', () => {
-    let component: UserInputDialComponent;
-    let fixture: ComponentFixture<UserInputDialComponent>;
+    let component: UserInputDialogComponent;
+    let fixture: ComponentFixture<UserInputDialogComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [UserInputDialComponent],
+            declarations: [UserInputDialogComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(UserInputDialComponent);
+        fixture = TestBed.createComponent(UserInputDialogComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

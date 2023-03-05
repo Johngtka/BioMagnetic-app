@@ -15,7 +15,7 @@
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde."
     },
     "SUCCESS": {
-        "USER_INPUT_DIALOG_SUCCESS": "El registro se ha realizado correctamente"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Nombre y Apellidos",
@@ -28,11 +28,6 @@
     "PATIENT_SEARCH": {
         "LOADING": "Cargando"
     },
-    "DIALOG": {
-        "TITLE": "Registro de Paciente",
-        "CANCEL": "Cancelar",
-        "REGISTER": "Registro"
-    },
     "PATIENT_CREATE": {
         "NAME": "Nombre",
         "SURNAME": "Apellidos",
@@ -40,6 +35,11 @@
         "GENDER": "Sexo",
         "EMAIL": "Email",
         "PHONE": "Teléfono",
-        "LOCATION": "Ciudad"
+        "LOCATION": "Ciudad",
+        "DIALOG": {
+            "TITLE": "Registro de Paciente",
+            "CANCEL": "Cancelar",
+            "REGISTER": "Registro"
+        }
     }
 }

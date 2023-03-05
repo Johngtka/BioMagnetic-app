@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
-import { UserInputDialComponent } from '../user-input-dial/user-input-dial.component';
+import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.component';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -11,9 +11,10 @@ export class HomeComponent {
     constructor(public dialog: MatDialog) {}
 
     openDialog() {
-        const dialogRef = this.dialog.open(UserInputDialComponent);
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
+        // const dialogRef = this.dialog.open(UserInputDialogComponent);
+        // dialogRef.afterClosed().subscribe((result) => {
+        //     console.log(`Dialog result: ${result}`);
+        // });
+        this.dialog.open(UserInputDialogComponent);
     }
 }

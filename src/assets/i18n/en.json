@@ -15,7 +15,7 @@
         "USER_INPUT_DIALOG_CREATE_PATIENT": "An error occurred while adding a new pacient, try again later"
     },
     "SUCCESS": {
-        "USER_INPUT_DIALOG_SUCCESS": "Registration was successful"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Full Name",
@@ -28,11 +28,6 @@
     "PATIENT_SEARCH": {
         "LOADING": "Loading"
     },
-    "DIALOG": {
-        "TITLE": "Parient Register",
-        "CANCEL": "Cancel",
-        "REGISTER": "Register"
-    },
     "PATIENT_CREATE": {
         "NAME": "Name",
         "SURNAME": "Surname",
@@ -40,6 +35,11 @@
         "GENDER": "Gender",
         "EMAIL": "Email",
         "PHONE": "Phone",
-        "LOCATION": "City"
+        "LOCATION": "City",
+        "DIALOG": {
+            "TITLE": "Parient Register",
+            "CANCEL": "Cancel",
+            "REGISTER": "Register"
+        }
     }
 }
