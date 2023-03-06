@@ -1,2 +1,5 @@
-<p>visit works!</p>
-{{patient.name}}
+<p [hidden]="!patient.name">
+    New appointment open for a patient (
+    {{ patient.name + ' ' + patient.surname }} )
+</p>
+<app-patient-search *ngIf="!patient.name"></app-patient-search>
