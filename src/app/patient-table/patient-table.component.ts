@@ -33,7 +33,7 @@ export class PatientTableComponent {
         });
     }
     sendVisit(patient: Patient): void {
-        this.route.navigate(['/visit'], { state: patient });
+        this.route.navigate(['visit'], { state: patient });
     }
     displayedColumns: string[] = [
         'fullname',
