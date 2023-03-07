@@ -11,4 +11,7 @@ export class VisitComponent {
     ngOnInit(): void {
         this.patient = history.state;
     }
+    selectPatient(patientSelected: Patient) {
+        this.patient = patientSelected;
+    }
 }

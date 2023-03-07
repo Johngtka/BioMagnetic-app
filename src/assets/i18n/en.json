@@ -46,5 +46,13 @@
             "EMAIL": "Please provde a valid email",
             "PHONE": "Only numbers allowed"
         }
+    },
+    "PATIENT_VISIT": {
+        "ERROR": {
+            "NO_PATIENT": "Please search for a patient to open a new appointment"
+        },
+        "SELLECT": {
+            "ACTIVE": "New appointment created for patient"
+        }
     }
 }

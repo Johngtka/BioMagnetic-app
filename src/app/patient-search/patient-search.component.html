@@ -5,6 +5,7 @@
             placeholder="Search..."
             [matAutocomplete]="auto"
             [formControl]="searchPatientsCtrl"
+            #pat
         />
         <button
             *ngIf="searchPatientsCtrl.value"
@@ -17,7 +18,7 @@
         </button>
         <mat-autocomplete
             #auto="matAutocomplete"
-            (optionSelected)="onSelected()"
+            (optionSelected)="onSelected(pat.value)"
             [displayWith]="displayWith"
         >
             <mat-option *ngIf="isLoading" class="is-loading"
@@ -28,10 +29,7 @@
                     *ngFor="let patient of filteredPatients"
                     [value]="patient"
                 >
-                    <span
-                        >{{ patient.name }}<br />
-                        ({{ patient.surname }})</span
-                    >
+                    <span>{{ patient.name + ' ' + patient.surname }}</span>
                 </mat-option>
             </ng-container>
         </mat-autocomplete>

@@ -46,5 +46,13 @@
             "EMAIL": "Proporcione un correo electrónico válido",
             "PHONE": "Solo números permitidos"
         }
+    },
+    "PATIENT_VISIT": {
+        "ERROR": {
+            "NO_PATIENT": "Por favor, busque un paciente para abrir una nueva cita"
+        },
+        "SELLECT": {
+            "ACTIVE": "Nueva cita creada para un paciente"
+        }
     }
 }

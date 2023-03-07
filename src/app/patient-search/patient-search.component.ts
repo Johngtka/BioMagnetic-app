@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { OnInit } from '@angular/core';
 
 import { FormControl } from '@angular/forms';
@@ -22,6 +22,7 @@ export interface User {
 export class PatientSearchComponent implements OnInit {
     searchPatientsCtrl = new FormControl();
     filteredPatients!: Array<Patient>;
+    @Output() selectedPatient = new EventEmitter<Patient>();
     isLoading = false;
     errorMsg!: string;
     minLengthTerm = 3;
@@ -30,9 +31,10 @@ export class PatientSearchComponent implements OnInit {
         private patientService: PatientService,
         private snackService: SnackService,
     ) {}
-
-    onSelected() {
-        console.log(this.searchPatientsCtrl.value);
+    onSelected(val: any) {
+        // this.searchPatientsCtrl.value;
+        console.log(val);
+        this.selectedPatient.emit(val);
     }
 
     displayWith(value: any) {
