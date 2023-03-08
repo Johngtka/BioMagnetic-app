@@ -67,10 +67,10 @@
                     <mat-label>{{
                         'PATIENT_CREATE.GENDER' | translate
                     }}</mat-label>
-                    <mat-select>
-                        <mat-option value="1">male</mat-option>
-                        <mat-option value="2">female</mat-option>
-                        <mat-option value="3">other</mat-option>
+                    <mat-select formControlName="gender">
+                        <mat-option value="male">male</mat-option>
+                        <mat-option value="female">female</mat-option>
+                        <mat-option value="other">other</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
