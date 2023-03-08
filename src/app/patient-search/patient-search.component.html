@@ -5,7 +5,6 @@
             placeholder="Search..."
             [matAutocomplete]="auto"
             [formControl]="searchPatientsCtrl"
-            #pat
         />
         <button
             *ngIf="searchPatientsCtrl.value"
@@ -18,7 +17,7 @@
         </button>
         <mat-autocomplete
             #auto="matAutocomplete"
-            (optionSelected)="onSelected(pat.value)"
+            (optionSelected)="onSelected()"
             [displayWith]="displayWith"
         >
             <mat-option *ngIf="isLoading" class="is-loading"

@@ -31,10 +31,8 @@ export class PatientSearchComponent implements OnInit {
         private patientService: PatientService,
         private snackService: SnackService,
     ) {}
-    onSelected(val: any) {
-        // this.searchPatientsCtrl.value;
-        console.log(val);
-        this.selectedPatient.emit(val);
+    onSelected() {
+        this.selectedPatient.emit(this.searchPatientsCtrl.value);
     }
 
     displayWith(value: any) {
