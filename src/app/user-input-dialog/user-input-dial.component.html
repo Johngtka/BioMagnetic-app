@@ -7,7 +7,7 @@
                     <mat-label>{{
                         'PATIENT_CREATE.NAME' | translate
                     }}</mat-label>
-                    <input matInput formControlName="name"
+                    <input matInput formControlName="name" tabindex="1"
                 /></mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>{{
@@ -17,6 +17,7 @@
                         matInput
                         placeholder="pat@example.com"
                         formControlName="email"
+                        tabindex="3"
                     />
                     <mat-error
                         *ngIf="
@@ -32,13 +33,18 @@
                     <mat-label>{{
                         'PATIENT_CREATE.DOB' | translate
                     }}</mat-label>
-                    <input matInput type="date" formControlName="dob" />
+                    <input
+                        matInput
+                        type="date"
+                        formControlName="dob"
+                        tabindex="5"
+                    />
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.LOCATION' | translate
                     }}</mat-label>
-                    <input matInput formControlName="location" />
+                    <input matInput formControlName="location" tabindex="7" />
                 </mat-form-field>
             </div>
             <div class="col">
@@ -46,13 +52,18 @@
                     <mat-label>{{
                         'PATIENT_CREATE.SURNAME' | translate
                     }}</mat-label>
-                    <input matInput formControlName="surname" />
+                    <input matInput formControlName="surname" tabindex="2" />
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.PHONE' | translate
                     }}</mat-label>
-                    <input matInput type="tel" formControlName="phone" />
+                    <input
+                        matInput
+                        type="tel"
+                        formControlName="phone"
+                        tabindex="4"
+                    />
                     <mat-error
                         *ngIf="
                             phone!.invalid && (phone!.dirty || phone!.touched)
@@ -67,7 +78,7 @@
                     <mat-label>{{
                         'PATIENT_CREATE.GENDER' | translate
                     }}</mat-label>
-                    <mat-select formControlName="gender">
+                    <mat-select formControlName="gender" tabindex="6">
                         <mat-option value="male">male</mat-option>
                         <mat-option value="female">female</mat-option>
                         <mat-option value="other">other</mat-option>
