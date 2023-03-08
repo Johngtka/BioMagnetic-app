@@ -1,13 +1,10 @@
-.col {
-    display: block;
-    width: 50vw;
+.col-wrapper {
+    display: flex;
     gap: 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.row {
-    /* width: 100%; */
+.col {
+    width: 25vw;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
 }
