@@ -1,6 +1,8 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe } from '@angular/core';
 
+import { PipeTransform } from '@angular/core';
 import { differenceInYears } from 'date-fns';
+
 @Pipe({
     name: 'age',
 })

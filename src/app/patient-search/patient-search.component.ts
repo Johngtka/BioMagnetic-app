@@ -1,15 +1,18 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
-import { debounceTime } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
-import { distinctUntilChanged } from 'rxjs/operators';
 import { filter } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
 
-import { PatientService } from '../services/patient-service';
 import { Patient } from '../models/patient';
-import { SnackService, SNACK_TYPE } from '../services/snack.service';
+import { SNACK_TYPE } from '../services/snack.service';
+import { FormControl } from '@angular/forms';
+import { SnackService } from '../services/snack.service';
+import { PatientService } from '../services/patient-service';
 
 export interface User {
     name: string;

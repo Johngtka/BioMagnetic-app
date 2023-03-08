@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+
 import { DialogRef } from '@angular/cdk/dialog';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-
 import { PatientService } from '../services/patient-service';
 import { SnackService } from '../services/snack.service';
 import { SNACK_TYPE } from './../services/snack.service';
