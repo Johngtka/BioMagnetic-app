@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { SnackService, SNACK_TYPE } from './../services/snack.service';
 import { Patient } from '../models/patient';
+import { SNACK_TYPE } from './../services/snack.service';
+import { SnackService } from './../services/snack.service';
 import { PatientService } from './../services/patient-service';
+
 @Component({
     selector: 'app-patient-table',
     templateUrl: './patient-table.component.html',
@@ -14,6 +17,7 @@ export class PatientTableComponent {
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
+        private route: Router,
     ) {}
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
@@ -29,6 +33,9 @@ export class PatientTableComponent {
                 console.log(err.message);
             },
         });
+    }
+    startNewVisit(patient: Patient): void {
+        this.route.navigate(['visit'], { state: patient });
     }
     displayedColumns: string[] = [
         'fullname',

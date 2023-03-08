@@ -4,7 +4,8 @@
     },
     "MENU": {
         "HOME": "Strona Główna",
-        "ABOUT": "O nas"
+        "ABOUT": "O nas",
+        "VISIT": "Wizyta"
     },
     "GENERAL": {
         "CLOSE": "Zamknij"
@@ -44,6 +45,14 @@
         "FORM_VALIDATION": {
             "EMAIL": "Podaj prawidłowy adres e-mail",
             "PHONE": "Dozwolone tylko numery"
+        }
+    },
+    "PATIENT_VISIT": {
+        "ERROR": {
+            "NO_PATIENT": "Proszę wyszukać pacjenta, aby otworzyć nową wizytę"
+        },
+        "SELLECT": {
+            "ACTIVE": "Nowa wizyta utworzona dla pacjenta"
         }
     }
 }

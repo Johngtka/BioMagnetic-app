@@ -28,10 +28,7 @@
                     *ngFor="let patient of filteredPatients"
                     [value]="patient"
                 >
-                    <span
-                        >{{ patient.name }}<br />
-                        ({{ patient.surname }})</span
-                    >
+                    <span>{{ patient.name + ' ' + patient.surname }}</span>
                 </mat-option>
             </ng-container>
         </mat-autocomplete>

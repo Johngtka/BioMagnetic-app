@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.component';
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',

@@ -1,0 +1,12 @@
+<div>
+    <app-patient-search (selectedPatient)="selectPatient($event)">
+    </app-patient-search>
+</div>
+
+<p [hidden]="!patient.name">
+    {{ 'PATIENT_VISIT.SELLECT.ACTIVE' | translate }}
+    {{ patient.name + ' ' + patient.surname }}
+</p>
+<p [hidden]="patient.name">
+    {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
+</p>
