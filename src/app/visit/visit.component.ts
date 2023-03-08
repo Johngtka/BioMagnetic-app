@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Patient } from '../models/patient';
+
 @Component({
     selector: 'app-visit',
     templateUrl: './visit.component.html',
