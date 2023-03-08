@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { TranslateModule } from '@ngx-translate/core';
-import { TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -25,16 +21,20 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { AgePipe } from './pipes/age.pipe';
 import { AppComponent } from './app.component';
-import { PatientSearchComponent } from './patient-search/patient-search.component';
-import { PatientService } from './services/patient-service';
-import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { PatientTableComponent } from './patient-table/patient-table.component';
-import { AgePipe } from './pipes/age.pipe';
-import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
+import { PatientService } from './services/patient-service';
 import { VisitComponent } from './visit/visit.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PatientTableComponent } from './patient-table/patient-table.component';
+import { PatientSearchComponent } from './patient-search/patient-search.component';
+import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
