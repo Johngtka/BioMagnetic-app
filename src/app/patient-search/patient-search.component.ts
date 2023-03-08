@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { OnInit } from '@angular/core';
-
 import { FormControl } from '@angular/forms';
+
 import { debounceTime } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -31,18 +31,6 @@ export class PatientSearchComponent implements OnInit {
         private patientService: PatientService,
         private snackService: SnackService,
     ) {}
-    onSelected() {
-        this.selectedPatient.emit(this.searchPatientsCtrl.value);
-    }
-
-    displayWith(value: any) {
-        return value ? value.name : '';
-    }
-
-    clearSelection() {
-        this.searchPatientsCtrl.setValue('');
-        this.filteredPatients = [];
-    }
 
     ngOnInit() {
         this.searchPatientsCtrl.valueChanges
@@ -78,5 +66,18 @@ export class PatientSearchComponent implements OnInit {
                     })
                     .add(() => (this.isLoading = false));
             });
+    }
+
+    onSelected() {
+        this.selectedPatient.emit(this.searchPatientsCtrl.value);
+    }
+
+    displayWith(value: any) {
+        return value ? value.name : '';
+    }
+
+    clearSelection() {
+        this.searchPatientsCtrl.setValue('');
+        this.filteredPatients = [];
     }
 }
