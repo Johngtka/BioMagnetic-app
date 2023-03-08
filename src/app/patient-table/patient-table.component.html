@@ -3,7 +3,7 @@
     <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
-        (click)="sendVisit(row)"
+        (click)="startNewVisit(row)"
     ></tr>
     <ng-container matColumnDef="fullname">
         <th mat-header-cell *matHeaderCellDef>
