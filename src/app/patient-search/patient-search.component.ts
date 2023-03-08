@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
 import { filter } from 'rxjs/operators';
@@ -10,7 +11,6 @@ import { distinctUntilChanged } from 'rxjs/operators';
 
 import { Patient } from '../models/patient';
 import { SNACK_TYPE } from '../services/snack.service';
-import { FormControl } from '@angular/forms';
 import { SnackService } from '../services/snack.service';
 import { PatientService } from '../services/patient-service';
 

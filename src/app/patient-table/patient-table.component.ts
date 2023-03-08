@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
 import { Router } from '@angular/router';
+
 import { Patient } from '../models/patient';
-import { SnackService } from './../services/snack.service';
 import { SNACK_TYPE } from './../services/snack.service';
+import { SnackService } from './../services/snack.service';
 import { PatientService } from './../services/patient-service';
+
 @Component({
     selector: 'app-patient-table',
     templateUrl: './patient-table.component.html',

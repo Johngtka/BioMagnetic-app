@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { TranslateService } from '@ngx-translate/core';
 
 export enum SNACK_TYPE {
