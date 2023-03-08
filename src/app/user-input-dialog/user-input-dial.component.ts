@@ -56,6 +56,5 @@ export class UserInputDialogComponent {
                     SNACK_TYPE.error,
                 ),
         });
-        // console.log(patient);
     }
 }
