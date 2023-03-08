@@ -1,14 +1,22 @@
 <h2 mat-dialog-title>{{ 'PATIENT_CREATE.DIALOG.TITLE' | translate }}</h2>
 <mat-dialog-content class="mat-typography">
     <form [formGroup]="registerForm">
-        <div class="col-wrapper">
-            <div class="col">
+        <div class="col">
+            <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.NAME' | translate
                     }}</mat-label>
                     <input matInput formControlName="name"
                 /></mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.SURNAME' | translate
+                    }}</mat-label>
+                    <input matInput formControlName="surname" />
+                </mat-form-field>
+            </div>
+            <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.EMAIL' | translate
@@ -30,26 +38,6 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>{{
-                        'PATIENT_CREATE.DOB' | translate
-                    }}</mat-label>
-                    <input matInput type="date" formControlName="dob" />
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>{{
-                        'PATIENT_CREATE.LOCATION' | translate
-                    }}</mat-label>
-                    <input matInput formControlName="location" />
-                </mat-form-field>
-            </div>
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>{{
-                        'PATIENT_CREATE.SURNAME' | translate
-                    }}</mat-label>
-                    <input matInput formControlName="surname" />
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>{{
                         'PATIENT_CREATE.PHONE' | translate
                     }}</mat-label>
                     <input matInput type="tel" formControlName="phone" />
@@ -63,6 +51,14 @@
                         }}</mat-error
                     >
                 </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.DOB' | translate
+                    }}</mat-label>
+                    <input matInput type="date" formControlName="dob" />
+                </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>{{
                         'PATIENT_CREATE.GENDER' | translate
@@ -72,6 +68,14 @@
                         <mat-option value="female">female</mat-option>
                         <mat-option value="other">other</mat-option>
                     </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{
+                        'PATIENT_CREATE.LOCATION' | translate
+                    }}</mat-label>
+                    <input matInput formControlName="location" />
                 </mat-form-field>
             </div>
         </div>
