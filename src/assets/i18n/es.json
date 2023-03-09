@@ -25,7 +25,11 @@
         "PHONE": "Teléfono",
         "LOCATION": "Ciudad",
         "DOB": "Años",
-        "ACTIONS": "Acciones"
+        "ACTIONS": "Acciones",
+        "TOOLTIPS": {
+            "NEW": "Nueva visita",
+            "PREVIOUS": "Visita previa"
+        }
     },
     "PATIENT_SEARCH": {
         "LOADING": "Cargando"

@@ -48,12 +48,18 @@
         <td *matCellDef="let element">
             <button
                 mat-icon-button
-                matTooltip="Add Visit"
+                matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.NEW' | translate }}"
+                matTooltipShowDelay="1500"
                 (click)="startNewVisit(element)"
             >
                 <mat-icon>add_circle_outline</mat-icon>
             </button>
-            <button mat-icon-button matTooltip="Show history" [disabled]="true">
+            <button
+                mat-icon-button
+                matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.PREVIOUS' | translate }}"
+                matTooltipShowDelay="1500"
+                [disabled]="true"
+            >
                 <mat-icon>history</mat-icon>
             </button>
         </td>

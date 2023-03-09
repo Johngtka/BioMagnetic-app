@@ -25,7 +25,11 @@
         "PHONE": "Phone",
         "LOCATION": "City",
         "DOB": "Age",
-        "ACTIONS": "Actions"
+        "ACTIONS": "Actions",
+        "TOOLTIPS": {
+            "NEW": "New Visit",
+            "PREVIOUS": "Previous Visit"
+        }
     },
     "PATIENT_SEARCH": {
         "LOADING": "Loading"
