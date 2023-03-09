@@ -24,7 +24,12 @@
         "EMAIL": "Email",
         "PHONE": "Telefon",
         "LOCATION": "Miejscowość",
-        "DOB": "Wiek"
+        "DOB": "Wiek",
+        "ACTIONS": "Akcje",
+        "TOOLTIPS": {
+            "NEW": "Nowa Wizyta",
+            "PREVIOUS": "Poprzednia Wizyta"
+        }
     },
     "PATIENT_SEARCH": {
         "LOADING": "Ładowanie"

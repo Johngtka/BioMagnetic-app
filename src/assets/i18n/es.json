@@ -24,7 +24,12 @@
         "EMAIL": "Email",
         "PHONE": "Teléfono",
         "LOCATION": "Ciudad",
-        "DOB": "Años"
+        "DOB": "Años",
+        "ACTIONS": "Acciones",
+        "TOOLTIPS": {
+            "NEW": "Nueva visita",
+            "PREVIOUS": "Visita previa"
+        }
     },
     "PATIENT_SEARCH": {
         "LOADING": "Cargando"

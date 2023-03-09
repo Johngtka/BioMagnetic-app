@@ -44,5 +44,6 @@ export class PatientTableComponent {
         'phone',
         'location',
         'dob',
+        'actions',
     ];
 }
