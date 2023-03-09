@@ -24,7 +24,8 @@
         "EMAIL": "Email",
         "PHONE": "Teléfono",
         "LOCATION": "Ciudad",
-        "DOB": "Años"
+        "DOB": "Años",
+        "ACTIONS": "Acciones"
     },
     "PATIENT_SEARCH": {
         "LOADING": "Cargando"
