@@ -46,8 +46,16 @@
             {{ 'PATIENT_TABLE.ACTIONS' | translate }}
         </th>
         <td *matCellDef="let element">
-            <button (click)="startNewVisit(element)" mat-icon-button><mat-icon>add_circle_outline</mat-icon></button>
-            <button [disabled]="true" mat-icon-button><mat-icon>history</mat-icon></button>
+            <button
+                mat-icon-button
+                matTooltip="Add Visit"
+                (click)="startNewVisit(element)"
+            >
+                <mat-icon>add_circle_outline</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Show history" [disabled]="true">
+                <mat-icon>history</mat-icon>
+            </button>
         </td>
     </ng-container>
 </table>
