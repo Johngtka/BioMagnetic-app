@@ -18,7 +18,6 @@ export class PatientService {
     getPatients(): Observable<Array<Patient>> {
         return this.http.get<Array<Patient>>(this.apiurl + '/patient');
     }
-
     createPatient(patient: object) {
         return this.http.post<Patient>(
             this.apiurl + '/patient?patientName=',
