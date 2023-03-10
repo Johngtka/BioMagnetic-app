@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.2...v0.0.3) (2023-03-10)
+
+
+### Features
+
+* Action buttons to handle visits for patients ([#22](https://github.com/Johngtka/Biomagnthick-app/issues/22)) ([32aacf3](https://github.com/Johngtka/Biomagnthick-app/commit/32aacf3a1fc2318faa936432f96e31ee74d615da))
+* Add environments and connect to remote API ([#23](https://github.com/Johngtka/Biomagnthick-app/issues/23)) ([c430dae](https://github.com/Johngtka/Biomagnthick-app/commit/c430daec5bee0d35aba9475a9109e6f54631ff43))
+* Added visit route ([#18](https://github.com/Johngtka/Biomagnthick-app/issues/18)): ([15dcd6e](https://github.com/Johngtka/Biomagnthick-app/commit/15dcd6e8ed2156e35ec943d5ce40bfbf7651c45a))
+* Registering New Patient dialog ([#17](https://github.com/Johngtka/Biomagnthick-app/issues/17)) ([7af6d8c](https://github.com/Johngtka/Biomagnthick-app/commit/7af6d8c3be56632058e646e54149b62128871728))
+
+
+### Bug Fixes
+
+* changed dialog open icon ([#21](https://github.com/Johngtka/Biomagnthick-app/issues/21)) ([e685b9a](https://github.com/Johngtka/Biomagnthick-app/commit/e685b9a5abfd02c67daef2507f388488a9caefe5))
+* create patient send value for gender ([#19](https://github.com/Johngtka/Biomagnthick-app/issues/19)) ([2f798a0](https://github.com/Johngtka/Biomagnthick-app/commit/2f798a0e2f658aefc4a442b7585a7ca6be39bf0c))
+* navigate patient creation form with tab row by  row ([#20](https://github.com/Johngtka/Biomagnthick-app/issues/20)) ([5eb0bb5](https://github.com/Johngtka/Biomagnthick-app/commit/5eb0bb52d289da9ce4ce2548b59508575a13ac4a))
+* removed mat dialog package ([3f136dd](https://github.com/Johngtka/Biomagnthick-app/commit/3f136ddb4be108d7c694c3c3099384d958940f29))
+
 ### 0.0.2 (2023-02-24)
 
 
