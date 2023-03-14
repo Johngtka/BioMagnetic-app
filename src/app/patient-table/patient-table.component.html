@@ -54,14 +54,40 @@
             >
                 <mat-icon>add_circle_outline</mat-icon>
             </button>
-            <button
-                mat-icon-button
-                matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.PREVIOUS' | translate }}"
-                matTooltipShowDelay="1500"
-                [disabled]="true"
-            >
-                <mat-icon>history</mat-icon>
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
             </button>
+            <mat-menu #menu="matMenu">
+                <button
+                    mat-icon-button
+                    matTooltip="{{
+                        'PATIENT_TABLE.TOOLTIPS.PREVIOUS' | translate
+                    }}"
+                    matTooltipShowDelay="1500"
+                    [disabled]="true"
+                >
+                    <mat-icon>history</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.EDIT' | translate }}"
+                    matTooltipShowDelay="1500"
+                    [disabled]="true"
+                >
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    matTooltip="{{
+                        'PATIENT_TABLE.TOOLTIPS.DELETE' | translate
+                    }}"
+                    matTooltipShowDelay="1500"
+                    [disabled]="true"
+                >
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </mat-menu>
         </td>
     </ng-container>
 </table>
