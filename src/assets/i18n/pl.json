@@ -28,7 +28,9 @@
         "ACTIONS": "Akcje",
         "TOOLTIPS": {
             "NEW": "Nowa Wizyta",
-            "PREVIOUS": "Poprzednia Wizyta"
+            "PREVIOUS": "Poprzednia Wizyta",
+            "EDIT": "Edytuj",
+            "DELETE": "Usuń"
         }
     },
     "PATIENT_SEARCH": {

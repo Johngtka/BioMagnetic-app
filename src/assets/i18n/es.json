@@ -28,7 +28,9 @@
         "ACTIONS": "Acciones",
         "TOOLTIPS": {
             "NEW": "Nueva visita",
-            "PREVIOUS": "Visita previa"
+            "PREVIOUS": "Visita previa",
+            "EDIT": "Editar",
+            "DELETE": "Eliminar"
         }
     },
     "PATIENT_SEARCH": {
