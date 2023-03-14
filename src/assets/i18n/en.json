@@ -28,7 +28,9 @@
         "ACTIONS": "Actions",
         "TOOLTIPS": {
             "NEW": "New Visit",
-            "PREVIOUS": "Previous Visit"
+            "PREVIOUS": "Previous Visit",
+            "EDIT": "Edit",
+            "DELETE": "Delete"
         }
     },
     "PATIENT_SEARCH": {
