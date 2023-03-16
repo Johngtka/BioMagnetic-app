@@ -13,10 +13,12 @@
     "ERROR": {
         "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
         "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde",
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde."
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde.",
+        "PATIENT_TABLE_DELETE_PATIENT": "Ocurrió un error al eliminar un paciente, intente nuevamente más tarde"
     },
     "SUCCESS": {
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente",
+        "PATIENT_TABLE_DELETE_PATIENT": "El paciente ha sido eliminado con éxito"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Nombre y Apellidos",
@@ -58,8 +60,14 @@
         "ERROR": {
             "NO_PATIENT": "Por favor, busque un paciente para abrir una nueva cita"
         },
-        "SELLECT": {
+        "SELECT": {
             "ACTIVE": "Nueva cita creada para un paciente"
         }
+    },
+    "CONFIRMATION_DIALOG": {
+        "CANCEL": "Cancelar",
+        "CONFIRM": "Confirmar",
+        "GENERIC_TITLE": "¿Estás seguro?",
+        "GENERIC_MESSAGE": "Está a punto de eliminar los registro, desea continuar"
     }
 }
