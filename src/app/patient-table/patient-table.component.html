@@ -83,7 +83,7 @@
                         'PATIENT_TABLE.TOOLTIPS.DELETE' | translate
                     }}"
                     matTooltipShowDelay="1500"
-                    [disabled]="true"
+                    (click)="deletePatient(element)"
                 >
                     <mat-icon>delete_outline</mat-icon>
                 </button>
