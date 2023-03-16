@@ -37,6 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PatientTableComponent } from './patient-table/patient-table.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -74,6 +75,8 @@ const materialModules = [
         AgePipe,
         UserInputDialogComponent,
         VisitComponent,
+        ConfirmationDialogComponent,
+        ConfirmationDialogComponent,
     ],
     imports: [
         BrowserModule,
