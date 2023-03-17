@@ -11,12 +11,14 @@
         "CLOSE": "Close"
     },
     "ERROR": {
-        "PATIENT_SEARCH": "An error has occured while searching for patient, plese try again later",
-        "PATIENT_TABLE_GET_PATIENTS": "An error has occured while trying to load patients into a table, plese try again later",
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "An error occurred while adding a new pacient, try again later"
+        "PATIENT_SEARCH": "An error has occurred while searching for patient, please try again later",
+        "PATIENT_TABLE_GET_PATIENTS": "An error has occurred while trying to load patients into a table, please try again later",
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "An error occurred while adding a new patient, try again later",
+        "PATIENT_TABLE_DELETE_PATIENT": "An error has occurred while deleting a patient, try again later"
     },
     "SUCCESS": {
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful",
+        "PATIENT_TABLE_DELETE_PATIENT": "Patient has been deleted successfully"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Full Name",
@@ -45,12 +47,12 @@
         "PHONE": "Phone",
         "LOCATION": "City",
         "DIALOG": {
-            "TITLE": "Parient Register",
+            "TITLE": "Patient Register",
             "CANCEL": "Cancel",
             "REGISTER": "Register"
         },
         "FORM_VALIDATION": {
-            "EMAIL": "Please provde a valid email",
+            "EMAIL": "Please provide a valid email",
             "PHONE": "Only numbers allowed"
         }
     },
@@ -58,8 +60,14 @@
         "ERROR": {
             "NO_PATIENT": "Please search for a patient to open a new appointment"
         },
-        "SELLECT": {
+        "SELECT": {
             "ACTIVE": "New appointment created for patient"
         }
+    },
+    "CONFIRMATION_DIALOG": {
+        "CANCEL": "Cancel",
+        "CONFIRM": "Confirm",
+        "GENERIC_TITLE": "Are you sure?",
+        "GENERIC_MESSAGE": "You are about to delete the record, do you wish to proceed"
     }
 }

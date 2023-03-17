@@ -1,7 +1,7 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    <ng-container matColumnDef="fullname">
+    <ng-container matColumnDef="fullName">
         <th mat-header-cell *matHeaderCellDef>
             {{ 'PATIENT_TABLE.FULL_NAME' | translate }}
         </th>
@@ -83,7 +83,7 @@
                         'PATIENT_TABLE.TOOLTIPS.DELETE' | translate
                     }}"
                     matTooltipShowDelay="1500"
-                    [disabled]="true"
+                    (click)="deletePatient(element)"
                 >
                     <mat-icon>delete_outline</mat-icon>
                 </button>

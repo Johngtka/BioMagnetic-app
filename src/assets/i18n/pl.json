@@ -13,10 +13,12 @@
     "ERROR": {
         "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później",
         "PATIENT_TABLE_GET_PATIENTS": "Wystąpił błąd podczas próby załadowania pacjentów do tabeli, spróbuj ponownie później",
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, spróbuj ponownie później"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, spróbuj ponownie później",
+        "PATIENT_TABLE_DELETE_PATIENT": "Wystąpił błąd podczas usuwania pacjenta, spróbuj ponownie później"
     },
     "SUCCESS": {
-        "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie"
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie",
+        "PATIENT_TABLE_DELETE_PATIENT": "Pacjent został pomyślnie usunięty"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Imie i Nazwisko",
@@ -58,8 +60,14 @@
         "ERROR": {
             "NO_PATIENT": "Proszę wyszukać pacjenta, aby otworzyć nową wizytę"
         },
-        "SELLECT": {
+        "SELECT": {
             "ACTIVE": "Nowa wizyta utworzona dla pacjenta"
         }
+    },
+    "CONFIRMATION_DIALOG": {
+        "CANCEL": "Anuluj",
+        "CONFIRM": "Potwierdź",
+        "GENERIC_TITLE": "Czy jesteś pewien?",
+        "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować"
     }
 }
