@@ -61,13 +61,13 @@ export class PatientTableComponent {
                             (ds: Patient) => ds._id !== patient._id,
                         );
                         this.snackService.showSnackBarMessage(
-                            'SUCCESS.PATIENT_TABLE_DELETE_PATIENTS',
+                            'SUCCESS.PATIENT_TABLE_DELETE_PATIENT',
                             SNACK_TYPE.success,
                         );
                     },
                     error: (err) => {
                         this.snackService.showSnackBarMessage(
-                            'ERROR.PATIENT_TABLE_DELETE_PATIENTS',
+                            'ERROR.PATIENT_TABLE_DELETE_PATIENT',
                             SNACK_TYPE.error,
                         );
                         this.isLoadingResults = false;
