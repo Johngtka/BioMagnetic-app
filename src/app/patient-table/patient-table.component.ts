@@ -6,7 +6,10 @@ import { Patient } from '../models/patient';
 import { SNACK_TYPE } from './../services/snack.service';
 import { SnackService } from './../services/snack.service';
 import { PatientService } from './../services/patient-service';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import {
+    ConfirmationDialogComponent,
+    ConfirmationDialogResponse,
+} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'app-patient-table',
@@ -51,13 +54,17 @@ export class PatientTableComponent {
         });
 
         dialogRef.afterClosed().subscribe((result) => {
-            if (result === 'ok') {
+            if (result === ConfirmationDialogResponse.OK) {
                 this.patientService.deletePatient(patient._id).subscribe({
-                    next: () =>
+                    next: () => {
+                        this.dataSource = this.dataSource.filter(
+                            (ds: Patient) => ds._id !== patient._id,
+                        );
                         this.snackService.showSnackBarMessage(
-                            'ERROR.PATIENT_TABLE_DELETE_PATIENTS',
+                            'SUCCESS.PATIENT_TABLE_DELETE_PATIENTS',
                             SNACK_TYPE.success,
-                        ),
+                        );
+                    },
                     error: (err) => {
                         this.snackService.showSnackBarMessage(
                             'ERROR.PATIENT_TABLE_DELETE_PATIENTS',
@@ -72,7 +79,7 @@ export class PatientTableComponent {
     }
 
     displayedColumns: string[] = [
-        'fullname',
+        'fullName',
         'gender',
         'email',
         'phone',
