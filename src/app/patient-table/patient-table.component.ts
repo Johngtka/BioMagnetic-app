@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -17,8 +17,10 @@ import {
     styleUrls: ['./patient-table.component.css'],
 })
 export class PatientTableComponent {
+    @Output() updatePatient = new EventEmitter<Patient>();
     dataSource!: Patient[];
     isLoadingResults = true;
+
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
