@@ -51,12 +51,12 @@
         "DIALOG": {
             "TITLE": "Rejestracja Pacjenta",
             "CANCEL": "Anuluj",
-            "REGISTER": "Zarejestruj"
+            "REGISTER": "Zarejestruj",
+            "UPDATE": "Aktualizuj"
         },
         "FORM_VALIDATION": {
             "EMAIL": "Podaj prawidłowy adres e-mail",
-            "PHONE": "Dozwolone tylko numery",
-            "UPDATE": "Aktualizuj"
+            "PHONE": "Dozwolone tylko numery"
         }
     },
     "PATIENT_VISIT": {
