@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Patient } from '../models/patient';
 
 import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.component';
 
@@ -11,7 +12,10 @@ import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.c
 export class HomeComponent {
     constructor(public dialog: MatDialog) {}
 
-    openDialog() {
-        this.dialog.open(UserInputDialogComponent, { disableClose: true });
+    openDialog(patient?: Patient) {
+        this.dialog.open(UserInputDialogComponent, {
+            data: { patient },
+            disableClose: true,
+        });
     }
 }
