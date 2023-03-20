@@ -76,7 +76,6 @@ const materialModules = [
         UserInputDialogComponent,
         VisitComponent,
         ConfirmationDialogComponent,
-        ConfirmationDialogComponent,
     ],
     imports: [
         BrowserModule,
