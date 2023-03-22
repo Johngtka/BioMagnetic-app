@@ -73,7 +73,7 @@
                     mat-icon-button
                     matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.EDIT' | translate }}"
                     matTooltipShowDelay="1500"
-                    [disabled]="true"
+                    (click)="updatePatient.emit(element)"
                 >
                     <mat-icon>edit</mat-icon>
                 </button>

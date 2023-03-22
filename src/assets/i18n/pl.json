@@ -14,10 +14,12 @@
         "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później",
         "PATIENT_TABLE_GET_PATIENTS": "Wystąpił błąd podczas próby załadowania pacjentów do tabeli, spróbuj ponownie później",
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, spróbuj ponownie później",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Wystąpił błąd podczas aktualizacji pacjenta, spróbuj ponownie później",
         "PATIENT_TABLE_DELETE_PATIENT": "Wystąpił błąd podczas usuwania pacjenta, spróbuj ponownie później"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Pomyślnie zaktualizowano pacjenta",
         "PATIENT_TABLE_DELETE_PATIENT": "Pacjent został pomyślnie usunięty"
     },
     "PATIENT_TABLE": {
@@ -49,7 +51,8 @@
         "DIALOG": {
             "TITLE": "Rejestracja Pacjenta",
             "CANCEL": "Anuluj",
-            "REGISTER": "Zarejestruj"
+            "REGISTER": "Zarejestruj",
+            "UPDATE": "Aktualizuj"
         },
         "FORM_VALIDATION": {
             "EMAIL": "Podaj prawidłowy adres e-mail",

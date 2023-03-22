@@ -1,6 +1,6 @@
-<h2 mat-dialog-title>{{ 'PATIENT_CREATE.DIALOG.TITLE' | translate }}</h2>
-<mat-dialog-content class="mat-typography">
-    <form [formGroup]="registerForm">
+<form [formGroup]="registerForm">
+    <h2 mat-dialog-title>{{ 'PATIENT_CREATE.DIALOG.TITLE' | translate }}</h2>
+    <mat-dialog-content class="mat-typography">
         <div class="col-wrapper">
             <div class="col">
                 <mat-form-field appearance="fill">
@@ -86,18 +86,20 @@
                 </mat-form-field>
             </div>
         </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close mat-raised-button>
             {{ 'PATIENT_CREATE.DIALOG.CANCEL' | translate }}
         </button>
         <button
             mat-raised-button
             color="primary"
-            [disabled]="!registerForm.valid"
+            [disabled]="!hasChange() || !registerForm.valid"
             mat-button
             (click)="addPatient()"
             cdkFocusInitial
         >
-            {{ 'PATIENT_CREATE.DIALOG.REGISTER' | translate }}
+            {{ buttonText | translate }}
         </button>
-    </form>
-</mat-dialog-content>
+    </mat-dialog-actions>
+</form>

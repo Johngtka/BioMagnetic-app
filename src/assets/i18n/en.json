@@ -14,10 +14,12 @@
         "PATIENT_SEARCH": "An error has occurred while searching for patient, please try again later",
         "PATIENT_TABLE_GET_PATIENTS": "An error has occurred while trying to load patients into a table, please try again later",
         "USER_INPUT_DIALOG_CREATE_PATIENT": "An error occurred while adding a new patient, try again later",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "An error occurred while updating a patient, try again later",
         "PATIENT_TABLE_DELETE_PATIENT": "An error has occurred while deleting a patient, try again later"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Patient updated successful",
         "PATIENT_TABLE_DELETE_PATIENT": "Patient has been deleted successfully"
     },
     "PATIENT_TABLE": {
@@ -49,7 +51,8 @@
         "DIALOG": {
             "TITLE": "Patient Register",
             "CANCEL": "Cancel",
-            "REGISTER": "Register"
+            "REGISTER": "Register",
+            "UPDATE": "Update"
         },
         "FORM_VALIDATION": {
             "EMAIL": "Please provide a valid email",
