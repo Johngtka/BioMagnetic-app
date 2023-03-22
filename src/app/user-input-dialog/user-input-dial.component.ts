@@ -97,6 +97,10 @@ export class UserInputDialogComponent implements OnInit {
                         SNACK_TYPE.error,
                     ),
             });
+            this.dialogRef.afterClosed().subscribe((result) => {
+                result = patient;
+                console.log(result);
+            });
         } else {
             this.patientService.createPatient(patient).subscribe({
                 next: () => (
