@@ -1,5 +1,5 @@
 <app-patient-search></app-patient-search>
-<app-patient-table (updatePatient)="openDialog($event)"></app-patient-table>
+<app-patient-table [newOrUpdatedPatient]="newOrUpdatedPatient" (updatePatient)="openDialog($event)"></app-patient-table>
 <button (click)="openDialog()" class="add-btn" mat-mini-fab color="primary">
     <i class="material-icons">how_to_reg</i>
 </button>

@@ -84,12 +84,12 @@ export class UserInputDialogComponent implements OnInit {
         if (this.isEdit) {
             patient._id = this.data.patient._id;
             this.patientService.updatePatient(patient).subscribe({
-                next: () => (
+                next: (updatePatient: Patient) => (
                     this.snackService.showSnackBarMessage(
                         'SUCCESS.USER_INPUT_DIALOG_UPDATE_PATIENT',
                         SNACK_TYPE.success,
                     ),
-                    this.dialogRef.close()
+                    this.dialogRef.close(updatePatient)
                 ),
                 error: () =>
                     this.snackService.showSnackBarMessage(
@@ -97,18 +97,14 @@ export class UserInputDialogComponent implements OnInit {
                         SNACK_TYPE.error,
                     ),
             });
-            this.dialogRef.afterClosed().subscribe((result) => {
-                result = patient;
-                console.log(result);
-            });
         } else {
             this.patientService.createPatient(patient).subscribe({
-                next: () => (
+                next: (newPatient: Patient) => (
                     this.snackService.showSnackBarMessage(
                         'SUCCESS.USER_INPUT_DIALOG_CREATE_PATIENT',
                         SNACK_TYPE.success,
                     ),
-                    this.dialogRef.close()
+                    this.dialogRef.close(newPatient)
                 ),
                 error: () =>
                     this.snackService.showSnackBarMessage(

@@ -10,12 +10,16 @@ import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.c
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-    constructor(public dialog: MatDialog) {}
+    newOrUpdatedPatient;
+    constructor(private dialog: MatDialog) {}
 
     openDialog(patient?: Patient) {
-        this.dialog.open(UserInputDialogComponent, {
+        const dialogRef = this.dialog.open(UserInputDialogComponent, {
             data: { patient },
             disableClose: true,
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+            this.newOrUpdatedPatient = result;
         });
     }
 }
