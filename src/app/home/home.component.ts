@@ -18,8 +18,10 @@ export class HomeComponent {
             data: { patient },
             disableClose: true,
         });
-        dialogRef.afterClosed().subscribe((result) => {
-            this.newOrUpdatedPatient = result;
+        dialogRef.afterClosed().subscribe((result: Patient) => {
+            if (result) {
+                this.newOrUpdatedPatient = result;
+            }
         });
     }
 }
