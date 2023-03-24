@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.3...v0.0.4) (2023-03-24)
+
+
+### Features
+
+* Allow a patient edit ([#26](https://github.com/Johngtka/Biomagnthick-app/issues/26)) ([7dfeffd](https://github.com/Johngtka/Biomagnthick-app/commit/7dfeffd107f6c9b1555f5f611d064d89d54ed1a6))
+* Allow to delete a patient ([#25](https://github.com/Johngtka/Biomagnthick-app/issues/25)) ([d152713](https://github.com/Johngtka/Biomagnthick-app/commit/d1527130cf1a52e4b0eb1a3fa322a8cd37df50a1))
+* Patient table menu button with options ([#24](https://github.com/Johngtka/Biomagnthick-app/issues/24)) ([ec904cd](https://github.com/Johngtka/Biomagnthick-app/commit/ec904cd2501d305847ac4f8251a79e423df82063))
+
 ### [0.0.3](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.2...v0.0.3) (2023-03-10)
 
 
