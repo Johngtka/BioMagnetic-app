@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    Output,
+    Input,
+    OnChanges,
+    OnInit,
+    SimpleChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -16,8 +24,9 @@ import {
     templateUrl: './patient-table.component.html',
     styleUrls: ['./patient-table.component.css'],
 })
-export class PatientTableComponent {
+export class PatientTableComponent implements OnInit, OnChanges {
     @Output() updatePatient = new EventEmitter<Patient>();
+    @Input() newOrUpdatedPatient: Patient;
     dataSource!: Patient[];
     isLoadingResults = true;
 
@@ -25,8 +34,29 @@ export class PatientTableComponent {
         private patientService: PatientService,
         private snackService: SnackService,
         private route: Router,
-        public dialog: MatDialog,
+        private dialog: MatDialog,
     ) {}
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['newOrUpdatedPatient'] && !!this.dataSource) {
+            const tablePatientIndex = this.dataSource.findIndex(
+                (ds: Patient) =>
+                    ds._id === changes['newOrUpdatedPatient'].currentValue._id,
+            );
+
+            if (tablePatientIndex !== -1) {
+                // update
+                this.dataSource[tablePatientIndex] =
+                    changes['newOrUpdatedPatient'].currentValue;
+                this.dataSource = [...this.dataSource];
+            } else {
+                // new
+                this.dataSource = [
+                    ...this.dataSource,
+                    changes['newOrUpdatedPatient'].currentValue,
+                ];
+            }
+        }
+    }
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
             next: (data: Array<Patient>) => (
