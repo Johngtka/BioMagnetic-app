@@ -15,5 +15,11 @@ export class VisitComponent {
     }
     selectPatient(patientSelected: Patient) {
         this.patient = patientSelected;
+        this.storeService.getStore().subscribe({
+            // next: () => (
+            // ),
+            // error: () => {
+            // },
+        });
     }
 }
