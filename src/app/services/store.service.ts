@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { Patient } from '../models/patient';
+import { Store } from '../models/store';
 import { enviroment } from 'src/environments/environment.dev';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class StoreService {
     apiURL = enviroment.API_URL;
     constructor(private http: HttpClient) {}
 
-    getStore(): Observable<Array<Patient>> {
-        return this.http.get<Array<Patient>>(this.apiURL + '/store');
+    getStore(): Observable<Array<Store>> {
+        return this.http.get<Array<Store>>(this.apiURL + '/store');
     }
 }

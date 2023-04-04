@@ -68,6 +68,13 @@
             "ACTIVE": "Nowa wizyta utworzona dla pacjenta"
         }
     },
+    "VISIT_TABLE":{
+        "ID": "Id",
+        "NGPOINT": "Minus",
+        "POPOINT": "Plus"   ,
+        "NAME": "Nazwa",
+        "IMAGE": "Zdjęcie"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Anuluj",
         "CONFIRM": "Potwierdź",

@@ -8,6 +8,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -63,6 +64,7 @@ const materialModules = [
     MatDatepickerModule,
     MatTooltipModule,
     MatMenuModule,
+    MatSortModule,
 ];
 
 @NgModule({

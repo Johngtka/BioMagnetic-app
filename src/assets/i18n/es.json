@@ -67,6 +67,13 @@
             "ACTIVE": "Nueva cita creada para un paciente"
         }
     },
+    "VISIT_TABLE":{
+        "ID": "Id",
+        "NGPOINT": "Punto negativo",
+        "POPOINT": "Punto positivo",
+        "NAME": "Nombre",
+        "IMAGE": "Foto"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancelar",
         "CONFIRM": "Confirmar",

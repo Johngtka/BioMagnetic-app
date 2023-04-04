@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
 import { Patient } from '../models/patient';
-// import { Store } from '../models/store';
+import { Store } from '../models/store';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 @Component({
@@ -15,12 +14,9 @@ export class VisitComponent {
         private snacService: SnackService,
     ) {}
     patient!: Patient;
-    store;
+    store!: Store[];
     ngOnInit(): void {
         this.patient = history.state;
-    }
-    selectPatient(patientSelected: Patient) {
-        this.patient = patientSelected;
         this.storeService.getStore().subscribe({
             next: (data) => (this.store = data),
             error: (err) => {
@@ -32,4 +28,14 @@ export class VisitComponent {
             },
         });
     }
+    selectPatient(patientSelected: Patient) {
+        this.patient = patientSelected;
+    }
+    displayedColumns: string[] = [
+        'id',
+        'negativepoint',
+        'positivepoint',
+        'name',
+        'image',
+    ];
 }
