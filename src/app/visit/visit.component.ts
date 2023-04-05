@@ -17,11 +17,11 @@ export class VisitComponent implements OnInit {
         private snacService: SnackService,
     ) {}
     @ViewChild(MatSort) sort: MatSort;
-    // ngAfterViewInit(): void {
-    //     this.store.sort = this.sort;
-    // }
     patient!: Patient;
     store!: Store[];
+    // ngAfterViewInit(): void {
+    //     this.store = this.store.sort((a, b) => a.id - b.id);
+    // }
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
