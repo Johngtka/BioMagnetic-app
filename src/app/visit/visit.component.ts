@@ -12,19 +12,16 @@ import { SnackService, SNACK_TYPE } from '../services/snack.service';
 export class VisitComponent implements OnInit {
     constructor(
         private storeService: StoreService,
-        private snacService: SnackService,
+        private snackService: SnackService,
     ) {}
     patient!: Patient;
     store!: Store[];
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
-            next: (data) => (
-                (this.store = data),
-                (this.store = data.sort((a, b) => a.id - b.id))
-            ),
+            next: (data) => (this.store = data.sort((a, b) => a.id - b.id)),
             error: (err) => {
-                this.snacService.showSnackBarMessage(
+                this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
                     SNACK_TYPE.error,
                 );

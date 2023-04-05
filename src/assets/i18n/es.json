@@ -15,7 +15,8 @@
         "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde",
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde.",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Ocurrió un error al actualizar un paciente, intente nuevamente más tarde",
-        "PATIENT_TABLE_DELETE_PATIENT": "Ocurrió un error al eliminar un paciente, intente nuevamente más tarde"
+        "PATIENT_TABLE_DELETE_PATIENT": "Ocurrió un error al eliminar un paciente, intente nuevamente más tarde",
+        "PATIENT_VISIT_CREATE_PATIENT": "Se ha producido un error al crear una cita para un paciente, inténtelo de nuevo más tarde."
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente",
