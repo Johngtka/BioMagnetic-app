@@ -67,7 +67,7 @@
             "ACTIVE": "Nueva cita creada para un paciente"
         }
     },
-    "VISIT_TABLE":{
+    "VISIT_TABLE": {
         "ID": "Id",
         "NGPOINT": "Punto negativo",
         "POPOINT": "Punto positivo",

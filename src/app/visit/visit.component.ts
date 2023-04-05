@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatSort } from '@angular/material/sort';
 
-import { Patient } from '../models/patient';
 import { Store } from '../models/store';
+import { Patient } from '../models/patient';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 @Component({
@@ -19,9 +19,9 @@ export class VisitComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     patient!: Patient;
     store!: Store[];
-    // ngAfterViewInit(): void {
-    //     this.store = this.store.sort((a, b) => a.id - b.id);
-    // }
+    ngAfterViewInit(): void {
+        this.store = this.store.sort((a, b) => a.id - b.id);
+    }
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
