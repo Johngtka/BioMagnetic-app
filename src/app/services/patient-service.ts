@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Patient } from '../models/patient';
-import { enviroment } from '../environments/environment.dev';
+import { enviroment } from '../../environments/environment.dev';
 
 @Injectable({
     providedIn: 'root',
