@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { MatSort } from '@angular/material/sort';
+import { Component, OnInit } from '@angular/core';
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
@@ -16,16 +14,15 @@ export class VisitComponent implements OnInit {
         private storeService: StoreService,
         private snacService: SnackService,
     ) {}
-    @ViewChild(MatSort) sort: MatSort;
     patient!: Patient;
     store!: Store[];
-    ngAfterViewInit(): void {
-        this.store = this.store.sort((a, b) => a.id - b.id);
-    }
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
-            next: (data) => (this.store = data),
+            next: (data) => (
+                (this.store = data),
+                (this.store = data.sort((a, b) => a.id - b.id))
+            ),
             error: (err) => {
                 this.snacService.showSnackBarMessage(
                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
