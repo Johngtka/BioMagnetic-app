@@ -10,7 +10,12 @@
 <p [hidden]="patient.name">
     {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
 </p>
-<table mat-table [hidden]="!patient.name" [dataSource]="store" class="mat-elevation-z8">
+<table
+    mat-table
+    [hidden]="!patient.name"
+    [dataSource]="store"
+    class="mat-elevation-z8"
+>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     <ng-container matColumnDef="id">
@@ -45,8 +50,6 @@
             {{ element.name }}
         </td>
     </ng-container>
-
-
 
     <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef>
