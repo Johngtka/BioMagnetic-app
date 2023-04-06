@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Store } from '../models/store';
-import { enviroment } from '../../environments/environment.dev';
+import { environment } from '../../environments/environment.dev';
 
 @Injectable({
     providedIn: 'root',
 })
 export class StoreService {
-    apiURL = enviroment.API_URL;
+    apiURL = environment.API_URL;
     constructor(private http: HttpClient) {}
 
     getStore(): Observable<Array<Store>> {

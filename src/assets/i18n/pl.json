@@ -70,8 +70,8 @@
     },
     "VISIT_TABLE": {
         "ID": "Id",
-        "NGPOINT": "Minus",
-        "POPOINT": "Plus",
+        "NEGATIVE_POINT": "Minus",
+        "POSITIVE_POINT": "Plus",
         "NAME": "Nazwa",
         "IMAGE": "Zdjęcie"
     },

@@ -4,7 +4,7 @@ export interface Store {
     id: number;
     image: string;
     name: string;
-    negativepoint: string;
-    positivepoint: string;
+    negativePoint: string;
+    positivePoint: string;
     type: string;
 }
