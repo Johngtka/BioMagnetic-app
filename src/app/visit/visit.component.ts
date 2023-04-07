@@ -18,6 +18,7 @@ export class VisitComponent implements OnInit {
         'negativePoint',
         'positivePoint',
         'name',
+        'type',
         'image',
     ];
     constructor(
