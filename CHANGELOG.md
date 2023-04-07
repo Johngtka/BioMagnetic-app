@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.4...v0.0.5) (2023-04-07)
+
+
+### Features
+
+* basic visit component for select patient ([#28](https://github.com/Johngtka/Biomagnthick-app/issues/28)) ([774f7b6](https://github.com/Johngtka/Biomagnthick-app/commit/774f7b6208aa4c9d48871de8e05a1771441a8c35))
+* improove visit table, columns width ([#30](https://github.com/Johngtka/Biomagnthick-app/issues/30)) ([3baccba](https://github.com/Johngtka/Biomagnthick-app/commit/3baccbae3a03ab323a3a242bd5309d168737292a))
+* Refresh table when creating new patient or updating one ([#27](https://github.com/Johngtka/Biomagnthick-app/issues/27)) ([b54363f](https://github.com/Johngtka/Biomagnthick-app/commit/b54363f1674e1eb10cb7285f7e4d2d9a96a60243))
+
 ### [0.0.4](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.3...v0.0.4) (2023-03-24)
 
 
