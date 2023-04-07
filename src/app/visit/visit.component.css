@@ -1,0 +1,24 @@
+.mat-column-id {
+    text-align: center;
+    width: 5%;
+}
+
+.mat-column-negativePoint {
+    width: 15%;
+}
+
+.mat-column-positivePoint {
+    width: 15%;
+}
+
+.mat-column-name {
+    width: 25%;
+}
+
+.mat-column-type {
+    width: 10%;
+}
+
+.mat-column-image {
+    width: 30%;
+}
