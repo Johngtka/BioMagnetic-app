@@ -73,6 +73,7 @@
         "NEGATIVE_POINT": "Negative Point",
         "POSITIVE_POINT": "Positive Point",
         "NAME": "Name",
+        "TYPE": "Type",
         "IMAGE": "Image"
     },
     "CONFIRMATION_DIALOG": {
