@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -12,11 +13,10 @@ import { SnackService, SNACK_TYPE } from '../services/snack.service';
     templateUrl: './visit.component.html',
     styleUrls: ['./visit.component.css'],
 })
-export class VisitComponent implements OnInit {
+export class VisitComponent implements OnInit, AfterViewInit {
+    @ViewChild(MatPaginator) paginator: MatPaginator;
     patient!: Patient;
     store!: Store[];
-    dataSource;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     displayedColumns: string[] = [
         'id',
         'negativePoint',
@@ -25,6 +25,7 @@ export class VisitComponent implements OnInit {
         'type',
         'image',
     ];
+    dataSource;
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
