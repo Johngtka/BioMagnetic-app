@@ -14,6 +14,10 @@ import { SnackService, SNACK_TYPE } from '../services/snack.service';
     styleUrls: ['./visit.component.css'],
 })
 export class VisitComponent implements OnInit, AfterViewInit {
+    constructor(
+        private storeService: StoreService,
+        private snackService: SnackService,
+    ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
     patient!: Patient;
     store!: Store[];
@@ -26,10 +30,6 @@ export class VisitComponent implements OnInit, AfterViewInit {
         'image',
     ];
     dataSource;
-    constructor(
-        private storeService: StoreService,
-        private snackService: SnackService,
-    ) {}
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
