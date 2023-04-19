@@ -14,13 +14,12 @@ import { SnackService, SNACK_TYPE } from '../services/snack.service';
     styleUrls: ['./visit.component.css'],
 })
 export class VisitComponent implements OnInit {
+    @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
     ) {}
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     patient!: Patient;
-    store!: Store[];
     displayedColumns: string[] = [
         'id',
         'negativePoint',
@@ -34,7 +33,7 @@ export class VisitComponent implements OnInit {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
             next: (data) => (
-                (this.store = data.sort((a, b) => a.id - b.id)),
+                (this.dataSource = data.sort((a, b) => a.id - b.id)),
                 (this.dataSource = new MatTableDataSource<Store>(data)),
                 (this.dataSource.paginator = this.paginator)
             ),
