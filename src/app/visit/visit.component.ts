@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { SnackService, SNACK_TYPE } from '../services/snack.service';
     templateUrl: './visit.component.html',
     styleUrls: ['./visit.component.css'],
 })
-export class VisitComponent implements OnInit, AfterViewInit {
+export class VisitComponent implements OnInit {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
@@ -30,15 +30,13 @@ export class VisitComponent implements OnInit, AfterViewInit {
         'image',
     ];
     dataSource;
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
             next: (data) => (
                 (this.store = data.sort((a, b) => a.id - b.id)),
-                (this.dataSource = new MatTableDataSource<Store>(data))
+                (this.dataSource = new MatTableDataSource<Store>(data)),
+                (this.dataSource.paginator = this.paginator)
             ),
             error: (err) => {
                 this.snackService.showSnackBarMessage(
