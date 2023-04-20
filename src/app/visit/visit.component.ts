@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { MatPaginator } from '@angular/material/paginator';
+import {
+    MatTableDataSource,
+    MatTableDataSourcePaginator,
+} from '@angular/material/table';
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
@@ -11,8 +17,12 @@ import { SnackService, SNACK_TYPE } from '../services/snack.service';
     styleUrls: ['./visit.component.css'],
 })
 export class VisitComponent implements OnInit {
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    constructor(
+        private storeService: StoreService,
+        private snackService: SnackService,
+    ) {}
     patient!: Patient;
-    store!: Store[];
     displayedColumns: string[] = [
         'id',
         'negativePoint',
@@ -21,15 +31,19 @@ export class VisitComponent implements OnInit {
         'type',
         'image',
     ];
-    constructor(
-        private storeService: StoreService,
-        private snackService: SnackService,
-    ) {}
-
+    dataSource:
+        | Store[]
+        | MatTableDataSource<Store, MatTableDataSourcePaginator>;
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
-            next: (data) => (this.store = data.sort((a, b) => a.id - b.id)),
+            next: (data) => (
+                (this.dataSource = data.sort((a, b) => a.id - b.id)),
+                (this.dataSource = new MatTableDataSource<Store>(
+                    this.dataSource,
+                )),
+                (this.dataSource.paginator = this.paginator)
+            ),
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
