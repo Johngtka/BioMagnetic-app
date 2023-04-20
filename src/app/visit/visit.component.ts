@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import {
+    MatTableDataSource,
+    MatTableDataSourcePaginator,
+} from '@angular/material/table';
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
@@ -28,13 +31,17 @@ export class VisitComponent implements OnInit {
         'type',
         'image',
     ];
-    dataSource;
+    dataSource:
+        | Store[]
+        | MatTableDataSource<Store, MatTableDataSourcePaginator>;
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
             next: (data) => (
                 (this.dataSource = data.sort((a, b) => a.id - b.id)),
-                (this.dataSource = new MatTableDataSource<Store>(data)),
+                (this.dataSource = new MatTableDataSource<Store>(
+                    this.dataSource,
+                )),
                 (this.dataSource.paginator = this.paginator)
             ),
             error: (err) => {
