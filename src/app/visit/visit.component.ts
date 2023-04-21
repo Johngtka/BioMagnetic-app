@@ -56,9 +56,12 @@ export class VisitComponent implements OnInit {
     }
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
-        if (event.key === 'ArrowRight') {
+        if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
-        } else if (event.key === 'ArrowLeft') {
+        } else if (
+            event.key === 'ArrowLeft' &&
+            this.paginator.hasPreviousPage()
+        ) {
             this.paginator.previousPage();
         }
     }
