@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.5...v0.0.6) (2023-04-21)
+
+
+### Features
+
+* visit table paginator with 10 rows per page ([#31](https://github.com/Johngtka/Biomagnthick-app/issues/31)) ([3bf86a0](https://github.com/Johngtka/Biomagnthick-app/commit/3bf86a053ab4a2e6f95d09dc8d78e6177f280f67))
+* visit table switching page by left and right arrow from keyboard ([#32](https://github.com/Johngtka/Biomagnthick-app/issues/32)) ([f88364b](https://github.com/Johngtka/Biomagnthick-app/commit/f88364b6d8dd72f6a16c805873fce17d294a3441))
+
 ### [0.0.5](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.4...v0.0.5) (2023-04-07)
 
 
