@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
-
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
 import { StoreService } from '../services/store.service';
@@ -55,5 +53,13 @@ export class VisitComponent implements OnInit {
     }
     selectPatient(patientSelected: Patient) {
         this.patient = patientSelected;
+    }
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (event.key === 'ArrowRight') {
+            this.paginator.nextPage();
+        } else if (event.key === 'ArrowLeft') {
+            this.paginator.previousPage();
+        }
     }
 }
