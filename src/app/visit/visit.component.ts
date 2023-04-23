@@ -21,6 +21,7 @@ export class VisitComponent implements OnInit {
         private snackService: SnackService,
     ) {}
     patient!: Patient;
+    isCleared = true;
     displayedColumns: string[] = [
         'id',
         'negativePoint',
@@ -51,11 +52,14 @@ export class VisitComponent implements OnInit {
             },
         });
     }
-    selectPatient(patientSelected: Patient) {
+    selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
     }
+    toggleTableVisibility(): void {
+        this.isCleared = !this.isCleared;
+    }
     @HostListener('document:keydown', ['$event'])
-    handleKeyboardEvent(event: KeyboardEvent) {
+    handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
         } else if (

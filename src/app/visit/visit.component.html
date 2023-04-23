@@ -1,11 +1,16 @@
-<div [hidden]="patient.name">
-    <app-patient-search (selectedPatient)="selectPatient($event)">
-    </app-patient-search>
-</div>
-
-<p [hidden]="!patient.name">
-    {{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
-    {{ patient.name + ' ' + patient.surname }}
+<ng-container *ngIf="isCleared">
+    <div>
+        <app-patient-search (selectedPatient)="selectPatient($event)">
+        </app-patient-search>
+    </div>
+</ng-container>
+<p class="info" [hidden]="!patient.name">
+    <span *ngIf="isCleared">{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }} {{ patient.name + ' ' +
+        patient.surname
+        }}</span>
+    <button (click)="toggleTableVisibility()" class="add-btn" mat-mini-fab color="primary">
+        <i class="material-icons">close</i>
+    </button>
 </p>
 <p [hidden]="patient.name">
     {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
