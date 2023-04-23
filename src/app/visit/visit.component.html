@@ -5,10 +5,16 @@
     </div>
 </ng-container>
 <p class="info" [hidden]="!patient.name">
-    <span *ngIf="isCleared">{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }} {{ patient.name + ' ' +
-        patient.surname
-        }}</span>
-    <button (click)="toggleTableVisibility()" class="add-btn" mat-mini-fab color="primary">
+    <span *ngIf="isCleared"
+        >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
+        {{ patient.name + ' ' + patient.surname }}</span
+    >
+    <button
+        (click)="toggleTableVisibility()"
+        class="add-btn"
+        mat-mini-fab
+        color="primary"
+    >
         <i class="material-icons">close</i>
     </button>
 </p>
