@@ -1,20 +1,13 @@
-<ng-container *ngIf="isCleared">
+<ng-container>
     <div>
         <app-patient-search (selectedPatient)="selectPatient($event)">
         </app-patient-search>
     </div>
 </ng-container>
 <p class="info" [hidden]="!patient.name">
-    <span *ngIf="isCleared"
-        >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
-        {{ patient.name + ' ' + patient.surname }}</span
-    >
-    <button
-        (click)="toggleTableVisibility()"
-        class="add-btn"
-        mat-mini-fab
-        color="primary"
-    >
+    <span>{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
+        {{ patient.name + ' ' + patient.surname }}</span>
+    <button class="add-btn" mat-mini-fab color="primary">
         <i class="material-icons">close</i>
     </button>
 </p>
