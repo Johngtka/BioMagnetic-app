@@ -55,7 +55,7 @@ export class VisitComponent implements OnInit {
         this.patient = patientSelected;
     }
     toggleTableVisibility(): void {
-        this.patient = null;
+        this.patient.name = null;
     }
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
