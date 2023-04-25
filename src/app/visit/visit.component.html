@@ -2,8 +2,8 @@
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>
-<p class="info" [hidden]="!patient.name">
-    <span *ngIf="!!patient.name">{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
+<p [hidden]="!patient.name" class="info">
+    <span [hidden]="!patient.name">{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
         {{ patient.name + ' ' + patient.surname }}</span>
     <button (click)="toggleTableVisibility()" class="add-btn" mat-mini-fab color="primary">
         <i class="material-icons">close</i>
@@ -12,7 +12,7 @@
 <p [hidden]="patient.name">
     {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
 </p>
-<div class="mat-elevation-z8" *ngIf="patient.name">
+<div [hidden]="!patient.name" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>
