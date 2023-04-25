@@ -54,9 +54,9 @@ export class VisitComponent implements OnInit {
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
     }
-    // toggleTableVisibility(): void {
-
-    // }
+    toggleTableVisibility(): void {
+        this.patient = null;
+    }
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
