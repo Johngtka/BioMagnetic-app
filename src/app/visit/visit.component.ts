@@ -51,11 +51,14 @@ export class VisitComponent implements OnInit {
             },
         });
     }
-    selectPatient(patientSelected: Patient) {
+    selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
     }
+    toggleTableVisibility(): void {
+        this.patient.name = null;
+    }
     @HostListener('document:keydown', ['$event'])
-    handleKeyboardEvent(event: KeyboardEvent) {
+    handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
         } else if (

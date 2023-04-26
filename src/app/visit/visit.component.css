@@ -22,3 +22,13 @@
 .mat-column-image {
     width: 30%;
 }
+
+.info {
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.add-btn {
+    float: right;
+}
