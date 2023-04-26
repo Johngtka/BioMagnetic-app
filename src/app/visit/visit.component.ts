@@ -42,6 +42,7 @@ export class VisitComponent implements OnInit {
         | Store[]
         | MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
+    selected = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -77,6 +78,7 @@ export class VisitComponent implements OnInit {
             this.visitPoints.push(row.id);
             console.log(row.id);
         }
+        this.selected = !this.selected;
     }
     toggleTableVisibility(): void {
         if (this.visitPoints) {
