@@ -28,7 +28,7 @@ export class VisitComponent implements OnInit {
         private snackService: SnackService,
         private dialog: MatDialog,
     ) {}
-    patient!: Patient;
+    patient: Patient | object;
     displayedColumns: string[] = [
         'id',
         'negativePoint',
@@ -42,7 +42,12 @@ export class VisitComponent implements OnInit {
         | MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
     ngOnInit(): void {
-        this.patient = history.state;
+        this.patient = {};
+        const urlPatient = history.state;
+        if (this.checkIfPatient(urlPatient)) {
+            this.patient = urlPatient;
+        }
+
         this.storeService.getStore().subscribe({
             next: (data) => (
                 (this.dataSource = data.sort((a, b) => a.id - b.id)),
@@ -84,7 +89,7 @@ export class VisitComponent implements OnInit {
             });
             dialogREf.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
-                    this.patient = null;
+                    this.patient = {};
                 }
             });
         }
@@ -99,5 +104,9 @@ export class VisitComponent implements OnInit {
         ) {
             this.paginator.previousPage();
         }
+    }
+
+    private checkIfPatient(object: any): object is Patient {
+        return object.name;
     }
 }
