@@ -66,6 +66,9 @@
         },
         "SELECT": {
             "ACTIVE": "Nowa wizyta utworzona dla pacjenta"
+        },
+        "INFO": {
+            "LOST": "Wszystkie prace związane z umawianiem spotkań zostaną utracone"
         }
     },
     "VISIT_TABLE": {

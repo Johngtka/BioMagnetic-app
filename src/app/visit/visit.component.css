@@ -32,3 +32,7 @@
 .add-btn {
     float: right;
 }
+
+.selectedRow {
+    background-color: lightgray;
+}

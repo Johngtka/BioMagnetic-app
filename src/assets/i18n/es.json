@@ -66,6 +66,9 @@
         },
         "SELECT": {
             "ACTIVE": "Nueva cita creada para un paciente"
+        },
+        "INFO": {
+            "LOST": "Se perderá todo el trabajo relacionado con el nombramiento."
         }
     },
     "VISIT_TABLE": {

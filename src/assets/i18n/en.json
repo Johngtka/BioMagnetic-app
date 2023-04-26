@@ -66,6 +66,9 @@
         },
         "SELECT": {
             "ACTIVE": "New appointment created for patient"
+        },
+        "INFO": {
+            "LOST": "All appointment work will be lost"
         }
     },
     "VISIT_TABLE": {

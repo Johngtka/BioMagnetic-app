@@ -1,13 +1,20 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
+import {
+    ConfirmationDialogComponent,
+    ConfirmationDialogResponse,
+} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'app-visit',
@@ -19,6 +26,7 @@ export class VisitComponent implements OnInit {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
+        private dialog: MatDialog,
     ) {}
     patient!: Patient;
     displayedColumns: string[] = [
@@ -32,7 +40,7 @@ export class VisitComponent implements OnInit {
     dataSource:
         | Store[]
         | MatTableDataSource<Store, MatTableDataSourcePaginator>;
-    visitPoints: number;
+    visitPoints: number[] = [];
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
@@ -55,12 +63,31 @@ export class VisitComponent implements OnInit {
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
     }
-    toggleTableVisibility(): void {
-        this.patient.name = null;
-    }
     clickedRow(row): void {
-        this.visitPoints = row.id;
-        console.log(this.visitPoints);
+        const index = this.visitPoints.indexOf(row.id);
+        if (index !== -1) {
+            this.visitPoints.splice(index, 1);
+            console.log(this.visitPoints);
+        } else {
+            this.visitPoints.push(row.id);
+            console.log(row.id);
+        }
+    }
+    toggleTableVisibility(): void {
+        if (this.visitPoints) {
+            const dialogREf = this.dialog.open(ConfirmationDialogComponent, {
+                data: {
+                    title: 'Approve',
+                    message: 'PATIENT_VISIT.INFO.LOST',
+                },
+                disableClose: true,
+            });
+            dialogREf.afterClosed().subscribe((conf) => {
+                if (conf === ConfirmationDialogResponse.OK) {
+                    this.patient = null;
+                }
+            });
+        }
     }
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
