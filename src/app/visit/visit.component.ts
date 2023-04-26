@@ -32,6 +32,7 @@ export class VisitComponent implements OnInit {
     dataSource:
         | Store[]
         | MatTableDataSource<Store, MatTableDataSourcePaginator>;
+    visitPoints: number;
     ngOnInit(): void {
         this.patient = history.state;
         this.storeService.getStore().subscribe({
@@ -57,8 +58,9 @@ export class VisitComponent implements OnInit {
     toggleTableVisibility(): void {
         this.patient.name = null;
     }
-    clickedRow(row: object): void {
-        console.log(row);
+    clickedRow(row): void {
+        this.visitPoints = row.id;
+        console.log(this.visitPoints);
     }
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
