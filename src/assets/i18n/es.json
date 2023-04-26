@@ -68,7 +68,7 @@
             "ACTIVE": "Nueva cita creada para un paciente"
         },
         "INFO": {
-            "LOST": "Se perderá todo el trabajo relacionado con el nombramiento."
+            "LOST": "Todo el trabajo en la visita actual se perderá, si continuar el?"
         }
     },
     "VISIT_TABLE": {
@@ -84,6 +84,6 @@
         "CONFIRM": "Confirmar",
         "GENERIC_TITLE": "¿Estás seguro?",
         "GENERIC_MESSAGE": "Está a punto de eliminar los registro, desea continuar",
-        "CLOSE_VISIT_TITLE": "Espere!!!"
+        "CLOSE_VISIT_TITLE": "Alerta!!!"
     }
 }
