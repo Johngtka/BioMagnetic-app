@@ -1,4 +1,4 @@
-<div [hidden]="patient.name">
+<div *ngIf="!patient.name">
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>

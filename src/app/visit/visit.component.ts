@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
+import { NavigationObject } from '../models/NavigationObject';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import {
@@ -22,12 +23,12 @@ import {
     styleUrls: ['./visit.component.css'],
 })
 export class VisitComponent implements OnInit {
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
         private dialog: MatDialog,
     ) {}
+    @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
     displayedColumns: string[] = [
         'id',
@@ -47,7 +48,6 @@ export class VisitComponent implements OnInit {
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
         }
-
         this.storeService.getStore().subscribe({
             next: (data) => (
                 (this.dataSource = data.sort((a, b) => a.id - b.id)),
@@ -106,7 +106,9 @@ export class VisitComponent implements OnInit {
         }
     }
 
-    private checkIfPatient(object: any): object is Patient {
-        return object.name;
+    private checkIfPatient(
+        object: Patient | NavigationObject,
+    ): object is Patient {
+        return Object.hasOwn(object, 'name');
     }
 }
