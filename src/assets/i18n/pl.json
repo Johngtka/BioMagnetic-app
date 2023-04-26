@@ -83,6 +83,7 @@
         "CANCEL": "Anuluj",
         "CONFIRM": "Potwierdź",
         "GENERIC_TITLE": "Czy jesteś pewien?",
-        "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować"
+        "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować",
+        "CLOSE_VISIT_TITLE": "Zaczekaj!!!"
     }
 }

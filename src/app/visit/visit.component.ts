@@ -73,18 +73,17 @@ export class VisitComponent implements OnInit {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
-            console.log(this.visitPoints);
+            // console.log(this.visitPoints);
         } else {
             this.visitPoints.push(row.id);
-            console.log(row.id);
+            // console.log(row.id);
         }
-        this.selected = !this.selected;
     }
     toggleTableVisibility(): void {
         if (this.visitPoints) {
             const dialogREf = this.dialog.open(ConfirmationDialogComponent, {
                 data: {
-                    title: 'Approve',
+                    title: 'CONFIRMATION_DIALOG.CLOSE_VISIT_TITLE',
                     message: 'PATIENT_VISIT.INFO.LOST',
                 },
                 disableClose: true,
@@ -92,6 +91,7 @@ export class VisitComponent implements OnInit {
             dialogREf.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
+                    this.visitPoints = [];
                 }
             });
         }

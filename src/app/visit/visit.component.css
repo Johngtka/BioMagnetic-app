@@ -33,10 +33,11 @@
     float: right;
 }
 
-.mat-mdc-row{
+.mat-mdc-row {
     cursor: pointer;
 }
 
-.selectedRow, selectedRow:hover {
+.selectedRow,
+selectedRow:hover {
     background-color: lightgray !important;
 }
