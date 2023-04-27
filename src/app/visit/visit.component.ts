@@ -73,14 +73,12 @@ export class VisitComponent implements OnInit {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
-            // console.log(this.visitPoints);
         } else {
             this.visitPoints.push(row.id);
-            // console.log(row.id);
         }
     }
     toggleTableVisibility(): void {
-        if (this.visitPoints) {
+        if (this.visitPoints.length >= 1) {
             const dialogREf = this.dialog.open(ConfirmationDialogComponent, {
                 data: {
                     title: 'CONFIRMATION_DIALOG.CLOSE_VISIT_TITLE',
@@ -94,6 +92,8 @@ export class VisitComponent implements OnInit {
                     this.visitPoints = [];
                 }
             });
+        } else {
+            this.patient = {} as Patient;
         }
     }
     @HostListener('document:keydown', ['$event'])
