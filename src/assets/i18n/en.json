@@ -66,6 +66,9 @@
         },
         "SELECT": {
             "ACTIVE": "New appointment created for patient"
+        },
+        "INFO": {
+            "LOST": "All work in current appointment will be lost, do you want to proceed?"
         }
     },
     "VISIT_TABLE": {
@@ -80,6 +83,7 @@
         "CANCEL": "Cancel",
         "CONFIRM": "Confirm",
         "GENERIC_TITLE": "Are you sure?",
-        "GENERIC_MESSAGE": "You are about to delete the record, do you wish to proceed"
+        "GENERIC_MESSAGE": "You are about to delete the record, do you wish to proceed",
+        "CLOSE_VISIT_TITLE": "Warning!!!"
     }
 }

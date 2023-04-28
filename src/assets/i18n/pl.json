@@ -66,6 +66,9 @@
         },
         "SELECT": {
             "ACTIVE": "Nowa wizyta utworzona dla pacjenta"
+        },
+        "INFO": {
+            "LOST": "Cała praca w obecnej wizycie zostanie utracona, czy chcesz kontynuować?"
         }
     },
     "VISIT_TABLE": {
@@ -80,6 +83,7 @@
         "CANCEL": "Anuluj",
         "CONFIRM": "Potwierdź",
         "GENERIC_TITLE": "Czy jesteś pewien?",
-        "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować"
+        "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować",
+        "CLOSE_VISIT_TITLE": "Ostrzeżenie!!!"
     }
 }

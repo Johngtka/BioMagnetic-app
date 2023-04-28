@@ -32,3 +32,12 @@
 .add-btn {
     float: right;
 }
+
+.mat-mdc-row {
+    cursor: pointer;
+}
+
+.selectedRow,
+selectedRow:hover {
+    background-color: lightgray !important;
+}
