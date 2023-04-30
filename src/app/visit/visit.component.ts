@@ -74,14 +74,7 @@ export class VisitComponent implements OnInit {
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
         } else {
-            this.visitPoints.push(
-                row.id,
-                row.negativePoint,
-                row.positivePoint,
-                row.name,
-                row.type,
-                row.image,
-            );
+            this.visitPoints.push(row.id);
         }
         if (this.visitPoints.length >= 1) {
             this.selected = true;
