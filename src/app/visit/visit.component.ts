@@ -41,7 +41,7 @@ export class VisitComponent implements OnInit {
     dataSource:
         | Store[]
         | MatTableDataSource<Store, MatTableDataSourcePaginator>;
-    visitPoints: number[] = [];
+    visitPoints: Store[] = [];
     selected = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -120,5 +120,6 @@ export class VisitComponent implements OnInit {
     }
     finishVisit(): void {
         // dddd
+        this.dataSource = this.visitPoints;
     }
 }
