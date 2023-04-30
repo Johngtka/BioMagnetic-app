@@ -76,6 +76,11 @@ export class VisitComponent implements OnInit {
         } else {
             this.visitPoints.push(row.id);
         }
+        if (this.visitPoints.length >= 1) {
+            this.selected = true;
+        } else {
+            this.selected = false;
+        }
     }
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
@@ -112,5 +117,8 @@ export class VisitComponent implements OnInit {
         object: Patient | NavigationObject,
     ): object is Patient {
         return Object.hasOwn(object, 'name');
+    }
+    finishVisit(): void {
+        // dddd
     }
 }
