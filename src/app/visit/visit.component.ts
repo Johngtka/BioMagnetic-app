@@ -74,7 +74,14 @@ export class VisitComponent implements OnInit {
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
         } else {
-            this.visitPoints.push(row.id);
+            this.visitPoints.push(
+                row.id,
+                row.negativePoint,
+                row.positivePoint,
+                row.name,
+                row.type,
+                row.image,
+            );
         }
         if (this.visitPoints.length >= 1) {
             this.selected = true;
@@ -119,7 +126,6 @@ export class VisitComponent implements OnInit {
         return Object.hasOwn(object, 'name');
     }
     finishVisit(): void {
-        // dddd
         this.dataSource = this.visitPoints;
     }
 }
