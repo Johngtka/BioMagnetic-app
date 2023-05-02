@@ -88,6 +88,7 @@ export class VisitComponent implements OnInit {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
                     this.visitPoints = [];
+                    this.checked = false;
                 }
             });
         } else {
@@ -122,7 +123,7 @@ export class VisitComponent implements OnInit {
             this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
         );
         this.selected = !this.selected;
-        this.checked = !this.checked;
+        this.checked = true;
         this.dataSource.paginator = this.paginator;
     }
 }

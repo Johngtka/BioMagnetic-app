@@ -23,6 +23,10 @@
     width: 30%;
 }
 
+.none {
+    display: none !important;
+}
+
 .info {
     align-items: center;
     width: 100%;
@@ -32,7 +36,7 @@
 .notes {
     float: left;
     width: 50%;
-    display: block;
+    display: block !important;
     height: 100px;
 }
 
