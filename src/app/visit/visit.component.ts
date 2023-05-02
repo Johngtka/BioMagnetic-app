@@ -38,10 +38,9 @@ export class VisitComponent implements OnInit {
         'type',
         'image',
     ];
-    dataSource:
-        | Store[]
-        | MatTableDataSource<Store, MatTableDataSourcePaginator>;
-    visitPoints: Store[] = [];
+    dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
+    visitPoints: number[] = [];
+    store: Store[];
     selected = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -50,13 +49,11 @@ export class VisitComponent implements OnInit {
             this.patient = urlPatient;
         }
         this.storeService.getStore().subscribe({
-            next: (data) => (
-                (this.dataSource = data.sort((a, b) => a.id - b.id)),
-                (this.dataSource = new MatTableDataSource<Store>(
-                    this.dataSource,
-                )),
-                (this.dataSource.paginator = this.paginator)
-            ),
+            next: (data) => {
+                this.store = data.sort((a, b) => a.id - b.id);
+                this.dataSource = new MatTableDataSource<Store>(this.store);
+                this.dataSource.paginator = this.paginator;
+            },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
@@ -119,6 +116,8 @@ export class VisitComponent implements OnInit {
         return Object.hasOwn(object, 'name');
     }
     finishVisit(): void {
-        this.dataSource = this.visitPoints;
+        this.dataSource = new MatTableDataSource<Store>(
+            this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
+        );
     }
 }
