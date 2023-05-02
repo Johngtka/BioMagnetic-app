@@ -74,11 +74,6 @@ export class VisitComponent implements OnInit {
         } else {
             this.visitPoints.push(row.id);
         }
-        if (this.visitPoints.length >= 1) {
-            this.selected = true;
-        } else {
-            this.selected = false;
-        }
     }
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
@@ -93,6 +88,7 @@ export class VisitComponent implements OnInit {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
                     this.visitPoints = [];
+                    this.checked = false;
                 }
             });
         } else {
@@ -103,11 +99,17 @@ export class VisitComponent implements OnInit {
     handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
+            if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
+                this.selected = !this.selected;
+            }
         } else if (
             event.key === 'ArrowLeft' &&
             this.paginator.hasPreviousPage()
         ) {
             this.paginator.previousPage();
+            if (this.paginator.hasPreviousPage()) {
+                this.selected = false;
+            }
         }
     }
 
@@ -116,10 +118,11 @@ export class VisitComponent implements OnInit {
     ): object is Patient {
         return Object.hasOwn(object, 'name');
     }
-    finishVisit(): void {
+    checkVisit(): void {
         this.dataSource = new MatTableDataSource<Store>(
             this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
         );
-        this.checked = true;
+        this.selected = !this.selected;
+        this.checked = !this.checked;
     }
 }
