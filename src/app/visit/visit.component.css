@@ -29,6 +29,21 @@
     height: 50px;
 }
 
+.notes {
+    float: left;
+    width: 50%;
+    display: block;
+    height: 100px;
+}
+
+.info1 {
+    align-items: center;
+    width: 50%;
+    float: left;
+    display: block;
+    height: 100px;
+}
+
 .add-btn {
     float: right;
 }

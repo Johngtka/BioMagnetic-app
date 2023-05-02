@@ -88,7 +88,6 @@ export class VisitComponent implements OnInit {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
                     this.visitPoints = [];
-                    this.checked = false;
                 }
             });
         } else {
@@ -124,5 +123,6 @@ export class VisitComponent implements OnInit {
         );
         this.selected = !this.selected;
         this.checked = !this.checked;
+        this.dataSource.paginator = this.paginator;
     }
 }
