@@ -42,6 +42,7 @@ export class VisitComponent implements OnInit {
     visitPoints: number[] = [];
     store: Store[];
     selected = false;
+    checked = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -81,14 +82,14 @@ export class VisitComponent implements OnInit {
     }
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
-            const dialogREf = this.dialog.open(ConfirmationDialogComponent, {
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
                 data: {
                     title: 'CONFIRMATION_DIALOG.CLOSE_VISIT_TITLE',
                     message: 'PATIENT_VISIT.INFO.LOST',
                 },
                 disableClose: true,
             });
-            dialogREf.afterClosed().subscribe((conf) => {
+            dialogRef.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
                     this.visitPoints = [];
@@ -119,5 +120,6 @@ export class VisitComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Store>(
             this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
         );
+        this.checked = true;
     }
 }

@@ -69,7 +69,8 @@
         },
         "INFO": {
             "LOST": "All work in current appointment will be lost, do you want to proceed?"
-        }
+        },
+        "NOTES": "Notes"
     },
     "VISIT_TABLE": {
         "ID": "Id",
