@@ -89,6 +89,8 @@ export class VisitComponent implements OnInit {
                     this.patient = {} as Patient;
                     this.visitPoints = [];
                     this.checked = false;
+                    this.dataSource = new MatTableDataSource<Store>(this.store);
+                    this.dataSource.paginator = this.paginator;
                 }
             });
         } else {
