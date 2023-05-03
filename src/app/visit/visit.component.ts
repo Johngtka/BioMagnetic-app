@@ -41,8 +41,8 @@ export class VisitComponent implements OnInit {
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
     store: Store[];
-    selected = false;
-    checked = false;
+    rowSelect = false;
+    showFinish = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -88,7 +88,7 @@ export class VisitComponent implements OnInit {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
                     this.visitPoints = [];
-                    this.checked = false;
+                    this.showFinish = false;
                     this.dataSource = new MatTableDataSource<Store>(this.store);
                     this.dataSource.paginator = this.paginator;
                 }
@@ -102,7 +102,7 @@ export class VisitComponent implements OnInit {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
             if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-                this.selected = !this.selected;
+                this.rowSelect = !this.rowSelect;
             }
         } else if (
             event.key === 'ArrowLeft' &&
@@ -110,7 +110,7 @@ export class VisitComponent implements OnInit {
         ) {
             this.paginator.previousPage();
             if (this.paginator.hasPreviousPage()) {
-                this.selected = false;
+                this.rowSelect = false;
             }
         }
     }
@@ -120,12 +120,12 @@ export class VisitComponent implements OnInit {
     ): object is Patient {
         return Object.hasOwn(object, 'name');
     }
-    checkVisit(): void {
+    createVisitPointsTable(): void {
         this.dataSource = new MatTableDataSource<Store>(
             this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
         );
-        this.selected = !this.selected;
-        this.checked = true;
+        this.paginator.firstPage();
+        this.showFinish = true;
         this.dataSource.paginator = this.paginator;
     }
 }
