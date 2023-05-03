@@ -70,13 +70,11 @@
     <mat-paginator [pageSizeOptions]="[10]" aria-label="Select page">
     </mat-paginator>
 </div>
-<div class="notes" [hidden]="patient.name">
-    <mat-form-field [ngClass]="{none: !checked}">
+<div class="finishBar" [hidden]="!patient.name">
+    <mat-form-field class="notesOnCheck" [ngClass]="{ notesOffCheck: !checked }">
         <mat-label>{{ 'PATIENT_VISIT.NOTES' | translate }}</mat-label>
         <input matInput />
     </mat-form-field>
-</div>
-<div class="info1" [hidden]="!patient.name">
     <button [hidden]="!checked" class="add-btn" mat-raised-button color="primary">
         FINISH
     </button>
