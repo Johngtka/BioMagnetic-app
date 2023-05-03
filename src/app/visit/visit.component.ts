@@ -126,6 +126,7 @@ export class VisitComponent implements OnInit {
         );
         this.paginator.firstPage();
         this.showFinish = true;
+        this.rowSelect = false;
         this.dataSource.paginator = this.paginator;
     }
 }
