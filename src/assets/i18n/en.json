@@ -71,7 +71,7 @@
             "LOST": "All work in current appointment will be lost, do you want to proceed?"
         },
         "NOTES": "Notes",
-        "FINISH_BUTTONS":{
+        "FINISH_BUTTONS": {
             "CHECK": "Check",
             "FINISH": "Finish"
         }

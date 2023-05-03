@@ -41,6 +41,7 @@ export class VisitComponent implements OnInit {
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
     store: Store[];
+    noteVal: string;
     rowSelect = false;
     showFinish = false;
     ngOnInit(): void {
@@ -91,6 +92,7 @@ export class VisitComponent implements OnInit {
                     this.showFinish = false;
                     this.dataSource = new MatTableDataSource<Store>(this.store);
                     this.dataSource.paginator = this.paginator;
+                    console.clear();
                 }
             });
         } else {
@@ -128,5 +130,8 @@ export class VisitComponent implements OnInit {
         this.showFinish = true;
         this.rowSelect = false;
         this.dataSource.paginator = this.paginator;
+    }
+    printNote(): void {
+        console.log(this.noteVal, this.dataSource.data);
     }
 }
