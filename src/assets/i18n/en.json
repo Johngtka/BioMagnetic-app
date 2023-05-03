@@ -70,7 +70,11 @@
         "INFO": {
             "LOST": "All work in current appointment will be lost, do you want to proceed?"
         },
-        "NOTES": "Notes"
+        "NOTES": "Notes",
+        "FINISH_BUTTONS":{
+            "CHECK": "Check",
+            "FINISH": "Finish"
+        }
     },
     "VISIT_TABLE": {
         "ID": "Id",

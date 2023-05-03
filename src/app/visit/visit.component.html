@@ -3,16 +3,9 @@
     </app-patient-search>
 </div>
 <p [hidden]="!patient.name" class="info">
-    <span
-        >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
-        {{ patient.name + ' ' + patient.surname }}</span
-    >
-    <button
-        (click)="toggleTableVisibility()"
-        class="add-btn"
-        mat-mini-fab
-        color="primary"
-    >
+    <span>{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
+        {{ patient.name + ' ' + patient.surname }}</span>
+    <button (click)="toggleTableVisibility()" class="add-btn" mat-mini-fab color="primary">
         <i class="material-icons">close</i>
     </button>
 </p>
@@ -71,39 +64,21 @@
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr
-            mat-row
-            *matRowDef="let row; columns: displayedColumns"
-            (click)="clickedRow(row)"
-            [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"
-        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="clickedRow(row)"
+            [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10]" aria-label="Select page">
     </mat-paginator>
 </div>
-<div class="finishBar" [hidden]="!patient.name">
-    <mat-form-field
-        class="notesOnCheck"
-        [ngClass]="{ notesOffCheck: !showFinish }"
-    >
+<div [hidden]="!patient.name">
+    <mat-form-field class="notesOnCheck" [ngClass]="{ notesOffCheck: !showFinish }">
         <mat-label>{{ 'PATIENT_VISIT.NOTES' | translate }}</mat-label>
         <input matInput />
     </mat-form-field>
-    <button
-        [hidden]="!showFinish"
-        class="add-btn"
-        mat-raised-button
-        color="primary"
-    >
-        FINISH
+    <button class="add-btn" [hidden]="!showFinish" mat-raised-button color="primary">
+        {{"PATIENT_VISIT.FINISH_BUTTONS.FINISH" | translate}}
     </button>
-    <button
-        [hidden]="!rowSelect"
-        (click)="createVisitPointsTable()"
-        class="add-btn"
-        mat-raised-button
-        color="primary"
-    >
-        CHECK
+    <button class="add-btn" [hidden]="!rowSelect" (click)="createVisitPointsTable()" mat-raised-button color="primary">
+        {{"PATIENT_VISIT.FINISH_BUTTONS.CHECK" | translate}}
     </button>
 </div>

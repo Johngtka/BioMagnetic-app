@@ -70,7 +70,11 @@
         "INFO": {
             "LOST": "Cała praca w obecnej wizycie zostanie utracona, czy chcesz kontynuować?"
         },
-        "NOTES": "Uwagi"
+        "NOTES": "Uwagi",
+        "FINISH_BUTTONS": {
+            "CHECK": "Sprawdź",
+            "FINISH": "Zakończ"
+        }
     },
     "VISIT_TABLE": {
         "ID": "Id",
