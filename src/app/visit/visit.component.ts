@@ -42,7 +42,7 @@ export class VisitComponent implements OnInit {
     visitPoints: number[] = [];
     store: Store[];
     noteVal: string;
-    rowSelect = false;
+    showCheck = false;
     showFinish = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -72,8 +72,10 @@ export class VisitComponent implements OnInit {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
+            this.showCheck = !this.showCheck;
         } else {
             this.visitPoints.push(row.id);
+            this.showCheck = !this.showCheck;
         }
     }
     toggleTableVisibility(): void {
@@ -104,7 +106,7 @@ export class VisitComponent implements OnInit {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
             if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-                this.rowSelect = !this.rowSelect;
+                this.showCheck = !this.showCheck;
             }
         } else if (
             event.key === 'ArrowLeft' &&
@@ -112,7 +114,7 @@ export class VisitComponent implements OnInit {
         ) {
             this.paginator.previousPage();
             if (this.paginator.hasPreviousPage()) {
-                this.rowSelect = false;
+                this.showCheck = false;
             }
         }
     }
@@ -122,15 +124,23 @@ export class VisitComponent implements OnInit {
     ): object is Patient {
         return Object.hasOwn(object, 'name');
     }
+
     createVisitPointsTable(): void {
         this.dataSource = new MatTableDataSource<Store>(
             this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
         );
         this.paginator.firstPage();
         this.showFinish = true;
-        this.rowSelect = false;
+        this.showCheck = false;
         this.dataSource.paginator = this.paginator;
     }
+
+    pageTriggerManually(): void {
+        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
+            this.showCheck = !this.showCheck;
+        }
+    }
+
     printNote(): void {
         console.log(this.noteVal, this.dataSource.data);
     }
