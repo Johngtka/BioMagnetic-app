@@ -72,10 +72,12 @@ export class VisitComponent implements OnInit {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
-            this.showCheck = !this.showCheck;
+            this.showCheck = false;
         } else {
             this.visitPoints.push(row.id);
-            this.showCheck = !this.showCheck;
+        }
+        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
+            this.showCheck = true;
         }
     }
     toggleTableVisibility(): void {
@@ -106,7 +108,7 @@ export class VisitComponent implements OnInit {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
             if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-                this.showCheck = !this.showCheck;
+                this.showCheck = true;
             }
         } else if (
             event.key === 'ArrowLeft' &&
@@ -137,7 +139,7 @@ export class VisitComponent implements OnInit {
 
     pageTriggerManually(): void {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-            this.showCheck = !this.showCheck;
+            this.showCheck = true;
         }
     }
 
