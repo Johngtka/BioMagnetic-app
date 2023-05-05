@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Patient } from '../models/patient';
 
+import { MatDialog } from '@angular/material/dialog';
+
+import { Patient } from '../models/patient';
 import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.component';
 
 @Component({

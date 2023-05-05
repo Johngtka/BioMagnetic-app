@@ -1,20 +1,20 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
-import { NavigationObject } from '../models/NavigationObject';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
+import { NavigationObject } from '../models/NavigationObject';
 import {
-    ConfirmationDialogComponent,
     ConfirmationDialogResponse,
+    ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({

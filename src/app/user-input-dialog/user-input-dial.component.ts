@@ -3,11 +3,12 @@ import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { Patient } from '../models/patient';
 import { SNACK_TYPE } from './../services/snack.service';
 import { SnackService } from '../services/snack.service';
 import { PatientService } from '../services/patient-service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Patient } from '../models/patient';
 
 @Component({
     selector: 'app-user-input-dial',
