@@ -140,6 +140,11 @@ export class VisitComponent implements OnInit {
     pageTriggerManually(): void {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
             this.showCheck = true;
+        } else if (
+            this.paginator.hasPreviousPage &&
+            this.visitPoints.length >= 1
+        ) {
+            this.showCheck = false;
         }
     }
 
