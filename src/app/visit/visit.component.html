@@ -86,7 +86,7 @@
     </mat-paginator>
 </div>
 <div [hidden]="!patient.name">
-    <mat-form-field class="notesOnCheck" *ngIf="showFinish">
+    <mat-form-field *ngIf="showFinish">
         <mat-label>{{ 'PATIENT_VISIT.NOTES' | translate }}</mat-label>
         <input matInput type="text" [(ngModel)]="noteVal" />
     </mat-form-field>
