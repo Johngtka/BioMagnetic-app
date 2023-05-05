@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.6...v0.0.7) (2023-05-05)
+
+
+### Features
+
+* allow a user to select a row in visit table ([#34](https://github.com/Johngtka/Biomagnthick-app/issues/34)) ([fafa980](https://github.com/Johngtka/Biomagnthick-app/commit/fafa980c03ed7ad50d1610e8690138f0e2108d91))
+* hide search bar when new visit started ([#33](https://github.com/Johngtka/Biomagnthick-app/issues/33)) ([ea0a816](https://github.com/Johngtka/Biomagnthick-app/commit/ea0a816cb68bf810009d64ce38fbf09059a0bf2c))
+* new table based on selected point ([#35](https://github.com/Johngtka/Biomagnthick-app/issues/35)) ([a903fcd](https://github.com/Johngtka/Biomagnthick-app/commit/a903fcd2f815a35c3f1e6bf994ffb54733a73ca3))
+
 ### [0.0.6](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.5...v0.0.6) (2023-04-21)
 
 
