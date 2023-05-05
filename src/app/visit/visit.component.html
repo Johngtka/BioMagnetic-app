@@ -101,7 +101,7 @@
     </button>
     <button
         class="add-btn"
-        [hidden]="!showCheck"
+        [hidden]="!showCheck || showFinish"
         (click)="createVisitPointsTable()"
         mat-raised-button
         color="primary"
