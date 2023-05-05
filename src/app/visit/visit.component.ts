@@ -90,15 +90,16 @@ export class VisitComponent implements OnInit {
             dialogRef.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
-                    this.visitPoints = [];
                     this.showFinish = false;
                     this.dataSource = new MatTableDataSource<Store>(this.store);
                     this.dataSource.paginator = this.paginator;
+                    this.visitPoints = [];
                     console.clear();
                 }
             });
         } else {
             this.patient = {} as Patient;
+            this.visitPoints = [];
         }
     }
     @HostListener('document:keydown', ['$event'])
