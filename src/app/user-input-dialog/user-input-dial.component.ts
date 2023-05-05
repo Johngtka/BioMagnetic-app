@@ -19,7 +19,7 @@ export class UserInputDialogComponent implements OnInit {
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
-        public dialogRef: MatDialogRef<UserInputDialogComponent>,
+        private dialogRef: MatDialogRef<UserInputDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: { patient: Patient },
     ) {}
 

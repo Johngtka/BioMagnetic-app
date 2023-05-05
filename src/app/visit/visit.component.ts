@@ -16,6 +16,7 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
+import { HistoryService } from '../services/history.service';
 
 @Component({
     selector: 'app-visit',
@@ -26,6 +27,7 @@ export class VisitComponent implements OnInit {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
+        private historyService: HistoryService,
         private dialog: MatDialog,
     ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -135,11 +137,26 @@ export class VisitComponent implements OnInit {
 
     sendVisit(): void {
         const visit = {
-            id: this.patient._id,
+            patientId: this.patient._id,
             note: this.noteVal,
             points: this.visitPoints,
         };
-        console.log(visit);
+        this.historyService.createVisit(visit).subscribe({
+            next: (data) => {
+                this.snackService.showSnackBarMessage(
+                    'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.success,
+                );
+                console.log(data);
+            },
+            error: (error) => {
+                this.snackService.showSnackBarMessage(
+                    'ERROR.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.error,
+                );
+                console.log(error);
+            },
+        });
     }
 
     private paginatorPageChecker() {

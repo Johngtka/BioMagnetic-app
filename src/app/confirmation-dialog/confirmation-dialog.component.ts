@@ -15,7 +15,7 @@ export enum ConfirmationDialogResponse {
 })
 export class ConfirmationDialogComponent {
     constructor(
-        public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
+        private dialogRef: MatDialogRef<ConfirmationDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: ConfirmationDialog,
     ) {}
 
