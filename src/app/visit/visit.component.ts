@@ -133,8 +133,13 @@ export class VisitComponent implements OnInit {
         this.paginatorPageChecker();
     }
 
-    printNote(): void {
-        console.log(this.noteVal, this.dataSource.data);
+    sendVisit(): void {
+        const visit = {
+            id: this.patient._id,
+            note: this.noteVal,
+            points: this.visitPoints,
+        };
+        console.log(visit);
     }
 
     private paginatorPageChecker() {
