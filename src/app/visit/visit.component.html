@@ -78,6 +78,9 @@
             [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"
         ></tr>
     </table>
+    <div class="loader-container" *ngIf="isLoadingResults">
+        <mat-spinner></mat-spinner>
+    </div>
     <mat-paginator
         (page)="pageTriggerManually()"
         [pageSizeOptions]="[10]"

@@ -44,6 +44,7 @@ export class VisitComponent implements OnInit {
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    isLoadingResults = true;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -55,6 +56,7 @@ export class VisitComponent implements OnInit {
                 this.store = data.sort((a, b) => a.id - b.id);
                 this.dataSource = new MatTableDataSource<Store>(this.store);
                 this.dataSource.paginator = this.paginator;
+                this.isLoadingResults = false;
             },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
