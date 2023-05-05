@@ -121,12 +121,6 @@ export class VisitComponent implements OnInit {
         }
     }
 
-    private checkIfPatient(
-        object: Patient | NavigationObject,
-    ): object is Patient {
-        return Object.hasOwn(object, 'name');
-    }
-
     createVisitPointsTable(): void {
         this.dataSource = new MatTableDataSource<Store>(
             this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
@@ -150,5 +144,11 @@ export class VisitComponent implements OnInit {
 
     printNote(): void {
         console.log(this.noteVal, this.dataSource.data);
+    }
+
+    private checkIfPatient(
+        object: Patient | NavigationObject,
+    ): object is Patient {
+        return Object.hasOwn(object, 'name');
     }
 }
