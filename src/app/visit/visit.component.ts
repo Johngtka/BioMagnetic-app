@@ -1,20 +1,20 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
-import { NavigationObject } from '../models/NavigationObject';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
+import { NavigationObject } from '../models/NavigationObject';
 import {
-    ConfirmationDialogComponent,
     ConfirmationDialogResponse,
+    ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
@@ -38,11 +38,12 @@ export class VisitComponent implements OnInit {
         'type',
         'image',
     ];
-    dataSource:
-        | Store[]
-        | MatTableDataSource<Store, MatTableDataSourcePaginator>;
+    dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
-    selected = false;
+    store: Store[];
+    noteVal: string;
+    showCheck = false;
+    showFinish = false;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -50,13 +51,11 @@ export class VisitComponent implements OnInit {
             this.patient = urlPatient;
         }
         this.storeService.getStore().subscribe({
-            next: (data) => (
-                (this.dataSource = data.sort((a, b) => a.id - b.id)),
-                (this.dataSource = new MatTableDataSource<Store>(
-                    this.dataSource,
-                )),
-                (this.dataSource.paginator = this.paginator)
-            ),
+            next: (data) => {
+                this.store = data.sort((a, b) => a.id - b.id);
+                this.dataSource = new MatTableDataSource<Store>(this.store);
+                this.dataSource.paginator = this.paginator;
+            },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
@@ -73,38 +72,74 @@ export class VisitComponent implements OnInit {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
+            this.showCheck = false;
         } else {
             this.visitPoints.push(row.id);
         }
+        this.paginatorPageChecker();
     }
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
-            const dialogREf = this.dialog.open(ConfirmationDialogComponent, {
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
                 data: {
                     title: 'CONFIRMATION_DIALOG.CLOSE_VISIT_TITLE',
                     message: 'PATIENT_VISIT.INFO.LOST',
                 },
                 disableClose: true,
             });
-            dialogREf.afterClosed().subscribe((conf) => {
+            dialogRef.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
                     this.patient = {} as Patient;
+                    this.showCheck = false;
+                    this.showFinish = false;
+                    this.dataSource = new MatTableDataSource<Store>(this.store);
+                    this.dataSource.paginator = this.paginator;
                     this.visitPoints = [];
+                    console.clear();
                 }
             });
         } else {
             this.patient = {} as Patient;
+            this.visitPoints = [];
         }
     }
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
+            this.paginatorPageChecker();
         } else if (
             event.key === 'ArrowLeft' &&
             this.paginator.hasPreviousPage()
         ) {
             this.paginator.previousPage();
+            this.paginatorPageChecker();
+        }
+    }
+
+    createVisitPointsTable(): void {
+        this.dataSource = new MatTableDataSource<Store>(
+            this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
+        );
+        this.paginator.firstPage();
+        this.showFinish = true;
+        this.showCheck = false;
+        this.dataSource.paginator = this.paginator;
+    }
+
+    pageTriggerManually(): void {
+        this.paginatorPageChecker();
+    }
+
+    printNote(): void {
+        console.log(this.noteVal, this.dataSource.data);
+    }
+
+    private paginatorPageChecker() {
+        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
+            this.showCheck = true;
+        } else {
+            this.showCheck = false;
         }
     }
 

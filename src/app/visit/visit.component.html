@@ -78,6 +78,34 @@
             [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"
         ></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[10]" aria-label="Select page">
+    <mat-paginator
+        (page)="pageTriggerManually()"
+        [pageSizeOptions]="[10]"
+        aria-label="Select page"
+    >
     </mat-paginator>
+</div>
+<div [hidden]="!patient.name">
+    <mat-form-field *ngIf="showFinish">
+        <mat-label>{{ 'PATIENT_VISIT.NOTES' | translate }}</mat-label>
+        <input matInput type="text" [(ngModel)]="noteVal" />
+    </mat-form-field>
+    <button
+        class="add-btn"
+        [hidden]="!showFinish"
+        (click)="printNote()"
+        mat-raised-button
+        color="primary"
+    >
+        {{ 'PATIENT_VISIT.FINISH_BUTTONS.FINISH' | translate }}
+    </button>
+    <button
+        class="add-btn"
+        [hidden]="!showCheck || showFinish"
+        (click)="createVisitPointsTable()"
+        mat-raised-button
+        color="primary"
+    >
+        {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
+    </button>
 </div>

@@ -69,6 +69,11 @@
         },
         "INFO": {
             "LOST": "Todo el trabajo en la visita actual se perderá, si continuar el?"
+        },
+        "NOTES": "Comentarios",
+        "FINISH_BUTTONS": {
+            "CHECK": "Comprobar",
+            "FINISH": "Finalizar"
         }
     },
     "VISIT_TABLE": {

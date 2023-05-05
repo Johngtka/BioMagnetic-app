@@ -15,8 +15,8 @@ import { SNACK_TYPE } from './../services/snack.service';
 import { SnackService } from './../services/snack.service';
 import { PatientService } from './../services/patient-service';
 import {
-    ConfirmationDialogComponent,
     ConfirmationDialogResponse,
+    ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
