@@ -76,9 +76,7 @@ export class VisitComponent implements OnInit {
         } else {
             this.visitPoints.push(row.id);
         }
-        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-            this.showCheck = true;
-        }
+        this.paginatorPageChecker();
     }
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
@@ -107,17 +105,13 @@ export class VisitComponent implements OnInit {
     handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
             this.paginator.nextPage();
-            if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-                this.showCheck = true;
-            }
+            this.paginatorPageChecker();
         } else if (
             event.key === 'ArrowLeft' &&
             this.paginator.hasPreviousPage()
         ) {
             this.paginator.previousPage();
-            if (this.paginator.hasPreviousPage()) {
-                this.showCheck = false;
-            }
+            this.paginatorPageChecker();
         }
     }
 
@@ -132,6 +126,14 @@ export class VisitComponent implements OnInit {
     }
 
     pageTriggerManually(): void {
+        this.paginatorPageChecker();
+    }
+
+    printNote(): void {
+        console.log(this.noteVal, this.dataSource.data);
+    }
+
+    private paginatorPageChecker() {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
             this.showCheck = true;
         } else if (
@@ -140,10 +142,6 @@ export class VisitComponent implements OnInit {
         ) {
             this.showCheck = false;
         }
-    }
-
-    printNote(): void {
-        console.log(this.noteVal, this.dataSource.data);
     }
 
     private checkIfPatient(
