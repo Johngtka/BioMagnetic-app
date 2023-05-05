@@ -37,18 +37,6 @@
     cursor: pointer;
 }
 
-.loader-container {
-    position: relative;
-    min-height: 200px;
-    max-height: 400px;
-    overflow: auto;
-    background: rgba(0, 0, 0, 0.15);
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .selectedRow,
 selectedRow:hover {
     background-color: lightgray !important;
