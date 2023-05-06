@@ -9,6 +9,7 @@ import {
 
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
+import { Visit } from '../models/visit';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import { NavigationObject } from '../models/NavigationObject';
@@ -16,6 +17,7 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
+import { VisitService } from '../services/visit.service';
 
 @Component({
     selector: 'app-visit',
@@ -26,6 +28,7 @@ export class VisitComponent implements OnInit {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
+        private visitService: VisitService,
         private dialog: MatDialog,
     ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -133,8 +136,28 @@ export class VisitComponent implements OnInit {
         this.paginatorPageChecker();
     }
 
-    printNote(): void {
-        console.log(this.noteVal, this.dataSource.data);
+    sendVisit(): void {
+        const visit: Visit = {
+            patientId: this.patient._id,
+            note: this.noteVal,
+            points: this.visitPoints,
+        };
+        this.visitService.createVisit(visit).subscribe({
+            next: (data) => {
+                this.snackService.showSnackBarMessage(
+                    'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.success,
+                );
+                console.log(data);
+            },
+            error: (error) => {
+                this.snackService.showSnackBarMessage(
+                    'ERROR.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.error,
+                );
+                console.log(error);
+            },
+        });
     }
 
     private paginatorPageChecker() {
