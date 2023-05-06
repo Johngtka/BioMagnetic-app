@@ -14,7 +14,11 @@ export class HistoryService {
 
     apiURL = enviroment.API_URL;
 
-    createVisit(visit): Observable<Store> {
+    createVisit(visit: {
+        patientId: string;
+        note: string;
+        points: number[];
+    }): Observable<Store> {
         return this.http.post<Store>(this.apiURL + '/history', visit);
     }
 }
