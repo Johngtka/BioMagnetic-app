@@ -2,7 +2,12 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "outDir": "./out-tsc/app"
+        "outDir": "./out-tsc/app",
+        "resolveJsonModule": true,
+        "types": [
+            "jasmine",
+            "node"
+          ]
     },
     "files": ["src/main.ts"],
     "include": ["src/**/*.d.ts"]

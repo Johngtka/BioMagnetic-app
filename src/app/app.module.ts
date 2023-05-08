@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
@@ -65,6 +66,7 @@ const materialModules = [
     MatTooltipModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatCardModule,
 ];
 
 @NgModule({
