@@ -3,7 +3,7 @@
     "version": "0.0.7",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "ng serve -c development",
         "prebuild": "standard-version && npm run updateBuild",
         "build": "ng build",
         "postbuild": "git push --follow-tags",
