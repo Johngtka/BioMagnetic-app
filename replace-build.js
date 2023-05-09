@@ -12,7 +12,7 @@ const options = {
     // ],
     files: 'src/environments/environment.prod.ts',
     from: /version: '(.*)'/g,
-    to: "version: '" + buildVersion + ' (' + buildTimestamp + ')',
+    to: "version: '" + buildVersion + ' (' + buildTimestamp + ')' + "'",
     allowEmptyPaths: false,
 };
 
