@@ -1,5 +1,6 @@
 export const environment = {
     production: false,
-    TITLE: 'Biomag_DEV',
+    TITLE: 'Bio_mag',
     API_URL: 'https://busy-tan-whale-tam.cyclic.app',
+    version: 'VERSION',
 };
