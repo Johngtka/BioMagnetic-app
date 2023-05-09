@@ -9,4 +9,5 @@ import { environment } from '../../environments/environment';
 export class AboutComponent {
     Title = environment.TITLE;
     version = environment.version;
+    date = new Date();
 }

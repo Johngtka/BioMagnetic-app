@@ -1,5 +1,23 @@
 .appVersion {
     width: 50%;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.icon {
+    width: 20%;
+}
+
+.title {
+    font-size: 160%;
+}
+
+.info {
+    font-size: 100%;
+}
+
+.squad a {
+    color: black;
+    text-decoration: none;
 }
