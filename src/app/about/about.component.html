@@ -4,12 +4,14 @@
             <img class="icon" src="assets/img/magnet.svg" /><br />
 
             <h2>{{ Title }}</h2>
-            <h5>Version: {{ version }}</h5>
+            <h5>
+                {{ 'ABOUT_VERSION_CARD.VERSION' | translate }}: {{ version }}
+            </h5>
             <span class="squad"
                 ><b>{{ '&copy;' + date.getFullYear() }}</b
                 ><a href="https://github.com/Johngtka"> @johngtka</a
-                ><a href="https://github.com/macrog"> @macrog</a> All rights
-                reserved</span
+                ><a href="https://github.com/macrog"> @macrog</a>
+                {{ 'ABOUT_VERSION_CARD.COPYRIGHT' | translate }}</span
             >
         </mat-card-content>
     </mat-card>
