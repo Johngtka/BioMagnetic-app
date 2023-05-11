@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -7,7 +8,7 @@ import { environment } from '../../environments/environment';
     styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
-    Title = environment.TITLE;
+    title = environment.TITLE;
     version = environment.version;
     date = new Date();
 }
