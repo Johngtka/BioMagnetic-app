@@ -92,5 +92,9 @@
         "GENERIC_TITLE": "Are you sure?",
         "GENERIC_MESSAGE": "You are about to delete the record, do you wish to proceed",
         "CLOSE_VISIT_TITLE": "Warning!!!"
+    },
+    "ABOUT_VERSION_CARD": {
+        "VERSION": "Version",
+        "COPYRIGHT": "All rights reserved"
     }
 }

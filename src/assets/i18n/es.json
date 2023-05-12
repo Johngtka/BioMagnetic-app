@@ -92,5 +92,9 @@
         "GENERIC_TITLE": "¿Estás seguro?",
         "GENERIC_MESSAGE": "Está a punto de eliminar los registro, desea continuar",
         "CLOSE_VISIT_TITLE": "Alerta!!!"
+    },
+    "ABOUT_VERSION_CARD": {
+        "VERSION": "Versión",
+        "COPYRIGHT": "Reservados todos los derechos"
     }
 }

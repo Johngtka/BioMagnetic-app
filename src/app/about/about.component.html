@@ -1,1 +1,18 @@
-<p>about works!</p>
+<div class="appVersion">
+    <mat-card>
+        <mat-card-content>
+            <img class="icon" src="../../assets/img/magnet.svg" />
+
+            <h2>{{ title }}</h2>
+            <h5>
+                {{ 'ABOUT_VERSION_CARD.VERSION' | translate }}: {{ version }}
+            </h5>
+            <span class="squad"
+                ><b>{{ '&copy;' + date.getFullYear() }}</b
+                ><a href="https://github.com/Johngtka"> @johngtka</a
+                ><a href="https://github.com/macrog"> @macrog</a>
+                {{ 'ABOUT_VERSION_CARD.COPYRIGHT' | translate }}</span
+            >
+        </mat-card-content>
+    </mat-card>
+</div>

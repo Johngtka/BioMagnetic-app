@@ -1,0 +1,20 @@
+.appVersion {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.icon {
+    width: 3rem;
+}
+
+.squad {
+    font-size: 0.7rem;
+}
+
+.squad a {
+    color: black;
+    text-decoration: none;
+}

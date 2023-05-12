@@ -92,5 +92,9 @@
         "GENERIC_TITLE": "Czy jesteś pewien?",
         "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować",
         "CLOSE_VISIT_TITLE": "Ostrzeżenie!!!"
+    },
+    "ABOUT_VERSION_CARD": {
+        "VERSION": "Wesja",
+        "COPYRIGHT": "Wszelkie prawa zastrzeżone"
     }
 }
