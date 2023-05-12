@@ -67,7 +67,7 @@
                 {{ 'VISIT_TABLE.IMAGE' | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
-                {{ element.image }}
+                <img class="bodyPoints" src="{{ element.image }}" />
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

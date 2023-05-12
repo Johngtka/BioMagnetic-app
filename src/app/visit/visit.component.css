@@ -41,3 +41,7 @@
 selectedRow:hover {
     background-color: lightgray !important;
 }
+
+.bodyPoints {
+    width: 50%;
+}
