@@ -10,6 +10,7 @@ import {
 import { Store } from '../models/store';
 import { Patient } from '../models/patient';
 import { Visit } from '../models/visit';
+import { Company } from '../models/company';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import { NavigationObject } from '../models/NavigationObject';
@@ -18,6 +19,7 @@ import {
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
 import { VisitService } from '../services/visit.service';
+import { CompanyService } from '../services/company.service';
 
 @Component({
     selector: 'app-visit',
@@ -29,6 +31,7 @@ export class VisitComponent implements OnInit {
         private storeService: StoreService,
         private snackService: SnackService,
         private visitService: VisitService,
+        private companyService: CompanyService,
         private dialog: MatDialog,
     ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -48,6 +51,7 @@ export class VisitComponent implements OnInit {
     showCheck = false;
     showFinish = false;
     isLoadingResults = true;
+    company: Company;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -67,6 +71,14 @@ export class VisitComponent implements OnInit {
                     SNACK_TYPE.error,
                 );
                 console.log(err.message);
+            },
+        });
+        this.companyService.getCompany().subscribe({
+            next: (data) => {
+                this.company = data;
+            },
+            error: (err) => {
+                console.log(err);
             },
         });
     }
