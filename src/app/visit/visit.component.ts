@@ -150,7 +150,6 @@ export class VisitComponent implements OnInit {
     pageTriggerManually(): void {
         this.paginatorPageChecker();
     }
-
     sendVisit(): void {
         const visit: Visit = {
             patientId: this.patient._id,
@@ -158,25 +157,37 @@ export class VisitComponent implements OnInit {
             points: this.visitPoints,
         };
         const pdfData = {
-            fullName: this.patient.name + this.patient.surname,
+            fullName: this.patient.name + ' ' + this.patient.surname,
             logo: this.company.logo,
             generickInfo: this.company.genericInfo,
             points: this.visitPoints,
         };
         console.log(pdfData);
-        const docDefnintion = {
+        const docDefinition = {
             content: [
                 {
-                    ul: [
-                        pdfData.fullName,
-                        pdfData.generickInfo,
-                        pdfData.logo,
-                        pdfData.points,
-                    ],
+                    // layout: 'noBorders',
+                    table: {
+                        widths: ['50%', '50%'],
+                        body: [
+                            [
+                                {
+                                    text: pdfData.fullName,
+                                    alignment: 'left',
+                                },
+                                {
+                                    image: pdfData.logo,
+                                    width: 100,
+                                    alignment: 'right',
+                                },
+                            ],
+                        ],
+                    },
                 },
             ],
         };
-        pdfMake.createPdf(docDefnintion).open();
+
+        pdfMake.createPdf(docDefinition).open();
         this.visitService.createVisit(visit).subscribe({
             next: (data) => {
                 this.snackService.showSnackBarMessage(
