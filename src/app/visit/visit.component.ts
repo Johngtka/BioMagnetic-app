@@ -20,6 +20,9 @@ import {
 } from '../confirmation-dialog/confirmation-dialog.component';
 import { VisitService } from '../services/visit.service';
 import { CompanyService } from '../services/company.service';
+import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
+import pdfFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'app-visit',
@@ -154,6 +157,26 @@ export class VisitComponent implements OnInit {
             note: this.noteVal,
             points: this.visitPoints,
         };
+        const pdfData = {
+            fullName: this.patient.name + this.patient.surname,
+            logo: this.company.logo,
+            generickInfo: this.company.genericInfo,
+            points: this.visitPoints,
+        };
+        console.log(pdfData);
+        const docDefnintion = {
+            content: [
+                {
+                    ul: [
+                        pdfData.fullName,
+                        pdfData.generickInfo,
+                        pdfData.logo,
+                        pdfData.points,
+                    ],
+                },
+            ],
+        };
+        pdfMake.createPdf(docDefnintion).open();
         this.visitService.createVisit(visit).subscribe({
             next: (data) => {
                 this.snackService.showSnackBarMessage(
