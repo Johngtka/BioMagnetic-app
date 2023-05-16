@@ -53,6 +53,7 @@ export class VisitComponent implements OnInit {
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    date = new Date();
     isLoadingResults = true;
     company: Company;
     ngOnInit(): void {
@@ -162,9 +163,12 @@ export class VisitComponent implements OnInit {
             generickInfo: this.company.genericInfo,
             points: this.visitPoints,
         };
-        // console.log(pdfData);
         const docDefinition = {
             content: [
+                {
+                    text: this.datePicker(),
+                    margin: [0, 10],
+                },
                 {
                     layout: 'noBorders',
                     table: {
@@ -216,6 +220,13 @@ export class VisitComponent implements OnInit {
         //         console.log(error);
         //     },
         // });
+    }
+    private datePicker() {
+        const day = this.date.getDate();
+        const month = this.date.getMonth() + 1;
+        const year = this.date.getFullYear();
+        const dat = day + '.' + month + '.' + year;
+        return dat;
     }
     private getPdfRow(point: number) {
         return [
