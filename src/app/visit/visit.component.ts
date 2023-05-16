@@ -7,9 +7,9 @@ import {
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
 
-import { Store } from '../models/store';
 import { Patient } from '../models/patient';
-import { Visit } from '../models/visit';
+import { Store } from '../models/store';
+// import { Visit } from '../models/visit';
 import { Company } from '../models/company';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
@@ -151,22 +151,22 @@ export class VisitComponent implements OnInit {
         this.paginatorPageChecker();
     }
     sendVisit(): void {
-        const visit: Visit = {
-            patientId: this.patient._id,
-            note: this.noteVal,
-            points: this.visitPoints,
-        };
+        // const visit: Visit = {
+        //     patientId: this.patient._id,
+        //     note: this.noteVal,
+        //     points: this.visitPoints,
+        // };
         const pdfData = {
             fullName: this.patient.name + ' ' + this.patient.surname,
             logo: this.company.logo,
             generickInfo: this.company.genericInfo,
             points: this.visitPoints,
         };
-        console.log(pdfData);
+        // console.log(pdfData);
         const docDefinition = {
             content: [
                 {
-                    // layout: 'noBorders',
+                    layout: 'noBorders',
                     table: {
                         widths: ['50%', '50%'],
                         body: [
@@ -184,28 +184,51 @@ export class VisitComponent implements OnInit {
                         ],
                     },
                 },
+                {
+                    text: pdfData.generickInfo,
+                    margin: [10, 10],
+                },
+                {
+                    table: {
+                        widths: ['50%', '50%'],
+                        body: this.visitPoints.map((point) =>
+                            this.getPdfRow(point),
+                        ),
+                    },
+                },
             ],
         };
 
         pdfMake.createPdf(docDefinition).open();
-        this.visitService.createVisit(visit).subscribe({
-            next: (data) => {
-                this.snackService.showSnackBarMessage(
-                    'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
-                    SNACK_TYPE.success,
-                );
-                console.log(data);
-            },
-            error: (error) => {
-                this.snackService.showSnackBarMessage(
-                    'ERROR.PATIENT_VISIT_CREATE_VISIT',
-                    SNACK_TYPE.error,
-                );
-                console.log(error);
-            },
-        });
+        // this.visitService.createVisit(visit).subscribe({
+        //     next: (data) => {
+        //         this.snackService.showSnackBarMessage(
+        //             'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
+        //             SNACK_TYPE.success,
+        //         );
+        //         console.log(data);
+        //     },
+        //     error: (error) => {
+        //         this.snackService.showSnackBarMessage(
+        //             'ERROR.PATIENT_VISIT_CREATE_VISIT',
+        //             SNACK_TYPE.error,
+        //         );
+        //         console.log(error);
+        //     },
+        // });
     }
-
+    private getPdfRow(point: number) {
+        return [
+            {
+                text: point,
+            },
+            {
+                image: this.store.find((s: Store) => s.id === point).image,
+                width: 100,
+                alignment: 'center',
+            },
+        ];
+    }
     private paginatorPageChecker() {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
             this.showCheck = true;
