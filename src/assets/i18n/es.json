@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Inicio",
         "ABOUT": "Sobre",
-        "VISIT": "Visite"
+        "VISIT": "Visite",
+        "HISTORY": "Historia"
     },
     "GENERAL": {
         "CLOSE": "Cierra"

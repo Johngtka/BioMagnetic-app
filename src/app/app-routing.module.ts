@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { VisitComponent } from './visit/visit.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'visit',
         component: VisitComponent,
+    },
+    {
+        path: 'history',
+        component: HistoryComponent,
     },
 ];
 
