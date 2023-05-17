@@ -162,7 +162,7 @@ export class VisitComponent implements OnInit {
         const pdfData = {
             fullName: this.patient.name + ' ' + this.patient.surname,
             logo: this.company.logo,
-            generickInfo: this.company.genericInfo,
+            genericInfo: this.company.genericInfo,
         };
         const docDefinition = {
             content: [
@@ -190,7 +190,7 @@ export class VisitComponent implements OnInit {
                     },
                 },
                 {
-                    text: pdfData.generickInfo,
+                    text: pdfData.genericInfo,
                     margin: [0, 100],
                 },
                 {
