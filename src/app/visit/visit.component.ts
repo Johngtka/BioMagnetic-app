@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 
+import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {
@@ -35,6 +36,7 @@ export class VisitComponent implements OnInit {
         private snackService: SnackService,
         private visitService: VisitService,
         private companyService: CompanyService,
+        private datePipe: DatePipe,
         private dialog: MatDialog,
     ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -166,7 +168,7 @@ export class VisitComponent implements OnInit {
         const docDefinition = {
             content: [
                 {
-                    text: this.datePicker(),
+                    text: this.datePipe.transform(Date.now(), 'dd.MM.yyyy'),
                     margin: [0, 10],
                 },
                 {
@@ -202,13 +204,14 @@ export class VisitComponent implements OnInit {
                 },
             ],
         };
+        pdfMake.createPdf(docDefinition).open();
         this.visitService.createVisit(visit).subscribe({
             next: (data) => {
                 this.snackService.showSnackBarMessage(
                     'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
                     SNACK_TYPE.success,
                 );
-                pdfMake.createPdf(docDefinition).open();
+
                 console.log(data);
             },
             error: (error) => {
@@ -219,13 +222,6 @@ export class VisitComponent implements OnInit {
                 console.log(error);
             },
         });
-    }
-    private datePicker() {
-        const day = this.date.getDate();
-        const month = this.date.getMonth() + 1;
-        const year = this.date.getFullYear();
-        const dat = day + '.' + month + '.' + year;
-        return dat;
     }
     private getPdfRow(point: number) {
         return [
