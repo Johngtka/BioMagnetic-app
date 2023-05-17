@@ -21,8 +21,8 @@ import {
 } from '../confirmation-dialog/confirmation-dialog.component';
 import { VisitService } from '../services/visit.service';
 import { CompanyService } from '../services/company.service';
-import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
-import pdfFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
+import * as pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
+import * as pdfFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -163,7 +163,6 @@ export class VisitComponent implements OnInit {
             fullName: this.patient.name + ' ' + this.patient.surname,
             logo: this.company.logo,
             generickInfo: this.company.genericInfo,
-            points: this.visitPoints,
         };
         const docDefinition = {
             content: [
@@ -204,14 +203,13 @@ export class VisitComponent implements OnInit {
                 },
             ],
         };
-        pdfMake.createPdf(docDefinition).open();
         this.visitService.createVisit(visit).subscribe({
             next: (data) => {
                 this.snackService.showSnackBarMessage(
                     'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
                     SNACK_TYPE.success,
                 );
-
+                pdfMake.createPdf(docDefinition).open();
                 console.log(data);
             },
             error: (error) => {
