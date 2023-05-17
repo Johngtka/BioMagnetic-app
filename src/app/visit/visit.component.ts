@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 
+import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {
@@ -7,8 +8,8 @@ import {
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
 
-import { Store } from '../models/store';
 import { Patient } from '../models/patient';
+import { Store } from '../models/store';
 import { Visit } from '../models/visit';
 import { Company } from '../models/company';
 import { StoreService } from '../services/store.service';
@@ -20,6 +21,9 @@ import {
 } from '../confirmation-dialog/confirmation-dialog.component';
 import { VisitService } from '../services/visit.service';
 import { CompanyService } from '../services/company.service';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'app-visit',
@@ -32,6 +36,7 @@ export class VisitComponent implements OnInit {
         private snackService: SnackService,
         private visitService: VisitService,
         private companyService: CompanyService,
+        private datePipe: DatePipe,
         private dialog: MatDialog,
     ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -50,6 +55,7 @@ export class VisitComponent implements OnInit {
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    date = new Date();
     isLoadingResults = true;
     company: Company;
     ngOnInit(): void {
@@ -147,12 +153,55 @@ export class VisitComponent implements OnInit {
     pageTriggerManually(): void {
         this.paginatorPageChecker();
     }
-
     sendVisit(): void {
         const visit: Visit = {
             patientId: this.patient._id,
             note: this.noteVal,
             points: this.visitPoints,
+        };
+        const pdfData = {
+            fullName: this.patient.name + ' ' + this.patient.surname,
+            logo: this.company.logo,
+            genericInfo: this.company.genericInfo,
+        };
+        const docDefinition = {
+            content: [
+                {
+                    text: this.datePipe.transform(Date.now(), 'dd.MM.yyyy'),
+                    margin: [0, 10],
+                },
+                {
+                    layout: 'noBorders',
+                    table: {
+                        widths: ['50%', '50%'],
+                        body: [
+                            [
+                                {
+                                    text: pdfData.fullName,
+                                    alignment: 'left',
+                                },
+                                {
+                                    image: pdfData.logo,
+                                    width: 100,
+                                    alignment: 'right',
+                                },
+                            ],
+                        ],
+                    },
+                },
+                {
+                    text: pdfData.genericInfo,
+                    margin: [0, 100],
+                },
+                {
+                    table: {
+                        widths: ['50%', '50%'],
+                        body: this.visitPoints.map((point) =>
+                            this.getPdfRow(point),
+                        ),
+                    },
+                },
+            ],
         };
         this.visitService.createVisit(visit).subscribe({
             next: (data) => {
@@ -160,6 +209,7 @@ export class VisitComponent implements OnInit {
                     'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
                     SNACK_TYPE.success,
                 );
+                pdfMake.createPdf(docDefinition).open();
                 console.log(data);
             },
             error: (error) => {
@@ -171,7 +221,18 @@ export class VisitComponent implements OnInit {
             },
         });
     }
-
+    private getPdfRow(point: number) {
+        return [
+            {
+                text: point,
+            },
+            {
+                image: this.store.find((s: Store) => s.id === point).image,
+                width: 100,
+                alignment: 'center',
+            },
+        ];
+    }
     private paginatorPageChecker() {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
             this.showCheck = true;

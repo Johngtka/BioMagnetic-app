@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -100,7 +101,7 @@ const materialModules = [
         AppRoutingModule,
         ...materialModules,
     ],
-    providers: [PatientService],
+    providers: [PatientService, DatePipe],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
