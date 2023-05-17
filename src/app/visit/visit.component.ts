@@ -21,8 +21,8 @@ import {
 } from '../confirmation-dialog/confirmation-dialog.component';
 import { VisitService } from '../services/visit.service';
 import { CompanyService } from '../services/company.service';
-import * as pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
-import * as pdfFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
