@@ -202,14 +202,13 @@ export class VisitComponent implements OnInit {
                 },
             ],
         };
-
-        pdfMake.createPdf(docDefinition).open();
         this.visitService.createVisit(visit).subscribe({
             next: (data) => {
                 this.snackService.showSnackBarMessage(
                     'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
                     SNACK_TYPE.success,
                 );
+                pdfMake.createPdf(docDefinition).open();
                 console.log(data);
             },
             error: (error) => {
