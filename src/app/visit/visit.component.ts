@@ -9,7 +9,7 @@ import {
 
 import { Patient } from '../models/patient';
 import { Store } from '../models/store';
-// import { Visit } from '../models/visit';
+import { Visit } from '../models/visit';
 import { Company } from '../models/company';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
@@ -152,11 +152,11 @@ export class VisitComponent implements OnInit {
         this.paginatorPageChecker();
     }
     sendVisit(): void {
-        // const visit: Visit = {
-        //     patientId: this.patient._id,
-        //     note: this.noteVal,
-        //     points: this.visitPoints,
-        // };
+        const visit: Visit = {
+            patientId: this.patient._id,
+            note: this.noteVal,
+            points: this.visitPoints,
+        };
         const pdfData = {
             fullName: this.patient.name + ' ' + this.patient.surname,
             logo: this.company.logo,
@@ -190,7 +190,7 @@ export class VisitComponent implements OnInit {
                 },
                 {
                     text: pdfData.generickInfo,
-                    margin: [10, 10],
+                    margin: [0, 100],
                 },
                 {
                     table: {
@@ -204,22 +204,22 @@ export class VisitComponent implements OnInit {
         };
 
         pdfMake.createPdf(docDefinition).open();
-        // this.visitService.createVisit(visit).subscribe({
-        //     next: (data) => {
-        //         this.snackService.showSnackBarMessage(
-        //             'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
-        //             SNACK_TYPE.success,
-        //         );
-        //         console.log(data);
-        //     },
-        //     error: (error) => {
-        //         this.snackService.showSnackBarMessage(
-        //             'ERROR.PATIENT_VISIT_CREATE_VISIT',
-        //             SNACK_TYPE.error,
-        //         );
-        //         console.log(error);
-        //     },
-        // });
+        this.visitService.createVisit(visit).subscribe({
+            next: (data) => {
+                this.snackService.showSnackBarMessage(
+                    'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.success,
+                );
+                console.log(data);
+            },
+            error: (error) => {
+                this.snackService.showSnackBarMessage(
+                    'ERROR.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.error,
+                );
+                console.log(error);
+            },
+        });
     }
     private datePicker() {
         const day = this.date.getDate();
