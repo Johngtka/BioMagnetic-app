@@ -9,6 +9,7 @@ import { NavigationObject } from '../models/NavigationObject';
 })
 export class HistoryComponent implements OnInit {
     patient: Patient;
+    displayedColumns: string[] = ['date', 'points', 'note'];
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
