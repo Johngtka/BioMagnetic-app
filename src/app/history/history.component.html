@@ -2,23 +2,13 @@
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>
-<!-- <p [hidden]="!patient.name" class="info">
-    <span
-        >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
-        {{ patient.name + ' ' + patient.surname }}</span
-    >
-    <button class="add-btn" mat-mini-fab color="primary">
-        <i class="material-icons">close</i>
-    </button>
-</p>
-<p [hidden]="patient.name">
-    {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
-</p> -->
 <div [hidden]="!patient.name" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef>
-                {{ 'VISIT_TABLE.ID' | translate }}
+                {{ 'VISITS_HISTORY_TABLE.DATE' | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
                 {{ element.date }}
@@ -26,7 +16,7 @@
         </ng-container>
         <ng-container matColumnDef="points">
             <th mat-header-cell *matHeaderCellDef>
-                {{ 'VISIT_TABLE.NEGATIVE_POINT' | translate }}
+                {{ 'VISITS_HISTORY_TABLE.POINTS' | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
                 {{ element.points }}
@@ -34,7 +24,7 @@
         </ng-container>
         <ng-container matColumnDef="note">
             <th mat-header-cell *matHeaderCellDef>
-                {{ 'VISIT_TABLE.POSITIVE_POINT' | translate }}
+                {{ 'VISITS_HISTORY_TABLE.NOTE' | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
                 {{ element.note }}
