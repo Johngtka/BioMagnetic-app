@@ -6,7 +6,7 @@
         "HOME": "Home",
         "ABOUT": "About",
         "VISIT": "Visit",
-        "HISTORY": "History"
+        "VISITS_HISTORY": "History"
     },
     "GENERAL": {
         "CLOSE": "Close"
@@ -86,6 +86,11 @@
         "NAME": "Name",
         "TYPE": "Type",
         "IMAGE": "Image"
+    },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Date",
+        "POINTS": "Points",
+        "NOTE": "Note"
     },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancel",
