@@ -58,14 +58,16 @@
             <button mat-icon-button [matMenuTriggerFor]="menu">
                 <mat-icon>more_vert</mat-icon>
             </button>
+            <!-- [disabled]="true" -->
             <mat-menu #menu="matMenu">
                 <button
+                    routerLink="/history"
                     mat-icon-button
                     matTooltip="{{
                         'PATIENT_TABLE.TOOLTIPS.PREVIOUS' | translate
                     }}"
                     matTooltipShowDelay="1500"
-                    [disabled]="true"
+                    (click)="showHistory(element)"
                 >
                     <mat-icon>history</mat-icon>
                 </button>

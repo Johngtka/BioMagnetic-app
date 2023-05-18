@@ -41,14 +41,6 @@ export class VisitComponent implements OnInit {
     ) {}
     @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
-    displayedColumns: string[] = [
-        'id',
-        'negativePoint',
-        'positivePoint',
-        'name',
-        'type',
-        'image',
-    ];
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
     store: Store[];
@@ -58,6 +50,14 @@ export class VisitComponent implements OnInit {
     date = new Date();
     isLoadingResults = true;
     company: Company;
+    displayedColumns: string[] = [
+        'id',
+        'negativePoint',
+        'positivePoint',
+        'name',
+        'type',
+        'image',
+    ];
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;

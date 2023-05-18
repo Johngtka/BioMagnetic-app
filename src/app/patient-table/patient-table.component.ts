@@ -75,6 +75,9 @@ export class PatientTableComponent implements OnInit, OnChanges {
     startNewVisit(patient: Patient): void {
         this.route.navigate(['visit'], { state: patient });
     }
+    showHistory(patient: Patient): void {
+        this.route.navigate(['history'], { state: patient });
+    }
 
     deletePatient(patient: Patient) {
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
