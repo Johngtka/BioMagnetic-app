@@ -17,4 +17,8 @@ export class VisitService {
     createVisit(visit: Visit): Observable<Visit> {
         return this.http.post<Visit>(this.apiURL + '/visit', visit);
     }
+
+    getVisits(patientId: string): Observable<Array<Visit>> {
+        return this.http.get<Array<Visit>>(this.apiURL + `/visit/${patientId}`);
+    }
 }

@@ -59,9 +59,10 @@ export class PatientTableComponent implements OnInit, OnChanges {
     }
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
-            next: (data: Array<Patient>) => (
-                (this.dataSource = data), (this.isLoadingResults = false)
-            ),
+            next: (data: Array<Patient>) => {
+                this.dataSource = data;
+                this.isLoadingResults = false;
+            },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_TABLE_GET_PATIENTS',
