@@ -8,19 +8,19 @@ import {
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
 
-import { Patient } from '../models/patient';
 import { Store } from '../models/store';
 import { Visit } from '../models/visit';
+import { Patient } from '../models/patient';
 import { Company } from '../models/company';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import { NavigationObject } from '../models/NavigationObject';
+import { VisitService } from '../services/visit.service';
+import { CompanyService } from '../services/company.service';
 import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
-import { VisitService } from '../services/visit.service';
-import { CompanyService } from '../services/company.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
