@@ -102,5 +102,8 @@
     "ABOUT_VERSION_CARD": {
         "VERSION": "Version",
         "COPYRIGHT": "All rights reserved"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "You have no history of visit"
     }
 }

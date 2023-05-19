@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MatDialog } from '@angular/material/dialog';
-
 import { Visit } from '../models/visit';
 import { Patient } from '../models/patient';
 import { VisitService } from '../services/visit.service';
 import { NavigationObject } from '../models/NavigationObject';
-import { EmptyStateComponent } from '../empty.state/empty.state.component';
 
 @Component({
     selector: 'app-history',
@@ -14,32 +11,39 @@ import { EmptyStateComponent } from '../empty.state/empty.state.component';
     styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit {
-    constructor(
-        private visitService: VisitService,
-        private dialog: MatDialog,
-    ) {}
+    constructor(private visitService: VisitService) {}
     patient: Patient;
     dataSource: Visit[];
     displayedColumns: string[] = ['date', 'points', 'note'];
+    emptyState = true;
+    isLoadingResults = true;
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
-            this.visitService.getVisits(this.patient._id).subscribe({
-                next: (data) => {
-                    this.dataSource = data;
-                },
-                error: (err) => {
-                    console.log(err);
-                },
-            });
-        } else {
-            this.dialog.open(EmptyStateComponent);
+            this.getPatientVisit();
         }
     }
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
+        this.getPatientVisit();
+    }
+
+    private getPatientVisit(): void {
+        this.visitService.getVisits(this.patient._id).subscribe({
+            next: (data) => {
+                if (data.length >= 1) {
+                    this.dataSource = data;
+                    this.isLoadingResults = false;
+                } else {
+                    this.emptyState = false;
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
     }
     private checkIfPatient(
         object: Patient | NavigationObject,
