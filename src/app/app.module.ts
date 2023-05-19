@@ -42,6 +42,7 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { HistoryComponent } from './history/history.component';
+import { EmptyStateComponent } from './empty.state/empty.state.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -83,6 +84,7 @@ const materialModules = [
         VisitComponent,
         ConfirmationDialogComponent,
         HistoryComponent,
+        EmptyStateComponent,
     ],
     imports: [
         BrowserModule,
