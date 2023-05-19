@@ -1,9 +1,17 @@
-.stateBlock {
-    width: auto;
-    text-align: center;
-    font-size: large;
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
 }
-.mat-18 {
+.text {
+    font-size: 3vw;
+}
+mat-icon {
+    font-size: 7vw;
+    height: 7vw;
+    width: 7vw;
     color: gray;
-    font-size: 50px;
 }
