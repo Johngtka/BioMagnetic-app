@@ -10,7 +10,10 @@
 
 <div [hidden]="!patient.name" *ngIf="dataSource" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef>
