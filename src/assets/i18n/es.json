@@ -104,6 +104,6 @@
         "COPYRIGHT": "Reservados todos los derechos"
     },
     "EMPTY_STATE": {
-        "TEXT": "No tiene historial de visitas"
+        "TEXT": "No hay citas anticipadas para el paciente seleccionado"
     }
 }

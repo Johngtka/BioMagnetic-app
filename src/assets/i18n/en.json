@@ -104,6 +104,6 @@
         "COPYRIGHT": "All rights reserved"
     },
     "EMPTY_STATE": {
-        "TEXT": "You have no history of visit"
+        "TEXT": "No early visits for the selected patient"
     }
 }

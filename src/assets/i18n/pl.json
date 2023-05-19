@@ -104,6 +104,6 @@
         "COPYRIGHT": "Wszelkie prawa zastrzeżone"
     },
     "EMPTY_STATE": {
-        "TEXT": "Nie posiadasz żadnej histori wizyt"
+        "TEXT": "Brak wczesniejszych wizyt dla wybranego pacjenta"
     }
 }
