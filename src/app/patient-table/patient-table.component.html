@@ -1,5 +1,5 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     <ng-container matColumnDef="fullName">
         <th mat-header-cell *matHeaderCellDef>
@@ -58,7 +58,6 @@
             <button mat-icon-button [matMenuTriggerFor]="menu">
                 <mat-icon>more_vert</mat-icon>
             </button>
-            <!-- [disabled]="true" -->
             <mat-menu #menu="matMenu">
                 <button
                     routerLink="/history"

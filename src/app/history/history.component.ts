@@ -30,6 +30,11 @@ export class HistoryComponent implements OnInit {
         this.getPatientVisit();
     }
 
+    toggleTableVisibility(): void {
+        this.patient = {} as Patient;
+        console.clear();
+    }
+
     private getPatientVisit(): void {
         this.visitService.getVisits(this.patient._id).subscribe({
             next: (data) => {

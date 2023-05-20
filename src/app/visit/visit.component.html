@@ -21,6 +21,13 @@
 </p>
 <div [hidden]="!patient.name" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns; sticky: true"
+            (click)="clickedRow(row)"
+            [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"
+        ></tr>
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>
                 {{ 'VISIT_TABLE.ID' | translate }}
@@ -70,13 +77,6 @@
                 <img class="bodyPoints" src="{{ element.image }}" />
             </td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr
-            mat-row
-            *matRowDef="let row; columns: displayedColumns"
-            (click)="clickedRow(row)"
-            [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"
-        ></tr>
     </table>
     <div class="loader-container" *ngIf="isLoadingResults">
         <mat-spinner></mat-spinner>
