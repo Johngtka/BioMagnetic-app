@@ -29,7 +29,15 @@ export class PatientTableComponent implements OnInit, OnChanges {
     @Input() newOrUpdatedPatient: Patient;
     dataSource!: Patient[];
     isLoadingResults = true;
-
+    displayedColumns: string[] = [
+        'fullName',
+        'gender',
+        'email',
+        'phone',
+        'location',
+        'dob',
+        'actions',
+    ];
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
@@ -113,14 +121,4 @@ export class PatientTableComponent implements OnInit, OnChanges {
             }
         });
     }
-
-    displayedColumns: string[] = [
-        'fullName',
-        'gender',
-        'email',
-        'phone',
-        'location',
-        'dob',
-        'actions',
-    ];
 }
