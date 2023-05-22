@@ -12,11 +12,13 @@ import { NavigationObject } from '../models/NavigationObject';
 })
 export class HistoryComponent implements OnInit {
     constructor(private visitService: VisitService) {}
+
     patient: Patient;
     dataSource: Visit[];
     displayedColumns: string[] = ['date', 'points', 'note'];
     emptyState = true;
     isLoadingResults = true;
+
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -25,6 +27,7 @@ export class HistoryComponent implements OnInit {
             this.getPatientVisit();
         }
     }
+
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
         this.getPatientVisit();
@@ -53,6 +56,7 @@ export class HistoryComponent implements OnInit {
             },
         });
     }
+
     private checkIfPatient(
         object: Patient | NavigationObject,
     ): object is Patient {

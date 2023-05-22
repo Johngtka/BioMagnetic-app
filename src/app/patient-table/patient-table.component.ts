@@ -25,6 +25,13 @@ import {
     styleUrls: ['./patient-table.component.css'],
 })
 export class PatientTableComponent implements OnInit, OnChanges {
+    constructor(
+        private patientService: PatientService,
+        private snackService: SnackService,
+        private route: Router,
+        private dialog: MatDialog,
+    ) {}
+
     @Output() updatePatient = new EventEmitter<Patient>();
     @Input() newOrUpdatedPatient: Patient;
     dataSource!: Patient[];
@@ -38,12 +45,7 @@ export class PatientTableComponent implements OnInit, OnChanges {
         'dob',
         'actions',
     ];
-    constructor(
-        private patientService: PatientService,
-        private snackService: SnackService,
-        private route: Router,
-        private dialog: MatDialog,
-    ) {}
+
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['newOrUpdatedPatient'] && !!this.dataSource) {
             const tablePatientIndex = this.dataSource.findIndex(
@@ -65,6 +67,7 @@ export class PatientTableComponent implements OnInit, OnChanges {
             }
         }
     }
+
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
             next: (data: Array<Patient>) => {
@@ -81,9 +84,11 @@ export class PatientTableComponent implements OnInit, OnChanges {
             },
         });
     }
+
     startNewVisit(patient: Patient): void {
         this.route.navigate(['visit'], { state: patient });
     }
+
     showHistory(patient: Patient): void {
         this.route.navigate(['history'], { state: patient });
     }

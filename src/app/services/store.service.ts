@@ -10,8 +10,9 @@ import { environment } from '../../environments/environment';
     providedIn: 'root',
 })
 export class StoreService {
-    apiURL = environment.API_URL;
     constructor(private http: HttpClient) {}
+
+    apiURL = environment.API_URL;
 
     getStore(): Observable<Array<Store>> {
         return this.http.get<Array<Store>>(this.apiURL + '/store');

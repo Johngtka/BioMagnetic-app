@@ -27,6 +27,7 @@ export class UserInputDialogComponent implements OnInit {
     buttonText: string;
     originalFormValues: Patient;
     isEdit: boolean;
+
     ngOnInit(): void {
         if (this.data?.patient) {
             this.isEdit = true;

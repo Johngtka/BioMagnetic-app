@@ -39,6 +39,7 @@ export class VisitComponent implements OnInit {
         private datePipe: DatePipe,
         private dialog: MatDialog,
     ) {}
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
@@ -58,6 +59,7 @@ export class VisitComponent implements OnInit {
         'type',
         'image',
     ];
+
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -88,9 +90,11 @@ export class VisitComponent implements OnInit {
             },
         });
     }
+
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
     }
+
     clickedRow(row): void {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
@@ -101,6 +105,7 @@ export class VisitComponent implements OnInit {
         }
         this.paginatorPageChecker();
     }
+
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -126,6 +131,7 @@ export class VisitComponent implements OnInit {
             this.visitPoints = [];
         }
     }
+
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
@@ -153,6 +159,7 @@ export class VisitComponent implements OnInit {
     pageTriggerManually(): void {
         this.paginatorPageChecker();
     }
+
     sendVisit(): void {
         const visit: Visit = {
             patientId: this.patient._id,
@@ -221,6 +228,7 @@ export class VisitComponent implements OnInit {
             },
         });
     }
+
     private getPdfRow(point: number) {
         return [
             {
@@ -233,6 +241,7 @@ export class VisitComponent implements OnInit {
             },
         ];
     }
+
     private paginatorPageChecker() {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
             this.showCheck = true;

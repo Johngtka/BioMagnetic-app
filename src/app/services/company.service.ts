@@ -10,9 +10,9 @@ import { environment } from '../../environments/environment';
     providedIn: 'root',
 })
 export class CompanyService {
-    apiURL = environment.API_URL;
-
     constructor(private http: HttpClient) {}
+
+    apiURL = environment.API_URL;
 
     getCompany(): Observable<Company> {
         return this.http.get<Company>(this.apiURL + '/company');
