@@ -4,7 +4,7 @@
 </div>
 <p [hidden]="!patient.name" class="info">
     <span
-        >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
+        >{{ 'VISITS_HISTORY.INFO' | translate }}
         {{ patient.name + ' ' + patient.surname }}</span
     >
     <button
@@ -22,7 +22,7 @@
     *ngIf="!emptyState"
 ></app-empty-state>
 
-<div [hidden]="!patient.name" *ngIf="dataSource" class="mat-elevation-z8">
+<div [hidden]="!patient.name || !dataSource.length" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <tr
             mat-header-row

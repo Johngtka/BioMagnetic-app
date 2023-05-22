@@ -92,6 +92,9 @@
         "POINTS": "Puntos",
         "NOTE": "Nota"
     },
+    "VISITS_HISTORY": {
+        "INFO": "Historial de visitas de un paciente seleccionado"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancelar",
         "CONFIRM": "Confirmar",

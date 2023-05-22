@@ -41,9 +41,6 @@
             "DELETE": "Usuń"
         }
     },
-    "PATIENT_SEARCH": {
-        "LOADING": "Ładowanie"
-    },
     "PATIENT_CREATE": {
         "NAME": "Imie",
         "SURNAME": "Nazwisko",
@@ -79,6 +76,9 @@
             "FINISH": "Zakończ"
         }
     },
+    "PATIENT_SEARCH": {
+        "LOADING": "Ładowanie"
+    },
     "VISIT_TABLE": {
         "ID": "Id",
         "NEGATIVE_POINT": "Minus",
@@ -91,6 +91,9 @@
         "DATE": "Data",
         "POINTS": "Punkty",
         "NOTE": "Notka"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Historia wizyt dla wybranego pacjenta"
     },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Anuluj",
