@@ -19,7 +19,7 @@
 <app-empty-state
     text="EMPTY_STATE.TEXT"
     icon="storage"
-    *ngIf="!emptyState"
+    *ngIf="!showEmptyState"
 ></app-empty-state>
 
 <div [hidden]="!patient.name || !dataSource.length" class="mat-elevation-z8">

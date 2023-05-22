@@ -16,7 +16,7 @@ export class HistoryComponent implements OnInit {
     patient: Patient;
     dataSource: Visit[];
     displayedColumns: string[] = ['date', 'points', 'note'];
-    emptyState = true;
+    showEmptyState = true;
     isLoadingResults = true;
 
     ngOnInit(): void {
@@ -35,7 +35,7 @@ export class HistoryComponent implements OnInit {
 
     toggleTableVisibility(): void {
         this.patient = {} as Patient;
-        this.emptyState = false;
+        this.showEmptyState = false;
         this.dataSource = [];
         console.clear();
     }
@@ -45,10 +45,10 @@ export class HistoryComponent implements OnInit {
             next: (data) => {
                 if (data.length >= 1) {
                     this.dataSource = data;
-                    this.emptyState = true;
+                    this.showEmptyState = true;
                     this.isLoadingResults = false;
                 } else {
-                    this.emptyState = false;
+                    this.showEmptyState = false;
                 }
             },
             error: (err) => {
