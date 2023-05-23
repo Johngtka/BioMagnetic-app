@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import {
+    MatTableDataSource,
+    MatTableDataSourcePaginator,
+} from '@angular/material/table';
 
 import { Visit } from '../models/visit';
 import { Patient } from '../models/patient';
@@ -11,13 +16,13 @@ import { NavigationObject } from '../models/NavigationObject';
     styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit {
-    constructor(private visitService: VisitService) {}
-
+    @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
-    dataSource: Visit[];
+    dataSource: MatTableDataSource<Visit, MatTableDataSourcePaginator>;
     displayedColumns: string[] = ['date', 'points', 'note'];
-    showEmptyState = true;
-    isLoadingResults = true;
+    showEmptyState = false;
+    isLoadingResults = false;
+    constructor(private visitService: VisitService) {}
 
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -36,22 +41,24 @@ export class HistoryComponent implements OnInit {
     toggleTableVisibility(): void {
         this.patient = {} as Patient;
         this.showEmptyState = false;
-        this.dataSource = [];
+
+        this.dataSource = new MatTableDataSource<Visit>([]);
         console.clear();
     }
 
     private getPatientVisit(): void {
+        this.isLoadingResults = true;
         this.visitService.getVisits(this.patient._id).subscribe({
             next: (data) => {
-                if (data.length >= 1) {
-                    this.dataSource = data;
+                if (data.length === 0) {
                     this.showEmptyState = true;
-                    this.isLoadingResults = false;
-                } else {
-                    this.showEmptyState = false;
                 }
+                this.dataSource = new MatTableDataSource<Visit>(data);
+                this.isLoadingResults = false;
+                this.dataSource.paginator = this.paginator;
             },
             error: (err) => {
+                this.isLoadingResults = false;
                 console.log(err);
             },
         });

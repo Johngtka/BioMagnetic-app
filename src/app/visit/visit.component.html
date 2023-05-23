@@ -19,12 +19,15 @@
 <p [hidden]="patient.name">
     {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
 </p>
-<div [hidden]="!patient.name" class="mat-elevation-z8">
+<div [hidden]="!patient.name">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
         <tr
             mat-row
-            *matRowDef="let row; columns: displayedColumns; sticky: true"
+            *matRowDef="let row; columns: displayedColumns"
             (click)="clickedRow(row)"
             [ngClass]="{ selectedRow: visitPoints.indexOf(row.id) > -1 }"
         ></tr>

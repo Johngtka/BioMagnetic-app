@@ -1,4 +1,4 @@
-<div *ngIf="!patient.name">
+<div *ngIf="!patient?.name">
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>
@@ -19,10 +19,14 @@
 <app-empty-state
     text="EMPTY_STATE.TEXT"
     icon="storage"
-    *ngIf="!showEmptyState"
+    *ngIf="showEmptyState"
 ></app-empty-state>
 
-<div [hidden]="!patient.name || !dataSource.length" class="mat-elevation-z8">
+<div class="loader-container" *ngIf="isLoadingResults">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div [hidden]="!patient?.name || !dataSource?.data?.length">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <tr
             mat-header-row
@@ -54,7 +58,6 @@
             </td>
         </ng-container>
     </table>
-    <div class="loader-container" *ngIf="isLoadingResults">
-        <mat-spinner></mat-spinner>
-    </div>
+    <mat-paginator [pageSizeOptions]="[5]" aria-label="Select page">
+    </mat-paginator>
 </div>
