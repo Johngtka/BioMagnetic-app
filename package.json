@@ -1,12 +1,12 @@
 {
     "name": "sana",
-    "version": "0.0.8",
+    "version": "0.0.7",
     "scripts": {
         "ng": "ng",
         "start": "ng serve -c development",
         "prebuild": "standard-version && npm run updateBuild",
         "build": "ng build --prod --base-href https://johngtka.github.io/Biomagnethick-app/",
-        "postbuild": "npx angular-cli-ghpages --dir=dist/sana",
+        "postbuild": "git push --follow-tags && npx angular-cli-ghpages --dir=dist/sana",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "format": "prettier --write ./**/*.{ts,json,html,css}",
