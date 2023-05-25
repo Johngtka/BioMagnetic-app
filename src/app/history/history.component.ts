@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
@@ -41,9 +41,20 @@ export class HistoryComponent implements OnInit {
     toggleTableVisibility(): void {
         this.patient = {} as Patient;
         this.showEmptyState = false;
-
         this.dataSource = new MatTableDataSource<Visit>([]);
         console.clear();
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent): void {
+        if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
+            this.paginator.nextPage();
+        } else if (
+            event.key === 'ArrowLeft' &&
+            this.paginator.hasPreviousPage()
+        ) {
+            this.paginator.previousPage();
+        }
     }
 
     private getPatientVisit(): void {
