@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Home",
         "ABOUT": "About",
-        "VISIT": "Visit"
+        "VISIT": "Visit",
+        "VISITS_HISTORY": "History"
     },
     "GENERAL": {
         "CLOSE": "Close"
@@ -16,12 +17,14 @@
         "USER_INPUT_DIALOG_CREATE_PATIENT": "An error occurred while adding a new patient, try again later",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "An error occurred while updating a patient, try again later",
         "PATIENT_TABLE_DELETE_PATIENT": "An error has occurred while deleting a patient, try again later",
-        "PATIENT_VISIT_CREATE_PATIENT": "An error occurred while creating a visit for a patient, try again later"
+        "PATIENT_VISIT_CREATE_PATIENT": "An error occurred while creating a visit for a patient, try again later",
+        "PATIENT_VISIT_CREATE_VISIT": "An error occurred while adding a visit, try again later"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Patient updated successful",
-        "PATIENT_TABLE_DELETE_PATIENT": "Patient has been deleted successfully"
+        "PATIENT_TABLE_DELETE_PATIENT": "Patient has been deleted successfully",
+        "PATIENT_VISIT_CREATE_VISIT": "Successfully added a visit, Thank you"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Full Name",
@@ -84,11 +87,26 @@
         "TYPE": "Type",
         "IMAGE": "Image"
     },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Date",
+        "POINTS": "Points",
+        "NOTE": "Note"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Visit history for the selected patient"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancel",
         "CONFIRM": "Confirm",
         "GENERIC_TITLE": "Are you sure?",
         "GENERIC_MESSAGE": "You are about to delete the record, do you wish to proceed",
         "CLOSE_VISIT_TITLE": "Warning!!!"
+    },
+    "ABOUT_VERSION_CARD": {
+        "VERSION": "Version",
+        "COPYRIGHT": "All rights reserved"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "No early visits for the selected patient"
     }
 }

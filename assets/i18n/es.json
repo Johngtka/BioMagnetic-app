@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Inicio",
         "ABOUT": "Sobre",
-        "VISIT": "Visite"
+        "VISIT": "Visite",
+        "VISITS_HISTORY": "Historia"
     },
     "GENERAL": {
         "CLOSE": "Cierra"
@@ -16,12 +17,14 @@
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde.",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Ocurrió un error al actualizar un paciente, intente nuevamente más tarde",
         "PATIENT_TABLE_DELETE_PATIENT": "Ocurrió un error al eliminar un paciente, intente nuevamente más tarde",
-        "PATIENT_VISIT_CREATE_PATIENT": "Se ha producido un error al crear una cita para un paciente, inténtelo de nuevo más tarde."
+        "PATIENT_VISIT_CREATE_PATIENT": "Se ha producido un error al crear una cita para un paciente, inténtelo de nuevo más tarde.",
+        "PATIENT_VISIT_CREATE_VISIT": "Se ha producido un error al añadir una visita, inténtelo de nuevo más tarde"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Paciente actualizado correctamente",
-        "PATIENT_TABLE_DELETE_PATIENT": "El paciente ha sido eliminado con éxito"
+        "PATIENT_TABLE_DELETE_PATIENT": "El paciente ha sido eliminado con éxito",
+        "PATIENT_VISIT_CREATE_VISIT": "Se ha añadido una visita, gracias"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Nombre y Apellidos",
@@ -84,11 +87,26 @@
         "TYPE": "Tipo",
         "IMAGE": "Foto"
     },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Fecha",
+        "POINTS": "Puntos",
+        "NOTE": "Nota"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Historial de visitas de un paciente seleccionado"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancelar",
         "CONFIRM": "Confirmar",
         "GENERIC_TITLE": "¿Estás seguro?",
         "GENERIC_MESSAGE": "Está a punto de eliminar los registro, desea continuar",
         "CLOSE_VISIT_TITLE": "Alerta!!!"
+    },
+    "ABOUT_VERSION_CARD": {
+        "VERSION": "Versión",
+        "COPYRIGHT": "Reservados todos los derechos"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "No hay citas anticipadas para el paciente seleccionado"
     }
 }

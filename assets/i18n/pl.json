@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Strona Główna",
         "ABOUT": "O nas",
-        "VISIT": "Wizyta"
+        "VISIT": "Wizyta",
+        "VISITS_HISTORY": "Historia"
     },
     "GENERAL": {
         "CLOSE": "Zamknij"
@@ -16,12 +17,14 @@
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, spróbuj ponownie później",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Wystąpił błąd podczas aktualizacji pacjenta, spróbuj ponownie później",
         "PATIENT_TABLE_DELETE_PATIENT": "Wystąpił błąd podczas usuwania pacjenta, spróbuj ponownie później",
-        "PATIENT_VISIT_CREATE_PATIENT": "Wystąpił błąd podczas tworzenia wizyty dla pacjenta, spróbuj ponownie później"
+        "PATIENT_VISIT_CREATE_PATIENT": "Wystąpił błąd podczas tworzenia wizyty dla pacjenta, spróbuj ponownie później",
+        "PATIENT_VISIT_CREATE_VISIT": "Wystąpił błąd podczas dodawania wizyty, spróbuj ponownie później"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie",
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Pomyślnie zaktualizowano pacjenta",
-        "PATIENT_TABLE_DELETE_PATIENT": "Pacjent został pomyślnie usunięty"
+        "PATIENT_TABLE_DELETE_PATIENT": "Pacjent został pomyślnie usunięty",
+        "PATIENT_VISIT_CREATE_VISIT": "Pomyślnie dodano wizytę, dziękujemy"
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Imie i Nazwisko",
@@ -37,9 +40,6 @@
             "EDIT": "Edytuj",
             "DELETE": "Usuń"
         }
-    },
-    "PATIENT_SEARCH": {
-        "LOADING": "Ładowanie"
     },
     "PATIENT_CREATE": {
         "NAME": "Imie",
@@ -76,6 +76,9 @@
             "FINISH": "Zakończ"
         }
     },
+    "PATIENT_SEARCH": {
+        "LOADING": "Ładowanie"
+    },
     "VISIT_TABLE": {
         "ID": "Id",
         "NEGATIVE_POINT": "Minus",
@@ -84,11 +87,26 @@
         "TYPE": "Typ",
         "IMAGE": "Zdjęcie"
     },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Data",
+        "POINTS": "Punkty",
+        "NOTE": "Notka"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Historia wizyt dla wybranego pacjenta"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Anuluj",
         "CONFIRM": "Potwierdź",
         "GENERIC_TITLE": "Czy jesteś pewien?",
         "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować",
         "CLOSE_VISIT_TITLE": "Ostrzeżenie!!!"
+    },
+    "ABOUT_VERSION_CARD": {
+        "VERSION": "Wesja",
+        "COPYRIGHT": "Wszelkie prawa zastrzeżone"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "Brak wczesniejszych wizyt dla wybranego pacjenta"
     }
 }
