@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Inicio",
         "ABOUT": "Sobre",
-        "VISIT": "Visite"
+        "VISIT": "Visite",
+        "VISITS_HISTORY": "Historia"
     },
     "GENERAL": {
         "CLOSE": "Cierra"
@@ -86,6 +87,14 @@
         "TYPE": "Tipo",
         "IMAGE": "Foto"
     },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Fecha",
+        "POINTS": "Puntos",
+        "NOTE": "Nota"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Historial de visitas de un paciente seleccionado"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancelar",
         "CONFIRM": "Confirmar",
@@ -96,5 +105,8 @@
     "ABOUT_VERSION_CARD": {
         "VERSION": "Versión",
         "COPYRIGHT": "Reservados todos los derechos"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "No hay citas anticipadas para el paciente seleccionado"
     }
 }

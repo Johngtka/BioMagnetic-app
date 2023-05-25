@@ -11,8 +11,9 @@ import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.c
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-    newOrUpdatedPatient;
     constructor(private dialog: MatDialog) {}
+
+    newOrUpdatedPatient;
 
     openDialog(patient?: Patient) {
         const dialogRef = this.dialog.open(UserInputDialogComponent, {

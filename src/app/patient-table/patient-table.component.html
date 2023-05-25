@@ -1,5 +1,5 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     <ng-container matColumnDef="fullName">
         <th mat-header-cell *matHeaderCellDef>
@@ -60,12 +60,13 @@
             </button>
             <mat-menu #menu="matMenu">
                 <button
+                    routerLink="/history"
                     mat-icon-button
                     matTooltip="{{
                         'PATIENT_TABLE.TOOLTIPS.PREVIOUS' | translate
                     }}"
                     matTooltipShowDelay="1500"
-                    [disabled]="true"
+                    (click)="showHistory(element)"
                 >
                     <mat-icon>history</mat-icon>
                 </button>

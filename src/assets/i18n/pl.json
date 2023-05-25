@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Strona Główna",
         "ABOUT": "O nas",
-        "VISIT": "Wizyta"
+        "VISIT": "Wizyta",
+        "VISITS_HISTORY": "Historia"
     },
     "GENERAL": {
         "CLOSE": "Zamknij"
@@ -39,9 +40,6 @@
             "EDIT": "Edytuj",
             "DELETE": "Usuń"
         }
-    },
-    "PATIENT_SEARCH": {
-        "LOADING": "Ładowanie"
     },
     "PATIENT_CREATE": {
         "NAME": "Imie",
@@ -78,6 +76,9 @@
             "FINISH": "Zakończ"
         }
     },
+    "PATIENT_SEARCH": {
+        "LOADING": "Ładowanie"
+    },
     "VISIT_TABLE": {
         "ID": "Id",
         "NEGATIVE_POINT": "Minus",
@@ -85,6 +86,14 @@
         "NAME": "Nazwa",
         "TYPE": "Typ",
         "IMAGE": "Zdjęcie"
+    },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Data",
+        "POINTS": "Punkty",
+        "NOTE": "Notka"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Historia wizyt dla wybranego pacjenta"
     },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Anuluj",
@@ -96,5 +105,8 @@
     "ABOUT_VERSION_CARD": {
         "VERSION": "Wesja",
         "COPYRIGHT": "Wszelkie prawa zastrzeżone"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "Brak wczesniejszych wizyt dla wybranego pacjenta"
     }
 }

@@ -12,10 +12,10 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewInit {
+    constructor(private observer: BreakpointObserver) {}
+
     @ViewChild(MatSidenav)
     sidenav!: MatSidenav;
-
-    constructor(private observer: BreakpointObserver) {}
 
     ngAfterViewInit() {
         this.observer

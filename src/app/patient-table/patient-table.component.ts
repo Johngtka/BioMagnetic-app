@@ -25,17 +25,27 @@ import {
     styleUrls: ['./patient-table.component.css'],
 })
 export class PatientTableComponent implements OnInit, OnChanges {
-    @Output() updatePatient = new EventEmitter<Patient>();
-    @Input() newOrUpdatedPatient: Patient;
-    dataSource!: Patient[];
-    isLoadingResults = true;
-
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
         private route: Router,
         private dialog: MatDialog,
     ) {}
+
+    @Output() updatePatient = new EventEmitter<Patient>();
+    @Input() newOrUpdatedPatient: Patient;
+    dataSource!: Patient[];
+    isLoadingResults = true;
+    displayedColumns: string[] = [
+        'fullName',
+        'gender',
+        'email',
+        'phone',
+        'location',
+        'dob',
+        'actions',
+    ];
+
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['newOrUpdatedPatient'] && !!this.dataSource) {
             const tablePatientIndex = this.dataSource.findIndex(
@@ -57,11 +67,13 @@ export class PatientTableComponent implements OnInit, OnChanges {
             }
         }
     }
+
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
-            next: (data: Array<Patient>) => (
-                (this.dataSource = data), (this.isLoadingResults = false)
-            ),
+            next: (data: Array<Patient>) => {
+                this.dataSource = data;
+                this.isLoadingResults = false;
+            },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR.PATIENT_TABLE_GET_PATIENTS',
@@ -72,8 +84,13 @@ export class PatientTableComponent implements OnInit, OnChanges {
             },
         });
     }
+
     startNewVisit(patient: Patient): void {
         this.route.navigate(['visit'], { state: patient });
+    }
+
+    showHistory(patient: Patient): void {
+        this.route.navigate(['history'], { state: patient });
     }
 
     deletePatient(patient: Patient) {
@@ -109,14 +126,4 @@ export class PatientTableComponent implements OnInit, OnChanges {
             }
         });
     }
-
-    displayedColumns: string[] = [
-        'fullName',
-        'gender',
-        'email',
-        'phone',
-        'location',
-        'dob',
-        'actions',
-    ];
 }

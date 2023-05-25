@@ -10,8 +10,9 @@ import { environment } from '../../environments/environment';
     providedIn: 'root',
 })
 export class PatientService {
-    apiUrl = environment.API_URL;
     constructor(private http: HttpClient) {}
+
+    apiUrl = environment.API_URL;
 
     patientSearch(query: string): Observable<Array<Patient>> {
         return this.http.get<Array<Patient>>(

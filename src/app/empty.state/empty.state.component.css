@@ -1,0 +1,16 @@
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    justify-content: center;
+}
+.text {
+    font-size: 3vw;
+}
+mat-icon {
+    font-size: 7vw;
+    height: 7vw;
+    width: 7vw;
+    color: gray;
+}

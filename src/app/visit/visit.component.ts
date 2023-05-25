@@ -8,19 +8,19 @@ import {
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
 
-import { Patient } from '../models/patient';
 import { Store } from '../models/store';
 import { Visit } from '../models/visit';
+import { Patient } from '../models/patient';
 import { Company } from '../models/company';
 import { StoreService } from '../services/store.service';
 import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import { NavigationObject } from '../models/NavigationObject';
+import { VisitService } from '../services/visit.service';
+import { CompanyService } from '../services/company.service';
 import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
-import { VisitService } from '../services/visit.service';
-import { CompanyService } from '../services/company.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -39,16 +39,9 @@ export class VisitComponent implements OnInit {
         private datePipe: DatePipe,
         private dialog: MatDialog,
     ) {}
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
-    displayedColumns: string[] = [
-        'id',
-        'negativePoint',
-        'positivePoint',
-        'name',
-        'type',
-        'image',
-    ];
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
     visitPoints: number[] = [];
     store: Store[];
@@ -58,6 +51,15 @@ export class VisitComponent implements OnInit {
     date = new Date();
     isLoadingResults = true;
     company: Company;
+    displayedColumns: string[] = [
+        'id',
+        'negativePoint',
+        'positivePoint',
+        'name',
+        'type',
+        'image',
+    ];
+
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -88,9 +90,11 @@ export class VisitComponent implements OnInit {
             },
         });
     }
+
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
     }
+
     clickedRow(row): void {
         const index = this.visitPoints.indexOf(row.id);
         if (index !== -1) {
@@ -101,6 +105,7 @@ export class VisitComponent implements OnInit {
         }
         this.paginatorPageChecker();
     }
+
     toggleTableVisibility(): void {
         if (this.visitPoints.length >= 1) {
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -126,6 +131,7 @@ export class VisitComponent implements OnInit {
             this.visitPoints = [];
         }
     }
+
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent): void {
         if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
@@ -153,6 +159,7 @@ export class VisitComponent implements OnInit {
     pageTriggerManually(): void {
         this.paginatorPageChecker();
     }
+
     sendVisit(): void {
         const visit: Visit = {
             patientId: this.patient._id,
@@ -221,6 +228,7 @@ export class VisitComponent implements OnInit {
             },
         });
     }
+
     private getPdfRow(point: number) {
         return [
             {
@@ -233,6 +241,7 @@ export class VisitComponent implements OnInit {
             },
         ];
     }
+
     private paginatorPageChecker() {
         if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
             this.showCheck = true;

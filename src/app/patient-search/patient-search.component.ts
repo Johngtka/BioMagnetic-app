@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
 import { filter } from 'rxjs/operators';
@@ -23,20 +23,21 @@ export interface User {
     styleUrls: ['./patient-search.component.css'],
 })
 export class PatientSearchComponent implements OnInit {
-    searchPatientsCtrl = new FormControl();
-    filteredPatients!: Array<Patient>;
-    @Output() selectedPatient = new EventEmitter<Patient>();
-    isLoading = false;
-    errorMsg!: string;
-    minLengthTerm = 3;
-
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
     ) {}
 
+    @Output() selectedPatient = new EventEmitter<Patient>();
+    searchPatientsCtrl = new FormControl();
+    filteredPatients!: Array<Patient>;
+    isLoading = false;
+    errorMsg!: string;
+    minLengthTerm = 3;
+
     ngOnInit() {
         this.searchPatientsCtrl.valueChanges
+
             .pipe(
                 filter((res) => {
                     return (
@@ -53,6 +54,7 @@ export class PatientSearchComponent implements OnInit {
                     this.isLoading = true;
                 }),
             )
+
             .subscribe((query: string) => {
                 this.patientService
                     .patientSearch(query)

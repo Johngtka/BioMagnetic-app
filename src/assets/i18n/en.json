@@ -5,7 +5,8 @@
     "MENU": {
         "HOME": "Home",
         "ABOUT": "About",
-        "VISIT": "Visit"
+        "VISIT": "Visit",
+        "VISITS_HISTORY": "History"
     },
     "GENERAL": {
         "CLOSE": "Close"
@@ -86,6 +87,14 @@
         "TYPE": "Type",
         "IMAGE": "Image"
     },
+    "VISITS_HISTORY_TABLE": {
+        "DATE": "Date",
+        "POINTS": "Points",
+        "NOTE": "Note"
+    },
+    "VISITS_HISTORY": {
+        "INFO": "Visit history for the selected patient"
+    },
     "CONFIRMATION_DIALOG": {
         "CANCEL": "Cancel",
         "CONFIRM": "Confirm",
@@ -96,5 +105,8 @@
     "ABOUT_VERSION_CARD": {
         "VERSION": "Version",
         "COPYRIGHT": "All rights reserved"
+    },
+    "EMPTY_STATE": {
+        "TEXT": "No early visits for the selected patient"
     }
 }
