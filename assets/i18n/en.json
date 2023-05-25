@@ -1,0 +1,94 @@
+{
+    "APP": {
+        "TITLE": "Bio Magnetic"
+    },
+    "MENU": {
+        "HOME": "Home",
+        "ABOUT": "About",
+        "VISIT": "Visit"
+    },
+    "GENERAL": {
+        "CLOSE": "Close"
+    },
+    "ERROR": {
+        "PATIENT_SEARCH": "An error has occurred while searching for patient, please try again later",
+        "PATIENT_TABLE_GET_PATIENTS": "An error has occurred while trying to load patients into a table, please try again later",
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "An error occurred while adding a new patient, try again later",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "An error occurred while updating a patient, try again later",
+        "PATIENT_TABLE_DELETE_PATIENT": "An error has occurred while deleting a patient, try again later",
+        "PATIENT_VISIT_CREATE_PATIENT": "An error occurred while creating a visit for a patient, try again later"
+    },
+    "SUCCESS": {
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Patient updated successful",
+        "PATIENT_TABLE_DELETE_PATIENT": "Patient has been deleted successfully"
+    },
+    "PATIENT_TABLE": {
+        "FULL_NAME": "Full Name",
+        "GENDER": "Gender",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "LOCATION": "City",
+        "DOB": "Age",
+        "ACTIONS": "Actions",
+        "TOOLTIPS": {
+            "NEW": "New Visit",
+            "PREVIOUS": "Previous Visit",
+            "EDIT": "Edit",
+            "DELETE": "Delete"
+        }
+    },
+    "PATIENT_SEARCH": {
+        "LOADING": "Loading"
+    },
+    "PATIENT_CREATE": {
+        "NAME": "Name",
+        "SURNAME": "Surname",
+        "DOB": "DATE OF BIRTH",
+        "GENDER": "Gender",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "LOCATION": "City",
+        "DIALOG": {
+            "TITLE": "Patient Register",
+            "CANCEL": "Cancel",
+            "REGISTER": "Register",
+            "UPDATE": "Update"
+        },
+        "FORM_VALIDATION": {
+            "EMAIL": "Please provide a valid email",
+            "PHONE": "Only numbers allowed"
+        }
+    },
+    "PATIENT_VISIT": {
+        "ERROR": {
+            "NO_PATIENT": "Please search for a patient to open a new appointment"
+        },
+        "SELECT": {
+            "ACTIVE": "New appointment created for patient"
+        },
+        "INFO": {
+            "LOST": "All work in current appointment will be lost, do you want to proceed?"
+        },
+        "NOTES": "Notes",
+        "FINISH_BUTTONS": {
+            "CHECK": "Check",
+            "FINISH": "Finish"
+        }
+    },
+    "VISIT_TABLE": {
+        "ID": "Id",
+        "NEGATIVE_POINT": "Negative Point",
+        "POSITIVE_POINT": "Positive Point",
+        "NAME": "Name",
+        "TYPE": "Type",
+        "IMAGE": "Image"
+    },
+    "CONFIRMATION_DIALOG": {
+        "CANCEL": "Cancel",
+        "CONFIRM": "Confirm",
+        "GENERIC_TITLE": "Are you sure?",
+        "GENERIC_MESSAGE": "You are about to delete the record, do you wish to proceed",
+        "CLOSE_VISIT_TITLE": "Warning!!!"
+    }
+}

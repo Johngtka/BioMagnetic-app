@@ -1,0 +1,94 @@
+{
+    "APP": {
+        "TITLE": "Bio Iman"
+    },
+    "MENU": {
+        "HOME": "Inicio",
+        "ABOUT": "Sobre",
+        "VISIT": "Visite"
+    },
+    "GENERAL": {
+        "CLOSE": "Cierra"
+    },
+    "ERROR": {
+        "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
+        "PATIENT_TABLE_GET_PATIENTS": "Se ha producido un error al intentar cargar pacientes en una tabla, inténtelo de nuevo más tarde",
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Se ha producido un error al añadir un nuevo cliente, inténtelo de nuevo más tarde.",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Ocurrió un error al actualizar un paciente, intente nuevamente más tarde",
+        "PATIENT_TABLE_DELETE_PATIENT": "Ocurrió un error al eliminar un paciente, intente nuevamente más tarde",
+        "PATIENT_VISIT_CREATE_PATIENT": "Se ha producido un error al crear una cita para un paciente, inténtelo de nuevo más tarde."
+    },
+    "SUCCESS": {
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Paciente actualizado correctamente",
+        "PATIENT_TABLE_DELETE_PATIENT": "El paciente ha sido eliminado con éxito"
+    },
+    "PATIENT_TABLE": {
+        "FULL_NAME": "Nombre y Apellidos",
+        "GENDER": "Sexo",
+        "EMAIL": "Email",
+        "PHONE": "Teléfono",
+        "LOCATION": "Ciudad",
+        "DOB": "Años",
+        "ACTIONS": "Acciones",
+        "TOOLTIPS": {
+            "NEW": "Nueva visita",
+            "PREVIOUS": "Visita previa",
+            "EDIT": "Editar",
+            "DELETE": "Eliminar"
+        }
+    },
+    "PATIENT_SEARCH": {
+        "LOADING": "Cargando"
+    },
+    "PATIENT_CREATE": {
+        "NAME": "Nombre",
+        "SURNAME": "Apellidos",
+        "DOB": "Fecha Nacimiento",
+        "GENDER": "Sexo",
+        "EMAIL": "Email",
+        "PHONE": "Teléfono",
+        "LOCATION": "Ciudad",
+        "DIALOG": {
+            "TITLE": "Registro de Paciente",
+            "CANCEL": "Cancelar",
+            "REGISTER": "Registro",
+            "UPDATE": "Actualizar"
+        },
+        "FORM_VALIDATION": {
+            "EMAIL": "Proporcione un correo electrónico válido",
+            "PHONE": "Solo números permitidos"
+        }
+    },
+    "PATIENT_VISIT": {
+        "ERROR": {
+            "NO_PATIENT": "Por favor, busque un paciente para abrir una nueva cita"
+        },
+        "SELECT": {
+            "ACTIVE": "Nueva cita creada para un paciente"
+        },
+        "INFO": {
+            "LOST": "Todo el trabajo en la visita actual se perderá, si continuar el?"
+        },
+        "NOTES": "Comentarios",
+        "FINISH_BUTTONS": {
+            "CHECK": "Comprobar",
+            "FINISH": "Finalizar"
+        }
+    },
+    "VISIT_TABLE": {
+        "ID": "Id",
+        "NEGATIVE_POINT": "Punto negativo",
+        "POSITIVE_POINT": "Punto positivo",
+        "NAME": "Nombre",
+        "TYPE": "Tipo",
+        "IMAGE": "Foto"
+    },
+    "CONFIRMATION_DIALOG": {
+        "CANCEL": "Cancelar",
+        "CONFIRM": "Confirmar",
+        "GENERIC_TITLE": "¿Estás seguro?",
+        "GENERIC_MESSAGE": "Está a punto de eliminar los registro, desea continuar",
+        "CLOSE_VISIT_TITLE": "Alerta!!!"
+    }
+}

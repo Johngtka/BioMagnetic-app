@@ -1,0 +1,94 @@
+{
+    "APP": {
+        "TITLE": "Bio Magnesik"
+    },
+    "MENU": {
+        "HOME": "Strona Główna",
+        "ABOUT": "O nas",
+        "VISIT": "Wizyta"
+    },
+    "GENERAL": {
+        "CLOSE": "Zamknij"
+    },
+    "ERROR": {
+        "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później",
+        "PATIENT_TABLE_GET_PATIENTS": "Wystąpił błąd podczas próby załadowania pacjentów do tabeli, spróbuj ponownie później",
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Wystapił błąd podczas dodawania nowego pacienta, spróbuj ponownie później",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Wystąpił błąd podczas aktualizacji pacjenta, spróbuj ponownie później",
+        "PATIENT_TABLE_DELETE_PATIENT": "Wystąpił błąd podczas usuwania pacjenta, spróbuj ponownie później",
+        "PATIENT_VISIT_CREATE_PATIENT": "Wystąpił błąd podczas tworzenia wizyty dla pacjenta, spróbuj ponownie później"
+    },
+    "SUCCESS": {
+        "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie",
+        "USER_INPUT_DIALOG_UPDATE_PATIENT": "Pomyślnie zaktualizowano pacjenta",
+        "PATIENT_TABLE_DELETE_PATIENT": "Pacjent został pomyślnie usunięty"
+    },
+    "PATIENT_TABLE": {
+        "FULL_NAME": "Imie i Nazwisko",
+        "GENDER": "Płeć",
+        "EMAIL": "Email",
+        "PHONE": "Telefon",
+        "LOCATION": "Miejscowość",
+        "DOB": "Wiek",
+        "ACTIONS": "Akcje",
+        "TOOLTIPS": {
+            "NEW": "Nowa Wizyta",
+            "PREVIOUS": "Poprzednia Wizyta",
+            "EDIT": "Edytuj",
+            "DELETE": "Usuń"
+        }
+    },
+    "PATIENT_SEARCH": {
+        "LOADING": "Ładowanie"
+    },
+    "PATIENT_CREATE": {
+        "NAME": "Imie",
+        "SURNAME": "Nazwisko",
+        "DOB": "Data Urodzenia",
+        "GENDER": "Płeć",
+        "EMAIL": "Email",
+        "PHONE": "Telefon",
+        "LOCATION": "Miejscowość",
+        "DIALOG": {
+            "TITLE": "Rejestracja Pacjenta",
+            "CANCEL": "Anuluj",
+            "REGISTER": "Zarejestruj",
+            "UPDATE": "Aktualizuj"
+        },
+        "FORM_VALIDATION": {
+            "EMAIL": "Podaj prawidłowy adres e-mail",
+            "PHONE": "Dozwolone tylko numery"
+        }
+    },
+    "PATIENT_VISIT": {
+        "ERROR": {
+            "NO_PATIENT": "Proszę wyszukać pacjenta, aby otworzyć nową wizytę"
+        },
+        "SELECT": {
+            "ACTIVE": "Nowa wizyta utworzona dla pacjenta"
+        },
+        "INFO": {
+            "LOST": "Cała praca w obecnej wizycie zostanie utracona, czy chcesz kontynuować?"
+        },
+        "NOTES": "Uwagi",
+        "FINISH_BUTTONS": {
+            "CHECK": "Sprawdź",
+            "FINISH": "Zakończ"
+        }
+    },
+    "VISIT_TABLE": {
+        "ID": "Id",
+        "NEGATIVE_POINT": "Minus",
+        "POSITIVE_POINT": "Plus",
+        "NAME": "Nazwa",
+        "TYPE": "Typ",
+        "IMAGE": "Zdjęcie"
+    },
+    "CONFIRMATION_DIALOG": {
+        "CANCEL": "Anuluj",
+        "CONFIRM": "Potwierdź",
+        "GENERIC_TITLE": "Czy jesteś pewien?",
+        "GENERIC_MESSAGE": "Zamierzasz usunąć rekord, czy chcesz kontynuować",
+        "CLOSE_VISIT_TITLE": "Ostrzeżenie!!!"
+    }
+}
