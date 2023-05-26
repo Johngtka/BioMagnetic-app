@@ -16,11 +16,13 @@ To make a build checkout master branch and make git pull.
 
 Run `npm run build` to build the project. This process will trigger 3 processes:
 
-- prebuild where the varsion number will be adjusted, new tag will be created
-- build process -> ng build
-- post build where changes will be push to the branch.
+-   prebuild where the varsion number will be adjusted, new tag will be created
+-   build process -> ng build
+-   post build where changes will be push to the branch and dist codebase will be push to github-pages.
 
 The build artifacts will be stored in the `dist/sana` directory.
+
+You can view the latest project version visiting: https://johngtka.github.io/Biomagnethick-app/about
 
 ## Running unit tests
 
