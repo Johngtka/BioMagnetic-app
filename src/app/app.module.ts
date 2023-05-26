@@ -45,7 +45,7 @@ import { HistoryComponent } from './history/history.component';
 import { EmptyStateComponent } from './empty.state/empty.state.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
-    return new TranslateHttpLoader(httpClient);
+    return new TranslateHttpLoader(httpClient, './assets/i18n/');
 }
 const navigatorLang = navigator.language.split('-')[0];
 const supportedLang = ['pl', 'es', 'en'];
