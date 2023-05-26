@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.7...v0.0.8) (2023-05-26)
+
+
+### Features
+
+* add about page ([#38](https://github.com/Johngtka/Biomagnthick-app/issues/38)) ([69a51c3](https://github.com/Johngtka/Biomagnthick-app/commit/69a51c3e577813f289c54c3c1ea6e12e2de18950))
+* add loader to a visit table ([#36](https://github.com/Johngtka/Biomagnthick-app/issues/36)) ([d1fd24e](https://github.com/Johngtka/Biomagnthick-app/commit/d1fd24e3ed667db874fcc8b0acff9349bdff05c5))
+* allow a user to check previous visits ([#42](https://github.com/Johngtka/Biomagnthick-app/issues/42)) ([4c01ec5](https://github.com/Johngtka/Biomagnthick-app/commit/4c01ec50329d37d13fd4bcfba690d0bcbe088f67))
+* generate a simple pdf when finishing the visit ([#41](https://github.com/Johngtka/Biomagnthick-app/issues/41)) ([da3a5a4](https://github.com/Johngtka/Biomagnthick-app/commit/da3a5a46ca77967d9f3d87531f85faebf9d5c8b3))
+* get company info details ([#40](https://github.com/Johngtka/Biomagnthick-app/issues/40)) ([d3cde03](https://github.com/Johngtka/Biomagnthick-app/commit/d3cde0342da48a33977b0af6a98cfc8b0fed067d))
+* show visit table images ([#39](https://github.com/Johngtka/Biomagnthick-app/issues/39)) ([ef76e72](https://github.com/Johngtka/Biomagnthick-app/commit/ef76e7275bd620fb7f5f0b4b65107c7fa3794c35))
+* store a visit in mongodb ([#37](https://github.com/Johngtka/Biomagnthick-app/issues/37)) ([9e9462e](https://github.com/Johngtka/Biomagnthick-app/commit/9e9462e03a659bfe679ee70f31a3d12a6962c370))
+
 ### [0.0.7](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.6...v0.0.7) (2023-05-05)
 
 
