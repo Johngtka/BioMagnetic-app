@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -27,7 +26,6 @@ export class PatientSearchComponent implements OnInit {
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
-        private route: Router,
     ) {}
 
     @Output() selectedPatient = new EventEmitter<Patient>();
@@ -80,13 +78,8 @@ export class PatientSearchComponent implements OnInit {
 
     onSelected() {
         this.selectedPatient.emit(this.searchPatientsCtrl.value);
-        this.searchedPatient(this.searchPatientsCtrl.value);
     }
-    private searchedPatient(patient: Patient) {
-        this.route.navigate(['visit'], {
-            state: patient,
-        });
-    }
+
     displayWith(value: any) {
         return value ? value.name : '';
     }

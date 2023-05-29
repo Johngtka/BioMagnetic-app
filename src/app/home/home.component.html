@@ -1,4 +1,6 @@
-<app-patient-search></app-patient-search>
+<app-patient-search
+    (selectedPatient)="openVisitbySearched($event)"
+></app-patient-search>
 <app-patient-table
     [newOrUpdatedPatient]="newOrUpdatedPatient"
     (updatePatient)="openDialog($event)"
