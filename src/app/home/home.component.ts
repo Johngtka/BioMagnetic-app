@@ -27,7 +27,7 @@ export class HomeComponent {
             }
         });
     }
-    openVisitbySearched(patient: Patient) {
+    openVisitBySearched(patient: Patient) {
         this.route.navigate(['visit'], {
             state: patient,
         });
