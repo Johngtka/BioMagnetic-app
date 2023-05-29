@@ -34,7 +34,6 @@ export class PatientSearchComponent implements OnInit {
     isLoading = false;
     errorMsg!: string;
     minLengthTerm = 3;
-    patient: Patient;
 
     ngOnInit() {
         this.searchPatientsCtrl.valueChanges
