@@ -37,7 +37,6 @@ export class PatientSearchComponent implements OnInit {
 
     ngOnInit() {
         this.searchPatientsCtrl.valueChanges
-
             .pipe(
                 filter((res) => {
                     return (
@@ -59,8 +58,9 @@ export class PatientSearchComponent implements OnInit {
                 this.patientService
                     .patientSearch(query)
                     .subscribe({
-                        next: (data: Array<Patient>) =>
-                            (this.filteredPatients = data),
+                        next: (data: Array<Patient>) => {
+                            this.filteredPatients = data;
+                        },
                         error: (err) => {
                             this.snackService.showSnackBarMessage(
                                 'ERROR.PATIENT_SEARCH',
@@ -69,7 +69,9 @@ export class PatientSearchComponent implements OnInit {
                             console.log(err.message);
                         },
                     })
-                    .add(() => (this.isLoading = false));
+                    .add(() => {
+                        this.isLoading = false;
+                    });
             });
     }
 

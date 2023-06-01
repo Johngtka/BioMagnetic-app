@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 
@@ -11,7 +12,7 @@ import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.c
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-    constructor(private dialog: MatDialog) {}
+    constructor(private dialog: MatDialog, private route: Router) {}
 
     newOrUpdatedPatient;
 
@@ -24,6 +25,11 @@ export class HomeComponent {
             if (result) {
                 this.newOrUpdatedPatient = result;
             }
+        });
+    }
+    openVisitBySearched(patient: Patient) {
+        this.route.navigate(['visit'], {
+            state: patient,
         });
     }
 }
