@@ -9,14 +9,6 @@
             {{ element.name }} {{ element.surname }}
         </td>
     </ng-container>
-    <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef>
-            {{ 'PATIENT_TABLE.GENDER' | translate }}
-        </th>
-        <td mat-cell *matCellDef="let element">
-            <mat-icon>{{ element.gender }}</mat-icon>
-        </td>
-    </ng-container>
     <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>
             {{ 'PATIENT_TABLE.EMAIL' | translate }}

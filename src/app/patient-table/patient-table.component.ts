@@ -38,7 +38,6 @@ export class PatientTableComponent implements OnInit, OnChanges {
     isLoadingResults = true;
     displayedColumns: string[] = [
         'fullName',
-        'gender',
         'email',
         'phone',
         'location',

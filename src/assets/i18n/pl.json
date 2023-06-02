@@ -28,7 +28,6 @@
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Imie i Nazwisko",
-        "GENDER": "Płeć",
         "EMAIL": "Email",
         "PHONE": "Telefon",
         "LOCATION": "Miejscowość",
