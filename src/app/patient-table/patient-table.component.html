@@ -1,6 +1,10 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (updatePatient)="openDialog(row)"
+    ></tr>
     <ng-container matColumnDef="fullName">
         <th mat-header-cell *matHeaderCellDef>
             {{ 'PATIENT_TABLE.FULL_NAME' | translate }}

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { VisitComponent } from './visit/visit.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { VisitComponent } from './visit/visit.component';
 import { HistoryComponent } from './history/history.component';
+import { PatientTableComponent } from './patient-table/patient-table.component';
 
 const routes: Routes = [
     {
@@ -27,6 +28,10 @@ const routes: Routes = [
     {
         path: 'history',
         component: HistoryComponent,
+    },
+    {
+        path: 'patient',
+        component: PatientTableComponent,
     },
 ];
 
