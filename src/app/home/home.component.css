@@ -1,5 +1,5 @@
 .add-btn {
-    float: right;
-    top: 100%;
-    margin: 10px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
