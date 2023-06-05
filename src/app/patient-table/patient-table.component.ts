@@ -1,12 +1,11 @@
 import {
     Component,
-    EventEmitter,
-    Output,
     Input,
     OnChanges,
     OnInit,
     SimpleChanges,
     ViewChild,
+    HostListener,
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -41,7 +40,6 @@ export class PatientTableComponent implements OnInit, OnChanges {
     ) {}
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @Output() updatePatient = new EventEmitter<Patient>();
     @Input() newOrUpdatedPatient: Patient;
     patient: Patient[];
     dataSource!: MatTableDataSource<Patient, MatTableDataSourcePaginator>;
@@ -94,6 +92,18 @@ export class PatientTableComponent implements OnInit, OnChanges {
                 console.log(err.message);
             },
         });
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent): void {
+        if (event.key === 'ArrowRight' && this.paginator.hasNextPage()) {
+            this.paginator.nextPage();
+        } else if (
+            event.key === 'ArrowLeft' &&
+            this.paginator.hasPreviousPage()
+        ) {
+            this.paginator.previousPage();
+        }
     }
 
     openDialog(patient?: Patient) {
