@@ -1,12 +1,4 @@
-import {
-    Component,
-    Input,
-    OnChanges,
-    OnInit,
-    SimpleChanges,
-    ViewChild,
-    HostListener,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -31,7 +23,7 @@ import { MatPaginator } from '@angular/material/paginator';
     templateUrl: './patient-table.component.html',
     styleUrls: ['./patient-table.component.css'],
 })
-export class PatientTableComponent implements OnInit, OnChanges {
+export class PatientTableComponent implements OnInit {
     constructor(
         private patientService: PatientService,
         private snackService: SnackService,
@@ -40,7 +32,6 @@ export class PatientTableComponent implements OnInit, OnChanges {
     ) {}
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @Input() newOrUpdatedPatient: Patient;
     patient: Patient[];
     dataSource!: MatTableDataSource<Patient, MatTableDataSourcePaginator>;
     isLoadingResults = true;
@@ -52,28 +43,6 @@ export class PatientTableComponent implements OnInit, OnChanges {
         'dob',
         'actions',
     ];
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['newOrUpdatedPatient'] && !!this.patient) {
-            const tablePatientIndex = this.patient.findIndex(
-                (ds: Patient) =>
-                    ds._id === changes['newOrUpdatedPatient'].currentValue._id,
-            );
-
-            if (tablePatientIndex !== -1) {
-                // update
-                this.patient[tablePatientIndex] =
-                    changes['newOrUpdatedPatient'].currentValue;
-                this.patient = [...this.patient];
-            } else {
-                // new
-                this.patient = [
-                    ...this.patient,
-                    changes['newOrUpdatedPatient'].currentValue,
-                ];
-            }
-        }
-    }
 
     ngOnInit(): void {
         this.patientService.getPatients().subscribe({
@@ -113,7 +82,7 @@ export class PatientTableComponent implements OnInit, OnChanges {
         });
         dialogRef.afterClosed().subscribe((result: Patient) => {
             if (result) {
-                this.newOrUpdatedPatient = result;
+                this.updateTable(result);
             }
         });
     }
@@ -160,5 +129,24 @@ export class PatientTableComponent implements OnInit, OnChanges {
                 });
             }
         });
+    }
+
+    private updateTable(newOrUpdatedPatient: Patient) {
+        if (!!this.patient && !!newOrUpdatedPatient) {
+            const tablePatientIndex = this.patient.findIndex(
+                (ds: Patient) => ds._id === newOrUpdatedPatient._id,
+            );
+
+            if (tablePatientIndex !== -1) {
+                // update
+                this.patient[tablePatientIndex] = newOrUpdatedPatient;
+                this.patient = [...this.patient];
+                this.dataSource = new MatTableDataSource<Patient>(this.patient);
+            } else {
+                // new
+                this.patient = [...this.patient, newOrUpdatedPatient];
+                this.dataSource = new MatTableDataSource<Patient>(this.patient);
+            }
+        }
     }
 }
