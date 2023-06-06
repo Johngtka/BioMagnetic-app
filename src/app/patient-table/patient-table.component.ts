@@ -6,6 +6,7 @@ import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { Patient } from '../models/patient';
 import { SNACK_TYPE } from './../services/snack.service';
@@ -16,7 +17,6 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
     selector: 'app-patient-table',
