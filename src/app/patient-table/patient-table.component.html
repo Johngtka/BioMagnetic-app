@@ -66,7 +66,7 @@
                     mat-icon-button
                     matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.EDIT' | translate }}"
                     matTooltipShowDelay="1500"
-                    (click)="updatePatient.emit(element)"
+                    (click)="openDialog(element)"
                 >
                     <mat-icon>edit</mat-icon>
                 </button>
@@ -87,3 +87,9 @@
 <div class="loader-container" *ngIf="isLoadingResults">
     <mat-spinner></mat-spinner>
 </div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" aria-label="Select page">
+</mat-paginator>
+
+<button (click)="openDialog()" class="add-btn" mat-mini-fab color="primary">
+    <mat-icon class="mat-18">person_add</mat-icon>
+</button>
