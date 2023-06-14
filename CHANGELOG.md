@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.8...v0.0.9) (2023-06-14)
+
+
+### Features
+
+* open a visit for selected patient ([#44](https://github.com/Johngtka/Biomagnthick-app/issues/44)) ([bcf0079](https://github.com/Johngtka/Biomagnthick-app/commit/bcf00790f2d96f6d09e69d9520491d7ec6033475))
+* separating the table from other components and placing it in the side menu ([#47](https://github.com/Johngtka/Biomagnthick-app/issues/47)) ([40643c4](https://github.com/Johngtka/Biomagnthick-app/commit/40643c4cad1a0a58597c442535884afd3c4ba67c))
+
+
+### Bug Fixes
+
+* removed gender from patient table ([#45](https://github.com/Johngtka/Biomagnthick-app/issues/45)) ([36fbe3b](https://github.com/Johngtka/Biomagnthick-app/commit/36fbe3bde5f073fa46b6db10794e2f7384c23cad))
+* removed not working correctly build version ([07057b0](https://github.com/Johngtka/Biomagnthick-app/commit/07057b029f2a5aee53381621d8ba4869de7c3eb0))
+* showing data in table when row was clicked ([#46](https://github.com/Johngtka/Biomagnthick-app/issues/46)) ([176c483](https://github.com/Johngtka/Biomagnthick-app/commit/176c4833cd8aba107a8000753080b38477832a4f))
+
 ### [0.0.8](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.7...v0.0.8) (2023-05-26)
 
 ### Features
