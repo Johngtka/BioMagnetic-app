@@ -6,7 +6,8 @@
         "HOME": "Home",
         "ABOUT": "About",
         "VISIT": "Visit",
-        "VISITS_HISTORY": "History"
+        "VISITS_HISTORY": "History",
+        "PATIENTS": "Patients"
     },
     "GENERAL": {
         "CLOSE": "Close"
@@ -28,7 +29,6 @@
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Full Name",
-        "GENDER": "Gender",
         "EMAIL": "Email",
         "PHONE": "Phone",
         "LOCATION": "City",

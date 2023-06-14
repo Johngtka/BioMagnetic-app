@@ -6,7 +6,8 @@
         "HOME": "Strona Główna",
         "ABOUT": "O nas",
         "VISIT": "Wizyta",
-        "VISITS_HISTORY": "Historia"
+        "VISITS_HISTORY": "Historia",
+        "PATIENTS": "Pacjęci"
     },
     "GENERAL": {
         "CLOSE": "Zamknij"
@@ -28,7 +29,6 @@
     },
     "PATIENT_TABLE": {
         "FULL_NAME": "Imie i Nazwisko",
-        "GENDER": "Płeć",
         "EMAIL": "Email",
         "PHONE": "Telefon",
         "LOCATION": "Miejscowość",
