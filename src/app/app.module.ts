@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
+import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -20,12 +21,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -43,6 +44,7 @@ import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.co
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { HistoryComponent } from './history/history.component';
 import { EmptyStateComponent } from './empty.state/empty.state.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
@@ -52,24 +54,25 @@ const supportedLang = ['pl', 'es', 'en'];
 const lang = supportedLang.includes(navigatorLang) ? navigatorLang : 'en';
 
 const materialModules = [
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
+    MatMenuModule,
+    MatCardModule,
     MatIconModule,
+    MatTableModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
     MatButtonModule,
+    MatDividerModule,
+    MatTooltipModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule,
     MatSnackBarModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatTooltipModule,
-    MatMenuModule,
+    MatExpansionModule,
+    MatFormFieldModule,
     MatPaginatorModule,
-    MatCardModule,
+    MatDatepickerModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
 ];
 
 @NgModule({
@@ -85,6 +88,7 @@ const materialModules = [
         ConfirmationDialogComponent,
         HistoryComponent,
         EmptyStateComponent,
+        PatientDetailsComponent,
     ],
     imports: [
         BrowserModule,

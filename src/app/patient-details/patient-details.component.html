@@ -1,0 +1,38 @@
+<div class="patientDetails">
+    <!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>{{
+                'PATIENT_DETAILS.PATIENT_DATA_PANEL_TITLE' | translate
+            }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+    </mat-expansion-panel> -->
+    <p>
+        {{
+            patient.name +
+                ' ' +
+                patient.surname +
+                ' | ' +
+                patient.dob +
+                ' | ' +
+                patient.phone +
+                ' | ' +
+                patient.email +
+                ' | ' +
+                patient.gender +
+                ' | ' +
+                patient.location
+        }}
+    </p>
+    <mat-expansion-panel class="panel">
+        <mat-expansion-panel-header>
+            <mat-panel-title>{{
+                'PATIENT_DETAILS.PATIENT_HISTORY_PANEL_TITLE' | translate
+            }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-history></app-history>
+    </mat-expansion-panel>
+</div>
+<button (click)="openVisit()" class="visit-btn" mat-mini-fab color="primary">
+    <mat-icon class="mat-18">check_box</mat-icon>
+</button>

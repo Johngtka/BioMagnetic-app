@@ -79,6 +79,10 @@
             "FINISH": "Finalizar"
         }
     },
+    "PATIENT_DETAILS": {
+        "PATIENT_DATA_PANEL_TITLE": "Datos del paciente",
+        "PATIENT_HISTORY_PANEL_TITLE": "Historial de visitas"
+    },
     "VISIT_TABLE": {
         "ID": "Id",
         "NEGATIVE_POINT": "Punto negativo",

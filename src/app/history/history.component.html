@@ -2,7 +2,7 @@
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>
-<p [hidden]="!patient.name" class="info">
+<p [hidden]="!patient.name" *ngIf="showSearch" class="info">
     <span
         >{{ 'VISITS_HISTORY.INFO' | translate }}
         {{ patient.name + ' ' + patient.surname }}</span
@@ -16,6 +16,7 @@
         <mat-icon>close</mat-icon>
     </button>
 </p>
+
 <app-empty-state
     text="EMPTY_STATE.TEXT"
     icon="storage"

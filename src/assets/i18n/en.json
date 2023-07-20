@@ -63,6 +63,10 @@
             "PHONE": "Only numbers allowed"
         }
     },
+    "PATIENT_DETAILS": {
+        "PATIENT_DATA_PANEL_TITLE": "Patient Data",
+        "PATIENT_HISTORY_PANEL_TITLE": "Patient history"
+    },
     "PATIENT_VISIT": {
         "ERROR": {
             "NO_PATIENT": "Please search for a patient to open a new appointment"

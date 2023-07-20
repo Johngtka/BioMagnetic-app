@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { VisitComponent } from './visit/visit.component';
 import { HistoryComponent } from './history/history.component';
 import { PatientTableComponent } from './patient-table/patient-table.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
         path: 'patient',
         component: PatientTableComponent,
+    },
+    {
+        path: 'patient/details',
+        component: PatientDetailsComponent,
     },
 ];
 

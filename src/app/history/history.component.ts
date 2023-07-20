@@ -17,6 +17,7 @@ import { NavigationObject } from '../models/NavigationObject';
 })
 export class HistoryComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    showSearch: boolean;
     patient: Patient;
     dataSource: MatTableDataSource<Visit, MatTableDataSourcePaginator>;
     displayedColumns: string[] = ['date', 'points', 'note'];
@@ -35,6 +36,7 @@ export class HistoryComponent implements OnInit {
 
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
+        this.showSearch = true;
         this.getPatientVisit();
     }
 
