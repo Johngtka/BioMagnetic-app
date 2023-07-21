@@ -1,8 +1,8 @@
 .patientDetails {
     text-align: center;
 }
-.panel {
-    margin-top: 20px;
+.mat-mdc-card-content:first-child {
+    padding: 0;
 }
 .visit-btn {
     position: absolute;

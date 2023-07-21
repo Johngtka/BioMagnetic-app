@@ -79,10 +79,6 @@
     "PATIENT_SEARCH": {
         "LOADING": "Ładowanie"
     },
-    "PATIENT_DETAILS": {
-        "PATIENT_DATA_PANEL_TITLE": "Dane Pacjenta",
-        "PATIENT_HISTORY_PANEL_TITLE": "Historia wizyt pacjenta"
-    },
     "VISIT_TABLE": {
         "ID": "Id",
         "NEGATIVE_POINT": "Minus",

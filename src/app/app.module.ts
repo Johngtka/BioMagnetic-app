@@ -21,7 +21,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -67,7 +66,6 @@ const materialModules = [
     MatToolbarModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatExpansionModule,
     MatFormFieldModule,
     MatPaginatorModule,
     MatDatepickerModule,
