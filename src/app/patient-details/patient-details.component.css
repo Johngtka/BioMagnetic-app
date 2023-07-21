@@ -1,8 +1,10 @@
 .patientDetails {
     text-align: center;
 }
+.mat-mdc-card-content:first-child,
 .mat-mdc-card-content:first-child {
     padding: 0;
+    margin: 0;
 }
 .visit-btn {
     position: absolute;
