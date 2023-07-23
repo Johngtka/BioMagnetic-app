@@ -43,6 +43,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { HistoryComponent } from './history/history.component';
 import { EmptyStateComponent } from './empty.state/empty.state.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { PatientTableComponent } from './patient-table/patient-table.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
@@ -85,6 +86,7 @@ const materialModules = [
         HistoryComponent,
         EmptyStateComponent,
         PatientDetailsComponent,
+        PatientTableComponent,
     ],
     imports: [
         BrowserModule,

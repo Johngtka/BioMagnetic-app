@@ -1,0 +1,95 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef>
+            {{ 'PATIENT_TABLE.FULL_NAME' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+            {{ element.name }} {{ element.surname }}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>
+            {{ 'PATIENT_TABLE.EMAIL' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>
+            {{ 'PATIENT_TABLE.PHONE' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>
+            {{ 'PATIENT_TABLE.LOCATION' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+    </ng-container>
+    <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef>
+            {{ 'PATIENT_TABLE.DOB' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.dob | age }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+            {{ 'PATIENT_TABLE.ACTIONS' | translate }}
+        </th>
+        <td *matCellDef="let element">
+            <button
+                mat-icon-button
+                matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.NEW' | translate }}"
+                matTooltipShowDelay="1500"
+                (click)="startNewVisit(element)"
+            >
+                <mat-icon>add_circle_outline</mat-icon>
+            </button>
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button
+                    routerLink="/history"
+                    mat-icon-button
+                    matTooltip="{{
+                        'PATIENT_TABLE.TOOLTIPS.PREVIOUS' | translate
+                    }}"
+                    matTooltipShowDelay="1500"
+                    (click)="showHistory(element)"
+                >
+                    <mat-icon>history</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    matTooltip="{{ 'PATIENT_TABLE.TOOLTIPS.EDIT' | translate }}"
+                    matTooltipShowDelay="1500"
+                    (click)="openDialog(element)"
+                >
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    matTooltip="{{
+                        'PATIENT_TABLE.TOOLTIPS.DELETE' | translate
+                    }}"
+                    matTooltipShowDelay="1500"
+                    (click)="deletePatient(element)"
+                >
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </mat-menu>
+        </td>
+    </ng-container>
+</table>
+<div class="loader-container" *ngIf="isLoadingResults">
+    <mat-spinner></mat-spinner>
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" aria-label="Select page">
+</mat-paginator>
+
+<button (click)="openDialog()" class="add-btn" mat-mini-fab color="primary">
+    <mat-icon class="mat-18">person_add</mat-icon>
+</button>
