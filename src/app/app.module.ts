@@ -37,13 +37,12 @@ import { AboutComponent } from './about/about.component';
 import { PatientService } from './services/patient-service';
 import { VisitComponent } from './visit/visit.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PatientSearchComponent } from './patient-search/patient-search.component';
-import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { HistoryComponent } from './history/history.component';
 import { EmptyStateComponent } from './empty.state/empty.state.component';
+import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
-import { PatientTableComponent } from './patient-table/patient-table.component';
+import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
@@ -86,7 +85,6 @@ const materialModules = [
         HistoryComponent,
         EmptyStateComponent,
         PatientDetailsComponent,
-        PatientTableComponent,
     ],
     imports: [
         BrowserModule,
