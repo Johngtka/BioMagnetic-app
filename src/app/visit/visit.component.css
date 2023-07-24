@@ -51,18 +51,9 @@ table {
     width: 100%;
 }
 
-/* tr.example-detail-row {
+tr.example-detail-row {
     height: 0;
 }
-
-tr.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
-}
-
-tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-}
-
 .example-element-row td {
     border-bottom-width: 0;
 }
@@ -90,7 +81,3 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description {
     padding: 16px;
 }
-
-.example-element-description-attribution {
-    opacity: 0.5;
-} */

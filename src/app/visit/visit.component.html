@@ -160,6 +160,8 @@
         mat-row
         *matRowDef="let rowData; columns: columnsToDisplay"
         (click)="expandedElement = expandedElement === rowData ? null : rowData"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === rowData"
     ></tr>
 
     <!-- twice expandable table row definition -->
@@ -173,17 +175,20 @@
             [attr.colspan]="columnsToDisplay.length"
         >
             <div
+                class="example-element-detail"
                 [@detailExpand]="
                     expandRowData == expandedElement ? 'expanded' : 'collapsed'
                 "
             >
-                <div>
-                    <div>
+                <div class="example-element-diagram">
+                    <div class="example-element-symbol">
                         {{ expandRowData.symbol }}
                     </div>
-                    <div>{{ expandRowData.name }}</div>
+                    <div class="example-element-name">
+                        {{ expandRowData.name }}
+                    </div>
                 </div>
-                <div>
+                <div class="example-element-description">
                     {{ expandRowData.description }}
                 </div>
             </div>
