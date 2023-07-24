@@ -1,0 +1,27 @@
+<div class="patientDetails">
+    <p>
+        {{
+            patient.name +
+                ' ' +
+                patient.surname +
+                ' | ' +
+                patient.dob +
+                ' | ' +
+                patient.phone +
+                ' | ' +
+                patient.email +
+                ' | ' +
+                patient.gender +
+                ' | ' +
+                patient.location
+        }}
+    </p>
+    <mat-card>
+        <mat-card-content class="panel">
+            <app-history></app-history>
+        </mat-card-content>
+    </mat-card>
+</div>
+<button (click)="openVisit()" class="visit-btn" mat-mini-fab color="primary">
+    <mat-icon class="mat-18">check_box</mat-icon>
+</button>

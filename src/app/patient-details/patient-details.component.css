@@ -1,0 +1,24 @@
+.patientDetails {
+    text-align: center;
+}
+.mat-mdc-card-content:first-child,
+.mat-mdc-card-content:first-child {
+    padding: 0;
+    margin: 0;
+}
+.visit-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.patientDetails {
+    text-align: center;
+}
+.panel {
+    margin-top: 20px;
+}
+.visit-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
