@@ -43,7 +43,7 @@ export class VisitComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
-    visitPoints: number[] = [];
+    visitPoints: string[] = [];
     store: Store[];
     noteVal: string;
     showCheck = false;
@@ -52,7 +52,6 @@ export class VisitComponent implements OnInit {
     isLoadingResults = true;
     company: Company;
     displayedColumns: string[] = [
-        'id',
         'negativePoint',
         'positivePoint',
         'name',
@@ -68,7 +67,7 @@ export class VisitComponent implements OnInit {
         }
         this.storeService.getStore().subscribe({
             next: (data) => {
-                this.store = data.sort((a, b) => a.id - b.id);
+                this.store = data;
                 this.dataSource = new MatTableDataSource<Store>(this.store);
                 this.dataSource.paginator = this.paginator;
                 this.isLoadingResults = false;
@@ -96,12 +95,12 @@ export class VisitComponent implements OnInit {
     }
 
     clickedRow(row): void {
-        const index = this.visitPoints.indexOf(row.id);
+        const index = this.visitPoints.indexOf(row._id);
         if (index !== -1) {
             this.visitPoints.splice(index, 1);
             this.showCheck = false;
         } else {
-            this.visitPoints.push(row.id);
+            this.visitPoints.push(row._id);
         }
         this.paginatorPageChecker();
     }
@@ -148,7 +147,7 @@ export class VisitComponent implements OnInit {
 
     createVisitPointsTable(): void {
         this.dataSource = new MatTableDataSource<Store>(
-            this.store.filter((s: Store) => this.visitPoints.includes(s.id)),
+            this.store.filter((s: Store) => this.visitPoints.includes(s._id)),
         );
         this.paginator.firstPage();
         this.showFinish = true;
@@ -229,13 +228,13 @@ export class VisitComponent implements OnInit {
         });
     }
 
-    private getPdfRow(point: number) {
+    private getPdfRow(point: string) {
         return [
             {
                 text: point,
             },
             {
-                image: this.store.find((s: Store) => s.id === point).image,
+                image: this.store.find((s: Store) => s._id === point).image,
                 width: 100,
                 alignment: 'center',
             },

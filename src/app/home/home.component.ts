@@ -12,7 +12,10 @@ import { UserInputDialogComponent } from '../user-input-dialog/user-input-dial.c
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-    constructor(private dialog: MatDialog, private route: Router) {}
+    constructor(
+        private dialog: MatDialog,
+        private route: Router,
+    ) {}
 
     newOrUpdatedPatient;
 

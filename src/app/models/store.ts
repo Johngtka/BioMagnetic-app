@@ -1,10 +1,11 @@
 export interface Store {
     _id: string;
     group: string;
-    id: number;
     image: string;
+    parent: string;
     name: string;
     negativePoint: string;
     positivePoint: string;
     type: string;
+    moreInfo: string;
 }
