@@ -54,6 +54,15 @@ table {
 tr.example-detail-row {
     height: 0;
 }
+
+tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
 .example-element-row td {
     border-bottom-width: 0;
 }
@@ -80,4 +89,11 @@ tr.example-detail-row {
 
 .example-element-description {
     padding: 16px;
+}
+
+.example-element-description-attribution {
+    opacity: 0.5;
+}
+.cell {
+    width: 25vw;
 }
