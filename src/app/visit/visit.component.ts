@@ -256,7 +256,7 @@
 //         return Object.hasOwn(object, 'name');
 //     }
 // }
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
     animate,
     state,
@@ -264,6 +264,7 @@ import {
     transition,
     trigger,
 } from '@angular/animations';
+import { StoreService } from '../services/store.service';
 
 @Component({
     selector: 'app-visit',
@@ -280,9 +281,42 @@ import {
         ]),
     ],
 })
-export class VisitComponent {
-    dataSource = ELEMENT_DATA;
-    columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+export class VisitComponent implements OnInit {
+    constructor(private storeService: StoreService) {}
+    ngOnInit(): void {
+        this.storeService.getStore().subscribe({
+            next: (data) => {
+                // const store = data.sort((a, b) => a.id - b.id);
+                const groupR = data.filter((d) => d.code.startsWith('R'));
+
+                const groupRParents = [
+                    ...new Map(
+                        groupR
+                            .map((gr) => {
+                                if (gr.parent.length > 0) {
+                                    const parentObj = {
+                                        name: gr.parent,
+                                        child: groupR.filter(
+                                            (g) => g.parent === gr.parent,
+                                        ),
+                                    };
+                                    return parentObj;
+                                } else {
+                                    return gr;
+                                }
+                            })
+                            .map((item) => [item['name'], item]),
+                    ).values(),
+                ];
+                this.dataSource = groupRParents;
+
+                // const groupMR = data.filter((d) => d.code.startsWith('M'));
+                // const groupP = data.filter((d) => d.code.startsWith('P'));
+            },
+        });
+    }
+    dataSource;
+    columnsToDisplay = ['name', 'negativePoint', 'positivePoint'];
     columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
     expandedElement: PeriodicElement | null;
 }
@@ -295,30 +329,3 @@ export interface PeriodicElement {
     expandable: boolean;
     child?: any[];
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-    {
-        name: 'Hydrogen',
-        expandable: true,
-        child: [
-            {
-                name: 'A',
-                position: 1,
-                weight: 800,
-                symbol: 'B',
-                expandable: false,
-            },
-            {
-                name: 'B',
-                position: 2,
-                weight: 1800,
-                symbol: 'C',
-                expandable: false,
-            },
-        ],
-    },
-    {
-        name: 'not Hydrogen',
-        expandable: false,
-    },
-];

@@ -201,7 +201,7 @@
         class="example-element-row"
         [class.example-expanded-row]="expandedElement === element"
         (click)="
-            element.expandable &&
+            element.child?.length > 0 &&
                 (expandedElement = expandedElement === element ? null : element)
         "
     ></tr>
