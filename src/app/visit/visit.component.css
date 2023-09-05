@@ -47,6 +47,7 @@ selectedRow:hover {
     display: flex;
     height: 120px;
 } */
+
 table {
     width: 100%;
 }
@@ -96,4 +97,24 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 .cell {
     width: 25vw;
+}
+
+.mat-column-negativePoint {
+    width: 20%;
+}
+
+.mat-column-positivePoint {
+    width: 20%;
+}
+
+.mat-column-name {
+    width: 20%;
+}
+
+.mat-column-type {
+    width: 10%;
+}
+
+.mat-column-image {
+    width: 30%;
 }
