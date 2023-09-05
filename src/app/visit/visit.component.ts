@@ -316,7 +316,13 @@ export class VisitComponent implements OnInit {
         });
     }
     dataSource;
-    columnsToDisplay = ['name', 'negativePoint', 'positivePoint', 'image'];
+    columnsToDisplay = [
+        'name',
+        'negativePoint',
+        'positivePoint',
+        'type',
+        'image',
+    ];
     columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
     expandedElement: PeriodicElement | null;
 }
