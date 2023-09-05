@@ -29,6 +29,7 @@
         "@ngx-translate/core": "^14.0.0",
         "@ngx-translate/http-loader": "^7.0.0",
         "date-fns": "^2.29.3",
+        "natural-orderby": "^3.0.2",
         "pdfmake": "^0.2.7",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
