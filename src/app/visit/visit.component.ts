@@ -1,12 +1,24 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 
 import { DatePipe } from '@angular/common';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {
+    trigger,
+    state,
+    style,
+    transition,
+    animate,
+} from '@angular/animations';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { orderBy } from 'natural-orderby';
 
 import { Store } from '../models/store';
 import { Visit } from '../models/visit';
@@ -21,16 +33,6 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import {
-    trigger,
-    state,
-    style,
-    transition,
-    animate,
-} from '@angular/animations';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'app-visit',
@@ -72,6 +74,7 @@ export class VisitComponent implements OnInit {
         'name',
         'negativePoint',
         'positivePoint',
+        'code',
         'type',
         'image',
     ];
@@ -87,6 +90,7 @@ export class VisitComponent implements OnInit {
         this.storeService.getStore().subscribe({
             next: (data) => {
                 // this.store = data.sort((a, b) => a.id - b.id);
+                data = orderBy(data, [(v) => v.code]);
 
                 const groupR = data.filter((d) => d.code.startsWith('R'));
 
@@ -140,14 +144,16 @@ export class VisitComponent implements OnInit {
     }
 
     clickedRow(row): void {
-        const index = this.visitPoints.indexOf(row.id);
-        if (index !== -1) {
-            this.visitPoints.splice(index, 1);
-            this.showCheck = false;
-        } else {
-            this.visitPoints.push(row.id);
+        if (!row.child) {
+            const index = this.visitPoints.indexOf(row._id);
+            if (index !== -1) {
+                this.visitPoints.splice(index, 1);
+                this.showCheck = false;
+            } else {
+                this.visitPoints.push(row._id);
+            }
+            this.paginatorPageChecker();
         }
-        this.paginatorPageChecker();
     }
 
     toggleTableVisibility(): void {
@@ -300,140 +306,3 @@ export class VisitComponent implements OnInit {
         return Object.hasOwn(object, 'name');
     }
 }
-
-// import { Component, OnInit, ViewChild } from '@angular/core';
-// import {
-//     animate,
-//     state,
-//     style,
-//     transition,
-//     trigger,
-// } from '@angular/animations';
-// import { StoreService } from '../services/store.service';
-// import { MatPaginator } from '@angular/material/paginator';
-// import {
-//     MatTableDataSource,
-//     MatTableDataSourcePaginator,
-// } from '@angular/material/table';
-// import { Company } from '../models/company';
-// import { Patient } from '../models/patient';
-// import { Store } from '../models/store';
-
-// @Component({
-//     selector: 'app-visit',
-//     styleUrls: ['./visit.component.css'],
-//     templateUrl: './visit.component.html',
-//     animations: [
-//         trigger('detailExpand', [
-//             state('collapsed', style({ height: '0px', minHeight: '0' })),
-//             state('expanded', style({ height: '*' })),
-//             transition(
-//                 'expanded <=> collapsed',
-//                 animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'),
-//             ),
-//         ]),
-//     ],
-// })
-// export class VisitComponent implements OnInit {
-//     @ViewChild(MatPaginator) paginator: MatPaginator;
-//     patient: Patient;
-//     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
-//     visitPoints: number[] = [];
-//     store: Store[];
-//     noteVal: string;
-//     showCheck = false;
-//     showFinish = false;
-//     date = new Date();
-//     isLoadingResults = true;
-//     company: Company;
-
-//     constructor(private storeService: StoreService) {}
-//     ngOnInit(): void {
-//         this.patient = {} as Patient;
-//         const urlPatient = history.state;
-//         if (this.checkIfPatient(urlPatient)) {
-//             this.patient = urlPatient;
-//         }
-//         this.storeService.getStore().subscribe({
-//             next: (data) => {
-//                 this.store = data.sort((a, b) => a.id - b.id);
-//                 this.dataSource = new MatTableDataSource<Store>(this.store);
-//                 this.dataSource.paginator = this.paginator;
-//                 this.isLoadingResults = false;
-//             },
-//             error: (err) => {
-//                 this.snackService.showSnackBarMessage(
-//                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
-//                     SNACK_TYPE.error,
-//                 );
-//                 console.log(err.message);
-//             },
-//         });
-
-//         this.storeService.getStore().subscribe({
-//             next: (data) => {
-//                 // const store = data.sort((a, b) => a.id - b.id);
-//                 const groupR = data.filter((d) => d.code.startsWith('R'));
-
-//                 const groupRParents = [
-//                     ...new Map(
-//                         groupR
-//                             .map((gr) => {
-//                                 if (gr.parent.length > 0) {
-//                                     const parentObj = {
-//                                         name: gr.parent,
-//                                         child: groupR.filter(
-//                                             (g) => g.parent === gr.parent,
-//                                         ),
-//                                     };
-//                                     return parentObj;
-//                                 } else {
-//                                     return gr;
-//                                 }
-//                             })
-//                             .map((item) => [item['name'], item]),
-//                     ).values(),
-//                 ];
-//                 this.dataSource = groupRParents;
-
-//                 // const groupMR = data.filter((d) => d.code.startsWith('M'));
-//                 // const groupP = data.filter((d) => d.code.startsWith('P'));
-//             },
-//             error: (err) => {
-//                 this.snackService.showSnackBarMessage(
-//                     'ERROR.PATIENT_VISIT_CREATE_PATIENT',
-//                     SNACK_TYPE.error,
-//                 );
-//                 console.log(err.message);
-//             },
-//         });
-
-//         this.companyService.getCompany().subscribe({
-//             next: (data) => {
-//                 this.company = data;
-//             },
-//             error: (err) => {
-//                 console.log(err);
-//             },
-//         });
-//     }
-//     dataSource;
-//     columnsToDisplay = [
-//         'name',
-//         'negativePoint',
-//         'positivePoint',
-//         'type',
-//         'image',
-//     ];
-//     columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-//     expandedElement: PeriodicElement | null;
-// }
-
-// export interface PeriodicElement {
-//     name?: string;
-//     position?: number;
-//     weight?: number;
-//     symbol?: string;
-//     expandable: boolean;
-//     child?: any[];
-// }
