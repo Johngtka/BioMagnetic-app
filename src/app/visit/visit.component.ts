@@ -74,11 +74,11 @@ export class VisitComponent implements OnInit {
         'name',
         'negativePoint',
         'positivePoint',
-        'code',
         'type',
         'image',
+        'moreInfo',
     ];
-    columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+    columnsToDisplayWithExpand = [...this.displayedColumns];
     expandedElement: any | null;
 
     ngOnInit(): void {
