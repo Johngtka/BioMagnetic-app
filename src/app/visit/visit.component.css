@@ -41,8 +41,12 @@ tr.detail-row {
     width: 30%;
 }
 
-.bodyPoints {
-    width: 100%;
+.selectedRow .bodyPoints {
     display: flex;
     width: 250px;
+}
+
+.bodyPoints {
+    display: flex;
+    width: 100px;
 }
