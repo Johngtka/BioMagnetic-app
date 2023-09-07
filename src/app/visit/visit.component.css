@@ -3,48 +3,48 @@
     width: 100%;
     height: 50px;
 }
-
 .add-btn {
     float: right;
 }
-
 .mat-mdc-row {
     cursor: pointer;
 }
-
 .selectedRow,
 .selectedRow:hover {
     background-color: lightgray !important;
 }
-
 tr.detail-row {
     height: 0;
 }
-.mat-column-name {
+
+.mat-column-negativePoint,
+.details-row > td:nth-child(1) {
     width: 20%;
 }
-.mat-column-negativePoint {
-    width: 15%;
+.mat-column-positivePoint,
+.details-row > td:nth-child(2) {
+    width: 20%;
 }
-
-.mat-column-positivePoint {
-    width: 15%;
-}
-.mat-column-type {
+.mat-column-type,
+.details-row > td:nth-child(3) {
     width: 5%;
 }
-.mat-column-image {
-    width: 30%;
+.mat-column-name,
+.details-row > td:nth-child(4) {
+    width: 10%;
 }
-.mat-column-moreInfo {
-    width: 15%;
+.mat-column-image,
+.details-row > td:nth-child(5) {
+    width: 20%;
 }
-
+.mat-column-moreInfo,
+.details-row > td:nth-child(6) {
+    width: 25%;
+}
 .selectedRow .bodyPoints {
     display: flex;
     width: 250px;
 }
-
 .bodyPoints {
     display: flex;
     width: 100px;
@@ -55,29 +55,13 @@ tr.detail-row {
 .no-padding {
     padding: 0px !important;
 }
-
-.details-row > td:nth-child(1) {
-    width: 20%;
-}
-.details-row > td:nth-child(2) {
-    width: 15%;
-}
-.details-row > td:nth-child(3) {
-    width: 15%;
-}
-.details-row > td:nth-child(4) {
-    width: 5%;
-}
-.details-row > td:nth-child(5) {
-    width: 30%;
-}
-.details-row > td:nth-child(6) {
-    width: 15%;
-}
 .flex {
     display: flex;
 }
 .align-middle {
     vertical-align: middle;
     line-height: 52px;
+}
+table {
+    width: 100%;
 }

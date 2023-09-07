@@ -71,15 +71,18 @@ export class VisitComponent implements OnInit {
     isLoadingResults = true;
     company: Company;
     displayedColumns: string[] = [
-        'name',
         'negativePoint',
         'positivePoint',
         'type',
+        'name',
         'image',
         'moreInfo',
     ];
     columnsToDisplayWithExpand = [...this.displayedColumns];
-    expandedElement: any | null;
+    expandedElement: any;
+    groupReservoirsParents: any[]; // code starts with R
+    groupMoreReservoirsParents: any[]; // code starts with MR
+    groupUniversalParents: any[]; //code starts with P
 
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -89,36 +92,14 @@ export class VisitComponent implements OnInit {
         }
         this.storeService.getStore().subscribe({
             next: (data) => {
-                // this.store = data.sort((a, b) => a.id - b.id);
+                this.store = data;
                 data = orderBy(data, [(v) => v.code]);
 
-                const groupR = data.filter((d) => d.code.startsWith('R'));
-
-                const groupRParents = [
-                    ...new Map(
-                        groupR
-                            .map((gr) => {
-                                if (gr.parent.length > 0) {
-                                    const parentObj = {
-                                        name: gr.parent,
-                                        child: groupR.filter(
-                                            (g) => g.parent === gr.parent,
-                                        ),
-                                    };
-                                    return parentObj;
-                                } else {
-                                    return gr;
-                                }
-                            })
-                            .map((item) => [item['name'], item]),
-                    ).values(),
-                ];
-                this.dataSource = new MatTableDataSource<any>(groupRParents);
+                this.groupReservoirsParents = this.getTableData(data, 'R');
+                this.dataSource = new MatTableDataSource<any>(
+                    this.groupReservoirsParents,
+                );
                 this.dataSource.paginator = this.paginator;
-
-                // const groupMR = data.filter((d) => d.code.startsWith('M'));
-                // const groupP = data.filter((d) => d.code.startsWith('P'));
-
                 this.isLoadingResults = false;
             },
             error: (err) => {
@@ -277,6 +258,29 @@ export class VisitComponent implements OnInit {
                 console.log(error);
             },
         });
+    }
+
+    private getTableData(data: Store[], codeLetter: string) {
+        const group = data.filter((d) => d.code.startsWith(codeLetter));
+        return [
+            ...new Map(
+                group
+                    .map((gr) => {
+                        if (gr.parent.length > 0) {
+                            const parentObj = {
+                                negativePoint: gr.parent,
+                                child: group.filter(
+                                    (g) => g.parent === gr.parent,
+                                ),
+                            };
+                            return parentObj;
+                        } else {
+                            return gr;
+                        }
+                    })
+                    .map((item) => [item['negativePoint'], item]),
+            ).values(),
+        ];
     }
 
     private getPdfRow(point: string) {
