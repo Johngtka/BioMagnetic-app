@@ -150,7 +150,9 @@ export class VisitComponent implements OnInit {
                     this.patient = {} as Patient;
                     this.showCheck = false;
                     this.showFinish = false;
-                    this.dataSource = new MatTableDataSource<Store>(this.store);
+                    this.dataSource = new MatTableDataSource<any>(
+                        this.groupReservoirsParents,
+                    );
                     this.dataSource.paginator = this.paginator;
                     this.visitPoints = [];
                     console.clear();
