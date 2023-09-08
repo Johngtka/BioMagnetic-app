@@ -85,7 +85,8 @@
         "POSITIVE_POINT": "Positive Point",
         "NAME": "Name",
         "TYPE": "Type",
-        "IMAGE": "Image"
+        "IMAGE": "Image",
+        "MORE_INFO": "More Info"
     },
     "VISITS_HISTORY_TABLE": {
         "DATE": "Date",

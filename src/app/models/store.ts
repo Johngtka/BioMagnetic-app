@@ -1,11 +1,12 @@
 export interface Store {
     _id: string;
+    code: string;
     group: string;
-    image: string;
     parent: string;
-    name: string;
     negativePoint: string;
     positivePoint: string;
+    name: string;
     type: string;
     moreInfo: string;
+    image: string;
 }

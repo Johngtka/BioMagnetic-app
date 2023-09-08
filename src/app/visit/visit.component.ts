@@ -1,12 +1,23 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-
 import { DatePipe } from '@angular/common';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {
+    trigger,
+    state,
+    style,
+    transition,
+    animate,
+} from '@angular/animations';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { orderBy } from 'natural-orderby';
 
 import { Store } from '../models/store';
 import { Visit } from '../models/visit';
@@ -21,14 +32,21 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'app-visit',
     templateUrl: './visit.component.html',
     styleUrls: ['./visit.component.css'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({ height: '0px', minHeight: '0' })),
+            state('expanded', style({ height: '*' })),
+            transition(
+                'expanded <=> collapsed',
+                animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'),
+            ),
+        ]),
+    ],
 })
 export class VisitComponent implements OnInit {
     constructor(
@@ -54,10 +72,16 @@ export class VisitComponent implements OnInit {
     displayedColumns: string[] = [
         'negativePoint',
         'positivePoint',
-        'name',
         'type',
+        'name',
         'image',
+        'moreInfo',
     ];
+    columnsToDisplayWithExpand = [...this.displayedColumns];
+    expandedElement: any;
+    groupReservoirsParents: any[]; // code starts with R
+    groupMoreReservoirsParents: any[]; // code starts with MR
+    groupUniversalParents: any[]; //code starts with P
 
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -68,7 +92,12 @@ export class VisitComponent implements OnInit {
         this.storeService.getStore().subscribe({
             next: (data) => {
                 this.store = data;
-                this.dataSource = new MatTableDataSource<Store>(this.store);
+                data = orderBy(data, [(v) => v.code]);
+
+                this.groupReservoirsParents = this.getTableData(data, 'R');
+                this.dataSource = new MatTableDataSource<any>(
+                    this.groupReservoirsParents,
+                );
                 this.dataSource.paginator = this.paginator;
                 this.isLoadingResults = false;
             },
@@ -95,14 +124,16 @@ export class VisitComponent implements OnInit {
     }
 
     clickedRow(row): void {
-        const index = this.visitPoints.indexOf(row._id);
-        if (index !== -1) {
-            this.visitPoints.splice(index, 1);
-            this.showCheck = false;
-        } else {
-            this.visitPoints.push(row._id);
+        if (!row.child) {
+            const index = this.visitPoints.indexOf(row._id);
+            if (index !== -1) {
+                this.visitPoints.splice(index, 1);
+                this.showCheck = false;
+            } else {
+                this.visitPoints.push(row._id);
+            }
+            this.paginatorPageChecker();
         }
-        this.paginatorPageChecker();
     }
 
     toggleTableVisibility(): void {
@@ -119,7 +150,9 @@ export class VisitComponent implements OnInit {
                     this.patient = {} as Patient;
                     this.showCheck = false;
                     this.showFinish = false;
-                    this.dataSource = new MatTableDataSource<Store>(this.store);
+                    this.dataSource = new MatTableDataSource<any>(
+                        this.groupReservoirsParents,
+                    );
                     this.dataSource.paginator = this.paginator;
                     this.visitPoints = [];
                     console.clear();
@@ -226,6 +259,29 @@ export class VisitComponent implements OnInit {
                 console.log(error);
             },
         });
+    }
+
+    private getTableData(data: Store[], codeLetter: string) {
+        const group = data.filter((d) => d.code.startsWith(codeLetter));
+        return [
+            ...new Map(
+                group
+                    .map((gr) => {
+                        if (gr.parent.length > 0) {
+                            const parentObj = {
+                                negativePoint: gr.parent,
+                                child: group.filter(
+                                    (g) => g.parent === gr.parent,
+                                ),
+                            };
+                            return parentObj;
+                        } else {
+                            return gr;
+                        }
+                    })
+                    .map((item) => [item['negativePoint'], item]),
+            ).values(),
+        ];
     }
 
     private getPdfRow(point: string) {
