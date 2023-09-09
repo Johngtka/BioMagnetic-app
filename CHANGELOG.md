@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/Johngtka/Biomagnethick-app/compare/v0.0.9...v0.0.10) (2023-09-09)
+
+
+### Features
+
+* allow opening patient/details after selecting patient on home page ([#49](https://github.com/Johngtka/Biomagnethick-app/issues/49)) ([1cad9fd](https://github.com/Johngtka/Biomagnethick-app/commit/1cad9fdd8b145293d76b45bd07cc7dcfdcda0050))
+* show visit table with expandable rows  ([#50](https://github.com/Johngtka/Biomagnethick-app/issues/50)) ([e6f970e](https://github.com/Johngtka/Biomagnethick-app/commit/e6f970e527e503ffa0e5ee17228af4b3c31759a6))
+
 ### [0.0.9](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.8...v0.0.9) (2023-06-14)
 
 
