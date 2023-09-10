@@ -261,6 +261,15 @@ export class VisitComponent implements OnInit {
         });
     }
 
+    showMR(): void {
+        this.groupMoreReservoirsParents = this.getTableData(this.store, 'MR');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupMoreReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
+        // this.paginatorPageChecker();
+    }
+
     private getTableData(data: Store[], codeLetter: string) {
         const group = data.filter((d) => d.code.startsWith(codeLetter));
         return [

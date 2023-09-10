@@ -169,10 +169,15 @@
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
     </button>
-    <button class="add-btn" mat-raised-button color="primary">
+    <button
+        color="primary"
+        class="add-btn"
+        mat-raised-button
+        (click)="showMR()"
+    >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
     </button>
-    <button class="add-btn" mat-raised-button color="primary">
+    <button color="primary" class="add-btn" mat-raised-button>
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
     </button>
 </div>
