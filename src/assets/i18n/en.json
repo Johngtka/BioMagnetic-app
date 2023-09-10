@@ -77,6 +77,10 @@
         "FINISH_BUTTONS": {
             "CHECK": "Check",
             "FINISH": "Finish"
+        },
+        "STEPS_BUTTONS": {
+            "MORE_RESERVOIRS": "More Reservoirs",
+            "UNIVERSAL_POINTS": "Universal Points"
         }
     },
     "VISIT_TABLE": {

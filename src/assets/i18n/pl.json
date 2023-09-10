@@ -74,6 +74,10 @@
         "FINISH_BUTTONS": {
             "CHECK": "Sprawdź",
             "FINISH": "Zakończ"
+        },
+        "STEPS_BUTTONS": {
+            "MORE_RESERVOIRS": "Więcej Zbiorników",
+            "UNIVERSAL_POINTS": "Punkty Uniwersalne"
         }
     },
     "PATIENT_SEARCH": {

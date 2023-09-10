@@ -77,6 +77,10 @@
         "FINISH_BUTTONS": {
             "CHECK": "Comprobar",
             "FINISH": "Finalizar"
+        },
+        "STEPS_BUTTONS": {
+            "MORE_RESERVOIRS": "Más embalses",
+            "UNIVERSAL_POINTS": "Puntos Universales"
         }
     },
     "VISIT_TABLE": {
