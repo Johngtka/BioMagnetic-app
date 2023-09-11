@@ -267,7 +267,14 @@ export class VisitComponent implements OnInit {
             this.groupMoreReservoirsParents,
         );
         this.dataSource.paginator = this.paginator;
-        // this.paginatorPageChecker();
+    }
+
+    showUP(): void {
+        this.groupUniversalParents = this.getTableData(this.store, 'P');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupUniversalParents,
+        );
+        this.dataSource.paginator = this.paginator;
     }
 
     private getTableData(data: Store[], codeLetter: string) {
