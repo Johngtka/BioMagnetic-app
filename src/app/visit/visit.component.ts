@@ -66,6 +66,8 @@ export class VisitComponent implements OnInit {
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    hideMRButton: boolean;
+    hideUpButton: boolean;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -100,6 +102,8 @@ export class VisitComponent implements OnInit {
                 );
                 this.dataSource.paginator = this.paginator;
                 this.isLoadingResults = false;
+                this.hideMRButton = false;
+                this.hideUpButton = false;
             },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
@@ -267,6 +271,8 @@ export class VisitComponent implements OnInit {
             this.groupMoreReservoirsParents,
         );
         this.dataSource.paginator = this.paginator;
+        this.paginator.firstPage();
+        this.hideUpButton = true;
     }
 
     showUP(): void {
@@ -275,6 +281,8 @@ export class VisitComponent implements OnInit {
             this.groupUniversalParents,
         );
         this.dataSource.paginator = this.paginator;
+        this.paginator.firstPage();
+        this.hideMRButton = true;
     }
 
     private getTableData(data: Store[], codeLetter: string) {
