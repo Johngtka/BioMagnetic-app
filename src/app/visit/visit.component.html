@@ -187,4 +187,22 @@
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
     </button>
+    <button
+        color="primary"
+        class="add-btn"
+        mat-raised-button
+        (click)="showMrTemplate()"
+        [hidden]="!showNextToMr || !showFinish"
+    >
+        {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
+    </button>
+    <button
+        color="primary"
+        class="add-btn"
+        mat-raised-button
+        (click)="showUpTemplate()"
+        [hidden]="!showNextToUp || !showFinish"
+    >
+        {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
+    </button>
 </div>

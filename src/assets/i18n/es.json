@@ -80,7 +80,8 @@
         },
         "STEPS_BUTTONS": {
             "MORE_RESERVOIRS": "Más embalses",
-            "UNIVERSAL_POINTS": "Puntos Universales"
+            "UNIVERSAL_POINTS": "Puntos Universales",
+            "NEXT": "Más"
         }
     },
     "VISIT_TABLE": {

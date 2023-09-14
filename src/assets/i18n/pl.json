@@ -77,7 +77,8 @@
         },
         "STEPS_BUTTONS": {
             "MORE_RESERVOIRS": "Więcej Zbiorników",
-            "UNIVERSAL_POINTS": "Punkty Uniwersalne"
+            "UNIVERSAL_POINTS": "Punkty Uniwersalne",
+            "NEXT": "Dalej"
         }
     },
     "PATIENT_SEARCH": {

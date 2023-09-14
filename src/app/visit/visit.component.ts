@@ -66,6 +66,8 @@ export class VisitComponent implements OnInit {
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    showNextToMr = false;
+    showNextToUp = false;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -183,9 +185,8 @@ export class VisitComponent implements OnInit {
             this.store.filter((s: Store) => this.visitPoints.includes(s._id)),
         );
         this.paginator.firstPage();
-        this.showFinish = true;
-        this.showCheck = false;
         this.dataSource.paginator = this.paginator;
+        this.showFinish = true;
     }
 
     pageTriggerManually(): void {
@@ -262,20 +263,38 @@ export class VisitComponent implements OnInit {
     }
 
     showMR(): void {
+        if (this.visitPoints.length >= 1) {
+            this.createVisitPointsTable();
+            this.showNextToMr = true;
+        }
+    }
+
+    showMrTemplate(): void {
         this.groupMoreReservoirsParents = this.getTableData(this.store, 'MR');
         this.dataSource = new MatTableDataSource<any>(
             this.groupMoreReservoirsParents,
         );
         this.dataSource.paginator = this.paginator;
+        this.showNextToMr = false;
+        this.showFinish = false;
         this.paginator.firstPage();
     }
 
     showUP(): void {
+        if (this.visitPoints.length >= 1) {
+            this.createVisitPointsTable();
+            this.showNextToUp = true;
+        }
+    }
+
+    showUpTemplate() {
         this.groupUniversalParents = this.getTableData(this.store, 'P');
         this.dataSource = new MatTableDataSource<any>(
             this.groupUniversalParents,
         );
         this.dataSource.paginator = this.paginator;
+        this.showNextToUp = false;
+        this.showFinish = false;
         this.paginator.firstPage();
     }
 

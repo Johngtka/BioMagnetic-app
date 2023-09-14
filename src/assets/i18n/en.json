@@ -80,7 +80,8 @@
         },
         "STEPS_BUTTONS": {
             "MORE_RESERVOIRS": "More Reservoirs",
-            "UNIVERSAL_POINTS": "Universal Points"
+            "UNIVERSAL_POINTS": "Universal Points",
+            "NEXT": "Next"
         }
     },
     "VISIT_TABLE": {
