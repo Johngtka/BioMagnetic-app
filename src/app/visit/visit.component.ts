@@ -153,7 +153,9 @@ export class VisitComponent implements OnInit {
                     this.patient = {} as Patient;
                     this.showCheck = false;
                     this.showFinish = false;
-                    this.showNext = true;
+                    this.showNext = false;
+                    this.showMrButton = false;
+                    this.showUpButton = false;
                     this.dataSource = new MatTableDataSource<any>(
                         this.groupReservoirsParents,
                     );
