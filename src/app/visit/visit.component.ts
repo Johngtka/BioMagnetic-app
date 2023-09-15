@@ -67,6 +67,8 @@ export class VisitComponent implements OnInit {
     showCheck = false;
     showFinish = false;
     showNext = false;
+    showMrButton = false;
+    showUpButton = false;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -270,7 +272,9 @@ export class VisitComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.paginator.firstPage();
 
-        this.showNext = true;
+        this.showNext = false;
+        this.showUpButton = false;
+        this.showMrButton = true;
         this.paginatorPageChecker();
     }
 
@@ -283,6 +287,7 @@ export class VisitComponent implements OnInit {
         this.paginator.firstPage();
 
         this.showNext = true;
+        this.showUpButton = true;
         this.paginatorPageChecker();
     }
 
