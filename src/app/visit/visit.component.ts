@@ -66,6 +66,7 @@ export class VisitComponent implements OnInit {
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    showNext = false;
     showNextToMr = false;
     showNextToUp = false;
     date = new Date();
@@ -102,6 +103,7 @@ export class VisitComponent implements OnInit {
                 );
                 this.dataSource.paginator = this.paginator;
                 this.isLoadingResults = false;
+                this.showNext = true;
             },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
@@ -152,6 +154,7 @@ export class VisitComponent implements OnInit {
                     this.patient = {} as Patient;
                     this.showCheck = false;
                     this.showFinish = false;
+                    this.showNext = true;
                     this.dataSource = new MatTableDataSource<any>(
                         this.groupReservoirsParents,
                     );
@@ -263,39 +266,25 @@ export class VisitComponent implements OnInit {
     }
 
     showMR(): void {
-        if (this.visitPoints.length >= 1) {
-            this.createVisitPointsTable();
-            this.showNextToMr = true;
-        }
-    }
-
-    showMrTemplate(): void {
         this.groupMoreReservoirsParents = this.getTableData(this.store, 'MR');
         this.dataSource = new MatTableDataSource<any>(
             this.groupMoreReservoirsParents,
         );
         this.dataSource.paginator = this.paginator;
-        this.showNextToMr = false;
-        this.showFinish = false;
         this.paginator.firstPage();
+        this.paginatorPageChecker();
+        this.showNext = false;
     }
 
     showUP(): void {
-        if (this.visitPoints.length >= 1) {
-            this.createVisitPointsTable();
-            this.showNextToUp = true;
-        }
-    }
-
-    showUpTemplate() {
         this.groupUniversalParents = this.getTableData(this.store, 'P');
         this.dataSource = new MatTableDataSource<any>(
             this.groupUniversalParents,
         );
         this.dataSource.paginator = this.paginator;
-        this.showNextToUp = false;
-        this.showFinish = false;
         this.paginator.firstPage();
+        this.paginatorPageChecker();
+        this.showNext = false;
     }
 
     private getTableData(data: Store[], codeLetter: string) {

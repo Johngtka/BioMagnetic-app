@@ -160,21 +160,21 @@
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.FINISH' | translate }}
     </button>
-    <button
+    <!-- <button
         class="add-btn"
-        [hidden]="!showCheck || showFinish"
+        [hidden]="!showFinish"
         (click)="createVisitPointsTable()"
         mat-raised-button
         color="primary"
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
-    </button>
+    </button> -->
     <button
         color="primary"
         class="add-btn"
         mat-raised-button
         (click)="showMR()"
-        [hidden]="!showCheck || showFinish"
+        [hidden]="!showCheck || !showNextToMr"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
     </button>
@@ -183,7 +183,7 @@
         class="add-btn"
         mat-raised-button
         (click)="showUP()"
-        [hidden]="!showCheck || showFinish"
+        [hidden]="!showCheck || !showNextToUp"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
     </button>
@@ -191,18 +191,18 @@
         color="primary"
         class="add-btn"
         mat-raised-button
-        (click)="showMrTemplate()"
-        [hidden]="!showNextToMr || !showFinish"
+        (click)="createVisitPointsTable()"
+        [hidden]="!showCheck || showNext"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
     </button>
-    <button
+    <!-- <button
         color="primary"
         class="add-btn"
         mat-raised-button
-        (click)="showUpTemplate()"
-        [hidden]="!showNextToUp || !showFinish"
+        (click)="showUpTableSummary()"
+        [hidden]="!showCheck || showNextToUp"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
-    </button>
+    </button> -->
 </div>
