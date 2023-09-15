@@ -67,8 +67,6 @@ export class VisitComponent implements OnInit {
     showCheck = false;
     showFinish = false;
     showNext = false;
-    showNextToMr = false;
-    showNextToUp = false;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -103,7 +101,6 @@ export class VisitComponent implements OnInit {
                 );
                 this.dataSource.paginator = this.paginator;
                 this.isLoadingResults = false;
-                this.showNext = true;
             },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
@@ -272,8 +269,9 @@ export class VisitComponent implements OnInit {
         );
         this.dataSource.paginator = this.paginator;
         this.paginator.firstPage();
+
+        this.showNext = true;
         this.paginatorPageChecker();
-        this.showNext = false;
     }
 
     showUP(): void {
@@ -283,8 +281,9 @@ export class VisitComponent implements OnInit {
         );
         this.dataSource.paginator = this.paginator;
         this.paginator.firstPage();
+
+        this.showNext = true;
         this.paginatorPageChecker();
-        this.showNext = false;
     }
 
     private getTableData(data: Store[], codeLetter: string) {
@@ -324,7 +323,7 @@ export class VisitComponent implements OnInit {
     }
 
     private paginatorPageChecker() {
-        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
+        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 0) {
             this.showCheck = true;
         } else {
             this.showCheck = false;

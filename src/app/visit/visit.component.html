@@ -174,7 +174,7 @@
         class="add-btn"
         mat-raised-button
         (click)="showMR()"
-        [hidden]="!showCheck || !showNextToMr"
+        [hidden]="!showCheck"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
     </button>
@@ -183,7 +183,7 @@
         class="add-btn"
         mat-raised-button
         (click)="showUP()"
-        [hidden]="!showCheck || !showNextToUp"
+        [hidden]="!showCheck"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
     </button>
@@ -192,7 +192,7 @@
         class="add-btn"
         mat-raised-button
         (click)="createVisitPointsTable()"
-        [hidden]="!showCheck || showNext"
+        [hidden]="!showCheck || !showNext"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
     </button>
