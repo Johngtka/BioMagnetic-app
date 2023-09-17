@@ -171,6 +171,8 @@ export class VisitComponent implements OnInit {
                 this.groupReservoirsParents,
             );
             this.dataSource.paginator = this.paginator;
+            this.showMrButton = false;
+            this.showUpButton = false;
         }
     }
 
@@ -287,6 +289,8 @@ export class VisitComponent implements OnInit {
     showUP(): void {
         if (this.visitPoints.length >= 1) {
             this.createVisitPointsTable();
+            this.showFinish = false;
+            this.showNext = true;
         } else {
             this.groupUniversalParents = this.getTableData(this.store, 'P');
             this.dataSource = new MatTableDataSource<any>(
