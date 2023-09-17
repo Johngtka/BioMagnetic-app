@@ -167,6 +167,10 @@ export class VisitComponent implements OnInit {
         } else {
             this.patient = {} as Patient;
             this.visitPoints = [];
+            this.dataSource = new MatTableDataSource<any>(
+                this.groupReservoirsParents,
+            );
+            this.dataSource.paginator = this.paginator;
         }
     }
 
