@@ -285,16 +285,19 @@ export class VisitComponent implements OnInit {
     }
 
     showUP(): void {
-        this.groupUniversalParents = this.getTableData(this.store, 'P');
-        this.dataSource = new MatTableDataSource<any>(
-            this.groupUniversalParents,
-        );
-        this.dataSource.paginator = this.paginator;
-        this.paginator.firstPage();
-
-        this.showNext = true;
-        this.showUpButton = true;
-        this.paginatorPageChecker();
+        if (this.visitPoints.length >= 1) {
+            this.createVisitPointsTable();
+        } else {
+            this.groupUniversalParents = this.getTableData(this.store, 'P');
+            this.dataSource = new MatTableDataSource<any>(
+                this.groupUniversalParents,
+            );
+            this.dataSource.paginator = this.paginator;
+            this.paginator.firstPage();
+            this.showMrButton = true;
+            this.showUpButton = true;
+            this.paginatorPageChecker();
+        }
     }
 
     private getTableData(data: Store[], codeLetter: string) {
