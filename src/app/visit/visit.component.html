@@ -2,6 +2,8 @@
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>
+1: {{ showTable1 }} 2: {{ showTable2 }} 3: {{ showTable3 }} 4:
+{{ showTable4 }} 5: {{ showTable5 }}
 <p [hidden]="!patient.name" class="info">
     <span
         >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
@@ -91,7 +93,7 @@
                     class="flex details-row"
                     (click)="clickedRow(kid)"
                     [ngClass]="{
-                        selectedRow: visitPoints.indexOf(kid._id) > -1
+                        selectedRow: justIds.indexOf(kid._id) > -1
                     }"
                 >
                     <ng-container *ngFor="let column of displayedColumns">
@@ -119,8 +121,7 @@
             class="element-row"
             (click)="clickedRow(element)"
             [ngClass]="{
-                selectedRow:
-                    visitPoints.indexOf(element._id) > -1 && !element.child
+                selectedRow: justIds.indexOf(element._id) > -1 && !element.child
             }"
             [class.example-expanded-row]="expandedElement === element"
             (click)="
@@ -151,6 +152,47 @@
         <mat-label>{{ 'PATIENT_VISIT.NOTES' | translate }}</mat-label>
         <input matInput type="text" [(ngModel)]="noteVal" />
     </mat-form-field>
+
+    <button
+        color="primary"
+        class="add-btn"
+        mat-raised-button
+        (click)="showMR()"
+        [hidden]="!showMRButton"
+    >
+        {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
+    </button>
+
+    <button
+        color="primary"
+        class="add-btn"
+        mat-raised-button
+        (click)="showSummary1()"
+        [hidden]="!showUPButton"
+    >
+        {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
+    </button>
+
+    <button
+        color="primary"
+        class="add-btn"
+        mat-raised-button
+        (click)="showUP()"
+        [hidden]="!showNext"
+    >
+        {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
+    </button>
+
+    <button
+        class="add-btn"
+        [hidden]="!showCheck"
+        (click)="createVisitPointsTable('II')"
+        mat-raised-button
+        color="primary"
+    >
+        {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
+    </button>
+
     <button
         class="add-btn"
         [hidden]="!showFinish"
@@ -160,49 +202,4 @@
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.FINISH' | translate }}
     </button>
-    <!-- <button
-        class="add-btn"
-        [hidden]="!showFinish"
-        (click)="createVisitPointsTable()"
-        mat-raised-button
-        color="primary"
-    >
-        {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
-    </button> -->
-    <button
-        color="primary"
-        class="add-btn"
-        mat-raised-button
-        (click)="showMR()"
-        [hidden]="!showCheck || showMrButton"
-    >
-        {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
-    </button>
-    <button
-        color="primary"
-        class="add-btn"
-        mat-raised-button
-        (click)="showUP()"
-        [hidden]="!showCheck || showUpButton"
-    >
-        {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
-    </button>
-    <button
-        color="primary"
-        class="add-btn"
-        mat-raised-button
-        (click)="createVisitPointsTable()"
-        [hidden]="!showNext"
-    >
-        {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
-    </button>
-    <!-- <button
-        color="primary"
-        class="add-btn"
-        mat-raised-button
-        (click)="showUpTableSummary()"
-        [hidden]="!showCheck || showNextToUp"
-    >
-        {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
-    </button> -->
 </div>
