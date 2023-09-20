@@ -2,8 +2,7 @@
     <app-patient-search (selectedPatient)="selectPatient($event)">
     </app-patient-search>
 </div>
-1: {{ showTable1 }} 2: {{ showTable2 }} 3: {{ showTable3 }} 4:
-{{ showTable4 }} 5: {{ showTable5 }}
+
 <p [hidden]="!patient.name" class="info">
     <span
         >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
