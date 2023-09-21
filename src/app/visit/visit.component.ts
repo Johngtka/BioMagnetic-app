@@ -159,36 +159,11 @@ export class VisitComponent implements OnInit {
             });
             dialogRef.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
-                    this.patient = {} as Patient;
-                    this.showCheck = false;
-                    this.showFinish = false;
-                    this.showNext = false;
-                    this.showMRButton = false;
-                    this.showUPButton = false;
-                    this.showTable1 = true;
-                    this.showTable2 = false;
-                    this.showTable3 = false;
-                    this.showTable4 = false;
-                    this.showTable5 = false;
-                    this.dataSource = new MatTableDataSource<any>(
-                        this.groupReservoirsParents,
-                    );
-                    this.dataSource.paginator = this.paginator;
-                    this.visitPoints = [];
-                    this.justIds = [];
-                    console.clear();
+                    this.resetVariables();
                 }
             });
         } else {
-            this.patient = {} as Patient;
-            this.visitPoints = [];
-            this.justIds = [];
-            this.dataSource = new MatTableDataSource<any>(
-                this.groupReservoirsParents,
-            );
-            this.dataSource.paginator = this.paginator;
-            this.showMRButton = false;
-            this.showUPButton = false;
+            this.resetVariables();
         }
     }
 
@@ -422,5 +397,27 @@ export class VisitComponent implements OnInit {
         object: Patient | NavigationObject,
     ): object is Patient {
         return Object.hasOwn(object, 'name');
+    }
+
+    private resetVariables() {
+        this.patient = {} as Patient;
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
+        this.visitPoints = [];
+        this.justIds = [];
+
+        this.showCheck = false;
+        this.showFinish = false;
+        this.showNext = false;
+        this.showMRButton = false;
+        this.showUPButton = false;
+
+        this.showTable1 = true;
+        this.showTable2 = false;
+        this.showTable3 = false;
+        this.showTable4 = false;
+        this.showTable5 = false;
     }
 }
