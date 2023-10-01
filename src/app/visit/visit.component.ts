@@ -405,6 +405,7 @@ export class VisitComponent implements OnInit {
             this.groupReservoirsParents,
         );
         this.dataSource.paginator = this.paginator;
+        this.paginator.firstPage();
         this.visitPoints = [];
         this.justIds = [];
 
