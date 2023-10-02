@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Store } from '../models/store';
 import { environment } from '../../environments/environment';
@@ -14,17 +14,21 @@ interface TotalStore {
 @Injectable({
     providedIn: 'root',
 })
-export class StoreService {
+export class StoreService implements OnDestroy {
     constructor(private http: HttpClient, private snackService: SnackService) {}
-    store: Store[];
-    apiURL = environment.API_URL;
 
+    apiURL = environment.API_URL;
+    store = new BehaviorSubject<Array<Store>>([]);
+
+    ngOnDestroy() {
+        this.store.complete();
+    }
     setStore(data: Store[]) {
-        this.store = data;
+        this.store.next(data);
     }
 
     getStore() {
-        return this.store;
+        return this.store.asObservable();
     }
 
     fetchStore() {

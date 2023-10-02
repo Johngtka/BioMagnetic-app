@@ -4,6 +4,7 @@ import {
     ViewChild,
     HostListener,
     AfterViewInit,
+    OnDestroy,
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
@@ -38,6 +39,7 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-visit',
@@ -54,7 +56,7 @@ import {
         ]),
     ],
 })
-export class VisitComponent implements OnInit, AfterViewInit {
+export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
@@ -97,6 +99,7 @@ export class VisitComponent implements OnInit, AfterViewInit {
     groupReservoirsParents: any[]; // code starts with R
     groupMoreReservoirsParents: any[]; // code starts with MR
     groupUniversalParents: any[]; //code starts with P
+    storeSubscription: Subscription;
 
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -104,11 +107,17 @@ export class VisitComponent implements OnInit, AfterViewInit {
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
         }
+        this.storeSubscription = this.storeService
+            .getStore()
+            .subscribe((data) => {
+                if (data.length > 0) {
+                    this.store = data;
+                    this.store = orderBy(this.store, [(v) => v.code]);
 
-        this.store = this.storeService.getStore();
-        this.store = orderBy(this.store, [(v) => v.code]);
-
-        this.isLoadingResults = false;
+                    this.isLoadingResults = false;
+                    this.loadPaginator();
+                }
+            });
 
         this.companyService.getCompany().subscribe({
             next: (data) => {
@@ -121,6 +130,16 @@ export class VisitComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
+        this.loadPaginator();
+    }
+
+    ngOnDestroy(): void {
+        if (this.storeSubscription) {
+            this.storeSubscription.unsubscribe();
+        }
+    }
+
+    loadPaginator() {
         this.groupReservoirsParents = this.getTableData(this.store, 'R');
         this.dataSource = new MatTableDataSource<any>(
             this.groupReservoirsParents,
