@@ -61,11 +61,20 @@ export class VisitComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     patient: Patient;
     dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
-    visitPoints: string[] = [];
+    visitPoints: Store[] = [];
+    justIds: string[] = [];
     store: Store[];
     noteVal: string;
     showCheck = false;
     showFinish = false;
+    showNext = false;
+    showMRButton = false;
+    showUPButton = false;
+    showTable1 = true;
+    showTable2 = false;
+    showTable3 = false;
+    showTable4 = false;
+    showTable5 = false;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -125,12 +134,15 @@ export class VisitComponent implements OnInit {
 
     clickedRow(row): void {
         if (!row.child) {
-            const index = this.visitPoints.indexOf(row._id);
+            const index = this.visitPoints.findIndex(
+                (vp) => vp._id === row._id,
+            );
             if (index !== -1) {
                 this.visitPoints.splice(index, 1);
-                this.showCheck = false;
+                this.justIds = this.visitPoints.map((vp) => vp._id);
             } else {
-                this.visitPoints.push(row._id);
+                this.visitPoints.push(row);
+                this.justIds = this.visitPoints.map((vp) => vp._id);
             }
             this.paginatorPageChecker();
         }
@@ -147,20 +159,11 @@ export class VisitComponent implements OnInit {
             });
             dialogRef.afterClosed().subscribe((conf) => {
                 if (conf === ConfirmationDialogResponse.OK) {
-                    this.patient = {} as Patient;
-                    this.showCheck = false;
-                    this.showFinish = false;
-                    this.dataSource = new MatTableDataSource<any>(
-                        this.groupReservoirsParents,
-                    );
-                    this.dataSource.paginator = this.paginator;
-                    this.visitPoints = [];
-                    console.clear();
+                    this.resetVariables();
                 }
             });
         } else {
-            this.patient = {} as Patient;
-            this.visitPoints = [];
+            this.resetVariables();
         }
     }
 
@@ -178,14 +181,24 @@ export class VisitComponent implements OnInit {
         }
     }
 
-    createVisitPointsTable(): void {
-        this.dataSource = new MatTableDataSource<Store>(
-            this.store.filter((s: Store) => this.visitPoints.includes(s._id)),
-        );
+    createVisitPointsTable(stage: string): void {
+        if (stage === 'I') {
+            this.dataSource = new MatTableDataSource<Store>(
+                this.visitPoints.filter(
+                    (vp) => vp.code.startsWith('R') || vp.code.startsWith('MR'),
+                ),
+            );
+        } else {
+            this.showTable4 = false;
+            this.showTable5 = true;
+            this.dataSource = new MatTableDataSource<Store>(
+                this.visitPoints.filter((vp) => vp.code.startsWith('P')),
+            );
+        }
+
         this.paginator.firstPage();
-        this.showFinish = true;
-        this.showCheck = false;
         this.dataSource.paginator = this.paginator;
+        this.paginatorPageChecker();
     }
 
     pageTriggerManually(): void {
@@ -196,7 +209,7 @@ export class VisitComponent implements OnInit {
         const visit: Visit = {
             patientId: this.patient._id,
             note: this.noteVal,
-            points: this.visitPoints,
+            points: this.visitPoints.map((vp) => vp._id),
         };
         const pdfData = {
             fullName: this.patient.name + ' ' + this.patient.surname,
@@ -236,7 +249,7 @@ export class VisitComponent implements OnInit {
                     table: {
                         widths: ['50%', '50%'],
                         body: this.visitPoints.map((point) =>
-                            this.getPdfRow(point),
+                            this.getPdfRow(point._id),
                         ),
                     },
                 },
@@ -259,6 +272,45 @@ export class VisitComponent implements OnInit {
                 console.log(error);
             },
         });
+    }
+
+    showMR(): void {
+        this.showTable1 = false;
+        this.showTable2 = true;
+        this.showTable3 = false;
+        this.groupMoreReservoirsParents = this.getTableData(this.store, 'MR');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupMoreReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
+        this.paginator.firstPage();
+        this.paginatorPageChecker();
+    }
+
+    showSummary1() {
+        this.showTable1 = false;
+        this.showTable2 = false;
+        if (this.visitPoints.length > 0) {
+            this.showTable3 = true;
+            this.createVisitPointsTable('I');
+        } else {
+            this.showTable3 = false;
+            this.showUP();
+        }
+    }
+
+    showUP(): void {
+        this.showTable1 = false;
+        this.showTable2 = false;
+        this.showTable3 = false;
+        this.showTable4 = true;
+        this.groupUniversalParents = this.getTableData(this.store, 'P');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupUniversalParents,
+        );
+        this.dataSource.paginator = this.paginator;
+        this.paginator.firstPage();
+        this.paginatorPageChecker();
     }
 
     private getTableData(data: Store[], codeLetter: string) {
@@ -298,16 +350,75 @@ export class VisitComponent implements OnInit {
     }
 
     private paginatorPageChecker() {
-        if (!this.paginator.hasNextPage() && this.visitPoints.length >= 1) {
-            this.showCheck = true;
-        } else {
-            this.showCheck = false;
-        }
+        setTimeout(() => {
+            if (!this.paginator.hasNextPage()) {
+                if (this.showTable1) {
+                    this.showCheck = false;
+                    this.showFinish = false;
+                    this.showNext = false;
+                    this.showMRButton = true;
+                    this.showUPButton = true;
+                } else if (this.showTable2) {
+                    this.showCheck = false;
+                    this.showFinish = false;
+                    this.showNext = false;
+                    this.showMRButton = false;
+                    this.showUPButton = true;
+                } else if (this.showTable3) {
+                    this.showCheck = false;
+                    this.showFinish = false;
+                    this.showNext = true;
+                    this.showMRButton = false;
+                    this.showUPButton = false;
+                } else if (this.showTable4) {
+                    this.showCheck = true;
+                    this.showFinish = false;
+                    this.showNext = false;
+                    this.showMRButton = false;
+                    this.showUPButton = false;
+                } else if (this.showTable5) {
+                    this.showCheck = false;
+                    this.showFinish = true;
+                    this.showNext = false;
+                    this.showMRButton = false;
+                    this.showUPButton = false;
+                }
+            } else {
+                this.showCheck = false;
+                this.showFinish = false;
+                this.showNext = false;
+                this.showMRButton = false;
+                this.showUPButton = false;
+            }
+        }, 100);
     }
 
     private checkIfPatient(
         object: Patient | NavigationObject,
     ): object is Patient {
         return Object.hasOwn(object, 'name');
+    }
+
+    private resetVariables() {
+        this.patient = {} as Patient;
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
+        this.paginator.firstPage();
+        this.visitPoints = [];
+        this.justIds = [];
+
+        this.showCheck = false;
+        this.showFinish = false;
+        this.showNext = false;
+        this.showMRButton = false;
+        this.showUPButton = false;
+
+        this.showTable1 = true;
+        this.showTable2 = false;
+        this.showTable3 = false;
+        this.showTable4 = false;
+        this.showTable5 = false;
     }
 }

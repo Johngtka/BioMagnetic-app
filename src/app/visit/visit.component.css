@@ -65,3 +65,6 @@ tr.detail-row {
 table {
     width: 100%;
 }
+.mr {
+    margin-right: 1rem;
+}
