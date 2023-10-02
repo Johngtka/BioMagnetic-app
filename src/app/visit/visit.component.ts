@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    HostListener,
+    AfterViewInit,
+} from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -48,7 +54,7 @@ import {
         ]),
     ],
 })
-export class VisitComponent implements OnInit {
+export class VisitComponent implements OnInit, AfterViewInit {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
@@ -99,27 +105,11 @@ export class VisitComponent implements OnInit {
             this.patient = urlPatient;
         }
 
-        // .subscribe({
-        //     next: (data) => {
         this.store = this.storeService.getStore();
         this.store = orderBy(this.store, [(v) => v.code]);
 
-        this.groupReservoirsParents = this.getTableData(this.store, 'R');
-        this.dataSource = new MatTableDataSource<any>(
-            this.groupReservoirsParents,
-        );
-        this.dataSource.paginator = this.paginator;
         this.isLoadingResults = false;
-        // },
 
-        // error: (err) => {
-        //     this.snackService.showSnackBarMessage(
-        //         'ERROR.PATIENT_VISIT_CREATE_PATIENT',
-        //         SNACK_TYPE.error,
-        //     );
-        //     console.log(err.message);
-        // },
-        // });
         this.companyService.getCompany().subscribe({
             next: (data) => {
                 this.company = data;
@@ -128,6 +118,14 @@ export class VisitComponent implements OnInit {
                 console.log(err);
             },
         });
+    }
+
+    ngAfterViewInit() {
+        this.groupReservoirsParents = this.getTableData(this.store, 'R');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
     }
 
     selectPatient(patientSelected: Patient): void {
