@@ -35,6 +35,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PatientService } from './services/patient-service';
+import { StoreService } from './services/store.service';
 import { VisitComponent } from './visit/visit.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HistoryComponent } from './history/history.component';
@@ -46,6 +47,9 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
+}
+export function storeCollection(storeService: StoreService) {
+    return storeService.getStore();
 }
 const navigatorLang = navigator.language.split('-')[0];
 const supportedLang = ['pl', 'es', 'en'];
@@ -105,7 +109,17 @@ const materialModules = [
         AppRoutingModule,
         ...materialModules,
     ],
-    providers: [PatientService, DatePipe],
+    providers: [
+        PatientService,
+        DatePipe,
+        StoreService,
+        {
+            provide: 'store',
+            useFactory: storeCollection,
+            deps: [StoreService],
+            multi: true,
+        },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

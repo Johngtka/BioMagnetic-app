@@ -15,6 +15,8 @@ export class StoreService {
     apiURL = environment.API_URL;
 
     getStore(): Observable<Array<Store>> {
-        return this.http.get<Array<Store>>(this.apiURL + '/store');
+        return this.http.get<Array<Store>>(
+            this.apiURL + '/store?skip=0&limit=50',
+        );
     }
 }
