@@ -98,26 +98,28 @@ export class VisitComponent implements OnInit {
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
         }
-        this.storeService.getStore().subscribe({
-            next: (data) => {
-                this.store = data;
-                data = orderBy(data, [(v) => v.code]);
 
-                this.groupReservoirsParents = this.getTableData(data, 'R');
-                this.dataSource = new MatTableDataSource<any>(
-                    this.groupReservoirsParents,
-                );
-                this.dataSource.paginator = this.paginator;
-                this.isLoadingResults = false;
-            },
-            error: (err) => {
-                this.snackService.showSnackBarMessage(
-                    'ERROR.PATIENT_VISIT_CREATE_PATIENT',
-                    SNACK_TYPE.error,
-                );
-                console.log(err.message);
-            },
-        });
+        // .subscribe({
+        //     next: (data) => {
+        this.store = this.storeService.getStore();
+        this.store = orderBy(this.store, [(v) => v.code]);
+
+        this.groupReservoirsParents = this.getTableData(this.store, 'R');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
+        this.isLoadingResults = false;
+        // },
+
+        // error: (err) => {
+        //     this.snackService.showSnackBarMessage(
+        //         'ERROR.PATIENT_VISIT_CREATE_PATIENT',
+        //         SNACK_TYPE.error,
+        //     );
+        //     console.log(err.message);
+        // },
+        // });
         this.companyService.getCompany().subscribe({
             next: (data) => {
                 this.company = data;

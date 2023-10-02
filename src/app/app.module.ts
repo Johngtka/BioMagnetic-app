@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -49,7 +49,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
 }
 export function storeCollection(storeService: StoreService) {
-    return storeService.getStore();
+    storeService.fetchStore();
 }
 const navigatorLang = navigator.language.split('-')[0];
 const supportedLang = ['pl', 'es', 'en'];
@@ -114,10 +114,9 @@ const materialModules = [
         DatePipe,
         StoreService,
         {
-            provide: 'store',
+            provide: APP_INITIALIZER,
             useFactory: storeCollection,
             deps: [StoreService],
-            multi: true,
         },
     ],
     bootstrap: [AppComponent],
