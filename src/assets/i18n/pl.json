@@ -19,7 +19,8 @@
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Wystąpił błąd podczas aktualizacji pacjenta, spróbuj ponownie później",
         "PATIENT_TABLE_DELETE_PATIENT": "Wystąpił błąd podczas usuwania pacjenta, spróbuj ponownie później",
         "PATIENT_VISIT_CREATE_PATIENT": "Wystąpił błąd podczas tworzenia wizyty dla pacjenta, spróbuj ponownie później",
-        "PATIENT_VISIT_CREATE_VISIT": "Wystąpił błąd podczas dodawania wizyty, spróbuj ponownie później"
+        "PATIENT_VISIT_CREATE_VISIT": "Wystąpił błąd podczas dodawania wizyty, spróbuj ponownie później",
+        "GENERIC": "Coś poszło nie tak, skontaktuj się z pomocą techniczną"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Rejestracja przebiegła pomyślnie",

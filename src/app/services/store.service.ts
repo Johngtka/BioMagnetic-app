@@ -57,7 +57,7 @@ export class StoreService implements OnDestroy {
             },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
-                    'provide here some message that make sense',
+                    'ERROR',
                     SNACK_TYPE.error,
                 );
                 console.log(err.message);
