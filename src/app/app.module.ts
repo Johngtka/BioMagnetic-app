@@ -49,7 +49,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
 }
 export function storeCollection(storeService: StoreService) {
-    storeService.fetchStore();
+    storeService.fetchStoreTotal();
 }
 const navigatorLang = navigator.language.split('-')[0];
 const supportedLang = ['pl', 'es', 'en'];

@@ -19,7 +19,7 @@ export class StoreService implements OnDestroy {
 
     apiURL = environment.API_URL;
     store = new BehaviorSubject<Array<Store>>([]);
-
+    tempStore = [];
     ngOnDestroy() {
         this.store.complete();
     }
@@ -31,33 +31,34 @@ export class StoreService implements OnDestroy {
         return this.store.asObservable();
     }
 
-    fetchStore() {
+    fetchStoreTotal() {
         this.getAllCountOfStore().subscribe({
             next: (all) => {
-                const step = 40;
-                const total = all.total;
-                let store = [];
-                for (let skip = 0; skip <= total; skip = skip + step) {
-                    this.getStoreChunk(skip, step).subscribe({
-                        next: (data) => {
-                            store = [...store, ...data];
-                            if (store.length === total) {
-                                this.setStore(store);
-                            }
-                        },
-                        error: (err) => {
-                            this.snackService.showSnackBarMessage(
-                                'ERROR.PATIENT_VISIT_CREATE_PATIENT',
-                                SNACK_TYPE.error,
-                            );
-                            console.log(err.message);
-                        },
-                    });
-                }
+                this.fetchStore(0, 10, all.total);
             },
             error: (err) => {
                 this.snackService.showSnackBarMessage(
                     'ERROR',
+                    SNACK_TYPE.error,
+                );
+                console.log(err.message);
+            },
+        });
+    }
+
+    fetchStore(skip: number, step: number, total: number) {
+        this.getStoreChunk(skip, step).subscribe({
+            next: (data) => {
+                this.tempStore = [...this.tempStore, ...data];
+                if (this.tempStore.length === total) {
+                    this.setStore(this.tempStore);
+                } else {
+                    this.fetchStore(skip + step, step, total);
+                }
+            },
+            error: (err) => {
+                this.snackService.showSnackBarMessage(
+                    'ERROR.PATIENT_VISIT_CREATE_PATIENT',
                     SNACK_TYPE.error,
                 );
                 console.log(err.message);
