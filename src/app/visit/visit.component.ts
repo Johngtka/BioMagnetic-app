@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    HostListener,
+    AfterViewInit,
+    OnDestroy,
+} from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -32,6 +39,7 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-visit',
@@ -48,7 +56,7 @@ import {
         ]),
     ],
 })
-export class VisitComponent implements OnInit {
+export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private storeService: StoreService,
         private snackService: SnackService,
@@ -91,6 +99,7 @@ export class VisitComponent implements OnInit {
     groupReservoirsParents: any[]; // code starts with R
     groupMoreReservoirsParents: any[]; // code starts with MR
     groupUniversalParents: any[]; //code starts with P
+    storeSubscription: Subscription;
 
     ngOnInit(): void {
         this.patient = {} as Patient;
@@ -98,26 +107,18 @@ export class VisitComponent implements OnInit {
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
         }
-        this.storeService.getStore().subscribe({
-            next: (data) => {
-                this.store = data;
-                data = orderBy(data, [(v) => v.code]);
+        this.storeSubscription = this.storeService
+            .getStore()
+            .subscribe((data) => {
+                if (data.length > 0) {
+                    this.store = data;
+                    this.store = orderBy(this.store, [(v) => v.code]);
 
-                this.groupReservoirsParents = this.getTableData(data, 'R');
-                this.dataSource = new MatTableDataSource<any>(
-                    this.groupReservoirsParents,
-                );
-                this.dataSource.paginator = this.paginator;
-                this.isLoadingResults = false;
-            },
-            error: (err) => {
-                this.snackService.showSnackBarMessage(
-                    'ERROR.PATIENT_VISIT_CREATE_PATIENT',
-                    SNACK_TYPE.error,
-                );
-                console.log(err.message);
-            },
-        });
+                    this.isLoadingResults = false;
+                    this.loadPaginator();
+                }
+            });
+
         this.companyService.getCompany().subscribe({
             next: (data) => {
                 this.company = data;
@@ -126,6 +127,24 @@ export class VisitComponent implements OnInit {
                 console.log(err);
             },
         });
+    }
+
+    ngAfterViewInit() {
+        this.loadPaginator();
+    }
+
+    ngOnDestroy(): void {
+        if (this.storeSubscription) {
+            this.storeSubscription.unsubscribe();
+        }
+    }
+
+    loadPaginator() {
+        this.groupReservoirsParents = this.getTableData(this.store, 'R');
+        this.dataSource = new MatTableDataSource<any>(
+            this.groupReservoirsParents,
+        );
+        this.dataSource.paginator = this.paginator;
     }
 
     selectPatient(patientSelected: Patient): void {
