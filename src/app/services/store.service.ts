@@ -45,4 +45,8 @@ export class StoreService implements OnDestroy {
     getStoreFromServer(): Observable<Array<Store>> {
         return this.http.get<Array<Store>>(this.apiURL + '/store');
     }
+
+    getBetterQualityOfImage(code: string): Observable<string> {
+        return this.http.get<string>(this.apiURL + `/image/${code}`);
+    }
 }

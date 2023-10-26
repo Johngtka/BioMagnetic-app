@@ -162,6 +162,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
             } else {
                 this.visitPoints.push(row);
                 this.justIds = this.visitPoints.map((vp) => vp._id);
+                this.visitService.getBetterQualityOfImageFromStore(row.code);
             }
             this.paginatorPageChecker();
         }

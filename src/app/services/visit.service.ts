@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
 
 import { Visit } from '../models/visit';
 import { environment } from '../../environments/environment';
+import { StoreService } from './store.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class VisitService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private storeService: StoreService) {}
 
     apiURL = environment.API_URL;
 
@@ -20,5 +21,9 @@ export class VisitService {
 
     getVisits(patientId: string): Observable<Array<Visit>> {
         return this.http.get<Array<Visit>>(this.apiURL + '/visit/' + patientId);
+    }
+
+    getBetterQualityOfImageFromStore(code: string): Observable<string> {
+        return this.storeService.getBetterQualityOfImage(code);
     }
 }
