@@ -23,7 +23,7 @@ export class VisitService {
         return this.http.get<Array<Visit>>(this.apiURL + '/visit/' + patientId);
     }
 
-    getBetterQualityOfImageFromStore(code: string): Observable<string> {
+    getBetterQualityOfImageFromStore(code: string) {
         return this.storeService.getBetterQualityOfImage(code);
     }
 }
