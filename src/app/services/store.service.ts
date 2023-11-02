@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Store } from '../models/store';
+import { ImageBetterQuality } from './../models/image-better-quality';
 import { environment } from '../../environments/environment';
 import { SNACK_TYPE, SnackService } from './snack.service';
 
@@ -11,7 +12,10 @@ import { SNACK_TYPE, SnackService } from './snack.service';
     providedIn: 'root',
 })
 export class StoreService implements OnDestroy {
-    constructor(private http: HttpClient, private snackService: SnackService) {}
+    constructor(
+        private http: HttpClient,
+        private snackService: SnackService,
+    ) {}
 
     apiURL = environment.API_URL;
     store = new BehaviorSubject<Array<Store>>([]);
@@ -46,7 +50,9 @@ export class StoreService implements OnDestroy {
         return this.http.get<Array<Store>>(this.apiURL + '/store');
     }
 
-    getBetterQualityOfImage(code: string): Observable<string> {
-        return this.http.get<string>(this.apiURL + `/image/${code}`);
+    getBetterQualityOfImage(code: string): Observable<ImageBetterQuality> {
+        return this.http.get<ImageBetterQuality>(
+            this.apiURL + `/image/${code}`,
+        );
     }
 }

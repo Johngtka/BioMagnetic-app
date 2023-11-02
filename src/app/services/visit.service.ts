@@ -11,7 +11,10 @@ import { StoreService } from './store.service';
     providedIn: 'root',
 })
 export class VisitService {
-    constructor(private http: HttpClient, private storeService: StoreService) {}
+    constructor(
+        private http: HttpClient,
+        private storeService: StoreService,
+    ) {}
 
     apiURL = environment.API_URL;
 
@@ -23,7 +26,7 @@ export class VisitService {
         return this.http.get<Array<Visit>>(this.apiURL + '/visit/' + patientId);
     }
 
-    getBetterQualityOfImageFromStore(code: string) {
-        return this.storeService.getBetterQualityOfImage(code);
+    getBetterQualityOfImageFromStore(ImageCode: string) {
+        return this.storeService.getBetterQualityOfImage(ImageCode);
     }
 }
