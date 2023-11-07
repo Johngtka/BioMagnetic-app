@@ -26,7 +26,7 @@ export class VisitService {
         return this.http.get<Array<Visit>>(this.apiURL + '/visit/' + patientId);
     }
 
-    getBetterQualityOfImageFromStore(ImageCode: string) {
+    getBetterQualityOfImage(ImageCode: string) {
         return this.storeService.getBetterQualityOfImage(ImageCode);
     }
 }

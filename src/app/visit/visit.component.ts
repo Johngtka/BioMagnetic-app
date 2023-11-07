@@ -161,19 +161,17 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.justIds = this.visitPoints.map((vp) => vp._id);
             } else {
                 this.visitPoints.push(row);
-                this.visitService
-                    .getBetterQualityOfImageFromStore(row.code)
-                    .subscribe({
-                        next: (data) => {
-                            const imageIndex = this.visitPoints.findIndex(
-                                (value) => value.code === data.code,
-                            );
-                            this.dataSource.data[imageIndex].image = data.image;
-                        },
-                        error: (err) => {
-                            console.log(err);
-                        },
-                    });
+                this.visitService.getBetterQualityOfImage(row.code).subscribe({
+                    next: (data) => {
+                        const imageIndex = this.visitPoints.findIndex(
+                            (value) => value.code === data.code,
+                        );
+                        this.dataSource.data[imageIndex].image = data.image;
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    },
+                });
                 this.justIds = this.visitPoints.map((vp) => vp._id);
             }
             this.paginatorPageChecker();
