@@ -163,7 +163,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.visitPoints.push(row);
                 this.visitService.getBetterQualityOfImage(row.code).subscribe({
                     next: (data) => {
-                        const imageIndex = this.visitPoints.findIndex(
+                        const imageIndex = this.dataSource.data.findIndex(
                             (value) => value.code === data.code,
                         );
                         this.dataSource.data[imageIndex].image = data.image;
