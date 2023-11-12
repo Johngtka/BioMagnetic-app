@@ -22,7 +22,7 @@ Run `npm run build` to build the project. This process will trigger 3 processes:
 
 The build artifacts will be stored in the `dist/sana` directory.
 
-You can view the latest project version visiting: https://johngtka.github.io/Biomagnethick-app/about
+You can view the latest project version visiting: https://johngtka.github.io/BioMagnetic-app/about
 
 ## Running unit tests
 
