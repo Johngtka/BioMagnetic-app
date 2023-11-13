@@ -2,42 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.0.12](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.11...v0.0.12) (2023-11-13)
-
 ### [0.0.11](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.10...v0.0.11) (2023-11-13)
-
 
 ### Features
 
-* changed budgets ([4fa55f6](https://github.com/Johngtka/BioMagnetic-app/commit/4fa55f641644fb942dcca6cfa2c6506ea4a73f60))
-* changed budgets ([3468dbb](https://github.com/Johngtka/BioMagnetic-app/commit/3468dbbe9e1b45972c153a41f5338189a0b5059c))
-* changed budgets ([fd0b4a9](https://github.com/Johngtka/BioMagnetic-app/commit/fd0b4a959e2716edce03f4c3bf4c08eb67b4ab29))
-* Get visit table values when app starts ([#53](https://github.com/Johngtka/BioMagnetic-app/issues/53)) ([a3e6d32](https://github.com/Johngtka/BioMagnetic-app/commit/a3e6d3271fe192d79351b70df6cfc62c9ca6c481))
-* Show visit flow in 3 tables ([#52](https://github.com/Johngtka/BioMagnetic-app/issues/52)) ([27ae833](https://github.com/Johngtka/BioMagnetic-app/commit/27ae8333f3c4f965b31babe709b6db8ff8d2c86c))
-* update readme ([f068c13](https://github.com/Johngtka/BioMagnetic-app/commit/f068c13a285c4ae00823235b278677e2414850ff))
+-   changed budgets ([4fa55f6](https://github.com/Johngtka/BioMagnetic-app/commit/4fa55f641644fb942dcca6cfa2c6506ea4a73f60))
+-   changed budgets ([3468dbb](https://github.com/Johngtka/BioMagnetic-app/commit/3468dbbe9e1b45972c153a41f5338189a0b5059c))
+-   changed budgets ([fd0b4a9](https://github.com/Johngtka/BioMagnetic-app/commit/fd0b4a959e2716edce03f4c3bf4c08eb67b4ab29))
+-   Get visit table values when app starts ([#53](https://github.com/Johngtka/BioMagnetic-app/issues/53)) ([a3e6d32](https://github.com/Johngtka/BioMagnetic-app/commit/a3e6d3271fe192d79351b70df6cfc62c9ca6c481))
+-   Show visit flow in 3 tables ([#52](https://github.com/Johngtka/BioMagnetic-app/issues/52)) ([27ae833](https://github.com/Johngtka/BioMagnetic-app/commit/27ae8333f3c4f965b31babe709b6db8ff8d2c86c))
+-   update readme ([f068c13](https://github.com/Johngtka/BioMagnetic-app/commit/f068c13a285c4ae00823235b278677e2414850ff))
 
 ### [0.0.10](https://github.com/Johngtka/Biomagnethick-app/compare/v0.0.9...v0.0.10) (2023-09-09)
 
-
 ### Features
 
-* allow opening patient/details after selecting patient on home page ([#49](https://github.com/Johngtka/Biomagnethick-app/issues/49)) ([1cad9fd](https://github.com/Johngtka/Biomagnethick-app/commit/1cad9fdd8b145293d76b45bd07cc7dcfdcda0050))
-* show visit table with expandable rows  ([#50](https://github.com/Johngtka/Biomagnethick-app/issues/50)) ([e6f970e](https://github.com/Johngtka/Biomagnethick-app/commit/e6f970e527e503ffa0e5ee17228af4b3c31759a6))
+-   allow opening patient/details after selecting patient on home page ([#49](https://github.com/Johngtka/Biomagnethick-app/issues/49)) ([1cad9fd](https://github.com/Johngtka/Biomagnethick-app/commit/1cad9fdd8b145293d76b45bd07cc7dcfdcda0050))
+-   show visit table with expandable rows ([#50](https://github.com/Johngtka/Biomagnethick-app/issues/50)) ([e6f970e](https://github.com/Johngtka/Biomagnethick-app/commit/e6f970e527e503ffa0e5ee17228af4b3c31759a6))
 
 ### [0.0.9](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.8...v0.0.9) (2023-06-14)
 
-
 ### Features
 
-* open a visit for selected patient ([#44](https://github.com/Johngtka/Biomagnthick-app/issues/44)) ([bcf0079](https://github.com/Johngtka/Biomagnthick-app/commit/bcf00790f2d96f6d09e69d9520491d7ec6033475))
-* separating the table from other components and placing it in the side menu ([#47](https://github.com/Johngtka/Biomagnthick-app/issues/47)) ([40643c4](https://github.com/Johngtka/Biomagnthick-app/commit/40643c4cad1a0a58597c442535884afd3c4ba67c))
-
+-   open a visit for selected patient ([#44](https://github.com/Johngtka/Biomagnthick-app/issues/44)) ([bcf0079](https://github.com/Johngtka/Biomagnthick-app/commit/bcf00790f2d96f6d09e69d9520491d7ec6033475))
+-   separating the table from other components and placing it in the side menu ([#47](https://github.com/Johngtka/Biomagnthick-app/issues/47)) ([40643c4](https://github.com/Johngtka/Biomagnthick-app/commit/40643c4cad1a0a58597c442535884afd3c4ba67c))
 
 ### Bug Fixes
 
-* removed gender from patient table ([#45](https://github.com/Johngtka/Biomagnthick-app/issues/45)) ([36fbe3b](https://github.com/Johngtka/Biomagnthick-app/commit/36fbe3bde5f073fa46b6db10794e2f7384c23cad))
-* removed not working correctly build version ([07057b0](https://github.com/Johngtka/Biomagnthick-app/commit/07057b029f2a5aee53381621d8ba4869de7c3eb0))
-* showing data in table when row was clicked ([#46](https://github.com/Johngtka/Biomagnthick-app/issues/46)) ([176c483](https://github.com/Johngtka/Biomagnthick-app/commit/176c4833cd8aba107a8000753080b38477832a4f))
+-   removed gender from patient table ([#45](https://github.com/Johngtka/Biomagnthick-app/issues/45)) ([36fbe3b](https://github.com/Johngtka/Biomagnthick-app/commit/36fbe3bde5f073fa46b6db10794e2f7384c23cad))
+-   removed not working correctly build version ([07057b0](https://github.com/Johngtka/Biomagnthick-app/commit/07057b029f2a5aee53381621d8ba4869de7c3eb0))
+-   showing data in table when row was clicked ([#46](https://github.com/Johngtka/Biomagnthick-app/issues/46)) ([176c483](https://github.com/Johngtka/Biomagnthick-app/commit/176c4833cd8aba107a8000753080b38477832a4f))
 
 ### [0.0.8](https://github.com/Johngtka/Biomagnthick-app/compare/v0.0.7...v0.0.8) (2023-05-26)
 
