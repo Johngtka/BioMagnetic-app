@@ -19,7 +19,8 @@
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "An error occurred while updating a patient, try again later",
         "PATIENT_TABLE_DELETE_PATIENT": "An error has occurred while deleting a patient, try again later",
         "PATIENT_VISIT_CREATE_PATIENT": "An error occurred while creating a visit for a patient, try again later",
-        "PATIENT_VISIT_CREATE_VISIT": "An error occurred while adding a visit, try again later"
+        "PATIENT_VISIT_CREATE_VISIT": "An error occurred while adding a visit, try again later",
+        "GENERIC": "Something went wrong, please contact the support"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "Registration was successful",
@@ -77,6 +78,11 @@
         "FINISH_BUTTONS": {
             "CHECK": "Check",
             "FINISH": "Finish"
+        },
+        "STEPS_BUTTONS": {
+            "MORE_RESERVOIRS": "More Reservoirs",
+            "UNIVERSAL_POINTS": "Universal Points",
+            "NEXT": "Next"
         }
     },
     "VISIT_TABLE": {

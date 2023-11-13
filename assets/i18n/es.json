@@ -19,7 +19,8 @@
         "USER_INPUT_DIALOG_UPDATE_PATIENT": "Ocurrió un error al actualizar un paciente, intente nuevamente más tarde",
         "PATIENT_TABLE_DELETE_PATIENT": "Ocurrió un error al eliminar un paciente, intente nuevamente más tarde",
         "PATIENT_VISIT_CREATE_PATIENT": "Se ha producido un error al crear una cita para un paciente, inténtelo de nuevo más tarde.",
-        "PATIENT_VISIT_CREATE_VISIT": "Se ha producido un error al añadir una visita, inténtelo de nuevo más tarde"
+        "PATIENT_VISIT_CREATE_VISIT": "Se ha producido un error al añadir una visita, inténtelo de nuevo más tarde",
+        "GENERIC": "Algo salió mal, por favor contacta al soporte"
     },
     "SUCCESS": {
         "USER_INPUT_DIALOG_CREATE_PATIENT": "El registro se ha realizado correctamente",
@@ -77,6 +78,11 @@
         "FINISH_BUTTONS": {
             "CHECK": "Comprobar",
             "FINISH": "Finalizar"
+        },
+        "STEPS_BUTTONS": {
+            "MORE_RESERVOIRS": "Más embalses",
+            "UNIVERSAL_POINTS": "Puntos Universales",
+            "NEXT": "Más"
         }
     },
     "VISIT_TABLE": {
