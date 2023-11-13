@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.10...v0.0.11) (2023-11-13)
+
+
+### Features
+
+* changed budgets ([4fa55f6](https://github.com/Johngtka/BioMagnetic-app/commit/4fa55f641644fb942dcca6cfa2c6506ea4a73f60))
+* changed budgets ([3468dbb](https://github.com/Johngtka/BioMagnetic-app/commit/3468dbbe9e1b45972c153a41f5338189a0b5059c))
+* changed budgets ([fd0b4a9](https://github.com/Johngtka/BioMagnetic-app/commit/fd0b4a959e2716edce03f4c3bf4c08eb67b4ab29))
+* Get visit table values when app starts ([#53](https://github.com/Johngtka/BioMagnetic-app/issues/53)) ([a3e6d32](https://github.com/Johngtka/BioMagnetic-app/commit/a3e6d3271fe192d79351b70df6cfc62c9ca6c481))
+* Show visit flow in 3 tables ([#52](https://github.com/Johngtka/BioMagnetic-app/issues/52)) ([27ae833](https://github.com/Johngtka/BioMagnetic-app/commit/27ae8333f3c4f965b31babe709b6db8ff8d2c86c))
+* update readme ([f068c13](https://github.com/Johngtka/BioMagnetic-app/commit/f068c13a285c4ae00823235b278677e2414850ff))
+
 ### [0.0.10](https://github.com/Johngtka/Biomagnethick-app/compare/v0.0.9...v0.0.10) (2023-09-09)
 
 
