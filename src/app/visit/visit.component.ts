@@ -7,6 +7,7 @@ import {
     OnDestroy,
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -62,6 +63,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         private snackService: SnackService,
         private visitService: VisitService,
         private companyService: CompanyService,
+        private responsive: BreakpointObserver,
         private datePipe: DatePipe,
         private dialog: MatDialog,
     ) {}
@@ -107,6 +109,13 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
         }
+        this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
+            if (result.matches) {
+                console.log('match');
+            } else {
+                console.log('unmatch');
+            }
+        });
         this.storeSubscription = this.storeService
             .getStore()
             .subscribe((data) => {
