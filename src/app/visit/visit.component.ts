@@ -85,6 +85,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     showTable3 = false;
     showTable4 = false;
     showTable5 = false;
+    isMobile = false;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -95,6 +96,11 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         'name',
         'image',
         'moreInfo',
+    ];
+    displayedColumnsForMobiles: string[] = [
+        'image',
+        'negativePoint',
+        'positivePoint',
     ];
     columnsToDisplayWithExpand = [...this.displayedColumns];
     expandedElement: any;
@@ -109,13 +115,6 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.checkIfPatient(urlPatient)) {
             this.patient = urlPatient;
         }
-        this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
-            if (result.matches) {
-                console.log('match');
-            } else {
-                console.log('unmatch');
-            }
-        });
         this.storeSubscription = this.storeService
             .getStore()
             .subscribe((data) => {
@@ -127,7 +126,15 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.loadPaginator();
                 }
             });
-
+        this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
+            if (result.matches) {
+                this.isMobile = true;
+                this.dataSource.paginator = this.paginator;
+            } else {
+                this.isMobile = false;
+                this.dataSource.paginator = this.paginator;
+            }
+        });
         this.companyService.getCompany().subscribe({
             next: (data) => {
                 this.company = data;
