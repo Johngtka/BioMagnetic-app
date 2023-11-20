@@ -157,8 +157,8 @@
             </th>
             <td mat-cell *matCellDef="let element">
                 <span *ngIf="!element.child"
-                    ><img class="bodyPoints" src="{{ element.image }}"
-                /></span>
+                    ><img class="bodyPoints" src="{{ element.image }}" />
+                </span>
             </td>
         </ng-container>
 
@@ -168,7 +168,7 @@
             </th>
             <td mat-cell *matCellDef="let element">
                 <span>{{ element.negativePoint }}</span>
-                <!-- <mat-icon *ngIf="!!element.child">keyboard_arrow_down</mat-icon> -->
+                <mat-icon *ngIf="!!element.child">keyboard_arrow_down</mat-icon>
             </td>
         </ng-container>
         <ng-container matColumnDef="positivePoint">
@@ -180,21 +180,12 @@
             </td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="moreInfo">
-            <th mat-header-cell *matHeaderCellDef>
-                {{ 'VISIT_TABLE.MORE_INFO' | translate }}
-            </th>
-            <td mat-cell *matCellDef="let element">
-                <span *ngIf="!element.child">{{ element.moreInfo }}</span>
-            </td>
-        </ng-container>
-
         <ng-container matColumnDef="expandedDetail">
             <td
                 mat-cell
                 *matCellDef="let element"
                 class="full-width no-padding"
-                [attr.colspan]="columnsToDisplayWithExpand.length"
+                [attr.colspan]="columnsToDisplayWithExpandOnPhones.length"
             >
                 <tr
                     [@detailExpand]="
@@ -208,7 +199,9 @@
                         selectedRow: justIds.indexOf(kid._id) > -1
                     }"
                 >
-                    <ng-container *ngFor="let column of displayedColumns">
+                    <ng-container
+                        *ngFor="let column of displayedColumnsForMobiles"
+                    >
                         <td class="align-middle" mat-cell>
                             <span [ngSwitch]="column">
                                 <span *ngSwitchCase="'image'">
@@ -224,7 +217,7 @@
                     </ng-container>
                 </tr>
             </td>
-        </ng-container> -->
+        </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumnsForMobiles"></tr>
         <tr
@@ -235,18 +228,19 @@
             [ngClass]="{
                 selectedRow: justIds.indexOf(element._id) > -1 && !element.child
             }"
-        ></tr>
-        <!-- [class.example-expanded-row]="expandedElement === element"
+            [class.example-expanded-row]="expandedElement === element"
             (click)="
                 element.child?.length > 0 &&
                     (expandedElement =
                         expandedElement === element ? null : element)
-            " -->
-        <!-- <tr
+            "
+        ></tr>
+
+        <tr
             mat-row
             *matRowDef="let row; columns: ['expandedDetail']"
             class="detail-row"
-        ></tr> -->
+        ></tr>
     </table>
 
     <div class="loader-container" *ngIf="isLoadingResults">

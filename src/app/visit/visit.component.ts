@@ -103,6 +103,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         'positivePoint',
     ];
     columnsToDisplayWithExpand = [...this.displayedColumns];
+    columnsToDisplayWithExpandOnPhones = [...this.displayedColumnsForMobiles];
     expandedElement: any;
     groupReservoirsParents: any[]; // code starts with R
     groupMoreReservoirsParents: any[]; // code starts with MR
