@@ -122,7 +122,6 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 if (data.length > 0) {
                     this.store = data;
                     this.store = orderBy(this.store, [(v) => v.code]);
-
                     this.isLoadingResults = false;
                     this.loadPaginator();
                 }
@@ -130,10 +129,10 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
             if (result.matches) {
                 this.isMobile = true;
-                this.dataSource.paginator = this.paginator;
+                this.loadPaginator();
             } else {
                 this.isMobile = false;
-                this.dataSource.paginator = this.paginator;
+                this.loadPaginator();
             }
         });
         this.companyService.getCompany().subscribe({
