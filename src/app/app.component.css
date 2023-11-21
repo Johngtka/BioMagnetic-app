@@ -66,3 +66,6 @@ span {
     font-size: 0.7rem;
     color: lightgrey;
 }
+.hidden-overflow-x {
+    overflow-x: hidden;
+}

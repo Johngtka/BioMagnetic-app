@@ -162,21 +162,16 @@
             </td>
         </ng-container>
 
-        <ng-container matColumnDef="negativePoint">
+        <ng-container matColumnDef="point">
             <th mat-header-cell *matHeaderCellDef>
-                {{ 'VISIT_TABLE.NEGATIVE_POINT' | translate }}
+                {{ 'VISIT_TABLE.POINT' | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
-                <span>{{ element.negativePoint }}</span>
+                <span class="lowercase"
+                    >{{ element.negativePoint }} -
+                    {{ element.negativePoint }}</span
+                >
                 <mat-icon *ngIf="!!element.child">keyboard_arrow_down</mat-icon>
-            </td>
-        </ng-container>
-        <ng-container matColumnDef="positivePoint">
-            <th mat-header-cell *matHeaderCellDef>
-                {{ 'VISIT_TABLE.POSITIVE_POINT' | translate }}
-            </th>
-            <td mat-cell *matCellDef="let element">
-                <span *ngIf="!element.child"> {{ element.positivePoint }}</span>
             </td>
         </ng-container>
 
@@ -193,7 +188,7 @@
                     "
                     mat-cell
                     *ngFor="let kid of element.child"
-                    class="flex details-row"
+                    class="block details-row-mobile"
                     (click)="clickedRow(kid)"
                     [ngClass]="{
                         selectedRow: justIds.indexOf(kid._id) > -1
@@ -211,7 +206,10 @@
                                     />
                                 </span>
 
-                                <span *ngSwitchDefault>{{ kid[column] }}</span>
+                                <span class="lowercase" *ngSwitchDefault
+                                    >{{ kid.negativePoint }} -
+                                    {{ kid.positivePoint }}</span
+                                >
                             </span>
                         </td>
                     </ng-container>
@@ -219,7 +217,7 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumnsForMobiles"></tr>
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumnsForMobiles"></tr> -->
         <tr
             mat-row
             *matRowDef="let element; columns: displayedColumnsForMobiles"

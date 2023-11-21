@@ -68,3 +68,14 @@ table {
 .mr {
     margin-right: 1rem;
 }
+
+.lowercase {
+    text-transform: lowercase;
+}
+.block {
+    display: block;
+}
+.mat-column-point,
+.details-row-mobile > td:nth-child(2) {
+    width: 80%;
+}

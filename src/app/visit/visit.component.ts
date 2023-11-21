@@ -97,11 +97,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         'image',
         'moreInfo',
     ];
-    displayedColumnsForMobiles: string[] = [
-        'image',
-        'negativePoint',
-        'positivePoint',
-    ];
+    displayedColumnsForMobiles: string[] = ['image', 'point'];
     columnsToDisplayWithExpand = [...this.displayedColumns];
     columnsToDisplayWithExpandOnPhones = [...this.displayedColumnsForMobiles];
     expandedElement: any;
