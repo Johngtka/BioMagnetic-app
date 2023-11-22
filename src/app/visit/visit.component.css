@@ -3,6 +3,14 @@
     width: 100%;
     height: 50px;
 }
+
+@media screen and (max-width: 400px) {
+    .info button {
+        width: auto;
+        height: auto;
+        margin-right: 10px;
+    }
+}
 .add-btn {
     float: right;
 }
@@ -43,7 +51,6 @@ tr.detail-row {
 }
 .selectedRow .bodyPoints {
     display: flex;
-    width: 250px;
 }
 .bodyPoints {
     display: flex;
