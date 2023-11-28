@@ -5,6 +5,9 @@
 }
 
 @media screen and (max-width: 400px) {
+    .info {
+        text-align: center;
+    }
     .info button {
         width: auto;
         height: auto;

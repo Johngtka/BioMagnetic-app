@@ -8,3 +8,10 @@
     text-align: center;
     width: 50%;
 }
+
+@media screen and (max-width: 400px) {
+    .patient-full-width {
+        text-align: center;
+        width: 80%;
+    }
+}

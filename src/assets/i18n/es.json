@@ -69,7 +69,7 @@
             "NO_PATIENT": "Por favor, busque un paciente para abrir una nueva cita"
         },
         "SELECT": {
-            "ACTIVE": "Nueva cita creada para un paciente"
+            "ACTIVE": "Paciente: "
         },
         "INFO": {
             "LOST": "Todo el trabajo en la visita actual se perderá, si continuar el?"
