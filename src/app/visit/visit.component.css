@@ -6,12 +6,18 @@
 
 @media screen and (max-width: 400px) {
     .info {
-        text-align: center;
+        padding-left: 10px;
+        height: auto;
     }
+
+    .noPatientSelected {
+        padding-left: 20px;
+    }
+
     .info button {
         width: auto;
         height: auto;
-        margin-right: 10px;
+        margin-right: 20px;
     }
 }
 .add-btn {
