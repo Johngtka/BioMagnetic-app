@@ -12,6 +12,11 @@
 @media screen and (max-width: 400px) {
     .patient-full-width {
         text-align: center;
-        width: 80%;
+        width: 100%;
+    }
+
+    .wrapper {
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }

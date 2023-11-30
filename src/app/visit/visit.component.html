@@ -3,7 +3,7 @@
     </app-patient-search>
 </div>
 
-<p [hidden]="!patient.name" class="info">
+<div *ngIf="patient?.name" class="info">
     <span
         >{{ 'PATIENT_VISIT.SELECT.ACTIVE' | translate }}
         {{ patient.name + ' ' + patient.surname }}</span
@@ -16,11 +16,11 @@
     >
         <mat-icon>close</mat-icon>
     </button>
-</p>
+</div>
 
-<p [hidden]="patient.name" class="noPatientSelected">
+<div [hidden]="patient.name" class="noPatientSelected">
     {{ 'PATIENT_VISIT.ERROR.NO_PATIENT' | translate }}
-</p>
+</div>
 
 <div class="full-width" *ngIf="!isMobile" [hidden]="!patient.name">
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
