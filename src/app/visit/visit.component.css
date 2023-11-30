@@ -9,6 +9,13 @@
     display: none;
 }
 
+@media screen and (min-width: 400px){
+    .selectedRow .bodyPoints {
+        display: flex;
+        width: 250px;
+    }
+}
+
 @media screen and (max-width: 400px) {
     .info {
         padding: 0.5rem 1rem 0.5rem 1rem;
