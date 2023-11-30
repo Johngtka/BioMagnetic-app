@@ -7,6 +7,7 @@ import {
     OnDestroy,
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -62,6 +63,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         private snackService: SnackService,
         private visitService: VisitService,
         private companyService: CompanyService,
+        private responsive: BreakpointObserver,
         private datePipe: DatePipe,
         private dialog: MatDialog,
     ) {}
@@ -83,6 +85,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     showTable3 = false;
     showTable4 = false;
     showTable5 = false;
+    isMobile = false;
     date = new Date();
     isLoadingResults = true;
     company: Company;
@@ -94,7 +97,9 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         'image',
         'moreInfo',
     ];
+    displayedColumnsForMobiles: string[] = ['image', 'point'];
     columnsToDisplayWithExpand = [...this.displayedColumns];
+    columnsToDisplayWithExpandOnPhones = [...this.displayedColumnsForMobiles];
     expandedElement: any;
     groupReservoirsParents: any[]; // code starts with R
     groupMoreReservoirsParents: any[]; // code starts with MR
@@ -113,12 +118,19 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 if (data.length > 0) {
                     this.store = data;
                     this.store = orderBy(this.store, [(v) => v.code]);
-
                     this.isLoadingResults = false;
                     this.loadPaginator();
                 }
             });
-
+        this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
+            if (result.matches) {
+                this.isMobile = true;
+                this.loadPaginator();
+            } else {
+                this.isMobile = false;
+                this.loadPaginator();
+            }
+        });
         this.companyService.getCompany().subscribe({
             next: (data) => {
                 this.company = data;

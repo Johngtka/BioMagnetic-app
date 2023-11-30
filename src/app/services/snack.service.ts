@@ -28,8 +28,8 @@ export class SnackService {
                 type === SNACK_TYPE.error
                     ? 'error-snackbar'
                     : type === SNACK_TYPE.info
-                    ? 'info-snackbar'
-                    : 'success-snackbar',
+                      ? 'info-snackbar'
+                      : 'success-snackbar',
                 'login-snackbar',
             ],
         });

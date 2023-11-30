@@ -1,7 +1,36 @@
 .info {
+    display: flex;
     align-items: center;
-    width: 100%;
-    height: 50px;
+    justify-content: space-between;
+}
+
+::ng-deep .mat-mdc-paginator-page-size-label,
+::ng-deep .mat-mdc-paginator-page-size-value {
+    display: none;
+}
+
+@media screen and (min-width: 400px){
+    .selectedRow .bodyPoints {
+        display: flex;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .info {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        height: auto;
+    }
+
+    .noPatientSelected {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .info button {
+        width: auto;
+        height: auto;
+    }
 }
 .add-btn {
     float: right;
@@ -43,7 +72,6 @@ tr.detail-row {
 }
 .selectedRow .bodyPoints {
     display: flex;
-    width: 250px;
 }
 .bodyPoints {
     display: flex;
@@ -67,4 +95,15 @@ table {
 }
 .mr {
     margin-right: 1rem;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+.block {
+    display: block;
+}
+.mat-column-point,
+.details-row-mobile > td:nth-child(2) {
+    width: 80%;
 }

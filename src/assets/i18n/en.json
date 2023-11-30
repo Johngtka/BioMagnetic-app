@@ -69,7 +69,7 @@
             "NO_PATIENT": "Please search for a patient to open a new appointment"
         },
         "SELECT": {
-            "ACTIVE": "New appointment created for patient"
+            "ACTIVE": "Patient: "
         },
         "INFO": {
             "LOST": "All work in current appointment will be lost, do you want to proceed?"
