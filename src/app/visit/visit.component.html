@@ -9,10 +9,10 @@
         {{ patient.name + ' ' + patient.surname }}</span
     >
     <button
-        (click)="toggleTableVisibility()"
-        class="add-btn"
         mat-mini-fab
+        (click)="toggleTableVisibility()"
         color="primary"
+        class="add-btn"
     >
         <mat-icon>close</mat-icon>
     </button>
@@ -259,51 +259,51 @@
     </mat-form-field>
 
     <button
-        color="primary"
-        class="add-btn"
         mat-raised-button
         (click)="showMR()"
         [hidden]="!showMRButton"
+        color="primary"
+        class="add-btn"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
     </button>
 
     <button
-        color="primary"
-        class="add-btn mr"
         mat-raised-button
         (click)="showSummary1()"
         [hidden]="!showUPButton"
+        color="primary"
+        class="add-btn mr"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
     </button>
 
     <button
-        color="primary"
-        class="add-btn"
         mat-raised-button
         (click)="showUP()"
         [hidden]="!showNext"
+        color="primary"
+        class="add-btn"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
     </button>
 
     <button
-        class="add-btn"
-        [hidden]="!showCheck"
-        (click)="createVisitPointsTable('II')"
         mat-raised-button
+        (click)="createVisitPointsTable('II')"
+        [hidden]="!showCheck"
         color="primary"
+        class="add-btn"
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
     </button>
 
     <button
-        class="add-btn"
-        [hidden]="!showFinish"
-        (click)="sendVisit()"
         mat-raised-button
+        (click)="sendVisit()"
+        [hidden]="!showFinish"
         color="primary"
+        class="add-btn"
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.FINISH' | translate }}
     </button>

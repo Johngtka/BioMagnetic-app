@@ -9,7 +9,7 @@
     display: none;
 }
 
-@media screen and (min-width: 400px){
+@media screen and (min-width: 400px) {
     .selectedRow .bodyPoints {
         display: flex;
         width: 250px;

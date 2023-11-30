@@ -1,8 +1,8 @@
 <mat-toolbar class="mat-elevation-z8">
     <button
         mat-icon-button
-        *ngIf="sidenav.mode === 'over'"
         (click)="sidenav.toggle()"
+        *ngIf="sidenav.mode === 'over'"
     >
         <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
         <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
@@ -14,19 +14,19 @@
     <mat-sidenav #sidenav="matSidenav">
         <img class="avatar mat-elevation-z8" src="./assets/img/user.svg" />
         <mat-divider></mat-divider>
-        <button routerLink="/home" mat-button class="menu-button">
+        <button mat-button routerLink="/home" class="menu-button">
             <mat-icon>home</mat-icon>
             <span>{{ 'MENU.HOME' | translate }}</span>
         </button>
-        <button routerLink="/visit" mat-button class="menu-button">
+        <button mat-button routerLink="/visit" class="menu-button">
             <mat-icon>check_box</mat-icon>
             <span>{{ 'MENU.VISIT' | translate }}</span>
         </button>
-        <button routerLink="/history" mat-button class="menu-button">
+        <button mat-button routerLink="/history" class="menu-button">
             <mat-icon>history</mat-icon>
             <span>{{ 'MENU.VISITS_HISTORY' | translate }}</span>
         </button>
-        <button routerLink="/about" mat-button class="menu-button">
+        <button mat-button routerLink="/about" class="menu-button">
             <mat-icon>info</mat-icon>
             <span>{{ 'MENU.ABOUT' | translate }}</span>
         </button>
