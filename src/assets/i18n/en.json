@@ -4,8 +4,6 @@
     },
     "MENU": {
         "HOME": "Home",
-        "ABOUT": "About",
-        "VISIT": "Visit",
         "VISITS_HISTORY": "History",
         "PATIENTS": "Patients"
     },
