@@ -384,7 +384,8 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 text: point,
             },
             {
-                image: this.store.find((s: Store) => s._id === point).image,
+                image: this.visitPoints.find((s: Store) => s._id === point)
+                    .image,
                 width: 100,
                 alignment: 'center',
             },
