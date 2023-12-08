@@ -1,27 +1,41 @@
-<div class="patientDetails">
-    <p>
-        {{
-            patient.name +
-                ' ' +
-                patient.surname +
-                ' | ' +
-                patient.dob +
-                ' | ' +
-                patient.phone +
-                ' | ' +
-                patient.email +
-                ' | ' +
-                patient.gender +
-                ' | ' +
-                patient.location
-        }}
-    </p>
+<div *ngIf="!patient.name">
+    <app-patient-search (selectedPatient)="selectPatient($event)">
+    </app-patient-search>
+</div>
+<div *ngIf="patient.name" class="patientDetails">
+    <span class="patientInfoLine">
+        <p>
+            {{
+                patient.name +
+                    ' ' +
+                    patient.surname +
+                    ' | ' +
+                    patient.dob +
+                    ' | ' +
+                    patient.phone +
+                    ' | ' +
+                    patient.email +
+                    ' | ' +
+                    patient.gender +
+                    ' | ' +
+                    patient.location
+            }}
+        </p>
+        <button
+            mat-mini-fab
+            (click)="closePatientDetails()"
+            class="close-btn"
+            color="primary"
+        >
+            <mat-icon class="mat-18">close</mat-icon>
+        </button>
+    </span>
     <mat-card>
         <mat-card-content class="panel">
             <app-history></app-history>
         </mat-card-content>
     </mat-card>
 </div>
-<button (click)="openVisit()" class="visit-btn" mat-mini-fab color="primary">
+<button mat-mini-fab (click)="openVisit()" color="primary" class="visit-btn">
     <mat-icon class="mat-18">check_box</mat-icon>
 </button>

@@ -19,6 +19,18 @@ export class PatientDetailsComponent implements OnInit {
             this.patient = urlPatient;
         }
     }
+    selectPatient(patientSelected: Patient): void {
+        this.patient = patientSelected;
+        history.pushState(this.patient, '');
+        const newPatient = history.state;
+        if (this.checkIfPatient(newPatient)) {
+            this.patient = newPatient;
+        }
+    }
+    closePatientDetails(): void {
+        this.patient = {} as Patient;
+        history.replaceState(this.patient, '');
+    }
     openVisit() {
         this.router.navigate(['visit'], {
             state: this.patient,

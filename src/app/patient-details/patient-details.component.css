@@ -1,22 +1,47 @@
-.patientDetails {
-    text-align: center;
-}
 .mat-mdc-card-content:first-child,
 .mat-mdc-card-content:first-child {
     padding: 0;
     margin: 0;
 }
-.visit-btn {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-}
+
 .patientDetails {
     text-align: center;
 }
+
+.patientInfoLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.patientInfoLine p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+
+@media screen and (max-width: 400px){
+    .close-btn{
+        width: auto;
+        height: auto;
+    }
+}
+
 .panel {
     margin-top: 20px;
 }
+
 .visit-btn {
     position: absolute;
     right: 10px;

@@ -7,11 +7,11 @@
             [formControl]="searchPatientsCtrl"
         />
         <button
-            *ngIf="searchPatientsCtrl.value"
-            matSuffix
             mat-icon-button
+            matSuffix
             aria-label="Clear"
             (click)="clearSelection()"
+            *ngIf="searchPatientsCtrl.value"
         >
             <mat-icon>close</mat-icon>
         </button>
