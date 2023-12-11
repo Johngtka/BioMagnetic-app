@@ -291,7 +291,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                     table: {
                         widths: ['50%', '50%'],
                         body: this.visitPoints
-                            .filter((vt) => (vt.code === '.*P.*'))
+                            .filter((vt) => vt.code.indexOf('P', 0))
                             .map((point) => this.getPdfRow(point._id)),
                     },
                 },
