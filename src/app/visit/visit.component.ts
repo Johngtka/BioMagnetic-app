@@ -290,9 +290,9 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 {
                     table: {
                         widths: ['50%', '50%'],
-                        body: this.visitPoints.map((point) =>
-                            this.getPdfRow(point._id),
-                        ),
+                        body: this.visitPoints
+                            .filter((vt) => vt.code.includes('P', 0))
+                            .map((point) => this.getPdfRow(point._id)),
                     },
                 },
             ],
