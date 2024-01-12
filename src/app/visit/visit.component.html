@@ -81,13 +81,27 @@
 
         <ng-container matColumnDef="note">
             <th mat-header-cell *matHeaderCellDef>Note</th>
-            <td mat-cell *matCellDef="let element">
-                <input
-                    matInput
-                    type="text"
-                    [(ngModel)]="element.comment"
-                    (click)="$event.stopPropagation()"
-                />
+            <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="visitPoints.push(element)"
+            >
+                <span
+                    [ngClass]="{
+                        selectedRow: visitPoints.includes(element._id)
+                    }"
+                >
+                    <form>
+                        <mat-form-field>
+                            <input
+                                matInput
+                                type="text"
+                                [(ngModel)]="element.comment"
+                                (click)="$event.stopPropagation()"
+                            />
+                        </mat-form-field>
+                    </form>
+                </span>
             </td>
         </ng-container>
         <ng-container matColumnDef="expandedDetail">
