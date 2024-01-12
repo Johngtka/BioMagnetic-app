@@ -9,4 +9,5 @@ export interface Store {
     type: string;
     moreInfo: string;
     image: string;
+    comment?: string;
 }
