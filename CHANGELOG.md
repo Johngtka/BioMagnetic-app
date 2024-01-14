@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.11...v0.0.12) (2024-01-14)
+
+
+### Features
+
+* new mobile view of visit component ([#56](https://github.com/Johngtka/BioMagnetic-app/issues/56)) ([5b2140d](https://github.com/Johngtka/BioMagnetic-app/commit/5b2140d56749c598dd894d757dd98688c23830eb))
+* new note column at the end of last summary table ([#60](https://github.com/Johngtka/BioMagnetic-app/issues/60)) ([e53ac29](https://github.com/Johngtka/BioMagnetic-app/commit/e53ac29bd11f97f50da71cc0bcddad571718cf86))
+* patient details improvement, allow a user to research patients ([#58](https://github.com/Johngtka/BioMagnetic-app/issues/58)) ([3806568](https://github.com/Johngtka/BioMagnetic-app/commit/380656850dbb8d2ac621ac9fa1c982309b88ff2d))
+
 ### [0.0.11](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.10...v0.0.11) (2023-11-13)
 
 ### Features
