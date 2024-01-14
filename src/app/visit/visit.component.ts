@@ -233,9 +233,16 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             this.showTable4 = false;
             this.showTable5 = true;
-            this.dataSource = new MatTableDataSource<Store>(
-                this.visitPoints.filter((vp) => vp.code.startsWith('P')),
+            this.columnsToDisplayWithExpand.push('note');
+            let points = this.visitPoints.filter((vp) =>
+                vp.code.startsWith('P'),
             );
+
+            points = points.map((point) => {
+                return { ...point, comment: '' };
+            });
+
+            this.dataSource = new MatTableDataSource<Store>(points);
         }
 
         this.paginator.firstPage();

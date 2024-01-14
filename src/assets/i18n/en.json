@@ -90,7 +90,8 @@
         "NAME": "Name",
         "TYPE": "Type",
         "IMAGE": "Image",
-        "MORE_INFO": "More Info"
+        "MORE_INFO": "More Info",
+        "COMMENT": "Comment"
     },
     "VISITS_HISTORY_TABLE": {
         "DATE": "Date",
