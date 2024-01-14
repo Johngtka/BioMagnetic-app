@@ -5,8 +5,6 @@
     "MENU": {
         "HOME": "Home",
         "ABOUT": "About",
-        "VISIT": "Visit",
-        "VISITS_HISTORY": "History",
         "PATIENTS": "Patients"
     },
     "GENERAL": {
@@ -69,7 +67,7 @@
             "NO_PATIENT": "Please search for a patient to open a new appointment"
         },
         "SELECT": {
-            "ACTIVE": "New appointment created for patient"
+            "ACTIVE": "Patient: "
         },
         "INFO": {
             "LOST": "All work in current appointment will be lost, do you want to proceed?"
@@ -92,7 +90,8 @@
         "NAME": "Name",
         "TYPE": "Type",
         "IMAGE": "Image",
-        "MORE_INFO": "More Info"
+        "MORE_INFO": "More Info",
+        "COMMENT": "Comment"
     },
     "VISITS_HISTORY_TABLE": {
         "DATE": "Date",

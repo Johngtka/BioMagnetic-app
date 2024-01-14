@@ -5,8 +5,6 @@
     "MENU": {
         "HOME": "Inicio",
         "ABOUT": "Sobre",
-        "VISIT": "Visite",
-        "VISITS_HISTORY": "Historia",
         "PATIENTS": "Pacientes"
     },
     "GENERAL": {
@@ -69,7 +67,7 @@
             "NO_PATIENT": "Por favor, busque un paciente para abrir una nueva cita"
         },
         "SELECT": {
-            "ACTIVE": "Nueva cita creada para un paciente"
+            "ACTIVE": "Paciente: "
         },
         "INFO": {
             "LOST": "Todo el trabajo en la visita actual se perderá, si continuar el?"
@@ -92,7 +90,8 @@
         "NAME": "Nombre",
         "TYPE": "Tipo",
         "IMAGE": "Foto",
-        "MORE_INFO": "Mas info"
+        "MORE_INFO": "Mas info",
+        "COMMENT": "Comentario"
     },
     "VISITS_HISTORY_TABLE": {
         "DATE": "Fecha",
