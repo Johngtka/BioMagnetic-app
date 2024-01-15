@@ -152,11 +152,13 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     loadPaginator() {
-        this.groupReservoirsParents = this.getTableData(this.store, 'R');
-        this.dataSource = new MatTableDataSource<any>(
-            this.groupReservoirsParents,
-        );
-        this.dataSource.paginator = this.paginator;
+        if (!!this.store && this.store.length) {
+            this.groupReservoirsParents = this.getTableData(this.store, 'R');
+            this.dataSource = new MatTableDataSource<any>(
+                this.groupReservoirsParents,
+            );
+            this.dataSource.paginator = this.paginator;
+        }
     }
 
     selectPatient(patientSelected: Patient): void {
