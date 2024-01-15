@@ -175,10 +175,28 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.visitPoints.push(row);
                 this.visitService.getBetterQualityOfImage(row.code).subscribe({
                     next: (data) => {
-                        const imageIndex = this.dataSource.data.findIndex(
-                            (value) => value.code === data.code,
+                        let childIndex = -1;
+                        const index = this.dataSource.data.findIndex(
+                            (value) => {
+                                if ((value as any).child) {
+                                    childIndex = (value as any).child.findIndex(
+                                        (ch) => ch.code === data.code,
+                                    );
+
+                                    if (childIndex !== -1) {
+                                        return true;
+                                    }
+                                }
+                                return value.code === data.code;
+                            },
                         );
-                        this.dataSource.data[imageIndex].image = data.image;
+                        if (childIndex !== -1) {
+                            (this.dataSource.data[index] as any).child[
+                                childIndex
+                            ].image = data.image;
+                        } else {
+                            this.dataSource.data[index].image = data.image;
+                        }
                     },
                     error: (err) => {
                         console.log(err);
