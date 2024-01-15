@@ -233,7 +233,14 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             this.showTable4 = false;
             this.showTable5 = true;
-            this.columnsToDisplayWithExpand.push('note');
+            if (!this.isMobile) {
+                this.columnsToDisplayWithExpand.push('note');
+            }
+
+            if (this.isMobile) {
+                this.displayedColumnsForMobiles.push('note');
+            }
+
             let points = this.visitPoints.filter((vp) =>
                 vp.code.startsWith('P'),
             );
