@@ -93,16 +93,14 @@
                         selectedRow: visitPoints.includes(element._id)
                     }"
                 >
-                    <form>
-                        <mat-form-field>
-                            <input
-                                matInput
-                                type="text"
-                                [(ngModel)]="element.comment"
-                                (click)="$event.stopPropagation()"
-                            />
-                        </mat-form-field>
-                    </form>
+                    <mat-form-field>
+                        <input
+                            matInput
+                            type="text"
+                            [(ngModel)]="element.comment"
+                            (click)="$event.stopPropagation()"
+                        />
+                    </mat-form-field>
                 </span>
             </td>
         </ng-container>
@@ -217,17 +215,14 @@
                         selectedRow: visitPoints.includes(element._id)
                     }"
                 >
-                    <form>
-                        <mat-form-field>
-                            <input
-                                matInput
-                                type="text"
-                                [(ngModel)]="element.comment"
-                                [ngModelOptions]="{ standalone: true }"
-                                (click)="$event.stopPropagation()"
-                            />
-                        </mat-form-field>
-                    </form>
+                    <mat-form-field>
+                        <input
+                            matInput
+                            type="text"
+                            [(ngModel)]="element.comment"
+                            (click)="$event.stopPropagation()"
+                        />
+                    </mat-form-field>
                 </span>
             </td>
         </ng-container>
