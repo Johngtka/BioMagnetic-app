@@ -513,5 +513,8 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         this.showTable3 = false;
         this.showTable4 = false;
         this.showTable5 = false;
+
+        this.displayedColumnsForMobiles = ['image', 'point'];
+        this.columnsToDisplayWithExpand = [...this.displayedColumns];
     }
 }
