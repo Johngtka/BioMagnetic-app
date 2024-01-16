@@ -152,11 +152,13 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     loadPaginator() {
-        this.groupReservoirsParents = this.getTableData(this.store, 'R');
-        this.dataSource = new MatTableDataSource<any>(
-            this.groupReservoirsParents,
-        );
-        this.dataSource.paginator = this.paginator;
+        if (!!this.store && this.store.length) {
+            this.groupReservoirsParents = this.getTableData(this.store, 'R');
+            this.dataSource = new MatTableDataSource<any>(
+                this.groupReservoirsParents,
+            );
+            this.dataSource.paginator = this.paginator;
+        }
     }
 
     selectPatient(patientSelected: Patient): void {
@@ -208,22 +210,29 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    toggleTableVisibility(): void {
-        if (this.visitPoints.length >= 1) {
-            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-                data: {
-                    title: 'CONFIRMATION_DIALOG.CLOSE_VISIT_TITLE',
-                    message: 'PATIENT_VISIT.INFO.LOST',
-                },
-                disableClose: true,
-            });
-            dialogRef.afterClosed().subscribe((conf) => {
-                if (conf === ConfirmationDialogResponse.OK) {
-                    this.resetVariables();
-                }
-            });
-        } else {
+    toggleTableVisibility(close?: boolean): void {
+        if (close) {
             this.resetVariables();
+        } else {
+            if (this.visitPoints.length >= 1) {
+                const dialogRef = this.dialog.open(
+                    ConfirmationDialogComponent,
+                    {
+                        data: {
+                            title: 'CONFIRMATION_DIALOG.CLOSE_VISIT_TITLE',
+                            message: 'PATIENT_VISIT.INFO.LOST',
+                        },
+                        disableClose: true,
+                    },
+                );
+                dialogRef.afterClosed().subscribe((conf) => {
+                    if (conf === ConfirmationDialogResponse.OK) {
+                        this.resetVariables();
+                    }
+                });
+            } else {
+                this.resetVariables();
+            }
         }
     }
 
@@ -330,13 +339,23 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
             ],
         };
         this.visitService.createVisit(visit).subscribe({
-            next: (data) => {
+            next: () => {
                 this.snackService.showSnackBarMessage(
                     'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
                     SNACK_TYPE.success,
                 );
-                pdfMake.createPdf(docDefinition).open();
-                console.log(data);
+                if (!this.isMobile) {
+                    pdfMake.createPdf(docDefinition).open();
+                }
+                if (this.isMobile) {
+                    const doc = pdfMake.createPdf(docDefinition);
+                    doc.getBase64((data) => {
+                        window.location.href =
+                            'data:application/pdf;base64,' + data;
+                    });
+                }
+
+                this.toggleTableVisibility(true);
             },
             error: (error) => {
                 this.snackService.showSnackBarMessage(
@@ -494,5 +513,8 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         this.showTable3 = false;
         this.showTable4 = false;
         this.showTable5 = false;
+
+        this.displayedColumnsForMobiles = ['image', 'point'];
+        this.columnsToDisplayWithExpand = [...this.displayedColumns];
     }
 }

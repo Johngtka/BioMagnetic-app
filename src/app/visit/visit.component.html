@@ -193,10 +193,14 @@
                 {{ 'VISIT_TABLE.POINT' | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
-                <span class="lowercase"
+                <span *ngIf="!element.child" class="lowercase"
                     >{{ element.negativePoint }} -
-                    {{ element.negativePoint }}</span
+                    {{ element.positivePoint }}</span
                 >
+
+                <span *ngIf="!!element.child" class="lowercase">{{
+                    element.negativePoint
+                }}</span>
                 <mat-icon *ngIf="!!element.child">keyboard_arrow_down</mat-icon>
             </td>
         </ng-container>
