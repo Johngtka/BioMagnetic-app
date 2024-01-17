@@ -43,25 +43,24 @@ import {
 })
 export class HistoryComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    store: any;
+    expandedElement: any;
     showSearch: boolean;
+    universalPointsId: string[];
     patient: Patient;
+    storeSubscription: Subscription;
     dataSource: MatTableDataSource<Visit, MatTableDataSourcePaginator>;
-    displayedColumns: string[] = ['date', 'points', 'note'];
+    isLoadingStore = true;
     showEmptyState = false;
     isLoadingResults = false;
-    storeSubscription: Subscription;
-    store: any;
-    isLoadingStore = true;
-
+    displayedColumns: string[] = ['date', 'points', 'note'];
     columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
-    expandedElement: any;
-
-    universalPointsId: string[];
 
     constructor(
         private visitService: VisitService,
         private storeService: StoreService,
     ) {}
+
     ngOnDestroy(): void {
         if (this.storeSubscription) {
             this.storeSubscription.unsubscribe();

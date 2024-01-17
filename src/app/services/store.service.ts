@@ -17,12 +17,14 @@ export class StoreService implements OnDestroy {
         private snackService: SnackService,
     ) {}
 
-    apiURL = environment.API_URL;
     store = new BehaviorSubject<Array<Store>>([]);
+    apiURL = environment.API_URL;
     tempStore = [];
+
     ngOnDestroy() {
         this.store.complete();
     }
+
     setStore(data: Store[]) {
         this.store.next(data);
     }

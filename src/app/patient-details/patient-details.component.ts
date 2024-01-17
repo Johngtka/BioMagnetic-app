@@ -12,6 +12,7 @@ export class PatientDetailsComponent implements OnInit {
     constructor(private router: Router) {}
 
     patient: Patient;
+
     ngOnInit(): void {
         this.patient = {} as Patient;
         const urlPatient = history.state;
@@ -19,6 +20,7 @@ export class PatientDetailsComponent implements OnInit {
             this.patient = urlPatient;
         }
     }
+
     selectPatient(patientSelected: Patient): void {
         this.patient = patientSelected;
         history.pushState(this.patient, '');
@@ -27,15 +29,18 @@ export class PatientDetailsComponent implements OnInit {
             this.patient = newPatient;
         }
     }
+
     closePatientDetails(): void {
         this.patient = {} as Patient;
         history.replaceState(this.patient, '');
     }
+
     openVisit() {
         this.router.navigate(['visit'], {
             state: this.patient,
         });
     }
+
     private checkIfPatient(
         object: Patient | NavigationObject,
     ): object is Patient {
