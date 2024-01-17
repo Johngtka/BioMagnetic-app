@@ -1,21 +1,47 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    HostListener,
+    OnDestroy,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
 
+import { Subscription } from 'rxjs';
+
 import { Visit } from '../models/visit';
 import { Patient } from '../models/patient';
 import { VisitService } from '../services/visit.service';
 import { NavigationObject } from '../models/NavigationObject';
+import { StoreService } from '../services/store.service';
+import {
+    trigger,
+    state,
+    style,
+    transition,
+    animate,
+} from '@angular/animations';
 
 @Component({
     selector: 'app-history',
     templateUrl: './history.component.html',
     styleUrls: ['./history.component.css'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed,void', style({ height: '0px', minHeight: '0' })),
+            state('expanded', style({ height: '*' })),
+            transition(
+                'expanded <=> collapsed',
+                animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'),
+            ),
+        ]),
+    ],
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     showSearch: boolean;
     patient: Patient;
@@ -23,9 +49,38 @@ export class HistoryComponent implements OnInit {
     displayedColumns: string[] = ['date', 'points', 'note'];
     showEmptyState = false;
     isLoadingResults = false;
-    constructor(private visitService: VisitService) {}
+    storeSubscription: Subscription;
+    store: any;
+    isLoadingStore = true;
+
+    columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+    expandedElement: any;
+
+    universalPointsId: string[];
+
+    constructor(
+        private visitService: VisitService,
+        private storeService: StoreService,
+    ) {}
+    ngOnDestroy(): void {
+        if (this.storeSubscription) {
+            this.storeSubscription.unsubscribe();
+        }
+    }
 
     ngOnInit(): void {
+        this.storeSubscription = this.storeService
+            .getStore()
+            .subscribe((data) => {
+                if (data.length > 0) {
+                    this.store = data;
+                    this.universalPointsId = data
+                        .filter((d) => d.code.includes('P', 0))
+                        .map((f) => f._id);
+
+                    this.isLoadingStore = false;
+                }
+            });
         this.patient = {} as Patient;
         const urlPatient = history.state;
         if (this.checkIfPatient(urlPatient)) {

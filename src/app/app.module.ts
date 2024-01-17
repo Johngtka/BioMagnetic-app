@@ -44,6 +44,8 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { PointNamesPipe } from './pipes/point-names.pipe';
+import { PointImagePipe } from './pipes/point-image.pipe';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
@@ -89,6 +91,8 @@ const materialModules = [
         HistoryComponent,
         EmptyStateComponent,
         PatientDetailsComponent,
+        PointNamesPipe,
+        PointImagePipe,
     ],
     imports: [
         BrowserModule,
