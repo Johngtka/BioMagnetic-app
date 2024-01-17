@@ -78,6 +78,7 @@
             </th>
             <td mat-cell *matCellDef="let element">
                 <button
+                    *ngIf="!isMobile"
                     mat-icon-button
                     aria-label="expand row"
                     (click)="
@@ -104,25 +105,30 @@
                 [attr.colspan]="columnsToDisplayWithExpand.length"
             >
                 <div
-                    class="element-detail"
                     [@detailExpand]="
                         element == expandedElement ? 'expanded' : 'collapsed'
                     "
                 >
-                    <span
-                        class="image"
-                        *ngFor="let point of element.points; let i = index"
-                        >{{ i + 1 }}) &nbsp;
-                        <img
-                            [ngStyle]="{
-                                border: universalPointsId.includes(point)
-                                    ? '2px solid black'
-                                    : '2px solid green'
-                            }"
-                            class="bodyPoints"
-                            src="{{ point | pointImage : store }}"
-                        />
-                    </span>
+                    <div *ngIf="isMobile" class="note">
+                        {{ 'VISITS_HISTORY_TABLE.NOTE' | translate }}:
+                        {{ element.note }}
+                    </div>
+                    <div class="element-detail">
+                        <span
+                            class="image"
+                            *ngFor="let point of element.points; let i = index"
+                            >{{ i + 1 }}) &nbsp;
+                            <img
+                                [ngStyle]="{
+                                    border: universalPointsId.includes(point)
+                                        ? '2px solid black'
+                                        : '2px solid green'
+                                }"
+                                class="bodyPoints"
+                                src="{{ point | pointImage : store }}"
+                            />
+                        </span>
+                    </div>
                 </div>
             </td>
         </ng-container>

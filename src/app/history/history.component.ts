@@ -10,6 +10,7 @@ import {
     MatTableDataSource,
     MatTableDataSourcePaginator,
 } from '@angular/material/table';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { Subscription } from 'rxjs';
 
@@ -47,20 +48,22 @@ export class HistoryComponent implements OnInit, OnDestroy {
     patient: Patient;
     dataSource: MatTableDataSource<Visit, MatTableDataSourcePaginator>;
     displayedColumns: string[] = ['date', 'points', 'note'];
+    columnsToDisplayWithExpand: any;
     showEmptyState = false;
     isLoadingResults = false;
     storeSubscription: Subscription;
     store: any;
     isLoadingStore = true;
 
-    columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
     expandedElement: any;
 
     universalPointsId: string[];
+    isMobile: boolean;
 
     constructor(
         private visitService: VisitService,
         private storeService: StoreService,
+        private responsive: BreakpointObserver,
     ) {}
     ngOnDestroy(): void {
         if (this.storeSubscription) {
@@ -69,6 +72,18 @@ export class HistoryComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
+            if (result.matches) {
+                this.isMobile = true;
+                this.displayedColumns.pop();
+            } else {
+                this.isMobile = false;
+            }
+            this.columnsToDisplayWithExpand = [
+                ...this.displayedColumns,
+                'expand',
+            ];
+        });
         this.storeSubscription = this.storeService
             .getStore()
             .subscribe((data) => {
