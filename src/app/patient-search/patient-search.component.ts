@@ -29,11 +29,11 @@ export class PatientSearchComponent implements OnInit {
     ) {}
 
     @Output() selectedPatient = new EventEmitter<Patient>();
-    searchPatientsCtrl = new FormControl();
+    errorMsg!: string;
     filteredPatients!: Array<Patient>;
     isLoading = false;
-    errorMsg!: string;
     minLengthTerm = 3;
+    searchPatientsCtrl = new FormControl();
 
     ngOnInit() {
         this.searchPatientsCtrl.valueChanges

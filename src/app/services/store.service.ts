@@ -12,17 +12,16 @@ import { SNACK_TYPE, SnackService } from './snack.service';
     providedIn: 'root',
 })
 export class StoreService implements OnDestroy {
-    constructor(
-        private http: HttpClient,
-        private snackService: SnackService,
-    ) {}
+    constructor(private http: HttpClient, private snackService: SnackService) {}
 
-    apiURL = environment.API_URL;
     store = new BehaviorSubject<Array<Store>>([]);
+    apiURL = environment.API_URL;
     tempStore = [];
+
     ngOnDestroy() {
         this.store.complete();
     }
+
     setStore(data: Store[]) {
         this.store.next(data);
     }

@@ -69,12 +69,17 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     ) {}
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    patient: Patient;
-    dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
-    visitPoints: Store[] = [];
-    justIds: string[] = [];
-    store: Store[];
+    expandedElement: any;
+    groupReservoirsParents: any[]; // code starts with R
+    groupMoreReservoirsParents: any[]; // code starts with MR
+    groupUniversalParents: any[]; //code starts with P
     noteVal: string;
+    patient: Patient;
+    store: Store[];
+    company: Company;
+    storeSubscription: Subscription;
+    dataSource: MatTableDataSource<Store, MatTableDataSourcePaginator>;
+
     showCheck = false;
     showFinish = false;
     showNext = false;
@@ -86,9 +91,10 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     showTable4 = false;
     showTable5 = false;
     isMobile = false;
-    date = new Date();
     isLoadingResults = true;
-    company: Company;
+    visitPoints: Store[] = [];
+    justIds: string[] = [];
+    date = new Date();
     displayedColumns: string[] = [
         'negativePoint',
         'positivePoint',
@@ -100,11 +106,6 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     displayedColumnsForMobiles: string[] = ['image', 'point'];
     columnsToDisplayWithExpand = [...this.displayedColumns];
     columnsToDisplayWithExpandOnPhones = [...this.displayedColumnsForMobiles];
-    expandedElement: any;
-    groupReservoirsParents: any[]; // code starts with R
-    groupMoreReservoirsParents: any[]; // code starts with MR
-    groupUniversalParents: any[]; //code starts with P
-    storeSubscription: Subscription;
 
     ngOnInit(): void {
         this.patient = {} as Patient;
