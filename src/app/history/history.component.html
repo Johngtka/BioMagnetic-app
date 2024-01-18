@@ -109,7 +109,7 @@
                         element == expandedElement ? 'expanded' : 'collapsed'
                     "
                 >
-                    <div *ngIf="isMobile" class="note">
+                    <div *ngIf="isMobile && element.note?.length" class="note">
                         {{ 'VISITS_HISTORY_TABLE.NOTE' | translate }}:
                         {{ element.note }}
                     </div>

@@ -20,6 +20,7 @@ tr.detail-row {
 }
 
 .element-detail {
+    padding-top: 0.5rem;
     overflow: hidden;
     display: flex !important;
     justify-content: flex-start;
