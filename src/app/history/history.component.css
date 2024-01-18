@@ -7,3 +7,28 @@
 .add-btn {
     float: right;
 }
+
+.image {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+.element-detail {
+    padding-top: 0.5rem;
+    overflow: hidden;
+    display: flex !important;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.pb {
+    padding-bottom: 0.5rem;
+}
+.note {
+    padding: 0.5rem 0 0.5rem 0;
+}

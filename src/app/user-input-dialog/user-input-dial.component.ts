@@ -23,10 +23,10 @@ export class UserInputDialogComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: { patient: Patient },
     ) {}
 
-    registerForm: FormGroup;
-    buttonText: string;
-    originalFormValues: Patient;
     isEdit: boolean;
+    buttonText: string;
+    registerForm: FormGroup;
+    originalFormValues: Patient;
 
     ngOnInit(): void {
         if (this.data?.patient) {

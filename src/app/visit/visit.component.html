@@ -12,7 +12,7 @@
         mat-mini-fab
         (click)="toggleTableVisibility()"
         color="primary"
-        class="add-btn"
+        class="float-right"
     >
         <mat-icon>close</mat-icon>
     </button>
@@ -38,7 +38,23 @@
             </th>
             <td mat-cell *matCellDef="let element">
                 <span>{{ element.negativePoint }}</span>
-                <mat-icon *ngIf="!!element.child">keyboard_arrow_down</mat-icon>
+                <button
+                    *ngIf="!!element.child"
+                    mat-icon-button
+                    aria-label="expand row"
+                    (click)="
+                        expandedElement =
+                            expandedElement === element ? null : element;
+                        $event.stopPropagation()
+                    "
+                >
+                    <mat-icon *ngIf="expandedElement !== element"
+                        >keyboard_arrow_down</mat-icon
+                    >
+                    <mat-icon *ngIf="expandedElement === element"
+                        >keyboard_arrow_up</mat-icon
+                    >
+                </button>
             </td>
         </ng-container>
         <ng-container matColumnDef="positivePoint">
@@ -201,7 +217,23 @@
                 <span *ngIf="!!element.child" class="lowercase">{{
                     element.negativePoint
                 }}</span>
-                <mat-icon *ngIf="!!element.child">keyboard_arrow_down</mat-icon>
+                <button
+                    *ngIf="!!element.child"
+                    mat-icon-button
+                    aria-label="expand row"
+                    (click)="
+                        expandedElement =
+                            expandedElement === element ? null : element;
+                        $event.stopPropagation()
+                    "
+                >
+                    <mat-icon *ngIf="expandedElement !== element"
+                        >keyboard_arrow_down</mat-icon
+                    >
+                    <mat-icon *ngIf="expandedElement === element"
+                        >keyboard_arrow_up</mat-icon
+                    >
+                </button>
             </td>
         </ng-container>
 
@@ -319,7 +351,7 @@
         (click)="showMR()"
         [hidden]="!showMRButton"
         color="primary"
-        class="add-btn"
+        class="float-right"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.MORE_RESERVOIRS' | translate }}
     </button>
@@ -329,7 +361,7 @@
         (click)="showSummary1()"
         [hidden]="!showUPButton"
         color="primary"
-        class="add-btn mr"
+        class="float-right mr"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.UNIVERSAL_POINTS' | translate }}
     </button>
@@ -339,7 +371,7 @@
         (click)="showUP()"
         [hidden]="!showNext"
         color="primary"
-        class="add-btn"
+        class="float-right"
     >
         {{ 'PATIENT_VISIT.STEPS_BUTTONS.NEXT' | translate }}
     </button>
@@ -349,7 +381,7 @@
         (click)="createVisitPointsTable('II')"
         [hidden]="!showCheck"
         color="primary"
-        class="add-btn"
+        class="float-right"
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.CHECK' | translate }}
     </button>
@@ -359,7 +391,7 @@
         (click)="sendVisit()"
         [hidden]="!showFinish"
         color="primary"
-        class="add-btn"
+        class="float-right"
     >
         {{ 'PATIENT_VISIT.FINISH_BUTTONS.FINISH' | translate }}
     </button>

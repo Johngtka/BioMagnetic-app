@@ -16,8 +16,8 @@
 }
 
 .patientInfoLine p {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -27,24 +27,30 @@
 
 .close-btn {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 10px;
+    z-index: 1;
+    right: 1rem;
 }
 
 @media screen and (max-width: 400px) {
-    .close-btn {
+    .close-btn,
+    .visit-btn {
         width: auto;
         height: auto;
+    }
+
+    .close-btn mat-icon,
+    .visit-btn mat-icon {
+        font-size: 15px;
+        line-height: 24px;
     }
 }
 
 .panel {
-    margin-top: 20px;
+    margin-top: 1.5rem;
 }
 
 .visit-btn {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
 }

@@ -32,9 +32,7 @@
         height: auto;
     }
 }
-.add-btn {
-    float: right;
-}
+
 .mat-mdc-row {
     cursor: pointer;
 }
@@ -106,4 +104,7 @@ table {
 .mat-column-point,
 .details-row-mobile > td:nth-child(2) {
     width: 80%;
+}
+.float-right {
+    float: right;
 }
