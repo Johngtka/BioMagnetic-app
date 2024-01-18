@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.12...v0.0.13) (2024-01-18)
+
+
+### Features
+
+* history visit table, expandable row for images ([#64](https://github.com/Johngtka/BioMagnetic-app/issues/64)) ([729b5bd](https://github.com/Johngtka/BioMagnetic-app/commit/729b5bdf6bae97dfd34530a00a96fb19c8b889a7))
+* new pdf table for visit points ([#65](https://github.com/Johngtka/BioMagnetic-app/issues/65)) ([4505864](https://github.com/Johngtka/BioMagnetic-app/commit/4505864f8a42b055ce4f20cd46cddf9445518f1b))
+
+
+### Bug Fixes
+
+* add comment per row on mobile view ([#63](https://github.com/Johngtka/BioMagnetic-app/issues/63)) ([356b0b5](https://github.com/Johngtka/BioMagnetic-app/commit/356b0b5bcacad074acd406248a5fd1440fb79dc2))
+* load an image of a group in better quality ([#62](https://github.com/Johngtka/BioMagnetic-app/issues/62)) ([d79d1f3](https://github.com/Johngtka/BioMagnetic-app/commit/d79d1f3e6b67e2ba99430bf3f3dd8aadeb44f528))
+
 ### [0.0.12](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.11...v0.0.12) (2024-01-14)
 
 
