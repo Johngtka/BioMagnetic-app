@@ -32,3 +32,29 @@ tr.detail-row {
 .note {
     padding: 0.5rem 0 0.5rem 0;
 }
+
+.mat-column-date {
+    width: 15%;
+}
+
+.mat-column-points {
+    width: 35%;
+}
+
+.mat-column-note {
+    width: auto;
+}
+
+.pdf-btn {
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 400px) {
+    .mat-column-date {
+        width: 30%;
+    }
+
+    .mat-column-points {
+        width: 70%;
+    }
+}

@@ -81,6 +81,11 @@
             "MORE_RESERVOIRS": "Más embalses",
             "UNIVERSAL_POINTS": "Puntos Universales",
             "NEXT": "Más"
+        },
+        "PDF": {
+            "IMBALANCE": "Desequilibrio",
+            "POSITION": "Posición",
+            "INFO": "Información"
         }
     },
     "VISIT_TABLE": {
