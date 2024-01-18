@@ -128,6 +128,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
         }
     }
 
+    reDoPdf() {
+        //TODO re-create a pdf
+    }
+
     private getPatientVisit(): void {
         this.isLoadingResults = true;
         this.visitService.getVisits(this.patient._id).subscribe({

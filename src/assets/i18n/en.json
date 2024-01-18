@@ -81,6 +81,11 @@
             "MORE_RESERVOIRS": "More Reservoirs",
             "UNIVERSAL_POINTS": "Universal Points",
             "NEXT": "Next"
+        },
+        "PDF": {
+            "IMBALANCE": "Imbalance",
+            "POSITION": "Position",
+            "INFO": "Info"
         }
     },
     "VISIT_TABLE": {

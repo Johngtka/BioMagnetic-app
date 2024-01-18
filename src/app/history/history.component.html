@@ -54,12 +54,12 @@
                     class="pb"
                     *ngFor="let point of element.points; let i = index"
                     [ngStyle]="{
-                        color: universalPointsId.includes(point)
+                        color: universalPointsId.includes(point.id)
                             ? 'black'
                             : 'green'
                     }"
                 >
-                    {{ i + 1 + ')' }} &nbsp; {{ point | pointNames : store }}
+                    {{ i + 1 + ')' }} &nbsp; {{ point.id | pointNames : store }}
                 </div>
             </td>
         </ng-container>
@@ -120,15 +120,23 @@
                             >{{ i + 1 }}) &nbsp;
                             <img
                                 [ngStyle]="{
-                                    border: universalPointsId.includes(point)
+                                    border: universalPointsId.includes(point.id)
                                         ? '2px solid black'
                                         : '2px solid green'
                                 }"
                                 class="bodyPoints"
-                                src="{{ point | pointImage : store }}"
+                                src="{{ point.id | pointImage : store }}"
                             />
                         </span>
                     </div>
+                    <button
+                        mat-mini-fab
+                        (click)="reDoPdf()"
+                        color="primary"
+                        class="pdf-btn"
+                    >
+                        <mat-icon>picture_as_pdf</mat-icon>
+                    </button>
                 </div>
             </td>
         </ng-container>

@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -26,6 +27,8 @@ import {
 } from '@angular/animations';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { orderBy } from 'natural-orderby';
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 import { Store } from '../models/store';
 import { Visit } from '../models/visit';
@@ -40,7 +43,6 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-visit',
@@ -66,6 +68,8 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         private responsive: BreakpointObserver,
         private datePipe: DatePipe,
         private dialog: MatDialog,
+        private translateService: TranslateService,
+        private router: Router,
     ) {}
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -214,6 +218,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
     toggleTableVisibility(close?: boolean): void {
         if (close) {
             this.resetVariables();
+            this.router.navigate(['patient/details']);
         } else {
             if (this.visitPoints.length >= 1) {
                 const dialogRef = this.dialog.open(
@@ -269,14 +274,12 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.displayedColumnsForMobiles.push('note');
             }
 
-            let points = this.visitPoints.filter((vp) =>
-                vp.code.startsWith('P'),
-            );
-
-            points = points.map((point) => {
+            this.visitPoints = this.visitPoints.map((point) => {
                 return { ...point, comment: '' };
             });
-
+            const points = this.visitPoints.filter((vp) =>
+                vp.code.startsWith('P'),
+            );
             this.dataSource = new MatTableDataSource<Store>(points);
         }
 
@@ -293,7 +296,9 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         const visit: Visit = {
             patientId: this.patient._id,
             note: this.noteVal,
-            points: this.visitPoints.map((vp) => vp._id),
+            points: this.visitPoints.map((vp) => {
+                return { id: vp._id, comment: vp.comment };
+            }),
         };
         const pdfData = {
             fullName: this.patient.name + ' ' + this.patient.surname,
@@ -327,18 +332,43 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 },
                 {
                     text: pdfData.genericInfo,
-                    margin: [0, 100],
+                    margin: [0, 50],
                 },
                 {
                     table: {
-                        widths: ['50%', '50%'],
+                        dontBreakRows: true,
+                        headerRows: 1,
+                        widths: [150, '*', 150],
                         body: this.visitPoints
                             .filter((vt) => vt.code.includes('P', 0))
-                            .map((point) => this.getPdfRow(point._id)),
+                            .map((point) => this.getPdfRow(point)),
                     },
                 },
             ],
         };
+        // add table headers
+        docDefinition.content[3].table.body.unshift([
+            {
+                text: this.translateService.instant(
+                    'PATIENT_VISIT.PDF.IMBALANCE',
+                ),
+                alignment: 'center',
+                bold: true,
+            } as any,
+            {
+                text: this.translateService.instant(
+                    'PATIENT_VISIT.PDF.POSITION',
+                ),
+                alignment: 'center',
+                bold: true,
+            },
+            {
+                text: this.translateService.instant('PATIENT_VISIT.PDF.INFO'),
+                bold: true,
+                alignment: 'center',
+            },
+        ]);
+
         this.visitService.createVisit(visit).subscribe({
             next: () => {
                 this.snackService.showSnackBarMessage(
@@ -430,15 +460,21 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         ];
     }
 
-    private getPdfRow(point: string) {
+    private getPdfRow(point: Store) {
         return [
             {
-                text: point,
+                text: point.negativePoint + '-' + point.positivePoint,
+                alignment: 'center',
             },
             {
-                image: this.store.find((s: Store) => s._id === point).image,
-                width: 100,
+                image: point.image,
+                width: 200,
                 alignment: 'center',
+            },
+            {
+                text: point.comment,
+                alignment: 'center',
+                italics: true,
             },
         ];
     }

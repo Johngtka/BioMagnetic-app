@@ -78,6 +78,11 @@
             "MORE_RESERVOIRS": "Więcej Zbiorników",
             "UNIVERSAL_POINTS": "Punkty Uniwersalne",
             "NEXT": "Dalej"
+        },
+        "PDF": {
+            "IMBALANCE": "Nazwa",
+            "POSITION": "Pozycja",
+            "INFO": "Informacje"
         }
     },
     "PATIENT_SEARCH": {

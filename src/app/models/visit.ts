@@ -1,5 +1,9 @@
 export interface Visit {
     patientId: string;
     note: string;
-    points: string[];
+    points: Array<Point>;
+}
+interface Point {
+    id: string;
+    comment: string;
 }
