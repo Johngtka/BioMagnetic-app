@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { RouterModule } from '@angular/router';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -114,6 +115,7 @@ const materialModules = [
         ...materialModules,
     ],
     providers: [
+        CdkTextareaAutosize,
         PatientService,
         DatePipe,
         StoreService,
