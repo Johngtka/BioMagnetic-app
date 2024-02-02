@@ -36,10 +36,12 @@
 .mat-mdc-row {
     cursor: pointer;
 }
+
 .selectedRow,
 .selectedRow:hover {
     background-color: lightgray !important;
 }
+
 tr.detail-row {
     height: 0;
 }
@@ -48,49 +50,74 @@ tr.detail-row {
 .details-row > td:nth-child(1) {
     width: 20%;
 }
+
 .mat-column-positivePoint,
 .details-row > td:nth-child(2) {
     width: 20%;
 }
+
 .mat-column-type,
 .details-row > td:nth-child(3) {
     width: 5%;
 }
+
 .mat-column-name,
 .details-row > td:nth-child(4) {
     width: 10%;
 }
-.mat-column-image,
-.details-row > td:nth-child(5) {
-    width: 20%;
-}
+
 .mat-column-moreInfo,
 .details-row > td:nth-child(6) {
     width: 25%;
 }
+
+.mat-column-image,
+.details-row-mobile > td:nth-child(1) {
+    width: 20%;
+    padding: 0;
+}
+
+.mat-column-point,
+.details-row-mobile > td:nth-child(2) {
+    width: 20%;
+}
+
+.mat-column-note,
+.details-row-mobile > td:nth-child(3) {
+    width: 10%;
+    padding: 0;
+}
+
 .selectedRow .bodyPoints {
     display: flex;
 }
+
 .bodyPoints {
     display: flex;
     width: 100px;
 }
+
 .full-width {
     width: 100%;
 }
+
 .no-padding {
     padding: 0px !important;
 }
+
 .flex {
     display: flex;
 }
+
 .align-middle {
     vertical-align: middle;
     line-height: 52px;
 }
+
 table {
     width: 100%;
 }
+
 .mr {
     margin-right: 1rem;
 }
@@ -98,13 +125,11 @@ table {
 .lowercase {
     text-transform: lowercase;
 }
+
 .block {
     display: block;
 }
-.mat-column-point,
-.details-row-mobile > td:nth-child(2) {
-    width: 80%;
-}
+
 .float-right {
     float: right;
 }

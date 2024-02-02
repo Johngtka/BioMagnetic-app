@@ -251,15 +251,7 @@
                         selectedRow: visitPoints.includes(element._id)
                     }"
                 >
-                    <mat-form-field>
-                        <input
-                            matInput
-                            type="text"
-                            [(ngModel)]="element.comment"
-                            (click)="$event.stopPropagation()"
-                        />
-                    </mat-form-field>
-                    <!-- <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill">
                         <mat-label>test</mat-label>
                         <textarea
                             matInput
@@ -268,7 +260,7 @@
                             [(ngModel)]="element.comment"
                             (click)="$event.stopPropagation()"
                         ></textarea>
-                    </mat-form-field> -->
+                    </mat-form-field>
                 </span>
             </td>
         </ng-container>
