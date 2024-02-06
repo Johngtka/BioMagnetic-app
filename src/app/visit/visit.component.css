@@ -73,18 +73,18 @@ tr.detail-row {
 
 .mat-column-image,
 .details-row-mobile > td:nth-child(1) {
-    width: 20%;
+    width: auto;
     padding: 0;
 }
 
 .mat-column-point,
 .details-row-mobile > td:nth-child(2) {
-    width: 20%;
+    width: auto;
 }
 
 .mat-column-note,
 .details-row-mobile > td:nth-child(3) {
-    width: 10%;
+    width: 50%;
     padding: 0;
 }
 
