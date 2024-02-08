@@ -251,13 +251,14 @@
                         selectedRow: visitPoints.includes(element._id)
                     }"
                 >
-                    <mat-form-field>
-                        <input
+                    <mat-form-field appearance="fill" subscriptSizing="dynamic">
+                        <textarea
                             matInput
-                            type="text"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
                             [(ngModel)]="element.comment"
                             (click)="$event.stopPropagation()"
-                        />
+                        ></textarea>
                     </mat-form-field>
                 </span>
             </td>

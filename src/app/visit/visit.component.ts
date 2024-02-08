@@ -127,7 +127,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.loadPaginator();
                 }
             });
-        this.responsive.observe(['(max-width: 400px)']).subscribe((result) => {
+        this.responsive.observe(['(max-width: 600px)']).subscribe((result) => {
             if (result.matches) {
                 this.isMobile = true;
                 this.loadPaginator();

@@ -12,7 +12,10 @@ import { SNACK_TYPE, SnackService } from './snack.service';
     providedIn: 'root',
 })
 export class StoreService implements OnDestroy {
-    constructor(private http: HttpClient, private snackService: SnackService) {}
+    constructor(
+        private http: HttpClient,
+        private snackService: SnackService,
+    ) {}
 
     store = new BehaviorSubject<Array<Store>>([]);
     apiURL = environment.API_URL;
