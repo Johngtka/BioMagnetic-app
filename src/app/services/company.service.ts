@@ -17,4 +17,8 @@ export class CompanyService {
     getCompany(): Observable<Company> {
         return this.http.get<Company>(this.apiURL + '/company');
     }
+
+    getAppointments(): Observable<any> {
+        return this.http.get<any>(this.apiURL + '/appointments');
+    }
 }
