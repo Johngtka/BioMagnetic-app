@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { Company } from '../models/company';
+import { Appointment } from '../models/appointment';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -18,7 +19,27 @@ export class CompanyService {
         return this.http.get<Company>(this.apiURL + '/company');
     }
 
-    getAppointments(): Observable<any> {
-        return this.http.get<any>(this.apiURL + '/appointment');
+    getAppointments(): Observable<Appointment> {
+        return this.http.get<any>(this.apiURL + '/appointment').pipe(
+            map((appointmentFromBackend) => {
+                return appointmentFromBackend.data.map((afb) => {
+                    return {
+                        startDateTime: afb.start_dateime,
+                        endDateTime: afb.end_datetime,
+                        duration: afb.duration,
+                        service: {
+                            name: afb.service.name,
+                            price: afb.service.price,
+                        },
+                        client: {
+                            name: afb.client.name,
+                            email: afb.client.email,
+                            phone: afb.client.phone,
+                        },
+                        provider: afb.provider.name,
+                    };
+                });
+            }),
+        );
     }
 }
