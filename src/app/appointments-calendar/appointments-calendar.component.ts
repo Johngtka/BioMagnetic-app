@@ -1,12 +1,12 @@
 import {
     Component,
+    OnInit,
     ChangeDetectionStrategy,
     ViewChild,
     TemplateRef,
 } from '@angular/core';
 import {
     startOfDay,
-    endOfDay,
     subDays,
     addDays,
     endOfMonth,
@@ -17,7 +17,6 @@ import {
 import { Subject } from 'rxjs';
 import {
     CalendarEvent,
-    CalendarEventAction,
     CalendarEventTimesChangedEvent,
     CalendarView,
 } from 'angular-calendar';
@@ -43,52 +42,33 @@ const colors: Record<string, EventColor> = {
     templateUrl: './appointments-calendar.component.html',
     styleUrls: ['./appointments-calendar.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    styles: [
-        `
-            h3 {
-                margin: 0 0 10px;
-            }
-
-            pre {
-                background-color: #f5f5f5;
-                padding: 15px;
-            }
-        `,
-    ],
 })
-export class AppointmentsCalendarComponent {
-    activeDayIsOpen = true;
-
+export class AppointmentsCalendarComponent implements OnInit {
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+    activeDayIsOpen = false;
 
     view: CalendarView = CalendarView.Month;
 
     CalendarView = CalendarView;
 
-    viewDate: Date = new Date();
+    fullyMonthCompose: string;
+    viewDate = new Date();
 
     modalData: {
         action: string;
         event: CalendarEvent;
     };
 
-    actions: CalendarEventAction[] = [
-        {
-            label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-            a11yLabel: 'Edit',
-            onClick: ({ event }: { event: CalendarEvent }): void => {
-                this.handleEvent('Edited', event);
-            },
-        },
-        {
-            label: '<i class="fas fa-fw fa-trash-alt"></i>',
-            a11yLabel: 'Delete',
-            onClick: ({ event }: { event: CalendarEvent }): void => {
-                this.events = this.events.filter((iEvent) => iEvent !== event);
-                this.handleEvent('Deleted', event);
-            },
-        },
-    ];
+    ngOnInit(): void {
+        this.fullyMonthCompose =
+            this.viewDate
+                .toLocaleString('default', {
+                    month: 'long',
+                })
+                .toUpperCase() +
+            ' ' +
+            this.viewDate.getFullYear();
+    }
 
     refresh = new Subject<void>();
 
@@ -98,7 +78,7 @@ export class AppointmentsCalendarComponent {
             end: addDays(new Date(), 1),
             title: 'A 3 day event',
             color: { ...colors['red'] },
-            actions: this.actions,
+            // actions: this.actions,
             allDay: true,
             resizable: {
                 beforeStart: true,
@@ -110,7 +90,7 @@ export class AppointmentsCalendarComponent {
             start: startOfDay(new Date()),
             title: 'An event with no end date',
             color: { ...colors['yellow'] },
-            actions: this.actions,
+            // actions: this.actions,
         },
         {
             start: subDays(endOfMonth(new Date()), 3),
@@ -124,7 +104,7 @@ export class AppointmentsCalendarComponent {
             end: addHours(new Date(), 2),
             title: 'A draggable and resizable event',
             color: { ...colors['yellow'] },
-            actions: this.actions,
+            // actions: this.actions,
             resizable: {
                 beforeStart: true,
                 afterEnd: true,
@@ -174,27 +154,6 @@ export class AppointmentsCalendarComponent {
 
     handleEvent(action: string, event: CalendarEvent): void {
         this.modalData = { event, action };
-    }
-
-    addEvent(): void {
-        this.events = [
-            ...this.events,
-            {
-                title: 'New event',
-                start: startOfDay(new Date()),
-                end: endOfDay(new Date()),
-                color: colors['red'],
-                draggable: true,
-                resizable: {
-                    beforeStart: true,
-                    afterEnd: true,
-                },
-            },
-        ];
-    }
-
-    deleteEvent(eventToDelete: CalendarEvent) {
-        this.events = this.events.filter((event) => event !== eventToDelete);
     }
 
     setView(view: CalendarView) {
