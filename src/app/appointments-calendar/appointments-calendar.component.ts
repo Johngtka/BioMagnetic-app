@@ -31,6 +31,7 @@ export class AppointmentsCalendarComponent implements OnInit {
         event: CalendarEvent;
     };
 
+    isLoadingResults = true;
     fullyMonthCompose: string;
     activeDayIsOpen = false;
     viewDate = new Date();
@@ -52,6 +53,7 @@ export class AppointmentsCalendarComponent implements OnInit {
                             `${appointment.client.name}`,
                     };
                 });
+                this.isLoadingResults = false;
             },
             error: (err) => {
                 console.log(err);

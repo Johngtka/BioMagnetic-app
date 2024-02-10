@@ -48,9 +48,9 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AppointmentsCalendarComponent } from './appointments-calendar/appointments-calendar.component';
 import { PointNamesPipe } from './pipes/point-names.pipe';
 import { PointImagePipe } from './pipes/point-image.pipe';
-import { AppointmentsCalendarComponent } from './appointments-calendar/appointments-calendar.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
