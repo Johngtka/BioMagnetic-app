@@ -1,9 +1,10 @@
 import {
     Component,
     OnInit,
-    ChangeDetectionStrategy,
     ViewChild,
     TemplateRef,
+    HostListener,
+    ChangeDetectionStrategy,
 } from '@angular/core';
 import { isSameDay, isSameMonth } from 'date-fns';
 import { Subject } from 'rxjs';
@@ -97,5 +98,31 @@ export class AppointmentsCalendarComponent implements OnInit {
 
     closeOpenMonthViewDay() {
         this.activeDayIsOpen = false;
+    }
+    @HostListener('window:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (event.key === 'ArrowRight') {
+            this.goToNextView();
+        } else if (event.key === 'ArrowLeft') {
+            this.goToPreviousView();
+        }
+    }
+
+    goToNextView() {
+        const nextButton = document.querySelector(
+            'button[mwlCalendarNextView]',
+        );
+        if (nextButton) {
+            (nextButton as HTMLElement).click();
+        }
+    }
+
+    goToPreviousView() {
+        const previousButton = document.querySelector(
+            'button[mwlCalendarPreviousView]',
+        );
+        if (previousButton) {
+            (previousButton as HTMLElement).click();
+        }
     }
 }
