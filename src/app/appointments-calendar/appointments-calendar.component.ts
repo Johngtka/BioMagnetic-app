@@ -5,37 +5,12 @@ import {
     ViewChild,
     TemplateRef,
 } from '@angular/core';
-import {
-    startOfDay,
-    subDays,
-    addDays,
-    endOfMonth,
-    isSameDay,
-    isSameMonth,
-    addHours,
-} from 'date-fns';
+import { isSameDay, isSameMonth } from 'date-fns';
 import { Subject } from 'rxjs';
-import {
-    CalendarEvent,
-    CalendarEventTimesChangedEvent,
-    CalendarView,
-} from 'angular-calendar';
-import { EventColor } from 'calendar-utils';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 
-const colors: Record<string, EventColor> = {
-    red: {
-        primary: '#ad2121',
-        secondary: '#FAE3E3',
-    },
-    blue: {
-        primary: '#1e90ff',
-        secondary: '#D1E8FF',
-    },
-    yellow: {
-        primary: '#e3bc08',
-        secondary: '#FDF1BA',
-    },
-};
+import { CompanyService } from '../services/company.service';
+import { Appointment } from '../models/appointment';
 
 @Component({
     selector: 'app-appointments-calendar',
@@ -44,15 +19,17 @@ const colors: Record<string, EventColor> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppointmentsCalendarComponent implements OnInit {
+    constructor(private companyService: CompanyService) {}
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
     activeDayIsOpen = false;
 
     view: CalendarView = CalendarView.Month;
 
-    CalendarView = CalendarView;
-
     fullyMonthCompose: string;
     viewDate = new Date();
+    refresh = new Subject<void>();
+
+    dataSource: CalendarEvent[];
 
     modalData: {
         action: string;
@@ -60,6 +37,27 @@ export class AppointmentsCalendarComponent implements OnInit {
     };
 
     ngOnInit(): void {
+        this.companyService.getAppointments().subscribe({
+            next: (data: Appointment[]) => {
+                this.dataSource = data.map((appointment) => {
+                    return {
+                        start: new Date(appointment.startDateTime),
+                        end: new Date(appointment.endDateTime),
+                        meta: {
+                            duration: appointment.duration,
+                            service: appointment.service,
+                            client: appointment.client,
+                        },
+                        title:
+                            `${appointment.service.name} ` +
+                            `${appointment.client.name}`,
+                    };
+                });
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
         this.fullyMonthCompose =
             this.viewDate
                 .toLocaleString('default', {
@@ -69,49 +67,6 @@ export class AppointmentsCalendarComponent implements OnInit {
             ' ' +
             this.viewDate.getFullYear();
     }
-
-    refresh = new Subject<void>();
-
-    events: CalendarEvent[] = [
-        {
-            start: subDays(startOfDay(new Date()), 1),
-            end: addDays(new Date(), 1),
-            title: 'A 3 day event',
-            color: { ...colors['red'] },
-            // actions: this.actions,
-            allDay: true,
-            resizable: {
-                beforeStart: true,
-                afterEnd: true,
-            },
-            draggable: true,
-        },
-        {
-            start: startOfDay(new Date()),
-            title: 'An event with no end date',
-            color: { ...colors['yellow'] },
-            // actions: this.actions,
-        },
-        {
-            start: subDays(endOfMonth(new Date()), 3),
-            end: addDays(endOfMonth(new Date()), 3),
-            title: 'A long event that spans 2 months',
-            color: { ...colors['blue'] },
-            allDay: true,
-        },
-        {
-            start: addHours(startOfDay(new Date()), 2),
-            end: addHours(new Date(), 2),
-            title: 'A draggable and resizable event',
-            color: { ...colors['yellow'] },
-            // actions: this.actions,
-            resizable: {
-                beforeStart: true,
-                afterEnd: true,
-            },
-            draggable: true,
-        },
-    ];
 
     dayClicked({
         date,
@@ -132,24 +87,6 @@ export class AppointmentsCalendarComponent implements OnInit {
             }
             this.viewDate = date;
         }
-    }
-
-    eventTimesChanged({
-        event,
-        newStart,
-        newEnd,
-    }: CalendarEventTimesChangedEvent): void {
-        this.events = this.events.map((iEvent) => {
-            if (iEvent === event) {
-                return {
-                    ...event,
-                    start: newStart,
-                    end: newEnd,
-                };
-            }
-            return iEvent;
-        });
-        this.handleEvent('Dropped or resized', event);
     }
 
     handleEvent(action: string, event: CalendarEvent): void {

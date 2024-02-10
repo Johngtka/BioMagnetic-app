@@ -19,12 +19,12 @@ export class CompanyService {
         return this.http.get<Company>(this.apiURL + '/company');
     }
 
-    getAppointments(): Observable<Appointment> {
+    getAppointments(): Observable<Appointment[]> {
         return this.http.get<any>(this.apiURL + '/appointment').pipe(
             map((appointmentFromBackend) => {
                 return appointmentFromBackend.data.map((afb) => {
                     return {
-                        startDateTime: afb.start_dateime,
+                        startDateTime: afb.start_datetime,
                         endDateTime: afb.end_datetime,
                         duration: afb.duration,
                         service: {
@@ -36,7 +36,6 @@ export class CompanyService {
                             email: afb.client.email,
                             phone: afb.client.phone,
                         },
-                        provider: afb.provider.name,
                     };
                 });
             }),
