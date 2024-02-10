@@ -6,9 +6,9 @@ import {
     HostListener,
     ChangeDetectionStrategy,
 } from '@angular/core';
-import { isSameDay, isSameMonth } from 'date-fns';
-import { Subject } from 'rxjs';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { Subject } from 'rxjs';
+import { isSameDay, isSameMonth } from 'date-fns';
 
 import { CompanyService } from '../services/company.service';
 import { Appointment } from '../models/appointment';
