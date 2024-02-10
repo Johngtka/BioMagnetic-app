@@ -1,16 +1,16 @@
-h3{
+h3 {
     width: 100%;
     text-align: center;
 }
 
-.calendarManipulationPanel{
+.calendarManipulationPanel {
     width: 100%;
     display: flex;
     align-items: center;
     padding-top: 10px;
 }
 
-.todayButton{
+.todayButton {
     margin-left: 10px;
     margin-right: 10px;
 }

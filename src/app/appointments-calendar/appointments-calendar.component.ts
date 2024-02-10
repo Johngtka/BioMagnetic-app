@@ -21,20 +21,18 @@ import { Appointment } from '../models/appointment';
 export class AppointmentsCalendarComponent implements OnInit {
     constructor(private companyService: CompanyService) {}
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-    activeDayIsOpen = false;
-
-    view: CalendarView = CalendarView.Month;
-
-    fullyMonthCompose: string;
-    viewDate = new Date();
     refresh = new Subject<void>();
-
+    view: CalendarView = CalendarView.Month;
     dataSource: CalendarEvent[];
 
     modalData: {
         action: string;
         event: CalendarEvent;
     };
+
+    fullyMonthCompose: string;
+    activeDayIsOpen = false;
+    viewDate = new Date();
 
     ngOnInit(): void {
         this.companyService.getAppointments().subscribe({
