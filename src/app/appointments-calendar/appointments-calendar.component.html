@@ -1,19 +1,24 @@
 <div class="col-md-4">
     <h3>{{ fullyMonthCompose }}</h3>
 </div>
-<mwl-calendar-month-view
-    *ngIf="!!dataSource && dataSource.length"
-    [viewDate]="viewDate"
-    [events]="dataSource"
-    [refresh]="refresh"
-    [activeDayIsOpen]="activeDayIsOpen"
-    (dayClicked)="dayClicked($event.day)"
-    (eventClicked)="handleEvent('Clicked', $event.event)"
->
-</mwl-calendar-month-view>
-<div class="loader-container mat-elevation-z8" *ngIf="isLoadingResults">
-    <mat-spinner></mat-spinner>
+<div *ngIf="events$ | async; else loading; let events">
+    <mwl-calendar-month-view
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+    >
+    </mwl-calendar-month-view>
 </div>
+<ng-template #loading>
+    <div *ngIf="isLoadingEvents" class="loader-container mat-elevation-z8">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="isError">add here error empty state</div>
+</ng-template>
+
 <div class="calendarManipulationPanel">
     <button
         mat-mini-fab

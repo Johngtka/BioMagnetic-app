@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 import { Company } from '../models/company';
 import { Appointment } from '../models/appointment';
@@ -21,24 +21,27 @@ export class CompanyService {
 
     getAppointments(): Observable<Appointment[]> {
         return this.http.get<any>(this.apiURL + '/appointment').pipe(
-            map((appointmentFromBackend) => {
-                return appointmentFromBackend.data.map((afb) => {
-                    return {
-                        startDateTime: afb.start_datetime,
-                        endDateTime: afb.end_datetime,
-                        duration: afb.duration,
-                        service: {
-                            name: afb.service.name,
-                            price: afb.service.price,
-                        },
-                        client: {
-                            name: afb.client.name,
-                            email: afb.client.email,
-                            phone: afb.client.phone,
-                        },
-                    };
-                });
-            }),
+            map(
+                (appointmentFromBackend) => {
+                    return appointmentFromBackend.data.map((afb) => {
+                        return {
+                            startDateTime: afb.start_datetime,
+                            endDateTime: afb.end_datetime,
+                            duration: afb.duration,
+                            service: {
+                                name: afb.service.name,
+                                price: afb.service.price,
+                            },
+                            client: {
+                                name: afb.client.name,
+                                email: afb.client.email,
+                                phone: afb.client.phone,
+                            },
+                        };
+                    });
+                },
+                catchError((error) => of(error)),
+            ),
         );
     }
 }

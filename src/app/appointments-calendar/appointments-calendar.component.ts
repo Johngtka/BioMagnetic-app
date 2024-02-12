@@ -7,7 +7,7 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
-import { Subject } from 'rxjs';
+import { Observable, Subject, catchError, finalize, map, of } from 'rxjs';
 import { isSameDay, isSameMonth } from 'date-fns';
 
 import { CompanyService } from '../services/company.service';
@@ -24,22 +24,24 @@ export class AppointmentsCalendarComponent implements OnInit {
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
     refresh = new Subject<void>();
     view: CalendarView = CalendarView.Month;
-    dataSource: CalendarEvent[];
+    // dataSource: CalendarEvent[];
+    events$: Observable<any>;
 
     modalData: {
         action: string;
         event: CalendarEvent;
     };
 
-    isLoadingResults = true;
     fullyMonthCompose: string;
     activeDayIsOpen = false;
     viewDate = new Date();
+    isLoadingEvents = true;
+    isError = false;
 
     ngOnInit(): void {
-        this.companyService.getAppointments().subscribe({
-            next: (data: Appointment[]) => {
-                this.dataSource = data.map((appointment) => {
+        this.events$ = this.companyService.getAppointments().pipe(
+            map((data: Appointment[]) => {
+                return data.map((appointment) => {
                     return {
                         start: new Date(appointment.startDateTime),
                         end: new Date(appointment.endDateTime),
@@ -53,12 +55,19 @@ export class AppointmentsCalendarComponent implements OnInit {
                             `${appointment.client.name}`,
                     };
                 });
-                this.isLoadingResults = false;
-            },
-            error: (err) => {
-                console.log(err);
-            },
-        });
+            }),
+
+            catchError((error) => {
+                // TODO
+                console.log(
+                    'REMOVE THIS COMMENT WHEN YOU READ IT, we mark here isError as true that will allow ou to hide all calendar widgets and show an empty state for an error, to trigger an error just change the url to anything that does not exists ex: /appointment1',
+                );
+                this.isError = true;
+                return of(`Error: ${error}`);
+            }),
+            finalize(() => (this.isLoadingEvents = false)),
+        );
+
         this.fullyMonthCompose =
             this.viewDate
                 .toLocaleString('default', {
