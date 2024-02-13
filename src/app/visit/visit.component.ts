@@ -301,29 +301,20 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
             }),
         };
         const pdfData = {
-            fullName: this.patient.name + ' ' + this.patient.surname,
+            fullName: this.patient.surname,
             logo: this.company.logo,
             genericInfo: this.company.genericInfo,
         };
         const docDefinition = {
             content: [
                 {
-                    text: this.datePipe.transform(Date.now(), 'dd.MM.yyyy'),
-                    margin: [0, 10],
-                },
-                {
                     layout: 'noBorders',
                     table: {
-                        widths: ['50%', '50%'],
+                        widths: ['100%'],
                         body: [
                             [
                                 {
-                                    text: pdfData.fullName,
-                                    alignment: 'left',
-                                },
-                                {
                                     image: pdfData.logo,
-                                    width: 100,
                                     alignment: 'right',
                                 },
                             ],
@@ -331,7 +322,12 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                     },
                 },
                 {
-                    text: pdfData.genericInfo,
+                    text: `${this.translateService
+                        .instant('PATIENT_VISIT.PDF.TITLE')
+                        .toUpperCase()} - ${pdfData.fullName.toUpperCase()} ${this.datePipe.transform(
+                        Date.now(),
+                        'dd/MM/yyyy',
+                    )}`,
                     margin: [0, 50],
                 },
                 {
@@ -347,27 +343,43 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
             ],
         };
         // add table headers
-        docDefinition.content[3].table.body.unshift([
+        docDefinition.content[2].table.body.unshift([
             {
-                text: this.translateService.instant(
-                    'PATIENT_VISIT.PDF.IMBALANCE',
-                ),
+                text: this.translateService
+                    .instant('PATIENT_VISIT.PDF.IMBALANCE')
+                    .toUpperCase(),
                 alignment: 'center',
                 bold: true,
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+                fillColor: '#92cddc',
+                color: 'white',
+                margin: [0, 10, 0, 10],
             } as any,
             {
-                text: this.translateService.instant(
-                    'PATIENT_VISIT.PDF.POSITION',
-                ),
+                text: this.translateService
+                    .instant('PATIENT_VISIT.PDF.POSITION')
+                    .toUpperCase(),
                 alignment: 'center',
                 bold: true,
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+                fillColor: '#92cddc',
+                color: 'white',
+                margin: [0, 10, 0, 10],
             },
             {
-                text: this.translateService.instant('PATIENT_VISIT.PDF.INFO'),
+                text: this.translateService
+                    .instant('PATIENT_VISIT.PDF.INFO')
+                    .toUpperCase(),
                 bold: true,
                 alignment: 'center',
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+                fillColor: '#92cddc',
+                color: 'white',
+                margin: [0, 10, 0, 10],
             },
         ]);
+
+        // pdfMake.createPdf(docDefinition).open();
 
         this.visitService.createVisit(visit).subscribe({
             next: () => {
@@ -465,16 +477,19 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
             {
                 text: point.negativePoint + '-' + point.positivePoint,
                 alignment: 'center',
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
             },
             {
                 image: point.image,
                 width: 200,
                 alignment: 'center',
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
             },
             {
                 text: point.comment,
                 alignment: 'center',
                 italics: true,
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
             },
         ];
     }

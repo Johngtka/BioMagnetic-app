@@ -82,7 +82,8 @@
         "PDF": {
             "IMBALANCE": "Nazwa",
             "POSITION": "Pozycja",
-            "INFO": "Informacje"
+            "INFO": "Informacje",
+            "TITLE": "Raport par biomagnetycznych"
         }
     },
     "PATIENT_SEARCH": {

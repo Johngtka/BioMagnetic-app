@@ -85,7 +85,8 @@
         "PDF": {
             "IMBALANCE": "Imbalance",
             "POSITION": "Position",
-            "INFO": "Info"
+            "INFO": "Info",
+            "TITLE": "Biomagnetic pair report"
         }
     },
     "VISIT_TABLE": {

@@ -85,7 +85,8 @@
         "PDF": {
             "IMBALANCE": "Desequilibrio",
             "POSITION": "Posición",
-            "INFO": "Información"
+            "INFO": "Información",
+            "TITLE": "Informe de par biomagnético"
         }
     },
     "VISIT_TABLE": {
