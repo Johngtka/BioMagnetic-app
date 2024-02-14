@@ -304,22 +304,13 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
             fullName: this.patient.surname,
             logo: this.company.logo,
             genericInfo: this.company.genericInfo,
+            image: this.company.image,
         };
+
         const docDefinition = {
             content: [
                 {
-                    layout: 'noBorders',
-                    table: {
-                        widths: ['100%'],
-                        body: [
-                            [
-                                {
-                                    image: pdfData.logo,
-                                    alignment: 'right',
-                                },
-                            ],
-                        ],
-                    },
+                    image: pdfData.logo,
                 },
                 {
                     text: `${this.translateService
@@ -328,7 +319,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                         Date.now(),
                         'dd/MM/yyyy',
                     )}`,
-                    margin: [0, 50],
+                    margin: [0, 10],
                 },
                 {
                     table: {
@@ -339,6 +330,48 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                             .filter((vt) => vt.code.includes('P', 0))
                             .map((point) => this.getPdfRow(point)),
                     },
+                },
+                {
+                    text: `${this.translateService.instant(
+                        'PATIENT_VISIT.PDF.GENERIC.REMEMBER',
+                    )}`,
+                    color: '#92cddc',
+                    pageBreak: 'before',
+                    margin: [0, 10],
+                    lineHeight: 2,
+                    bold: true,
+                },
+                {
+                    ul: [
+                        this.translateService.instant(
+                            'PATIENT_VISIT.PDF.GENERIC.POINT_1',
+                        ),
+                        this.translateService.instant(
+                            'PATIENT_VISIT.PDF.GENERIC.POINT_2',
+                        ),
+                    ],
+                    margin: [60, 0],
+                    lineHeight: 2,
+                },
+                {
+                    text: `${this.translateService.instant(
+                        'PATIENT_VISIT.PDF.GENERIC.email',
+                    )}: ${this.company.email}`,
+                    color: '#92cddc',
+                    margin: [0, 10],
+                    lineHeight: 2,
+                    bold: true,
+                },
+                {
+                    text: `${this.translateService.instant(
+                        'PATIENT_VISIT.PDF.GENERIC.TEXT',
+                    )}`,
+                    lineHeight: 2,
+                },
+                {
+                    image: pdfData.image,
+                    width: 520,
+                    margin: [0, 10],
                 },
             ],
         };
@@ -378,8 +411,6 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 margin: [0, 10, 0, 10],
             },
         ]);
-
-        // pdfMake.createPdf(docDefinition).open();
 
         this.visitService.createVisit(visit).subscribe({
             next: () => {
