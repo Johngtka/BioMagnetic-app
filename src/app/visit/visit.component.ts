@@ -303,7 +303,6 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         const pdfData = {
             fullName: this.patient.surname,
             logo: this.company.logo,
-            genericInfo: this.company.genericInfo,
             image: this.company.image,
         };
 
