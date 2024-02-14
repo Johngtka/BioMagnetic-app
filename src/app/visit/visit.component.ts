@@ -355,7 +355,7 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 },
                 {
                     text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.email',
+                        'PATIENT_VISIT.PDF.GENERIC.EMAIL',
                     )}: ${this.company.email}`,
                     color: '#92cddc',
                     margin: [0, 10],
