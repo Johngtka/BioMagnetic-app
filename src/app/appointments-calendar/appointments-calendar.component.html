@@ -11,12 +11,25 @@
         (eventClicked)="handleEvent('Clicked', $event.event)"
     >
     </mwl-calendar-month-view>
+
+    <div *ngIf="isError">
+        <app-empty-state
+            text="EMPTY_STATE.TEXT"
+            icon="storage"
+        ></app-empty-state>
+    </div>
 </div>
+
 <ng-template #loading>
     <div *ngIf="isLoadingEvents" class="loader-container mat-elevation-z8">
         <mat-spinner></mat-spinner>
     </div>
-    <div *ngIf="isError">add here error empty state</div>
+    <div *ngIf="isError">
+        <app-empty-state
+            text="EMPTY_STATE.TEXT"
+            icon="storage"
+        ></app-empty-state>
+    </div>
 </ng-template>
 
 <div class="calendarManipulationPanel">

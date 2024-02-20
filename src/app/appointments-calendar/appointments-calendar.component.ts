@@ -24,7 +24,6 @@ export class AppointmentsCalendarComponent implements OnInit {
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
     refresh = new Subject<void>();
     view: CalendarView = CalendarView.Month;
-    // dataSource: CalendarEvent[];
     events$: Observable<any>;
 
     modalData: {
@@ -58,10 +57,6 @@ export class AppointmentsCalendarComponent implements OnInit {
             }),
 
             catchError((error) => {
-                // TODO
-                console.log(
-                    'REMOVE THIS COMMENT WHEN YOU READ IT, we mark here isError as true that will allow ou to hide all calendar widgets and show an empty state for an error, to trigger an error just change the url to anything that does not exists ex: /appointment1',
-                );
                 this.isError = true;
                 return of(`Error: ${error}`);
             }),
