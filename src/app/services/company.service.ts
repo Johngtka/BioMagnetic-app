@@ -20,7 +20,7 @@ export class CompanyService {
     }
 
     getAppointments(): Observable<Appointment[]> {
-        return this.http.get<any>(this.apiURL + '/appointment1').pipe(
+        return this.http.get<any>(this.apiURL + '/appointment').pipe(
             map(
                 (appointmentFromBackend) => {
                     return appointmentFromBackend.data.map((afb) => {

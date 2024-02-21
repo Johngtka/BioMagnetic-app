@@ -3,6 +3,7 @@
 </div>
 <div *ngIf="events$ | async; else loading; let events">
     <mwl-calendar-month-view
+        *ngIf="!isError"
         [viewDate]="viewDate"
         [events]="events"
         [refresh]="refresh"
