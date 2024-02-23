@@ -8,7 +8,8 @@
         "PATIENTS": "Patients"
     },
     "GENERAL": {
-        "CLOSE": "Close"
+        "CLOSE": "Close",
+        "TODAY": "Today"
     },
     "ERROR": {
         "PATIENT_SEARCH": "An error has occurred while searching for patient, please try again later",
@@ -85,7 +86,15 @@
         "PDF": {
             "IMBALANCE": "Imbalance",
             "POSITION": "Position",
-            "INFO": "Info"
+            "INFO": "Info",
+            "TITLE": "Biomagnetic pair report",
+            "GENERIC": {
+                "REMEMBER": "Remember",
+                "POINT_1": "The minus sign (-) corresponds to the negative against the skin",
+                "POINT_2": "The plus sign (+) corresponds to the positive against the skin",
+                "EMAIL": "Your questions by email at",
+                "TEXT": "It is advisable to accompany the treatment with magnetized water. \nEvery night leave a glass of water covered with a magnet with the negative facing the glass of \nwater (under the glass). At 1 p.m. that water is magnetic water of negative polarity \nand it will help you. \nDrink this water every day during the treatment or throughout your life! \nRemember that you can apply the 5 techniques of Dr. Bansal (homeopathic doctor of \nHindu origin) to have our health balanced with magnets by placing a pair of magnets \nagainst the palms of the hands and against the soles of the feet according to these images."
+            }
         }
     },
     "VISIT_TABLE": {
@@ -118,6 +127,8 @@
         "COPYRIGHT": "All rights reserved"
     },
     "EMPTY_STATE": {
-        "TEXT": "No early visits for the selected patient"
+        "TEXT": "No early visits for the selected patient",
+        "NO_APPOINTMENTS": "You need clients, there are no appointments booked yet",
+        "APPOINTMENT_ERROR": "Something went wrong, we couldn't fetch your appointments"
     }
 }
