@@ -1,6 +1,6 @@
 import { APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -51,6 +51,12 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { AppointmentsCalendarComponent } from './appointments-calendar/appointments-calendar.component';
 import { PointNamesPipe } from './pipes/point-names.pipe';
 import { PointImagePipe } from './pipes/point-image.pipe';
+
+import localeEs from '@angular/common/locales/es';
+import localePl from '@angular/common/locales/pl';
+
+registerLocaleData(localeEs);
+registerLocaleData(localePl);
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');

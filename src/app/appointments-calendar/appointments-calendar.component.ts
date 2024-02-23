@@ -31,29 +31,31 @@ export class AppointmentsCalendarComponent implements OnInit {
         event: CalendarEvent;
     };
 
-    fullyMonthCompose: string;
     activeDayIsOpen = false;
     viewDate = new Date();
     isLoadingEvents = true;
     isError = false;
+    locale = navigator.language;
 
     ngOnInit(): void {
         this.events$ = this.companyService.getAppointments().pipe(
             map((data: Appointment[]) => {
-                return data.map((appointment) => {
-                    return {
-                        start: new Date(appointment.startDateTime),
-                        end: new Date(appointment.endDateTime),
-                        meta: {
-                            duration: appointment.duration,
-                            service: appointment.service,
-                            client: appointment.client,
-                        },
-                        title:
-                            `${appointment.service.name} ` +
-                            `${appointment.client.name}`,
-                    };
-                });
+                return data.length
+                    ? data.map((appointment) => {
+                          return {
+                              start: new Date(appointment.startDateTime),
+                              end: new Date(appointment.endDateTime),
+                              meta: {
+                                  duration: appointment.duration,
+                                  service: appointment.service,
+                                  client: appointment.client,
+                              },
+                              title:
+                                  `${appointment.service.name} ` +
+                                  `${appointment.client.name}`,
+                          };
+                      })
+                    : [];
             }),
 
             catchError((error) => {
@@ -62,15 +64,6 @@ export class AppointmentsCalendarComponent implements OnInit {
             }),
             finalize(() => (this.isLoadingEvents = false)),
         );
-
-        this.fullyMonthCompose =
-            this.viewDate
-                .toLocaleString('default', {
-                    month: 'long',
-                })
-                .toUpperCase() +
-            ' ' +
-            this.viewDate.getFullYear();
     }
 
     dayClicked({

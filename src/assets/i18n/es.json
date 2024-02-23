@@ -8,7 +8,8 @@
         "PATIENTS": "Pacientes"
     },
     "GENERAL": {
-        "CLOSE": "Cierra"
+        "CLOSE": "Cierra",
+        "TODAY": "Hoy"
     },
     "ERROR": {
         "PATIENT_SEARCH": "Se ha producido un error al buscar al paciente, inténtelo de nuevo más tarde",
@@ -118,6 +119,8 @@
         "COPYRIGHT": "Reservados todos los derechos"
     },
     "EMPTY_STATE": {
-        "TEXT": "No hay citas anticipadas para el paciente seleccionado"
+        "TEXT": "No hay citas anticipadas para el paciente seleccionado",
+        "NO_APPOINTMENTS": "Necesitas clientes, aún no hay citas reservadas",
+        "APPOINTMENT_ERROR": "Algo salió mal, no pudimos recuperar tus citas"
     }
 }

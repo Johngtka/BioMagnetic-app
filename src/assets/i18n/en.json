@@ -8,7 +8,8 @@
         "PATIENTS": "Patients"
     },
     "GENERAL": {
-        "CLOSE": "Close"
+        "CLOSE": "Close",
+        "TODAY": "Today"
     },
     "ERROR": {
         "PATIENT_SEARCH": "An error has occurred while searching for patient, please try again later",
@@ -118,6 +119,8 @@
         "COPYRIGHT": "All rights reserved"
     },
     "EMPTY_STATE": {
-        "TEXT": "No early visits for the selected patient"
+        "TEXT": "No early visits for the selected patient",
+        "NO_APPOINTMENTS": "You need clients, there are no appointments booked yet",
+        "APPOINTMENT_ERROR": "Something went wrong, we couldn't fetch your appointments"
     }
 }
