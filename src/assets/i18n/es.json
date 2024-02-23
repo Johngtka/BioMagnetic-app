@@ -85,7 +85,15 @@
         "PDF": {
             "IMBALANCE": "Desequilibrio",
             "POSITION": "Posición",
-            "INFO": "Información"
+            "INFO": "Información",
+            "TITLE": "Informe de par biomagnético",
+            "GENERIC": {
+                "REMEMBER": "Recuerda",
+                "POINT_1": "El signo menos (-) corresponde al negativo contra la piel",
+                "POINT_2": "El signo más (+) corresponde al positivo contra la piel",
+                "EMAIL": "Tus dudas por email al",
+                "TEXT": "Es aconsejable acompañar el tratamiento con agua magnetizada. \nCada noche deja un vaso de agua tapado con un imán con el negativo hacia el vaso de \nagua (debajo del vaso). A las 13 horas esa agua es agua magnética de polaridad negativa \ny te ayudará. \n¡Bebe cada día esta agua durante el tratamiento o toda la vida! \nRecuerda que puedes aplicar las 5 técnicas del Dr. Bansal (médico homeópata de origen \nhindú) para tener nuestra salud equilibrada con imanes poniendo un par de imanes \ncontra las palmas de las manos y contra las plantas de los pies según estas imágenes."
+            }
         }
     },
     "VISIT_TABLE": {

@@ -82,7 +82,15 @@
         "PDF": {
             "IMBALANCE": "Nazwa",
             "POSITION": "Pozycja",
-            "INFO": "Informacje"
+            "INFO": "Informacje",
+            "TITLE": "Raport par biomagnetycznych",
+            "GENERIC": {
+                "REMEMBER": "Pamiętaj",
+                "POINT_1": "Znak minus (-) odpowiada negatywowi na skórze",
+                "POINT_2": "Znak plus (+) odpowiada pozytywowi na skórze",
+                "EMAIL": "Twoje pytania e-mailem na adres",
+                "TEXT": "Wskazane jest, aby zabiegowi towarzyszyć namagnesowana woda. \nKażdej nocy zostawiaj szklankę wody przykrytą magnesem negatywem skierowanym w stronę szklanki z \nwodą (pod szklanką). O godzinie 13:00 woda ta jest magnetyczna woda o ujemnej polaryzacji \na ona Ci pomoże. \nPij tę wodę codziennie podczas kuracji lub przez całe życie! \nPamiętaj, że możesz zastosować 5 technik dr Bansala (lekarza homeopatycznego pochodzenia \nhinduskiego) dla naszego zdrowia zrównoważone za pomocą magnesów, umieszczając parę magnesów na dłoniach i podeszwach stóp, zgodnie z tymi obrazami"
+            }
         }
     },
     "PATIENT_SEARCH": {
