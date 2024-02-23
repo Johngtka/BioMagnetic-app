@@ -1,6 +1,11 @@
 <app-patient-search
     (selectedPatient)="openDetailsBySearched($event)"
 ></app-patient-search>
+
+<div class="upcomingVisits">
+    <app-appointments-calendar></app-appointments-calendar>
+</div>
+
 <button mat-mini-fab (click)="openDialog()" color="primary" class="add-btn">
     <mat-icon class="mat-18">person_add</mat-icon>
 </button>

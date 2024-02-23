@@ -8,7 +8,8 @@
         "PATIENTS": "Pacjęci"
     },
     "GENERAL": {
-        "CLOSE": "Zamknij"
+        "CLOSE": "Zamknij",
+        "TODAY": "Dzisiaj"
     },
     "ERROR": {
         "PATIENT_SEARCH": "Wystąpił błąd podczas wyszukiwania pacjenta, spróbuj ponownie później",
@@ -126,6 +127,8 @@
         "COPYRIGHT": "Wszelkie prawa zastrzeżone"
     },
     "EMPTY_STATE": {
-        "TEXT": "Brak wczesniejszych wizyt dla wybranego pacjenta"
+        "TEXT": "Brak wczesniejszych wizyt dla wybranego pacjenta",
+        "NO_APPOINTMENTS": "Potrzebujesz klientów, nie ma jeszcze zarezerwowanych wizyt",
+        "APPOINTMENT_ERROR": "Coś poszło nie tak, nie mogliśmy pobrać Twoich spotkań"
     }
 }

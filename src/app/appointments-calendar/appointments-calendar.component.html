@@ -1,0 +1,71 @@
+<div class="col-md-4">
+    <h3>{{ viewDate | calendarDate : view + 'ViewTitle' : locale }}</h3>
+</div>
+<div *ngIf="events$ | async; else loading; let events">
+    <mwl-calendar-month-view
+        *ngIf="!isError"
+        [locale]="locale"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [weekStartsOn]="1"
+        [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+    >
+    </mwl-calendar-month-view>
+
+    <div *ngIf="isError">
+        <app-empty-state
+            text="EMPTY_STATE.APPOINTMENT_ERROR"
+            icon="warning"
+        ></app-empty-state>
+    </div>
+
+    <div *ngIf="events.length === 0">
+        <app-empty-state
+            text="EMPTY_STATE.NO_APPOINTMENT"
+            icon="calendar_today"
+        ></app-empty-state>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div *ngIf="isLoadingEvents" class="loader-container mat-elevation-z8">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
+
+<div class="calendarManipulationPanel" *ngIf="!isError && events$ | async">
+    <button
+        mat-mini-fab
+        color="primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+    >
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button
+        mat-stroked-button
+        color="primary"
+        class="todayButton"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+    >
+        {{ 'GENERAL.TODAY' | translate }}
+    </button>
+
+    <button
+        mat-mini-fab
+        color="primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+    >
+        <mat-icon>arrow_forward</mat-icon>
+    </button>
+</div>

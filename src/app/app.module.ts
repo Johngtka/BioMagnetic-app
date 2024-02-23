@@ -1,6 +1,6 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
@@ -27,6 +28,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -45,8 +48,15 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { UserInputDialogComponent } from './user-input-dialog/user-input-dial.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AppointmentsCalendarComponent } from './appointments-calendar/appointments-calendar.component';
 import { PointNamesPipe } from './pipes/point-names.pipe';
 import { PointImagePipe } from './pipes/point-image.pipe';
+
+import localeEs from '@angular/common/locales/es';
+import localePl from '@angular/common/locales/pl';
+
+registerLocaleData(localeEs);
+registerLocaleData(localePl);
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/');
@@ -94,6 +104,7 @@ const materialModules = [
         PatientDetailsComponent,
         PointNamesPipe,
         PointImagePipe,
+        AppointmentsCalendarComponent,
     ],
     imports: [
         BrowserModule,
@@ -108,6 +119,10 @@ const materialModules = [
                 useFactory: HttpLoaderFactory,
                 deps: [HttpClient],
             },
+        }),
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory,
         }),
         FormsModule,
         ReactiveFormsModule,
