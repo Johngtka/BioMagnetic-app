@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.13...v0.0.14) (2024-02-23)
+
+
+### Features
+
+* show upcoming appointments on home page ([#67](https://github.com/Johngtka/BioMagnetic-app/issues/67)) ([3bda2e6](https://github.com/Johngtka/BioMagnetic-app/commit/3bda2e6d65b74c95ca6b3e5e52d537c54bb1f0a6))
+
+
+### Bug Fixes
+
+* fit comment inputs into mobile screens ([#66](https://github.com/Johngtka/BioMagnetic-app/issues/66)) ([29171e5](https://github.com/Johngtka/BioMagnetic-app/commit/29171e5ad11758117bc2ee351cdb9ce2bb3ec371))
+
 ### [0.0.13](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.12...v0.0.13) (2024-01-18)
 
 
