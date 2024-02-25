@@ -6,6 +6,13 @@ import {
     AfterViewInit,
     OnDestroy,
 } from '@angular/core';
+import {
+    trigger,
+    state,
+    style,
+    transition,
+    animate,
+} from '@angular/animations';
 import { DatePipe } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
@@ -18,14 +25,8 @@ import {
 } from '@angular/material/table';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import {
-    trigger,
-    state,
-    style,
-    transition,
-    animate,
-} from '@angular/animations';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 import { orderBy } from 'natural-orderby';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';

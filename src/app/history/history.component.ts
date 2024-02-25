@@ -5,20 +5,6 @@ import {
     HostListener,
     OnDestroy,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import {
-    MatTableDataSource,
-    MatTableDataSourcePaginator,
-} from '@angular/material/table';
-import { BreakpointObserver } from '@angular/cdk/layout';
-
-import { Subscription } from 'rxjs';
-
-import { Visit } from '../models/visit';
-import { Patient } from '../models/patient';
-import { VisitService } from '../services/visit.service';
-import { NavigationObject } from '../models/NavigationObject';
-import { StoreService } from '../services/store.service';
 import {
     trigger,
     state,
@@ -26,6 +12,28 @@ import {
     transition,
     animate,
 } from '@angular/animations';
+import { DatePipe } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import {
+    MatTableDataSource,
+    MatTableDataSourcePaginator,
+} from '@angular/material/table';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+
+import { Visit } from '../models/visit';
+import { Patient } from '../models/patient';
+import { Company } from '../models/company';
+import { VisitService } from '../services/visit.service';
+import { CompanyService } from '../services/company.service';
+import { SnackService } from '../services/snack.service';
+import { NavigationObject } from '../models/NavigationObject';
+import { StoreService } from '../services/store.service';
 
 @Component({
     selector: 'app-history',
@@ -45,6 +53,7 @@ import {
 export class HistoryComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     store: any;
+    company: Company;
     expandedElement: any;
     showSearch: boolean;
     universalPointsId: string[];
@@ -59,9 +68,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
     isMobile: boolean;
 
     constructor(
+        private datePipe: DatePipe,
         private visitService: VisitService,
+        private snackService: SnackService,
         private storeService: StoreService,
+        private companyService: CompanyService,
         private responsive: BreakpointObserver,
+        private translateService: TranslateService,
     ) {}
 
     ngOnDestroy(): void {
@@ -101,6 +114,14 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.patient = urlPatient;
             this.getPatientVisit();
         }
+        this.companyService.getCompany().subscribe({
+            next: (data) => {
+                this.company = data;
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
     }
 
     selectPatient(patientSelected: Patient): void {
@@ -130,6 +151,151 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
     reDoPdf() {
         //TODO re-create a pdf
+        // const visit: Visit = {
+        //     patientId: this.patient._id,
+        //     note: this.noteVal,
+        //     points: this.visitPoints.map((vp) => {
+        //         return { id: vp._id, comment: vp.comment };
+        //     }),
+        // };
+        const pdfData = {
+            fullName: this.patient.surname,
+            logo: this.company.logo,
+            image: this.company.image,
+        };
+
+        const docDefinition = {
+            content: [
+                {
+                    image: pdfData.logo,
+                },
+                {
+                    text: `${this.translateService
+                        .instant('PATIENT_VISIT.PDF.TITLE')
+                        .toUpperCase()} - ${pdfData.fullName.toUpperCase()} ${this.datePipe.transform(
+                        Date.now(),
+                        'dd/MM/yyyy',
+                    )}`,
+                    margin: [0, 10],
+                },
+                {
+                    table: {
+                        dontBreakRows: false,
+                        headerRows: 1,
+                        widths: [150, '*', 150],
+                        body: this.visitPoints
+                            .filter((vt) => vt.code.includes('P', 0))
+                            .map((point) => this.getPdfRow(point)),
+                    },
+                },
+                {
+                    text: `${this.translateService.instant(
+                        'PATIENT_VISIT.PDF.GENERIC.REMEMBER',
+                    )}`,
+                    color: '#92cddc',
+                    pageBreak: 'before',
+                    margin: [0, 10],
+                    lineHeight: 2,
+                    bold: true,
+                },
+                {
+                    ul: [
+                        this.translateService.instant(
+                            'PATIENT_VISIT.PDF.GENERIC.POINT_1',
+                        ),
+                        this.translateService.instant(
+                            'PATIENT_VISIT.PDF.GENERIC.POINT_2',
+                        ),
+                    ],
+                    margin: [60, 0],
+                    lineHeight: 2,
+                },
+                {
+                    text: `${this.translateService.instant(
+                        'PATIENT_VISIT.PDF.GENERIC.EMAIL',
+                    )}: ${this.company.email}`,
+                    color: '#92cddc',
+                    margin: [0, 10],
+                    lineHeight: 2,
+                    bold: true,
+                },
+                {
+                    text: `${this.translateService.instant(
+                        'PATIENT_VISIT.PDF.GENERIC.TEXT',
+                    )}`,
+                    lineHeight: 2,
+                },
+                {
+                    image: pdfData.image,
+                    width: 520,
+                    margin: [0, 10],
+                },
+            ],
+        };
+        // add table headers
+        docDefinition.content[2].table.body.unshift([
+            {
+                text: this.translateService
+                    .instant('PATIENT_VISIT.PDF.IMBALANCE')
+                    .toUpperCase(),
+                alignment: 'center',
+                bold: true,
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+                fillColor: '#92cddc',
+                color: 'white',
+                margin: [0, 10, 0, 10],
+            } as any,
+            {
+                text: this.translateService
+                    .instant('PATIENT_VISIT.PDF.POSITION')
+                    .toUpperCase(),
+                alignment: 'center',
+                bold: true,
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+                fillColor: '#92cddc',
+                color: 'white',
+                margin: [0, 10, 0, 10],
+            },
+            {
+                text: this.translateService
+                    .instant('PATIENT_VISIT.PDF.INFO')
+                    .toUpperCase(),
+                bold: true,
+                alignment: 'center',
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+                fillColor: '#92cddc',
+                color: 'white',
+                margin: [0, 10, 0, 10],
+            },
+        ]);
+
+        // this.visitService.createVisit(visit).subscribe({
+        //     next: () => {
+        //         this.snackService.showSnackBarMessage(
+        //             'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
+        //             SNACK_TYPE.success,
+        //         );
+        //         if (!this.isMobile) {
+        //             pdfMake.createPdf(docDefinition).open();
+        //         }
+        //         if (this.isMobile) {
+        //             const doc = pdfMake.createPdf(docDefinition);
+        //             doc.getBase64((data) => {
+        //                 window.location.href =
+        //                     'data:application/pdf;base64,' + data;
+        //             });
+        //         }
+
+        //         this.toggleTableVisibility(true);
+        //     },
+        //     error: (error) => {
+        //         this.snackService.showSnackBarMessage(
+        //             'ERROR.PATIENT_VISIT_CREATE_VISIT',
+        //             SNACK_TYPE.error,
+        //         );
+        //         console.log(error);
+        //     },
+        // });
     }
 
     private getPatientVisit(): void {
