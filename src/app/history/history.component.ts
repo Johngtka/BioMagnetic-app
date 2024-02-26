@@ -27,11 +27,12 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Visit } from '../models/visit';
+import { Store } from '../models/store';
 import { Patient } from '../models/patient';
 import { Company } from '../models/company';
 import { VisitService } from '../services/visit.service';
 import { CompanyService } from '../services/company.service';
-import { SnackService } from '../services/snack.service';
+import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import { NavigationObject } from '../models/NavigationObject';
 import { StoreService } from '../services/store.service';
 
@@ -151,13 +152,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
     reDoPdf() {
         //TODO re-create a pdf
-        // const visit: Visit = {
-        //     patientId: this.patient._id,
-        //     note: this.noteVal,
-        //     points: this.visitPoints.map((vp) => {
-        //         return { id: vp._id, comment: vp.comment };
-        //     }),
-        // };
+        const visit: Visit = {
+            patientId: this.patient._id,
+            note: this.store.comment,
+            points: this.store.map((vp) => {
+                return { id: vp._id, comment: vp.comment };
+            }),
+        };
         const pdfData = {
             fullName: this.patient.surname,
             logo: this.company.logo,
@@ -183,7 +184,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
                         dontBreakRows: false,
                         headerRows: 1,
                         widths: [150, '*', 150],
-                        body: this.visitPoints
+                        body: this.store
                             .filter((vt) => vt.code.includes('P', 0))
                             .map((point) => this.getPdfRow(point)),
                     },
@@ -269,33 +270,33 @@ export class HistoryComponent implements OnInit, OnDestroy {
             },
         ]);
 
-        // this.visitService.createVisit(visit).subscribe({
-        //     next: () => {
-        //         this.snackService.showSnackBarMessage(
-        //             'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
-        //             SNACK_TYPE.success,
-        //         );
-        //         if (!this.isMobile) {
-        //             pdfMake.createPdf(docDefinition).open();
-        //         }
-        //         if (this.isMobile) {
-        //             const doc = pdfMake.createPdf(docDefinition);
-        //             doc.getBase64((data) => {
-        //                 window.location.href =
-        //                     'data:application/pdf;base64,' + data;
-        //             });
-        //         }
+        this.visitService.createVisit(visit).subscribe({
+            next: () => {
+                this.snackService.showSnackBarMessage(
+                    'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.success,
+                );
+                if (!this.isMobile) {
+                    pdfMake.createPdf(docDefinition).open();
+                }
+                if (this.isMobile) {
+                    const doc = pdfMake.createPdf(docDefinition);
+                    doc.getBase64((data) => {
+                        window.location.href =
+                            'data:application/pdf;base64,' + data;
+                    });
+                }
 
-        //         this.toggleTableVisibility(true);
-        //     },
-        //     error: (error) => {
-        //         this.snackService.showSnackBarMessage(
-        //             'ERROR.PATIENT_VISIT_CREATE_VISIT',
-        //             SNACK_TYPE.error,
-        //         );
-        //         console.log(error);
-        //     },
-        // });
+                // this.toggleTableVisibility(true);
+            },
+            error: (error) => {
+                this.snackService.showSnackBarMessage(
+                    'ERROR.PATIENT_VISIT_CREATE_VISIT',
+                    SNACK_TYPE.error,
+                );
+                console.log(error);
+            },
+        });
     }
 
     private getPatientVisit(): void {
@@ -314,6 +315,28 @@ export class HistoryComponent implements OnInit, OnDestroy {
                 console.log(err);
             },
         });
+    }
+
+    private getPdfRow(point: Store) {
+        return [
+            {
+                text: point.negativePoint + '-' + point.positivePoint,
+                alignment: 'center',
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+            },
+            {
+                image: point.image,
+                width: 200,
+                alignment: 'center',
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+            },
+            {
+                text: point.comment,
+                alignment: 'center',
+                italics: true,
+                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
+            },
+        ];
     }
 
     private checkIfPatient(
