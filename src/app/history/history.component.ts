@@ -154,7 +154,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         //TODO re-create a pdf
         const visit: Visit = {
             patientId: this.patient._id,
-            note: this.store.comment,
+            note: 'xdfgx',
             points: this.store.map((vp) => {
                 return { id: vp._id, comment: vp.comment };
             }),
