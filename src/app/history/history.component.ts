@@ -67,6 +67,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     displayedColumns: string[] = ['date', 'points', 'note'];
     columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
     isMobile: boolean;
+    visitGenerally: Visit[];
 
     constructor(
         private datePipe: DatePipe,
@@ -151,10 +152,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
     }
 
     reDoPdf() {
-        //TODO re-create a pdf
         const visit: Visit = {
             patientId: this.patient._id,
-            note: 'xdfgx',
+            note: this.visitGenerally
+                .map((point) => {
+                    point.note;
+                })
+                .toString(),
             points: this.store.map((vp) => {
                 return { id: vp._id, comment: vp.comment };
             }),
@@ -309,6 +313,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
                 this.dataSource = new MatTableDataSource<Visit>(data);
                 this.isLoadingResults = false;
                 this.dataSource.paginator = this.paginator;
+                this.visitGenerally = data;
             },
             error: (err) => {
                 this.isLoadingResults = false;
