@@ -13,7 +13,6 @@ import {
     transition,
     animate,
 } from '@angular/animations';
-import { DatePipe } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 
@@ -29,7 +28,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import { orderBy } from 'natural-orderby';
 import { Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 
 import { Store } from '../models/store';
 import { Visit } from '../models/visit';
@@ -44,6 +42,7 @@ import {
     ConfirmationDialogResponse,
     ConfirmationDialogComponent,
 } from '../confirmation-dialog/confirmation-dialog.component';
+import { PdfService } from '../services/pdf.service';
 
 @Component({
     selector: 'app-visit',
@@ -67,10 +66,9 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
         private visitService: VisitService,
         private companyService: CompanyService,
         private responsive: BreakpointObserver,
-        private datePipe: DatePipe,
         private dialog: MatDialog,
-        private translateService: TranslateService,
         private router: Router,
+        private pdfService: PdfService,
     ) {}
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -301,116 +299,11 @@ export class VisitComponent implements OnInit, AfterViewInit, OnDestroy {
                 return { id: vp._id, comment: vp.comment };
             }),
         };
-        const pdfData = {
-            fullName: this.patient.surname,
-            logo: this.company.logo,
-            image: this.company.image,
-        };
 
-        const docDefinition = {
-            content: [
-                {
-                    image: pdfData.logo,
-                },
-                {
-                    text: `${this.translateService
-                        .instant('PATIENT_VISIT.PDF.TITLE')
-                        .toUpperCase()} - ${pdfData.fullName.toUpperCase()} ${this.datePipe.transform(
-                        Date.now(),
-                        'dd/MM/yyyy',
-                    )}`,
-                    margin: [0, 10],
-                },
-                {
-                    table: {
-                        dontBreakRows: true,
-                        headerRows: 1,
-                        widths: [150, '*', 150],
-                        body: this.visitPoints
-                            .filter((vt) => vt.code.includes('P', 0))
-                            .map((point) => this.getPdfRow(point)),
-                    },
-                },
-                {
-                    text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.REMEMBER',
-                    )}`,
-                    color: '#92cddc',
-                    pageBreak: 'before',
-                    margin: [0, 10],
-                    lineHeight: 2,
-                    bold: true,
-                },
-                {
-                    ul: [
-                        this.translateService.instant(
-                            'PATIENT_VISIT.PDF.GENERIC.POINT_1',
-                        ),
-                        this.translateService.instant(
-                            'PATIENT_VISIT.PDF.GENERIC.POINT_2',
-                        ),
-                    ],
-                    margin: [60, 0],
-                    lineHeight: 2,
-                },
-                {
-                    text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.EMAIL',
-                    )}: ${this.company.email}`,
-                    color: '#92cddc',
-                    margin: [0, 10],
-                    lineHeight: 2,
-                    bold: true,
-                },
-                {
-                    text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.TEXT',
-                    )}`,
-                    lineHeight: 2,
-                },
-                {
-                    image: pdfData.image,
-                    width: 520,
-                    margin: [0, 10],
-                },
-            ],
-        };
-        // add table headers
-        docDefinition.content[2].table.body.unshift([
-            {
-                text: this.translateService
-                    .instant('PATIENT_VISIT.PDF.IMBALANCE')
-                    .toUpperCase(),
-                alignment: 'center',
-                bold: true,
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-                fillColor: '#92cddc',
-                color: 'white',
-                margin: [0, 10, 0, 10],
-            } as any,
-            {
-                text: this.translateService
-                    .instant('PATIENT_VISIT.PDF.POSITION')
-                    .toUpperCase(),
-                alignment: 'center',
-                bold: true,
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-                fillColor: '#92cddc',
-                color: 'white',
-                margin: [0, 10, 0, 10],
-            },
-            {
-                text: this.translateService
-                    .instant('PATIENT_VISIT.PDF.INFO')
-                    .toUpperCase(),
-                bold: true,
-                alignment: 'center',
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-                fillColor: '#92cddc',
-                color: 'white',
-                margin: [0, 10, 0, 10],
-            },
-        ]);
+        const docDefinition = this.pdfService.preparePdf(
+            this.visitPoints,
+            this.patient,
+        );
 
         this.visitService.createVisit(visit).subscribe({
             next: () => {

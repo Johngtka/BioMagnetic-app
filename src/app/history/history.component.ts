@@ -12,7 +12,6 @@ import {
     transition,
     animate,
 } from '@angular/animations';
-import { DatePipe } from '@angular/common';
 import { MatPaginator } from '@angular/material/paginator';
 import {
     MatTableDataSource,
@@ -24,17 +23,14 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import { Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 
 import { Visit } from '../models/visit';
-import { Store } from '../models/store';
 import { Patient } from '../models/patient';
 import { Company } from '../models/company';
 import { VisitService } from '../services/visit.service';
-import { CompanyService } from '../services/company.service';
-import { SnackService, SNACK_TYPE } from '../services/snack.service';
 import { NavigationObject } from '../models/NavigationObject';
 import { StoreService } from '../services/store.service';
+import { PdfService } from '../services/pdf.service';
 
 @Component({
     selector: 'app-history',
@@ -70,13 +66,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
     visitGenerally: Visit[];
 
     constructor(
-        private datePipe: DatePipe,
         private visitService: VisitService,
-        private snackService: SnackService,
         private storeService: StoreService,
-        private companyService: CompanyService,
         private responsive: BreakpointObserver,
-        private translateService: TranslateService,
+        private pdfService: PdfService,
     ) {}
 
     ngOnDestroy(): void {
@@ -116,14 +109,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.patient = urlPatient;
             this.getPatientVisit();
         }
-        this.companyService.getCompany().subscribe({
-            next: (data) => {
-                this.company = data;
-            },
-            error: (err) => {
-                console.log(err);
-            },
-        });
     }
 
     selectPatient(patientSelected: Patient): void {
@@ -151,156 +136,33 @@ export class HistoryComponent implements OnInit, OnDestroy {
         }
     }
 
-    reDoPdf() {
-        const visit: Visit = {
-            patientId: this.patient._id,
-            note: this.visitGenerally
-                .map((point) => {
-                    point.note;
-                })
-                .toString(),
-            points: this.store.map((vp) => {
-                return { id: vp._id, comment: vp.comment };
-            }),
-        };
-        const pdfData = {
-            fullName: this.patient.surname,
-            logo: this.company.logo,
-            image: this.company.image,
-        };
+    reDoPdf(visitId: string) {
+        const visit = JSON.parse(
+            JSON.stringify(
+                this.dataSource.filteredData.find(
+                    (ds) => (ds as any)._id === visitId,
+                ),
+            ),
+        );
 
-        const docDefinition = {
-            content: [
-                {
-                    image: pdfData.logo,
-                },
-                {
-                    text: `${this.translateService
-                        .instant('PATIENT_VISIT.PDF.TITLE')
-                        .toUpperCase()} - ${pdfData.fullName.toUpperCase()} ${this.datePipe.transform(
-                        Date.now(),
-                        'dd/MM/yyyy',
-                    )}`,
-                    margin: [0, 10],
-                },
-                {
-                    table: {
-                        dontBreakRows: false,
-                        headerRows: 1,
-                        widths: [150, '*', 150],
-                        body: this.store
-                            .filter((vt) => vt.code.includes('P', 0))
-                            .map((point) => this.getPdfRow(point)),
-                    },
-                },
-                {
-                    text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.REMEMBER',
-                    )}`,
-                    color: '#92cddc',
-                    pageBreak: 'before',
-                    margin: [0, 10],
-                    lineHeight: 2,
-                    bold: true,
-                },
-                {
-                    ul: [
-                        this.translateService.instant(
-                            'PATIENT_VISIT.PDF.GENERIC.POINT_1',
-                        ),
-                        this.translateService.instant(
-                            'PATIENT_VISIT.PDF.GENERIC.POINT_2',
-                        ),
-                    ],
-                    margin: [60, 0],
-                    lineHeight: 2,
-                },
-                {
-                    text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.EMAIL',
-                    )}: ${this.company.email}`,
-                    color: '#92cddc',
-                    margin: [0, 10],
-                    lineHeight: 2,
-                    bold: true,
-                },
-                {
-                    text: `${this.translateService.instant(
-                        'PATIENT_VISIT.PDF.GENERIC.TEXT',
-                    )}`,
-                    lineHeight: 2,
-                },
-                {
-                    image: pdfData.image,
-                    width: 520,
-                    margin: [0, 10],
-                },
-            ],
-        };
-        // add table headers
-        docDefinition.content[2].table.body.unshift([
-            {
-                text: this.translateService
-                    .instant('PATIENT_VISIT.PDF.IMBALANCE')
-                    .toUpperCase(),
-                alignment: 'center',
-                bold: true,
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-                fillColor: '#92cddc',
-                color: 'white',
-                margin: [0, 10, 0, 10],
-            } as any,
-            {
-                text: this.translateService
-                    .instant('PATIENT_VISIT.PDF.POSITION')
-                    .toUpperCase(),
-                alignment: 'center',
-                bold: true,
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-                fillColor: '#92cddc',
-                color: 'white',
-                margin: [0, 10, 0, 10],
-            },
-            {
-                text: this.translateService
-                    .instant('PATIENT_VISIT.PDF.INFO')
-                    .toUpperCase(),
-                bold: true,
-                alignment: 'center',
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-                fillColor: '#92cddc',
-                color: 'white',
-                margin: [0, 10, 0, 10],
-            },
-        ]);
-
-        this.visitService.createVisit(visit).subscribe({
-            next: () => {
-                this.snackService.showSnackBarMessage(
-                    'SUCCESS.PATIENT_VISIT_CREATE_VISIT',
-                    SNACK_TYPE.success,
-                );
-                if (!this.isMobile) {
-                    pdfMake.createPdf(docDefinition).open();
-                }
-                if (this.isMobile) {
-                    const doc = pdfMake.createPdf(docDefinition);
-                    doc.getBase64((data) => {
-                        window.location.href =
-                            'data:application/pdf;base64,' + data;
-                    });
-                }
-
-                // this.toggleTableVisibility(true);
-            },
-            error: (error) => {
-                this.snackService.showSnackBarMessage(
-                    'ERROR.PATIENT_VISIT_CREATE_VISIT',
-                    SNACK_TYPE.error,
-                );
-                console.log(error);
-            },
+        visit.points = visit.points.map((v) => {
+            return { ...this.findImageById(v.id), comment: v.comment };
         });
+
+        const docDefinition = this.pdfService.preparePdf(
+            visit.points,
+            this.patient,
+        );
+
+        if (!this.isMobile) {
+            pdfMake.createPdf(docDefinition).open();
+        }
+        if (this.isMobile) {
+            const doc = pdfMake.createPdf(docDefinition);
+            doc.getBase64((data) => {
+                window.location.href = 'data:application/pdf;base64,' + data;
+            });
+        }
     }
 
     private getPatientVisit(): void {
@@ -311,6 +173,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
                     this.showEmptyState = true;
                 }
                 this.dataSource = new MatTableDataSource<Visit>(data);
+
                 this.isLoadingResults = false;
                 this.dataSource.paginator = this.paginator;
                 this.visitGenerally = data;
@@ -322,31 +185,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
         });
     }
 
-    private getPdfRow(point: Store) {
-        return [
-            {
-                text: point.negativePoint + '-' + point.positivePoint,
-                alignment: 'center',
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-            },
-            {
-                image: point.image,
-                width: 200,
-                alignment: 'center',
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-            },
-            {
-                text: point.comment,
-                alignment: 'center',
-                italics: true,
-                borderColor: ['#31849b', '#31849b', '#31849b', '#31849b'],
-            },
-        ];
-    }
-
     private checkIfPatient(
         object: Patient | NavigationObject,
     ): object is Patient {
         return Object.hasOwn(object, 'name');
+    }
+
+    private findImageById(storeId: string): any {
+        return this.store.find((s) => s._id === storeId);
     }
 }
