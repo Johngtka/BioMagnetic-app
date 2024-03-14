@@ -5,20 +5,6 @@ import {
     HostListener,
     OnDestroy,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import {
-    MatTableDataSource,
-    MatTableDataSourcePaginator,
-} from '@angular/material/table';
-import { BreakpointObserver } from '@angular/cdk/layout';
-
-import { Subscription } from 'rxjs';
-
-import { Visit } from '../models/visit';
-import { Patient } from '../models/patient';
-import { VisitService } from '../services/visit.service';
-import { NavigationObject } from '../models/NavigationObject';
-import { StoreService } from '../services/store.service';
 import {
     trigger,
     state,
@@ -26,6 +12,25 @@ import {
     transition,
     animate,
 } from '@angular/animations';
+import { MatPaginator } from '@angular/material/paginator';
+import {
+    MatTableDataSource,
+    MatTableDataSourcePaginator,
+} from '@angular/material/table';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import { Subscription } from 'rxjs';
+
+import { Visit } from '../models/visit';
+import { Patient } from '../models/patient';
+import { Company } from '../models/company';
+import { VisitService } from '../services/visit.service';
+import { NavigationObject } from '../models/NavigationObject';
+import { StoreService } from '../services/store.service';
+import { PdfService } from '../services/pdf.service';
 
 @Component({
     selector: 'app-history',
@@ -45,6 +50,7 @@ import {
 export class HistoryComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     store: any;
+    company: Company;
     expandedElement: any;
     showSearch: boolean;
     universalPointsId: string[];
@@ -57,11 +63,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
     displayedColumns: string[] = ['date', 'points', 'note'];
     columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
     isMobile: boolean;
+    visitGenerally: Visit[];
 
     constructor(
         private visitService: VisitService,
         private storeService: StoreService,
         private responsive: BreakpointObserver,
+        private pdfService: PdfService,
     ) {}
 
     ngOnDestroy(): void {
@@ -128,8 +136,33 @@ export class HistoryComponent implements OnInit, OnDestroy {
         }
     }
 
-    reDoPdf() {
-        //TODO re-create a pdf
+    reDoPdf(visitId: string) {
+        const visit = JSON.parse(
+            JSON.stringify(
+                this.dataSource.filteredData.find(
+                    (ds) => (ds as any)._id === visitId,
+                ),
+            ),
+        );
+
+        visit.points = visit.points.map((v) => {
+            return { ...this.findImageById(v.id), comment: v.comment };
+        });
+
+        const docDefinition = this.pdfService.preparePdf(
+            visit.points,
+            this.patient,
+        );
+
+        if (!this.isMobile) {
+            pdfMake.createPdf(docDefinition).open();
+        }
+        if (this.isMobile) {
+            const doc = pdfMake.createPdf(docDefinition);
+            doc.getBase64((data) => {
+                window.location.href = 'data:application/pdf;base64,' + data;
+            });
+        }
     }
 
     private getPatientVisit(): void {
@@ -140,8 +173,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
                     this.showEmptyState = true;
                 }
                 this.dataSource = new MatTableDataSource<Visit>(data);
+
                 this.isLoadingResults = false;
                 this.dataSource.paginator = this.paginator;
+                this.visitGenerally = data;
             },
             error: (err) => {
                 this.isLoadingResults = false;
@@ -154,5 +189,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
         object: Patient | NavigationObject,
     ): object is Patient {
         return Object.hasOwn(object, 'name');
+    }
+
+    private findImageById(storeId: string): any {
+        return this.store.find((s) => s._id === storeId);
     }
 }
