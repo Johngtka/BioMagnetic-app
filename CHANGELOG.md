@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.14...v0.0.15) (2024-03-14)
+
+
+### Features
+
+* allow a user to re-create a PDF from history page ([#69](https://github.com/Johngtka/BioMagnetic-app/issues/69)) ([1077089](https://github.com/Johngtka/BioMagnetic-app/commit/1077089801137a1d10df76ccf4866a948a4ac118))
+
 ### [0.0.14](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.13...v0.0.14) (2024-02-23)
 
 
