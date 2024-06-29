@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.15...v0.0.16) (2024-06-29)
+
+
+### Features
+
+* change backend URL ([#71](https://github.com/Johngtka/BioMagnetic-app/issues/71)) ([e276ab6](https://github.com/Johngtka/BioMagnetic-app/commit/e276ab6d8ddb86bed0fbf687ac4aacdd5519177c))
+
 ### [0.0.15](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.14...v0.0.15) (2024-03-14)
 
 
