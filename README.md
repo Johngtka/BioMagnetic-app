@@ -16,8 +16,10 @@ To create appointment let's go here [FakeCompany](https://fakecompany125.simplyb
 
 Here you can generate test visits using this service
 
+Service for create appointments is integrate with [SimplyBook](https://www.simplybook.me/en/)
+
 # Backend
 
-to connect with api, use postman with [API](https://busy-tan-whale-tam.cyclic.app)
+Backend is hosted on [Cyclic_API](https://www.cyclic.sh/)
 
 Our database is based on MongoDB and the api controlling the database as well as connecting to our application has been created in express
