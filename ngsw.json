@@ -1,0 +1,75 @@
+{
+  "configVersion": 1,
+  "timestamp": 1740153531968,
+  "index": "https://johngtka.github.io/BioMagnetic-app/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://johngtka.github.io/BioMagnetic-app/index.html",
+        "https://johngtka.github.io/BioMagnetic-app/main.46e814b08f255a9d.js",
+        "https://johngtka.github.io/BioMagnetic-app/manifest.webmanifest",
+        "https://johngtka.github.io/BioMagnetic-app/polyfills.e327290cdbb213c5.js",
+        "https://johngtka.github.io/BioMagnetic-app/runtime.0d70cc7826f7a4b4.js",
+        "https://johngtka.github.io/BioMagnetic-app/styles.6010eb0c08641a55.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://johngtka.github.io/BioMagnetic-app/assets/i18n/en.json",
+        "https://johngtka.github.io/BioMagnetic-app/assets/i18n/es.json",
+        "https://johngtka.github.io/BioMagnetic-app/assets/i18n/pl.json",
+        "https://johngtka.github.io/BioMagnetic-app/assets/icons/magnet.svg",
+        "https://johngtka.github.io/BioMagnetic-app/assets/img/magnet.svg",
+        "https://johngtka.github.io/BioMagnetic-app/assets/img/user.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://johngtka.github.io/BioMagnetic-app/assets/i18n/en.json": "3319d259f05c15155c6de718d1105a75a33c5adc",
+    "https://johngtka.github.io/BioMagnetic-app/assets/i18n/es.json": "60b0528e3a5042b8060a4b2da0ccaf518ec18fe5",
+    "https://johngtka.github.io/BioMagnetic-app/assets/i18n/pl.json": "ff998c3475aa59b4df3a3809639690de223c9fbe",
+    "https://johngtka.github.io/BioMagnetic-app/assets/icons/magnet.svg": "acbc1263b376d3652b37b52509388e64bb6ec5c1",
+    "https://johngtka.github.io/BioMagnetic-app/assets/img/magnet.svg": "acbc1263b376d3652b37b52509388e64bb6ec5c1",
+    "https://johngtka.github.io/BioMagnetic-app/assets/img/user.svg": "f971d7cffeb066a4764215901c0ae017b86616f3",
+    "https://johngtka.github.io/BioMagnetic-app/index.html": "798c6af99af54ad393f38e2bde463d0381266ae3",
+    "https://johngtka.github.io/BioMagnetic-app/main.46e814b08f255a9d.js": "e2835b3888c72404ce3f3e8e3bb9c0ca5a76ceb5",
+    "https://johngtka.github.io/BioMagnetic-app/manifest.webmanifest": "27d2b30f24a3fb65c5fe8c7c76d5621eb0087f02",
+    "https://johngtka.github.io/BioMagnetic-app/polyfills.e327290cdbb213c5.js": "5bbc5d2dccfcb24c32862b89ced07e17d2d003a6",
+    "https://johngtka.github.io/BioMagnetic-app/runtime.0d70cc7826f7a4b4.js": "cb184ec3c4dc9814b2ab413c3529aa1e184533e7",
+    "https://johngtka.github.io/BioMagnetic-app/styles.6010eb0c08641a55.css": "44a6a58dede4d910a4f7cbd2f015cabce5fd7613"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

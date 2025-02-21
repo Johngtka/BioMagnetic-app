@@ -66,6 +66,9 @@ MIT
 @angular/router
 MIT
 
+@angular/service-worker
+MIT
+
 @mattlewis92/dom-autoscroller
 MIT
 The MIT License (MIT)
