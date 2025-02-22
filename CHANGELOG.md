@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.17...v0.0.18) (2025-02-22)
+
+
+### Features
+
+* add pwa icons ([#73](https://github.com/Johngtka/BioMagnetic-app/issues/73)) ([ccb0510](https://github.com/Johngtka/BioMagnetic-app/commit/ccb051078ff44e563dbd7f09f3553330bda64b29))
+
+### [0.0.17](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.16...v0.0.17) (2025-02-21)
+
+
+### Features
+
+* allow a user to convert web page to PWA ([#72](https://github.com/Johngtka/BioMagnetic-app/issues/72)) ([30c6822](https://github.com/Johngtka/BioMagnetic-app/commit/30c6822c56e9c86f41947078517b14104745e88f))
+
+### [0.0.16](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.15...v0.0.16) (2024-06-29)
+
+
+### Features
+
+* change backend URL ([#71](https://github.com/Johngtka/BioMagnetic-app/issues/71)) ([e276ab6](https://github.com/Johngtka/BioMagnetic-app/commit/e276ab6d8ddb86bed0fbf687ac4aacdd5519177c))
+
 ### [0.0.15](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.14...v0.0.15) (2024-03-14)
 
 

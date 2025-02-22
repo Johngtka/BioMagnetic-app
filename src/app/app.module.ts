@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
@@ -54,6 +54,7 @@ import { PointImagePipe } from './pipes/point-image.pipe';
 
 import localeEs from '@angular/common/locales/es';
 import localePl from '@angular/common/locales/pl';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeEs);
 registerLocaleData(localePl);
@@ -128,6 +129,12 @@ const materialModules = [
         ReactiveFormsModule,
         AppRoutingModule,
         ...materialModules,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
     ],
     providers: [
         CdkTextareaAutosize,
