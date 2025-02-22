@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.17...v0.0.18) (2025-02-22)
+
+
+### Features
+
+* add pwa icons ([#73](https://github.com/Johngtka/BioMagnetic-app/issues/73)) ([ccb0510](https://github.com/Johngtka/BioMagnetic-app/commit/ccb051078ff44e563dbd7f09f3553330bda64b29))
+
 ### [0.0.17](https://github.com/Johngtka/BioMagnetic-app/compare/v0.0.16...v0.0.17) (2025-02-21)
 
 
