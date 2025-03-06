@@ -4,12 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 You can view the latest project version visiting: https://johngtka.github.io/BioMagnetic-app/about
 
-or
-
-visit [This](http://book-with-me.free.nf/home)
-
-This application is for the clinic's customer service to ensure the highest quality of service.
-
 # Appointments
 
 To create appointment let's go here [FakeCompany](https://fakecompany125.simplybook.it/v2/)
@@ -20,6 +14,6 @@ Service for create appointments is integrate with [SimplyBook](https://www.simpl
 
 # Backend
 
-Backend is hosted on [Cyclic_API](https://www.cyclic.sh/)
+Backend is hosted on [KOYEB](https://app.koyeb.com/)
 
-Our database is based on MongoDB and the api controlling the database as well as connecting to our application has been created in express
+Our database is based on MongoDB and the api controlling the database as well as connecting to our application has been created in express and the project can be found [HERE](https://github.com/macrog/mongo-me-now)
